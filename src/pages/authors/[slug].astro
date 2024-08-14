@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Main from '../../components/Main.astro';
+import H1 from '../../components/H1.astro';
+import Footer from '../../components/Footer.astro';
+
+export const getStaticPaths = async () => {
+    const authors = await getCollection("authors");
+    const paths = authors.map(author => {
+        return {
+            params: {
+                slug: author.slug
+            },
+            props: {
+                author
+            }
+        }
+    });
+    return paths
+}
+
+type Props = {
+    author: CollectionEntry<"authors">
+}
+
+const {author} = Astro.props;
+const {Content} = await author.render();
+--- 
+
+<Layout title={author.data.name}>
+    <Main>
+        <H1 text={author.data.name}></H1>
+        <div class="prose prose-2xl overflow-visible relative mb-20">
+            <Content />
+        </div>
+    </Main>
+    <Footer></Footer>
+</Layout>

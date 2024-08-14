@@ -1,0 +1,20 @@
+---
+interface Props {
+    Id?: string
+};
+
+const {Id} = Astro.props;
+---
+
+<section id={Id} class="my-20">
+    <h3 class="text-3xl font-bold dark:text-white mb-10">Subscribe to Data Journal</h3>
+    <script charset="utf-8" type="text/javascript" src="https:js.hsforms.net/forms/embed/v2.js"></script>
+    <script>
+    // @ts-ignore
+        hbspt.forms.create({
+            region: "na1",
+            portalId: "44171646",
+            formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff"
+        });
+    </script>
+</section>

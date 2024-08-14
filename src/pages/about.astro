@@ -1,0 +1,35 @@
+---
+import H1 from "../components/H1.astro";
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Newsletter from "../components/Newsletter.astro";
+---
+
+<Layout title="About Us | Data Journal by Datakyu">
+    <Main>
+        <H1 text="Your Gateway to Data Insights"></H1>
+        <section class="mb-20">
+            <p>
+                Data Journal, an independent publication by Datakyu, launched in February 2023, offers an unparalleled resource for data enthusiasts. By subscribing today, you gain full access to our content and receive email newsletters with the latest content.
+            </p>
+            <h2 class="text-4xl font-extrabold dark:text-white">Fresh Content</h2>
+            <p>
+                Stay ahead with a constant stream of new insights, articles, and resources tailored to your interests. Our commitment to delivering fresh content means you'll always have access to the latest developments, tutorials, and ideas in the world of data and analytics. Whether you're looking to enhance your skills or stay informed on industry trends, our regularly updated content ensures you never miss a beat.
+            </p>
+            <h2 class="text-4xl font-extrabold dark:text-white">Comprehensive Data Insights</h2>
+            <p>
+                We deliver focused content on web and product analytics, including tutorials, expert guides, and the latest trends. Perfect for staying informed and optimizing your data strategies.
+            </p>
+        </section>
+        <Newsletter></Newsletter>
+    </Main>
+    <Footer></Footer>
+</Layout>
+
+<style>
+    h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+</style>

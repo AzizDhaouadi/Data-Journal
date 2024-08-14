@@ -1,0 +1,33 @@
+---
+import Header from "../components/Header.astro"
+import ViewTransitions from "astro/components/ViewTransitions.astro";
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string; // The ? indicates that the property is optional
+}
+
+const { title="Data Journal by Datakyu", description="Thoughts, tutorials and ideas about web and product analytics." ,image = "/public/logo.svg" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<meta property="og:image" content={image} />
+		<title>{title}</title>
+		<ViewTransitions></ViewTransitions>
+	</head>
+	<body class="min-h-screen">
+		<Header />
+		<slot />
+	</body> 
+</html>
