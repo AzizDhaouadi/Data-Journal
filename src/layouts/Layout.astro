@@ -24,6 +24,12 @@ const { title="Data Journal by Datakyu", description="Thoughts, tutorials and id
 		<meta name="generator" content={Astro.generator} />
 		<meta property="og:image" content={image} />
 		<title>{title}</title>
+
+		<!-- Third party tracking scripts - section start -->
+
+		<!-- Sentry -->
+		<script is:inline src="https://js.sentry-cdn.com/17dc7fee29c01933e3c3df799f1c804b.min.js" crossorigin="anonymous"></script>
+		<!-- Segment Analytics -->
 		<script>
 			function loadSegmentClientSide() {
 				//@ts-ignore
@@ -41,6 +47,45 @@ const { title="Data Journal by Datakyu", description="Thoughts, tutorials and id
 				sendSegmentPageview();
 			});
 		</script>
+
+		<!-- Clearbit -->
+		<script is:inline src="https://tag.clearbitscripts.com/v1/pk_b68c5f7d0d872bb8a738b1326fd68814/tags.js" referrerpolicy="strict-origin-when-cross-origin"></script>
+
+		<!-- Clarity -->
+		<script>
+			function loadClearbit() {
+				//@ts-ignore
+				(function(c, l, a, r, i, t, y) {c[a] = c[a] || function() {(c[a].q = c[a].q || []).push(arguments)};t = l.createElement(r);t.async = 1;t.src = "https://www.clarity.ms/tag/" + i;y = l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t, y);})(window, document, "clarity", "script", "lr33g5gf7l");
+			}
+
+			document.addEventListener("astro:page-load", () => {
+				loadClearbit();
+			});
+		</script>
+
+		<!-- Google Tag Manager -->
+		<script>
+			function loadGoogleTagManagerClientSide() {
+				//@ts-ignore
+				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T953W4BZ');	
+			}
+
+			function logPageLoadIntoDataLayer() {
+				if (window.dataLayer) {
+					window.dataLayer.push({
+						event: 'page_view'
+					})
+				}
+			}
+
+			document.addEventListener("astro:page-load", () => {
+				loadGoogleTagManagerClientSide();
+				logPageLoadIntoDataLayer();
+			});
+		</script>
+
+		<!-- Third party tracking scripts - end section -->
+
 		<ViewTransitions />
 	</head>
 	<body class="min-h-screen">
