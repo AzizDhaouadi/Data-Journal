@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro"
 import ViewTransitions from "astro/components/ViewTransitions.astro";
+import SpeedInsights  from "@vercel/speed-insights/astro";
 
 interface Props {
 	title: string;
@@ -91,5 +92,6 @@ const { title="Data Journal by Datakyu", description="Thoughts, tutorials and id
 	<body class="min-h-screen">
 		<Header />
 		<slot />
-	</body> 
+	</body>
+	<SpeedInsights />
 </html>
