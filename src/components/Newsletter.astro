@@ -8,29 +8,27 @@ const {Id} = Astro.props;
 
 <section id={Id} class="my-20">
     <h3 class="text-3xl font-bold dark:text-white mb-10">Subscribe to Data Journal</h3>
-    <script is:inline charset="utf-8" type="text/javascript" src="https:js.hsforms.net/forms/embed/v2.js"></script>
-    <script>
-        function injectNewsletterForm () {
-            // @ts-ignore
+    <script charset="utf-8" type="text/javascript" src="https:js.hsforms.net/forms/embed/v2.js"></script>
+    <script type="application/javascript">
+        function loadAndTrackHubspotForms() {
             hbspt.forms.create({
-                region: "na1",
-                portalId: "44171646",
-                formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff"
+            region: "na1",
+            portalId: "44171646",
+            formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff"
+        });
+
+        
+            window.addEventListener("message", function (event) {
+                if (event.data.type === "hsFormCallback" && event.data.eventName === "onFormSubmitted") {
+                    window.analytics.track("Subscribed Newsletter", {
+                    form_id: event.data.id,
+                    });
+                }
             });
         }
 
-        
-        window.addEventListener("message", function (event) {
-            if (event.data.type === "hsFormCallback" && event.data.eventName === "onFormSubmitted") {
-                window.analytics.track("Subscribed Newsletter", {
-                form_id: event.data.id,
-                });
-            }
-        });
-
         document.addEventListener("astro:page-load", () => {
-            injectNewsletterForm();
-        });
-        
+            loadAndTrackHubspotForms();
+        })
     </script>
 </section>

@@ -72,3 +72,61 @@ const recentPosts = clonePosts.slice(0, 4);
         margin-bottom: 2.5rem;
     }
 </style>
+
+<script is:inline type="application/javascript" define:vars={{posts}}>
+  window.addEventListener("DOMContentLoaded", () => {
+    const blogSchema = {
+      "@context": "https://schema.org/",
+      "@type": "Blog",
+      "url": "https://datajournal.datakyu.co/",
+      "@id": "https://datajournal.datakyu.co/",
+      "mainEntityOfPage": "https://datajournal.datakyu.co/",
+      "name": "Data Journal by Datakyu",
+      "description": "Thoughts, tutorials and ideas about web and product analytics.",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.datakyu.co/",
+        "url": "https://www.datakyu.co/",
+        "name": "Datakyu",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
+          "url": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
+        }
+      }
+    }
+
+    class publishedArticleSchemaMarkup {
+      constructor(articleMetaData) {
+        this["@type"] = "BlogPosting";
+        this["@id"] = `http://datajournal.datakyu.co/${articleMetaData.slug}#BlogPosting`;
+        this["mainEntityOfPage"] = articleMetaData.slug;
+        this["headline"] = articleMetaData.data.title;
+        this["name"] = articleMetaData.data.title;
+        this["image"] = [articleMetaData.data.image.src];
+        this["datePublished"] = new Date(articleMetaData.data.date).toISOString();
+        this["author"] = {
+          "@type": "Person",
+          "@id": "https://about.dhaziz.me/",
+          "url": "https://about.dhaziz.me/",
+          "name": "Aziz Dhaouadi"
+        };
+        this["url"] = `http://datajournal.datakyu.co/${articleMetaData.slug}/`;
+      }
+    }
+
+    const blogPostsSchema = [];
+
+    for (let blogPost of posts) {
+      const blogPostSchema = new publishedArticleSchemaMarkup(blogPost);
+      blogPostsSchema.push(blogPostSchema);
+    }
+    blogSchema["blogPost"] = [...blogPostsSchema];
+
+    const structuredDataScript = document.createElement("script");
+    structuredDataScript.setAttribute("type", "application/ld+json");
+    structuredDataScript.textContent = JSON.stringify(blogSchema);
+    document.querySelector("head").appendChild(structuredDataScript);
+  });
+
+</script>

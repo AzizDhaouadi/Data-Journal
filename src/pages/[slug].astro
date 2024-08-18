@@ -39,3 +39,42 @@ const {Content} = await post.render();
     </Main>
     <Footer></Footer>
 </Layout>
+
+
+<script is:inline type="application/javascript" define:vars={{post}}>
+    window.addEventListener("DOMContentLoaded", () => {
+        const blogpostSchema = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "@id": `https://datajournal.datakyu.co/${post.slug}/#BlogPosting`,
+            "mainEntityOfPage": `https://datajournal.datakyu.co/${post.slug}/`,
+            "name": post.data.title,
+            "datePublished": new Date(post.data.date).toISOString(),
+            "dateModified": new Date(post.data.date).toISOString(),
+            "url": `https://datajournal.datakyu.co/${post.slug}/`,
+            "isPartOf": {
+                "@type": "Blog",
+                "@id": "https://datajournal.datakyu.co/",
+                "name": "Data Journal by Datakyu",
+                "publisher": {
+                    "@type": "Organization",
+                    "@id": "https://www.datakyu.co/",
+                    "url": "https://www.datakyu.co/",
+                    "name": "Datakyu",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "@id": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
+                        "url": "https://www.datakyu.co/assets/logo/logo-transparent.svg"
+                }
+            }
+         }
+    }
+
+    const blogPostStrucutredData = document.createElement("script");
+    blogPostStrucutredData.setAttribute("type", "application/ld+json");
+    blogPostStrucutredData.textContent = JSON.stringify(blogpostSchema);
+    document.querySelector("head").appendChild(blogPostStrucutredData);
+
+    console.log(blogpostSchema);
+});
+</script>
