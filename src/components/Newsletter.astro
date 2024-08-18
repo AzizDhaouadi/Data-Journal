@@ -18,8 +18,19 @@ const {Id} = Astro.props;
                 formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff"
             });
         }
+
+        
+        window.addEventListener("message", function (event) {
+            if (event.data.type === "hsFormCallback" && event.data.eventName === "onFormSubmitted") {
+                window.analytics.track("Subscribed Newsletter", {
+                form_id: event.data.id,
+                });
+            }
+        });
+
         document.addEventListener("astro:page-load", () => {
             injectNewsletterForm();
         });
+        
     </script>
 </section>
