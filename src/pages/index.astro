@@ -99,7 +99,7 @@ const recentPosts = clonePosts.slice(0, 4);
     class publishedArticleSchemaMarkup {
       constructor(articleMetaData) {
         this["@type"] = "BlogPosting";
-        this["@id"] = `${articleMetaData.slug}#BlogPosting`;
+        this["@id"] = `http://datajournal.datakyu.co/${articleMetaData.slug}#BlogPosting`;
         this["mainEntityOfPage"] = articleMetaData.slug;
         this["headline"] = articleMetaData.data.title;
         this["name"] = articleMetaData.data.title;
@@ -111,7 +111,7 @@ const recentPosts = clonePosts.slice(0, 4);
           "url": "https://about.dhaziz.me/",
           "name": "Aziz Dhaouadi"
         };
-        this["url"] = articleMetaData.slug;
+        this["url"] = `http://datajournal.datakyu.co/${articleMetaData.slug}/`;
       }
     }
 
