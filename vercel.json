@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/author/aziz/",
+      "destination": "/authors/aziz/",
+      "statusCode": 301
+    },
+    { "source": "/page/2/", "destination": "/posts/", "statusCode": 301 }
+  ]
+}
