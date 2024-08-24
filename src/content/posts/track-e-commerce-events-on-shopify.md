@@ -526,7 +526,7 @@ The function updateAddToCart is triggered whenever the "plus" or "minus" button 
 
 If you are wondering why the "plus" and "minus" keep coming up and you are confused about what it means, this should clarify things:
 
-```HTML
+```html
 <button class="quantity__button no-js-hidden" name="plus" type="button" onclick="updateAddToCart(event)">
 
 <button class="quantity__button no-js-hidden" name="minus" type="button" onclick="updateAddToCart(event)">

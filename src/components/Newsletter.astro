@@ -20,8 +20,12 @@ const {Id} = Astro.props;
         
             window.addEventListener("message", function (event) {
                 if (event.data.type === "hsFormCallback" && event.data.eventName === "onFormSubmitted") {
+                    const ue = event?.data?.data?.submissionValues?.email;
+                    window.analytics.identify(ue, {
+                        email: ue
+                    });
                     window.analytics.track("Subscribed Newsletter", {
-                    form_id: event.data.id,
+                        form_id: event.data.id,
                     });
                 }
             });
