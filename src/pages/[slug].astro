@@ -1,74 +1,73 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import Layout from '../layouts/Layout.astro';
-import Main from '../components/Main.astro';
-import H1 from '../components/H1.astro';
-import Footer from '../components/Footer.astro';
-import BlogMeta from '../components/BlogMeta.astro';
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Main from "../components/Main.astro";
+import H1 from "../components/H1.astro";
+import Footer from "../components/Footer.astro";
+import BlogMeta from "../components/BlogMeta.astro";
 
 export const getStaticPaths = async () => {
-    const posts = await getCollection("posts");
-    const paths = posts.map(post => {
-        return {
-            params: {
-                slug: post.slug
-            },
-            props: {
-                post
-            }
-        }
-    });
-    return paths
-}
+  const posts = await getCollection("posts");
+  const paths = posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+      props: {
+        post,
+      },
+    };
+  });
+  return paths;
+};
 
 type Props = {
-    post: CollectionEntry<"posts">
-}
+  post: CollectionEntry<"posts">;
+};
 
-const {post} = Astro.props;
-const {Content} = await post.render();
+const { post } = Astro.props;
+const { Content } = await post.render();
 ---
 
 <Layout title=`Data Journal - ${post.data.title}`>
-    <Main>
-        <H1 text={post.data.title}></H1>
-        <BlogMeta post={post} author="aziz"></BlogMeta>
-        <div class="prose max-w-7xl mx-auto w-full overflow-visible relative my-10">
-            <Content/>
-        </div>
-    </Main>
-    <Footer></Footer>
+  <Main>
+    <H1 text={post.data.title} />
+    <BlogMeta post={post} author="aziz" />
+    <div class="prose max-w-7xl mx-auto w-full overflow-visible relative my-10">
+      <Content />
+    </div>
+  </Main>
+  <Footer />
 </Layout>
 
-
-<script is:inline type="application/javascript" define:vars={{post}}>
-    window.addEventListener("DOMContentLoaded", () => {
-        const blogpostSchema = {
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "@id": `https://datajournal.datakyu.co/${post.slug}/#BlogPosting`,
-            "mainEntityOfPage": `https://datajournal.datakyu.co/${post.slug}/`,
-            "name": post.data.title,
-            "datePublished": new Date(post.data.date).toISOString(),
-            "dateModified": new Date(post.data.date).toISOString(),
-            "url": `https://datajournal.datakyu.co/${post.slug}/`,
-            "isPartOf": {
-                "@type": "Blog",
-                "@id": "https://datajournal.datakyu.co/",
-                "name": "Data Journal by Datakyu",
-                "publisher": {
-                    "@type": "Organization",
-                    "@id": "https://www.datakyu.co/",
-                    "url": "https://www.datakyu.co/",
-                    "name": "Datakyu",
-                    "logo": {
-                        "@type": "ImageObject",
-                        "@id": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
-                        "url": "https://www.datakyu.co/assets/logo/logo-transparent.svg"
-                }
-            }
-         }
-    }
+<script is:inline type="application/javascript" define:vars={{ post }}>
+  window.addEventListener("DOMContentLoaded", () => {
+    const blogpostSchema = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": `https://datajournal.datakyu.co/${post.slug}/#BlogPosting`,
+      mainEntityOfPage: `https://datajournal.datakyu.co/${post.slug}/`,
+      name: post.data.title,
+      datePublished: new Date(post.data.date).toISOString(),
+      dateModified: new Date(post.data.date).toISOString(),
+      url: `https://datajournal.datakyu.co/${post.slug}/`,
+      isPartOf: {
+        "@type": "Blog",
+        "@id": "https://datajournal.datakyu.co/",
+        name: "Data Journal by Datakyu",
+        publisher: {
+          "@type": "Organization",
+          "@id": "https://www.datakyu.co/",
+          url: "https://www.datakyu.co/",
+          name: "Datakyu",
+          logo: {
+            "@type": "ImageObject",
+            "@id": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
+            url: "https://www.datakyu.co/assets/logo/logo-transparent.svg",
+          },
+        },
+      },
+    };
 
     const blogPostStrucutredData = document.createElement("script");
     blogPostStrucutredData.setAttribute("type", "application/ld+json");
@@ -76,5 +75,5 @@ const {Content} = await post.render();
     document.querySelector("head").appendChild(blogPostStrucutredData);
 
     console.log(blogpostSchema);
-});
+  });
 </script>

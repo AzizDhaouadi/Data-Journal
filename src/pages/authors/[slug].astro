@@ -1,283 +1,288 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import Main from '../../components/Main.astro';
-import H1 from '../../components/H1.astro';
-import Footer from '../../components/Footer.astro';
+import { getCollection, type CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Main from "../../components/Main.astro";
+import H1 from "../../components/H1.astro";
+import Footer from "../../components/Footer.astro";
 
 export const getStaticPaths = async () => {
-    const authors = await getCollection("authors");
-    const paths = authors.map(author => {
-        return {
-            params: {
-                slug: author.slug
-            },
-            props: {
-                author
-            }
-        }
-    });
-    return paths
-}
+  const authors = await getCollection("authors");
+  const paths = authors.map((author) => {
+    return {
+      params: {
+        slug: author.slug,
+      },
+      props: {
+        author,
+      },
+    };
+  });
+  return paths;
+};
 
 type Props = {
-    author: CollectionEntry<"authors">
-}
+  author: CollectionEntry<"authors">;
+};
 
-const {author} = Astro.props;
-const {Content} = await author.render();
---- 
+const { author } = Astro.props;
+const { Content } = await author.render();
+---
 
 <Layout title={author.data.name}>
-    <Main>
-        <H1 text={author.data.name}></H1>
-        <div class="prose prose-2xl overflow-visible relative mb-20">
-            <Content />
-        </div>
-    </Main>
-    <Footer></Footer>
+  <Main>
+    <H1 text={author.data.name} />
+    <div class="prose prose-2xl overflow-visible relative mb-20">
+      <Content />
+    </div>
+  </Main>
+  <Footer />
 </Layout>
 
 <script is:inline type="application/ld+json">
-    {
-     "@context": "https://schema.org",
-     "@type": "ProfilePage",
-     "mainEntity": {
-        "@type": "Person",
-        "@id": "https://about.dhaziz.me",
-        "name": "Aziz Dhaouadi",
-        "url": "https://about.dhaziz.me",
-        "description": "Driven Web Analyst excels in privacy compliance, web analytics tools, showcasing a blend of technical expertise and innovative problem-solving. Proven leader with notable achievements in web analytics and consent management, demonstrating a strong commitment to advancing online privacy standards and data-driven decision-making.",
-        "jobTitle": "Web Traffic & Compliance Analyst",
-        "affiliation": [{
-            "@type": "Organization",
-            "@id": "https://www.datakyu.co/",
-            "name": "Datakyu",
-            "url": "https://www.datakyu.co/"
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "@id": "https://about.dhaziz.me",
+      "name": "Aziz Dhaouadi",
+      "url": "https://about.dhaziz.me",
+      "description": "Driven Web Analyst excels in privacy compliance, web analytics tools, showcasing a blend of technical expertise and innovative problem-solving. Proven leader with notable achievements in web analytics and consent management, demonstrating a strong commitment to advancing online privacy standards and data-driven decision-making.",
+      "jobTitle": "Web Traffic & Compliance Analyst",
+      "affiliation": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.datakyu.co/",
+          "name": "Datakyu",
+          "url": "https://www.datakyu.co/"
         },
         {
-            "@type": "Organization",
-            "@id": "https://www.coveo.com/en",
-            "url": "https://www.coveo.com/en",
-            "name": "Coveo"
+          "@type": "Organization",
+          "@id": "https://www.coveo.com/en",
+          "url": "https://www.coveo.com/en",
+          "name": "Coveo"
         }
-        ],
-        "subjectOf": {
+      ],
+      "subjectOf": {
         "@type": "WebPage",
         "@id": "https://about.dhaziz.me",
         "url": "https://about.dhaziz.me/",
         "name": "Aziz Dhaouadi's personal website",
         "relatedLink": "https://datajournal.datakyu.co/author/aziz/",
         "mainContentOfPage": {
-            "@type": "WebPageElement",
-            "name": "Aziz Dhaouadi's online resume",
-            "description": "The educational background, professional background, skills and certications of Aziz Dhaouadi"
+          "@type": "WebPageElement",
+          "name": "Aziz Dhaouadi's online resume",
+          "description": "The educational background, professional background, skills and certications of Aziz Dhaouadi"
         },
         "primaryImageOfPage": {
-            "@type": "ImageObject",
-            "caption": "Memoji representation of Aziz Dhaouadi",
-            "representativeOfPage": "False",
-            "url": "https://about.dhaziz.me/assets/img/me.PNG",
-            "width": {
+          "@type": "ImageObject",
+          "caption": "Memoji representation of Aziz Dhaouadi",
+          "representativeOfPage": "False",
+          "url": "https://about.dhaziz.me/assets/img/me.PNG",
+          "width": {
             "@type": "QuantitativeValue",
             "unitText": "421px"
-            },
-            "height": {
+          },
+          "height": {
             "@type": "QuantitativeValue",
             "unitText": "421px"
-            }
+          }
         }
-        },
-        "hasOccupation": {
+      },
+      "hasOccupation": {
         "@type": "Occupation",
         "description": "Web traffic and compliance analyst",
         "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://about.dhaziz.me",
-                "name": "Aziz Dhaouadi's personal website",
-                "lastModified": "2024-08-17T13:00:00-05:00"
+          "@type": "WebPage",
+          "@id": "https://about.dhaziz.me",
+          "name": "Aziz Dhaouadi's personal website",
+          "lastModified": "2024-08-17T13:00:00-05:00"
         },
-        "estimatedSalary": [{
-                "@type": "MonetaryAmountDistribution",
-                "name": "base",
-                "currency": "CAD",
-                "duration": "PY5",
-                "minValue": "0",
-                "maxValue": "105000",
-                "median": "93000"
-
-        }],
+        "estimatedSalary": [
+          {
+            "@type": "MonetaryAmountDistribution",
+            "name": "base",
+            "currency": "CAD",
+            "duration": "PY5",
+            "minValue": "0",
+            "maxValue": "105000",
+            "median": "93000"
+          }
+        ],
         "occupationLocation": {
-            "@type": "City",
-            "name": "Montreal"
+          "@type": "City",
+          "name": "Montreal"
         },
         "name": "Web Traffic & Compliance Analyst",
         "experienceRequirements": [
-            "Requires skills related to web analytics, search engine marketing, search engine optimization, data analysis, and data visualization",
-            {
+          "Requires skills related to web analytics, search engine marketing, search engine optimization, data analysis, and data visualization",
+          {
             "@type": "OccupationalExperienceRequirements",
             "monthsOfExperience": 36
-            }
+          }
         ],
-        "skills": [{
+        "skills": [
+          {
             "@id": "Google Analytics 4"
-            },
+          },
 
-            {
+          {
             "@id": "Google Search Console"
-            },
+          },
 
-            {
+          {
             "@id": "Google Tag Manager"
-            },
+          },
 
-            {
+          {
             "@id": "Looker Studio"
-            },
+          },
 
-            {
+          {
             "@id": "Google Ads"
-            },
+          },
 
-            {
+          {
             "@id": "Data visualization"
-            },
+          },
 
-            {
+          {
             "@id": "Data analysis"
-            },
+          },
 
-            {
+          {
             "@id": "Web analytics"
-            },
+          },
 
-            {
+          {
             "@id": "Search engine marketing"
-            },
+          },
 
-            {
+          {
             "@id": "Search engine optimization"
-            },
+          },
 
-            {
+          {
             "@id": "Front-end web development"
-            }
+          }
         ]
-        },
-        "worksFor": {
+      },
+      "worksFor": {
         "@context": "https://schema.org",
         "@type": "Organization",
         "url": "https://www.coveo.com",
         "name": "Coveo",
         "logo": "https://www.coveo.com/-/media/library/Images/Logos/Coveo/coveo.svg"
-        },
-        "hasCredential": {
+      },
+      "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "certificate",
         "recognizedBy": {
-            "@type": "Organization",
-            "name": "Google"
+          "@type": "Organization",
+          "name": "Google"
         },
         "name": "Fundamentals of digital marketing",
         "description": "Master the basics of digital marketing with our free course accredited by Interactive Advertising Bureau Europe and The Open University. There are 26 modules to explore, all created by Google trainers, packed full of practical exercises and real-world examples to help you turn knowledge into action.",
         "url": "https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing"
-        },
-        "sameAs": [
+      },
+      "sameAs": [
         "https://datajournal.datakyu.co/author/aziz/",
         "https://www.linkedin.com/in/aziz-dhaouadi/",
         "https://vocal.media/authors/aziz-dhaouadi-1",
         "https://github.com/AzizDhaouadi",
         "https://marketplace.visualstudio.com/items?itemName=AzizDhaouadi.hashira-dark-theme"
-        ],
-        "alumniOf": {
+      ],
+      "alumniOf": {
         "@type": "EducationalOrganization",
         "name": "Tunis Business School",
         "url": "https://en.wikipedia.org/wiki/Tunis_Business_School"
-        },
-        "knowsAbout": [{
-            "@type": "DefinedTerm",
-            "@id": "Google Analytics 4",
-            "name": "Google Analytics 4",
-            "sameAs": "https://en.wikipedia.org/wiki/Google_Analytics"
+      },
+      "knowsAbout": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "Google Analytics 4",
+          "name": "Google Analytics 4",
+          "sameAs": "https://en.wikipedia.org/wiki/Google_Analytics"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Google Search Console",
-            "name": "Google Search Console",
-            "sameAs": "https://en.wikipedia.org/wiki/Google_Search_Console"
+          "@type": "DefinedTerm",
+          "@id": "Google Search Console",
+          "name": "Google Search Console",
+          "sameAs": "https://en.wikipedia.org/wiki/Google_Search_Console"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Google Tag Manager",
-            "name": "Google Tag Manager",
-            "sameAs": "https://analytics.googleblog.com/2012/10/google-tag-manager.html"
+          "@type": "DefinedTerm",
+          "@id": "Google Tag Manager",
+          "name": "Google Tag Manager",
+          "sameAs": "https://analytics.googleblog.com/2012/10/google-tag-manager.html"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Looker Studio",
-            "name": "Looker Studio",
-            "sameAs": "https://en.wikipedia.org/wiki/Looker_Studio"
+          "@type": "DefinedTerm",
+          "@id": "Looker Studio",
+          "name": "Looker Studio",
+          "sameAs": "https://en.wikipedia.org/wiki/Looker_Studio"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Google Ads",
-            "name": "Google Ads",
-            "sameAs": "https://en.wikipedia.org/wiki/Google_Ads"
+          "@type": "DefinedTerm",
+          "@id": "Google Ads",
+          "name": "Google Ads",
+          "sameAs": "https://en.wikipedia.org/wiki/Google_Ads"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Data visualization",
-            "name": "Data visualization",
-            "sameAs": "https://en.wikipedia.org/wiki/Scientific_visualization"
+          "@type": "DefinedTerm",
+          "@id": "Data visualization",
+          "name": "Data visualization",
+          "sameAs": "https://en.wikipedia.org/wiki/Scientific_visualization"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Data analysis",
-            "name": "Data analysis",
-            "sameAs": "https://en.wikipedia.org/wiki/Data_analysis"
+          "@type": "DefinedTerm",
+          "@id": "Data analysis",
+          "name": "Data analysis",
+          "sameAs": "https://en.wikipedia.org/wiki/Data_analysis"
         },
 
         {
-            "@type": "DefinedTerm",
-            "@id": "Web analytics",
-            "name": "Web analytics",
-            "sameAs": "https://en.wikipedia.org/wiki/Web_analytics"
+          "@type": "DefinedTerm",
+          "@id": "Web analytics",
+          "name": "Web analytics",
+          "sameAs": "https://en.wikipedia.org/wiki/Web_analytics"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Search engine marketing",
-            "name": "Search engine marketing",
-            "sameAs": "https://en.wikipedia.org/wiki/Search_engine_marketing"
+          "@type": "DefinedTerm",
+          "@id": "Search engine marketing",
+          "name": "Search engine marketing",
+          "sameAs": "https://en.wikipedia.org/wiki/Search_engine_marketing"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Search engine optimization",
-            "name": "Search engine optimization",
-            "sameAs": "https://en.wikipedia.org/wiki/Search_engine_optimization"
+          "@type": "DefinedTerm",
+          "@id": "Search engine optimization",
+          "name": "Search engine optimization",
+          "sameAs": "https://en.wikipedia.org/wiki/Search_engine_optimization"
         },
         {
-            "@type": "DefinedTerm",
-            "@id": "Front-end web development",
-            "name": "Front-end web development",
-            "sameAs": "https://en.wikipedia.org/wiki/Front-end_web_development"
+          "@type": "DefinedTerm",
+          "@id": "Front-end web development",
+          "name": "Front-end web development",
+          "sameAs": "https://en.wikipedia.org/wiki/Front-end_web_development"
         }
-        ],
-        "knowsLanguage": [{
-            "@type": "Language",
-            "name": "Arabic",
-            "alternateName": "ar"
+      ],
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "Arabic",
+          "alternateName": "ar"
         },
         {
-            "@type": "Language",
-            "name": "French",
-            "alternateName": "fr"
+          "@type": "Language",
+          "name": "French",
+          "alternateName": "fr"
         },
         {
-            "@type": "Language",
-            "name": "English",
-            "alternateName": "eng"
+          "@type": "Language",
+          "name": "English",
+          "alternateName": "eng"
         }
-        ]
+      ]
     }
-}
+  }
 </script>

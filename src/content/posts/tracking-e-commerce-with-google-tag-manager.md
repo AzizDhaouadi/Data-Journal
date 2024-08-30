@@ -280,7 +280,7 @@ These points should make this a event a bit easier to work with compared to the 
 ```js
 // Sending an add to wish list event every time the user click on the Add to Wish List button
 const addToWishListButton = document.querySelector(
-  'a.round-black-btn.wishlist[href="#"]'
+  'a.round-black-btn.wishlist[href="#"]',
 );
 
 // Defining the add to cart function
@@ -492,7 +492,7 @@ let sideCartValue = 0;
 
 const viewCart = () => {
   let sideCartProducts = document.querySelectorAll(
-    "div.side-cart li.list-group-item"
+    "div.side-cart li.list-group-item",
   );
   if (sideCartProducts) {
     sideCartProducts.forEach((sideCartProduct) => {
@@ -504,7 +504,7 @@ const viewCart = () => {
           let sideCartNumbersOnlyStringProductPrice =
             sideCartStringProductPrice.match(regexNum)[0];
           let sideCartProductPrice = Number(
-            sideCartNumbersOnlyStringProductPrice
+            sideCartNumbersOnlyStringProductPrice,
           );
           return sideCartProductPrice;
         })(),
@@ -599,7 +599,7 @@ const hasBeenSeen = (entries) => {
   if (entries) {
     // Firing this event only when we are sure that the intersection happened
     let observedProductsList = document.querySelectorAll(
-      "div.recommended-products a.card"
+      "div.recommended-products a.card",
     ); // List of observed products
     observedProductsList.forEach((observedProduct) => {
       observedProductsArray.push({
@@ -610,7 +610,7 @@ const hasBeenSeen = (entries) => {
           let numbersOnlyStringObservedProductPrice =
             ObservedStringProductPrice.match(regexNum)[0];
           let observedProductPrice = Number(
-            numbersOnlyStringObservedProductPrice
+            numbersOnlyStringObservedProductPrice,
           );
           return observedProductPrice;
         })(),
@@ -628,13 +628,13 @@ const hasBeenSeen = (entries) => {
     });
   }
   observer.unobserve(
-    document.querySelector("div.recommended-products div.card-group")
+    document.querySelector("div.recommended-products div.card-group"),
   ); // Unobserving the element so the callback function will only get called once
 };
 
 let observer = new IntersectionObserver(hasBeenSeen, options);
 observer.observe(
-  document.querySelector("div.recommended-products div.card-group")
+  document.querySelector("div.recommended-products div.card-group"),
 );
 ```
 
@@ -672,7 +672,7 @@ let checkoutProductsValue = 0;
 
 const beginCheckout = () => {
   let checkoutProducts = document.querySelectorAll(
-    "div.side-cart li.list-group-item"
+    "div.side-cart li.list-group-item",
   );
   if (checkoutProducts) {
     checkoutProducts.forEach((checkoutProduct) => {
@@ -684,7 +684,7 @@ const beginCheckout = () => {
           let checkoutNumbersOnlyStringProductPrice =
             checkoutStringProductPrice.match(regexNum)[0];
           let checkoutProductPrice = Number(
-            checkoutNumbersOnlyStringProductPrice
+            checkoutNumbersOnlyStringProductPrice,
           );
           return checkoutProductPrice;
         })(),

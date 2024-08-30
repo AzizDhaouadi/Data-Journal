@@ -141,7 +141,7 @@ The next step is now to hash the user email in order to create our user ID. To d
           a,
           n[h + 1],
           5,
-          -165796510
+          -165796510,
         )),
         (a = g(a, c, f, i, n[h + 6], 9, -1069501632)),
         (i = g(i, a, c, f, n[h + 11], 14, 643717713)),
@@ -164,7 +164,7 @@ The next step is now to hash the user email in order to create our user ID. To d
           a,
           n[h + 5],
           4,
-          -378558
+          -378558,
         )),
         (a = v(a, c, f, i, n[h + 8], 11, -2022574463)),
         (i = v(i, a, c, f, n[h + 11], 16, 1839030562)),
@@ -187,7 +187,7 @@ The next step is now to hash the user email in order to create our user ID. To d
           a,
           n[h],
           6,
-          -198630844
+          -198630844,
         )),
         (a = m(a, c, f, i, n[h + 7], 10, 1126891415)),
         (i = m(i, a, c, f, n[h + 14], 15, -1416354905)),
@@ -260,8 +260,8 @@ The next step is now to hash the user email in order to create our user ID. To d
         return t;
       })
     : "object" == typeof module && module.exports
-    ? (module.exports = t)
-    : (n.md5 = t);
+      ? (module.exports = t)
+      : (n.md5 = t);
 })(this);
 ```
 
