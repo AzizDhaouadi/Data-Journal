@@ -243,7 +243,7 @@ async function fetch6senseData() {
         headers: {
           Authorization: "Token YOUR_SECURELY_STORED_TOKEN",
         },
-      }
+      },
     );
     if (request.ok) {
       const parsedRequestData = await request.json();
@@ -252,7 +252,7 @@ async function fetch6senseData() {
       console.error(
         "Request failed with status:",
         request.status,
-        request.statusText
+        request.statusText,
       );
     }
   } catch (error) {

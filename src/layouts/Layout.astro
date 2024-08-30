@@ -1,98 +1,215 @@
 ---
-import Header from "../components/Header.astro"
+import Header from "../components/Header.astro";
 import ViewTransitions from "astro/components/ViewTransitions.astro";
-import SpeedInsights  from "@vercel/speed-insights/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
-	title: string;
-	description?: string;
-	image?: string; // The ? indicates that the property is optional
+  title: string;
+  description?: string;
+  image?: string; // The ? indicates that the property is optional
 }
 
-const { title="Data Journal by Datakyu", description="Thoughts, tutorials and ideas about web and product analytics." ,image = "/public/logo.svg" } = Astro.props;
+const {
+  title = "Data Journal by Datakyu",
+  description = "Thoughts, tutorials and ideas about web and product analytics.",
+  image = "/public/logo.svg",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-		<meta name="generator" content={Astro.generator} />
-		<meta property="og:image" content={image} />
-		<title>{title}</title>
-		<link rel="canonical" href={new URL(Astro.url.pathname, `https://datajournal.datakyu.co`)}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:image" content={image} />
+    <title>{title}</title>
+    <link
+      rel="canonical"
+      href={new URL(Astro.url.pathname, `https://datajournal.datakyu.co`)}
+    />
 
-		<!-- Third party tracking scripts - section start -->
+    <!-- Third party tracking scripts - section start -->
 
-		<!-- Sentry -->
-		<script is:inline src="https://js.sentry-cdn.com/17dc7fee29c01933e3c3df799f1c804b.min.js" crossorigin="anonymous"></script>
-		<!-- Segment Analytics -->
-		<script>
-			function loadSegmentClientSide() {
-				//@ts-ignore
-				var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="Wq4rNkTndNuFecspwjeKK2wIzw4OaHKd";;analytics.SNIPPET_VERSION="5.2.0";
-  				analytics.load("Wq4rNkTndNuFecspwjeKK2wIzw4OaHKd");
-  			  }
-			}
-			function sendSegmentPageview() {
-				if(window.analytics) {
-					window.analytics.page();
-				}
-			}
-			document.addEventListener("astro:page-load", () => {
-				loadSegmentClientSide();
-				sendSegmentPageview();
-			});
-		</script>
+    <!-- Sentry -->
+    <script
+      is:inline
+      src="https://js.sentry-cdn.com/17dc7fee29c01933e3c3df799f1c804b.min.js"
+      crossorigin="anonymous"></script>
+    <!-- Segment Analytics -->
+    <script>
+      //@ts-nocheck
+      function loadSegmentClientSide() {
+        var i = "analytics",
+          analytics = (window[i] = window[i] || []);
+        if (!analytics.initialize)
+          if (analytics.invoked)
+            window.console &&
+              console.error &&
+              console.error("Segment snippet included twice.");
+          else {
+            analytics.invoked = !0;
+            analytics.methods = [
+              "trackSubmit",
+              "trackClick",
+              "trackLink",
+              "trackForm",
+              "pageview",
+              "identify",
+              "reset",
+              "group",
+              "track",
+              "ready",
+              "alias",
+              "debug",
+              "page",
+              "screen",
+              "once",
+              "off",
+              "on",
+              "addSourceMiddleware",
+              "addIntegrationMiddleware",
+              "setAnonymousId",
+              "addDestinationMiddleware",
+              "register",
+            ];
+            analytics.factory = function (e) {
+              return function () {
+                if (window[i].initialized)
+                  return window[i][e].apply(window[i], arguments);
+                var n = Array.prototype.slice.call(arguments);
+                if (
+                  [
+                    "track",
+                    "screen",
+                    "alias",
+                    "group",
+                    "page",
+                    "identify",
+                  ].indexOf(e) > -1
+                ) {
+                  var c = document.querySelector("link[rel='canonical']");
+                  n.push({
+                    __t: "bpc",
+                    c: (c && c.getAttribute("href")) || void 0,
+                    p: location.pathname,
+                    u: location.href,
+                    s: location.search,
+                    t: document.title,
+                    r: document.referrer,
+                  });
+                }
+                n.unshift(e);
+                analytics.push(n);
+                return analytics;
+              };
+            };
+            for (var n = 0; n < analytics.methods.length; n++) {
+              var key = analytics.methods[n];
+              analytics[key] = analytics.factory(key);
+            }
+            analytics.load = function (key, n) {
+              var t = document.createElement("script");
+              t.type = "text/javascript";
+              t.async = !0;
+              t.setAttribute("data-global-segment-analytics-key", i);
+              t.src =
+                "https://cdn.segment.com/analytics.js/v1/" +
+                key +
+                "/analytics.min.js";
+              var r = document.getElementsByTagName("script")[0];
+              r.parentNode.insertBefore(t, r);
+              analytics._loadOptions = n;
+            };
+            analytics._writeKey = "Wq4rNkTndNuFecspwjeKK2wIzw4OaHKd";
+            analytics.SNIPPET_VERSION = "5.2.0";
+            analytics.load("Wq4rNkTndNuFecspwjeKK2wIzw4OaHKd");
+          }
+      }
+      function sendSegmentPageview() {
+        if (window.analytics) {
+          window.analytics.page();
+        }
+      }
+      document.addEventListener("astro:page-load", () => {
+        loadSegmentClientSide();
+        sendSegmentPageview();
+      });
+    </script>
 
-		<!-- Clearbit -->
-		<script is:inline src="https://tag.clearbitscripts.com/v1/pk_b68c5f7d0d872bb8a738b1326fd68814/tags.js" referrerpolicy="strict-origin-when-cross-origin"></script>
+    <!-- Clearbit -->
+    <script
+      is:inline
+      src="https://tag.clearbitscripts.com/v1/pk_b68c5f7d0d872bb8a738b1326fd68814/tags.js"
+      referrerpolicy="strict-origin-when-cross-origin"></script>
 
-		<!-- Clarity -->
-		<script>
-			function loadClearbit() {
-				//@ts-ignore
-				(function(c, l, a, r, i, t, y) {c[a] = c[a] || function() {(c[a].q = c[a].q || []).push(arguments)};t = l.createElement(r);t.async = 1;t.src = "https://www.clarity.ms/tag/" + i;y = l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t, y);})(window, document, "clarity", "script", "lr33g5gf7l");
-			}
+    <!-- Clarity -->
+    <script>
+      //@ts-nocheck
+      function loadClearbit() {
+        (function (c, l, a, r, i, t, y) {
+          c[a] =
+            c[a] ||
+            function () {
+              (c[a].q = c[a].q || []).push(arguments);
+            };
+          t = l.createElement(r);
+          t.async = 1;
+          t.src = "https://www.clarity.ms/tag/" + i;
+          y = l.getElementsByTagName(r)[0];
+          y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "lr33g5gf7l");
+      }
 
-			document.addEventListener("astro:page-load", () => {
-				loadClearbit();
-			});
-		</script>
+      document.addEventListener("astro:page-load", () => {
+        loadClearbit();
+      });
+    </script>
 
-		<!-- Google Tag Manager -->
-		<script>
-			function loadGoogleTagManagerClientSide() {
-				//@ts-ignore
-				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T953W4BZ');	
-			}
+    <!-- Google Tag Manager -->
+    <script>
+      //@ts-nocheck
+      function loadGoogleTagManagerClientSide() {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-T953W4BZ");
+      }
 
-			function logPageLoadIntoDataLayer() {
-				if (window.dataLayer) {
-					window.dataLayer.push({
-						event: 'page_view'
-					});
-				}
-			}
+      function logPageLoadIntoDataLayer() {
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            event: "page_view",
+          });
+        }
+      }
 
-			document.addEventListener("astro:page-load", () => {
-				loadGoogleTagManagerClientSide();
-				logPageLoadIntoDataLayer();
-			});
-		</script>
+      document.addEventListener("astro:page-load", () => {
+        loadGoogleTagManagerClientSide();
+        logPageLoadIntoDataLayer();
+      });
+    </script>
 
-		<!-- Third party tracking scripts - end section -->
+    <!-- Third party tracking scripts - end section -->
 
-		<ViewTransitions />
-	</head>
-	<body class="min-h-screen">
-		<Header />
-		<slot />
-	</body>
-	<SpeedInsights />
+    <ViewTransitions />
+  </head>
+  <body class="min-h-screen">
+    <Header />
+    <slot />
+  </body><SpeedInsights />
 </html>

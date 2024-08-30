@@ -1,20 +1,28 @@
 ---
-import { type CollectionEntry } from 'astro:content'
+import { type CollectionEntry } from "astro:content";
 
 type Props = {
-    post: CollectionEntry<"posts">,
-    author: string
-}
+  post: CollectionEntry<"posts">;
+  author: string;
+};
 
-const {post} = Astro.props;
-const {author} = Astro.props;
+const { post } = Astro.props;
+const { author } = Astro.props;
 const createdDate = new Date(post.data.date);
-const publishedDate = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(createdDate);
+const publishedDate = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}).format(createdDate);
 ---
 
 <section class="my-4">
-    <div class="flex flex-col gap-5">
-        <a href=`/authors/${author}/` class="text-zinc-500 text-1xl mb-2 underline decoration-dashed hover:text-teal-800">{post.data.author}</a>
-        <p class="text-zinc-500 text-1xl mb-2">{publishedDate}</p>
-    </div>
+  <div class="flex flex-col gap-5">
+    <a
+      href=`/authors/${author}/`
+      class="text-zinc-500 text-1xl mb-2 underline decoration-dashed hover:text-teal-800"
+      >{post.data.author}</a
+    >
+    <p class="text-zinc-500 text-1xl mb-2">{publishedDate}</p>
+  </div>
 </section>

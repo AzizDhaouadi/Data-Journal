@@ -7,26 +7,41 @@ import Footer from "../components/Footer.astro";
 const posts = await getCollection("posts");
 ---
 
-<Layout title="Data Journal | All Posts" description="Explore all our published posts">
-    <Main>
-        <H1 text="All Posts"></H1>
-        <section class="flex flex-col gap-9 mb-10">
-            {
-                posts.map(post => {
-                    return (
-                        <article>
-                            <h2 class="text-1xl">
-                                <a class="hover:text-teal-800 underline decoration-dashed underline-offset-4" href={`/${post.slug}/`} aria-label={`Read more about ${post.data.title}`}>{post.data.title}</a>
-                            </h2>
-                            <i class="text-sm">{new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(post.data.date))}</i>
-                            <p class="text-zinc-500 text-1xl mb-4 text-sm line-clamp-2 text-wrap">
-                                {post.body}
-                            </p>
-                        </article>
-                    );
-                })
-            }
-        </section>
-    </Main>
-    <Footer></Footer>
+<Layout
+  title="Data Journal | All Posts"
+  description="Explore all our published posts"
+>
+  <Main>
+    <H1 text="All Posts" />
+    <section class="flex flex-col gap-9 mb-10">
+      {
+        posts.map((post:any) => {
+          return (
+            <article>
+              <h2 class="text-1xl">
+                <a
+                  class="hover:text-teal-800 underline decoration-dashed underline-offset-4"
+                  href={`/${post.slug}/`}
+                  aria-label={`Read more about ${post.data.title}`}
+                >
+                  {post.data.title}
+                </a>
+              </h2>
+              <i class="text-sm">
+                {new Intl.DateTimeFormat("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }).format(new Date(post.data.date))}
+              </i>
+              <p class="text-zinc-500 text-1xl mb-4 text-sm line-clamp-2 text-wrap">
+                {post.body}
+              </p>
+            </article>
+          );
+        })
+      }
+    </section>
+  </Main>
+  <Footer />
 </Layout>

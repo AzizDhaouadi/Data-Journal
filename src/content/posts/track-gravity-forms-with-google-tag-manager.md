@@ -106,7 +106,7 @@ jQuery(document).ready(function ($) {
       form.submit();
     } else {
       console.error(
-        "Form validation failed. Either email is empty or select value is not valid."
+        "Form validation failed. Either email is empty or select value is not valid.",
       );
     }
   });

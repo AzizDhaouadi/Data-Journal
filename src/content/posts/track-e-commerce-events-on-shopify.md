@@ -147,7 +147,7 @@ Let's look at an example where we will fire this event on the /collections/all p
 
 ```js
 const productItems = document.querySelectorAll(
-  "div#ProductGridContainer li.grid__item"
+  "div#ProductGridContainer li.grid__item",
 );
 const ShopifyItems = ShopifyAnalytics.meta.products;
 let ShopifyItemsArray = [];
@@ -197,7 +197,7 @@ const regexNum = "[+-]?([0-9]*[.|,])?[0-9]+"; //Regular Expression to extract nu
 
 // Getting the list of related products
 const featuredCollection = document.querySelectorAll(
-  "ul.product-grid.contains-card--product li.grid__item"
+  "ul.product-grid.contains-card--product li.grid__item",
 );
 
 // itemArray
@@ -210,9 +210,9 @@ const selectItem = (e) => {
     e.target
       .closest("div.card-wrapper.product-card-wrapper")
       .parentElement.querySelector(
-        "div.card-wrapper.product-card-wrapper div.card.card--standard.card--text > div.card__content div.card__information span.price-item.price-item--regular"
+        "div.card-wrapper.product-card-wrapper div.card.card--standard.card--text > div.card__content div.card__information span.price-item.price-item--regular",
       )
-      .textContent.trim()
+      .textContent.trim(),
   );
   itemArray.push({
     item_name: e.target
@@ -223,7 +223,7 @@ const selectItem = (e) => {
       let stringFeaturedProductPrice = e.target
         .closest("div.card-wrapper.product-card-wrapper")
         .parentElement.querySelector(
-          "div.card-wrapper.product-card-wrapper div.card.card--standard.card--text > div.card__content div.card__information span.price-item.price-item--regular"
+          "div.card-wrapper.product-card-wrapper div.card.card--standard.card--text > div.card__content div.card__information span.price-item.price-item--regular",
         )
         .textContent.trim(); // Getting the price as a string
       let numbersOnlyStringFeaturedProductPrice =
@@ -527,16 +527,26 @@ The function updateAddToCart is triggered whenever the "plus" or "minus" button 
 If you are wondering why the "plus" and "minus" keep coming up and you are confused about what it means, this should clarify things:
 
 ```html
-<button class="quantity__button no-js-hidden" name="plus" type="button" onclick="updateAddToCart(event)">
-
-<button class="quantity__button no-js-hidden" name="minus" type="button" onclick="updateAddToCart(event)">
+<button
+  class="quantity__button no-js-hidden"
+  name="plus"
+  type="button"
+  onclick="updateAddToCart(event)"
+>
+  <button
+    class="quantity__button no-js-hidden"
+    name="minus"
+    type="button"
+    onclick="updateAddToCart(event)"
+  ></button>
+</button>
 ```
 
 Let's look at the second scenario where the user would use the "delete" button to remove the whole product from the cart. Let's dig in.
 
 ```js
 const removeFromCartButtons = document.querySelectorAll(
-  "div.cart-item__quantity-wrapper cart-remove-button"
+  "div.cart-item__quantity-wrapper cart-remove-button",
 );
 const removeFromCart = (e) => {
   console.log("remove from cart button has been clicked!");
@@ -644,7 +654,7 @@ let options = {
 // creating observedProductsArray. This will be the value of the items array in the dataLayer
 let observedProductsArray = [];
 let observedProductsList = document.querySelectorAll(
-  'div[data-collection-type="featured_collection"] li.grid__item'
+  'div[data-collection-type="featured_collection"] li.grid__item',
 ); // List of observed products
 
 const hasBeenSeen = (entries) => {
@@ -657,12 +667,12 @@ const hasBeenSeen = (entries) => {
           .textContent.trim(),
         price: (function () {
           let ObservedStringProductPrice = observedProduct.querySelector(
-            "span.price-item.price-item--regular"
+            "span.price-item.price-item--regular",
           ).textContent;
           let numbersOnlyStringObservedProductPrice =
             ObservedStringProductPrice.match(regexNum)[0];
           let observedProductPrice = Number(
-            numbersOnlyStringObservedProductPrice
+            numbersOnlyStringObservedProductPrice,
           );
           return observedProductPrice;
         })(),
@@ -684,13 +694,13 @@ const hasBeenSeen = (entries) => {
     });
   }
   Productsobserver.unobserve(
-    document.querySelector('div[data-collection-type="featured_collection"]')
+    document.querySelector('div[data-collection-type="featured_collection"]'),
   ); // Unobserving the element so the callback function will only get called once
 };
 
 let Productsobserver = new IntersectionObserver(hasBeenSeen, options);
 Productsobserver.observe(
-  document.querySelector('div[data-collection-type="featured_collection"]')
+  document.querySelector('div[data-collection-type="featured_collection"]'),
 );
 ```
 

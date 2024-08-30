@@ -5,111 +5,168 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import PostList from "../components/PostList.astro";
 import Footer from "../components/Footer.astro";
-import Newsletter from "../components/Newsletter.astro";
 const posts = await getCollection("posts");
 const featuredPosts: any[] = [];
-posts.map((post) => {
-    if(post.data.featured) {
-        featuredPosts.push(post);
-    }
+posts.map((post:any) => {
+  if (post.data.featured) {
+    featuredPosts.push(post);
+  }
 });
 const clonePosts: any[] = [...posts];
 clonePosts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
 });
 const recentPosts = clonePosts.slice(0, 4);
 ---
 
+<Layout
+  title="Data Journal By Datakyu"
+  description="Thoughts, tutorials and ideas about web and product analytics."
+>
+  <Main>
+    <H1 text="Tracking, Insights, Tutorials for Web Analytics" />
+    <section>
+      <p
+        class="mb-4 text-lg font-normal text-black-500 dark:text-black-500 leading-normal"
+      >
+        Data Journal, an independent publication by Datakyu, launched in
+        February 2023, offers an unparalleled resource for data enthusiasts. By
+        subscribing today, you gain full access to our content and receive email
+        newsletters with the latest content.
+      </p>
 
-<Layout title="Data Journal By Datakyu" description="Thoughts, tutorials and ideas about web and product analytics.">
-    <Main>
-        <H1 text="Tracking, Insights, Tutorials for Web Analytics"></H1>
-        <section>
-            <p class="mb-4 text-lg font-normal text-black-500 dark:text-black-500 leading-normal">
-                Data Journal, an independent publication by Datakyu, launched in February 2023, offers an unparalleled resource for data enthusiasts. By subscribing today, you gain full access to our content and receive email newsletters with the latest content.
-            </p>
+      <p
+        class="mb-4 text-lg font-normal text-black-500 dark:text-black-500 leading-normal"
+      >
+        Explore our blog posts to discover the variety of covered topics, and
+        feel free to
+        <a
+          href="#subscribe"
+          class="inline-block underline decoration-dashed underline-offset-4 hover:text-teal-800"
+        >
+          subscribe
+        </a> to our newsletter.
+      </p>
+    </section>
+    <section id="social-links">
+      <p
+        class="mb-4 text-lg font-normal text-black-500 dark:text-black-500 leading-normal"
+      >
+        Social Links:
+      </p>
+      <ul>
+        <li>
+          <i>
+            <a
+              href="https://www.linkedin.com/company/datakyu/about/"
+              class="underline decoration-dashed underline-offset-4 hover:text-teal-800"
+              >LinkedIn</a
+            >
+          </i>
+        </li>
+      </ul>
+    </section>
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+    <h2 class="text-4xl font-bold dark:text-white font-ibmPlex">Featured</h2>
+    <section class="flex flex-row flex-wrap w-100 gap-4 my-10">
+      <PostList posts={featuredPosts} />
+    </section>
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+    <h2 class="text-4xl font-bold dark:text-white">Recent</h2>
+    <section class="flex flex-row flex-wrap w-100 gap-4 my-5">
+      <PostList posts={recentPosts} />
+    </section>
+    <div class="flex flex-row justify-center flex-wrap w-100 gap-4">
+      <a
+        href="/posts/"
+        class="inline-block underline decoration-dashed underline-offset-4 text-2xl dark:text-white hover:text-teal-800"
+      >
+        See all
+      </a>
+    </div>
+    <section class="my-20">
+      <h3 class="text-3xl font-bold dark:text-white mb-10">
+        Subscribe to Data Journal
+      </h3>
+    </section>
+    <script
+      charset="utf-8"
+      type="text/javascript"
+      src="//js.hsforms.net/forms/embed/v2.js"></script>
+    <script type="text/javascript">
+      hbspt.forms.create({
+        region: "na1",
+        portalId: "44171646",
+        formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff",
+      });
 
-            <p class="mb-4 text-lg font-normal text-black-500 dark:text-black-500 leading-normal">
-                Explore our blog posts to discover the variety of covered topics, and feel free to 
-                    <a href="#subscribe" class="inline-block underline decoration-dashed underline-offset-4 hover:text-teal-800">
-                        subscribe
-                    </a> to our newsletter.
-            </p>
-        </section>
-        <section id="social-links">
-            <p class="mb-4 text-lg font-normal text-black-500 dark:text-black-500 leading-normal">Social Links:</p>
-            <ul>
-                <li>
-                    <i>
-                        <a href="https://www.linkedin.com/company/datakyu/about/" class="underline decoration-dashed underline-offset-4 hover:text-teal-800">LinkedIn</a>
-                    </i>
-                </li>
-            </ul>
-        </section>
-        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-        <h2 class="text-4xl font-bold dark:text-white font-ibmPlex">Featured</h2>
-        <section class="flex flex-row flex-wrap w-100 gap-4 my-10">
-			<PostList posts={featuredPosts}></PostList>
-        </section>
-        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
-        <h2 class="text-4xl font-bold dark:text-white">Recent</h2>
-        <section class="flex flex-row flex-wrap w-100 gap-4 my-5">
-			<PostList posts={recentPosts}></PostList>
-        </section>
-        <div class="flex flex-row justify-center flex-wrap w-100 gap-4">
-            <a href="/posts/" class="inline-block underline decoration-dashed underline-offset-4 text-2xl  dark:text-white hover:text-teal-800">
-                See all
-            </a>
-        </div>
-        <Newsletter Id="subscribe"></Newsletter>
-    </Main>
-	<Footer></Footer>
+      window.addEventListener("message", function (event) {
+        if (
+          event.data.type === "hsFormCallback" &&
+          event.data.eventName === "onFormSubmitted"
+        ) {
+          const ue = event?.data?.data?.submissionValues?.email;
+          window.analytics.identify(ue, {
+            email: ue,
+          });
+          window.analytics.track("Subscribed Newsletter", {
+            form_id: event.data.id,
+          });
+        }
+      });
+    </script>
+  </Main>
+  <Footer />
 </Layout>
 
 <style>
-    h2 {
-        margin-top: 2.5rem;
-        margin-bottom: 2.5rem;
-    }
+  h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
 </style>
 
-<script is:inline type="application/javascript" define:vars={{posts}}>
+<script is:inline type="application/javascript" define:vars={{ posts }}>
   window.addEventListener("DOMContentLoaded", () => {
     const blogSchema = {
       "@context": "https://schema.org/",
       "@type": "Blog",
-      "url": "https://datajournal.datakyu.co/",
+      url: "https://datajournal.datakyu.co/",
       "@id": "https://datajournal.datakyu.co/",
-      "mainEntityOfPage": "https://datajournal.datakyu.co/",
-      "name": "Data Journal by Datakyu",
-      "description": "Thoughts, tutorials and ideas about web and product analytics.",
-      "publisher": {
+      mainEntityOfPage: "https://datajournal.datakyu.co/",
+      name: "Data Journal by Datakyu",
+      description:
+        "Thoughts, tutorials and ideas about web and product analytics.",
+      publisher: {
         "@type": "Organization",
         "@id": "https://www.datakyu.co/",
-        "url": "https://www.datakyu.co/",
-        "name": "Datakyu",
-        "logo": {
+        url: "https://www.datakyu.co/",
+        name: "Datakyu",
+        logo: {
           "@type": "ImageObject",
           "@id": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
-          "url": "https://www.datakyu.co/assets/logo/logo-transparent.svg",
-        }
-      }
-    }
+          url: "https://www.datakyu.co/assets/logo/logo-transparent.svg",
+        },
+      },
+    };
 
     class publishedArticleSchemaMarkup {
       constructor(articleMetaData) {
         this["@type"] = "BlogPosting";
-        this["@id"] = `http://datajournal.datakyu.co/${articleMetaData.slug}#BlogPosting`;
+        this["@id"] =
+          `http://datajournal.datakyu.co/${articleMetaData.slug}#BlogPosting`;
         this["mainEntityOfPage"] = articleMetaData.slug;
         this["headline"] = articleMetaData.data.title;
         this["name"] = articleMetaData.data.title;
         this["image"] = [articleMetaData.data.image.src];
-        this["datePublished"] = new Date(articleMetaData.data.date).toISOString();
+        this["datePublished"] = new Date(
+          articleMetaData.data.date,
+        ).toISOString();
         this["author"] = {
           "@type": "Person",
           "@id": "https://about.dhaziz.me/",
-          "url": "https://about.dhaziz.me/",
-          "name": "Aziz Dhaouadi"
+          url: "https://about.dhaziz.me/",
+          name: "Aziz Dhaouadi",
         };
         this["url"] = `http://datajournal.datakyu.co/${articleMetaData.slug}/`;
       }
@@ -128,5 +185,4 @@ const recentPosts = clonePosts.slice(0, 4);
     structuredDataScript.textContent = JSON.stringify(blogSchema);
     document.querySelector("head").appendChild(structuredDataScript);
   });
-
 </script>
