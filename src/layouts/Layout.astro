@@ -1,6 +1,6 @@
 ---
 import Header from "../components/Header.astro";
-import ViewTransitions from "astro/components/ViewTransitions.astro";
+import { ClientRouter } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
@@ -205,11 +205,11 @@ const {
     </script>
 
     <!-- Third party tracking scripts - end section -->
-
-    <ViewTransitions />
   </head>
   <body class="min-h-screen">
     <Header />
     <slot />
-  </body><SpeedInsights />
+  </body>
+  <ClientRouter />
+  <SpeedInsights />
 </html>

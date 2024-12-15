@@ -8,7 +8,7 @@ import BlogMeta from "../components/BlogMeta.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
-  const paths = posts.map((post) => {
+  const paths = posts.map((post: any) => {
     return {
       params: {
         slug: post.slug,
