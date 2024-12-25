@@ -1,6 +1,6 @@
 ---
 author: Aziz Dhaouadi
-categories: ["Cosent Mode", "Google Tag Manager", "OneTrust"]
+categories: ["Consent Mode", "Google Tag Manager", "OneTrust"]
 date: 04/02/2024
 featured: true
 image: ./images/ga-consent.png
