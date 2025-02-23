@@ -145,16 +145,13 @@ const {
       });
     </script>
 
-    <!-- Clearbit -->
-    <script
-      is:inline
-      src="https://tag.clearbitscripts.com/v1/pk_b68c5f7d0d872bb8a738b1326fd68814/tags.js"
-      referrerpolicy="strict-origin-when-cross-origin"></script>
+    <!-- Warmly -->
+      <script is:inline id="warmly-script-loader" src="https://opps-widget.getwarmly.com/warmly.js?clientId=7374340b33a24ebb7b77d77548c97d83" defer></script>
+    <!-- Warmly -->
 
-    <!-- Clarity -->
     <script>
       //@ts-nocheck
-      function loadClearbit() {
+      function loadClarity() {
         (function (c, l, a, r, i, t, y) {
           c[a] =
             c[a] ||
@@ -170,7 +167,7 @@ const {
       }
 
       document.addEventListener("astro:page-load", () => {
-        loadClearbit();
+        loadClarity();
       });
     </script>
 
