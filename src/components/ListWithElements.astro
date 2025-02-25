@@ -1,0 +1,39 @@
+---
+type Props = {
+    title: string;
+    data_component: string
+}
+
+type parameterObject = {
+    name: string;
+    value: string;
+}
+
+const { title, data_component } = Astro.props;
+import data from "../../public/data/parameters.json";
+const typedData = data as Record<string, { name: string; value: string }[]>;
+
+---
+<style>
+    .le-w {
+        width: 45%;
+    }
+</style>
+
+<div class="p-8 border le-w">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">{title}</h2>
+    <ul class="list-none my-6 flex flex-col gap-5">
+        {
+            typedData[data_component]?.map((element: parameterObject) => {
+                return (
+                    <li class="flex flex-row gap-5">
+                        <p>{element.name}</p>
+                        <span class="inline-block font-mono font-bold text-white bg-teal-900 px-2 py-1 rounded-md text-sm">
+                            {element.value}
+                        </span>
+                    </li>
+                )
+            }) ?? <li>No data available</li>
+        }
+    </ul>
+</div>

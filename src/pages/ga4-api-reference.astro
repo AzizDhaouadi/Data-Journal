@@ -1,0 +1,26 @@
+---
+import H1 from "../components/H1.astro";
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro"
+import Footer from "../components/Footer.astro";
+import ListWithElements from "../components/ListWithElements.astro";
+---
+
+<Layout 
+    title="GA4 Measurement Protocol Cheatsheet: Guide to Sending Server-Side Hits"
+    description="Explore GA4 Measurement Protocol and learn how to send server-side events to Google Analytics 4 with key parameters, setup steps, and best practices."
+>
+    <Main>
+        <H1 text="Google Analytics 4 Measurement Protocol Parameters"></H1>
+        <section class="flex flex-row flex-wrap justify-evenly gap-5 my-6">
+            <ListWithElements title="Request Parameters" data_component="request_parameters"></ListWithElements>
+            <ListWithElements title="Event Parameters" data_component="event_parameters"></ListWithElements>
+            <ListWithElements title="Shared Parameters" data_component="shared"></ListWithElements>
+            <ListWithElements title="E-commerce Parameter" data_component="e-commerce"></ListWithElements>
+            <ListWithElements title="Campagin Attribution Parameters" data_component="campaign_attribution"></ListWithElements>
+            <ListWithElements title="User & Session Parameters" data_component="session_user_data"></ListWithElements>
+            <ListWithElements title="Item Parameters" data_component="item_parameters"></ListWithElements>
+            <ListWithElements title="Client Parameters" data_component="client_parameters"></ListWithElements>
+    </Main>
+    <Footer></Footer>
+</Layout>

@@ -1,0 +1,354 @@
+{
+    "request_parameters": [
+        {
+            "name": "Protocol Version",
+            "value": "v"
+        },
+        {
+            "name": "Tracking ID",
+            "value": "tid"
+        },
+        {
+            "name": "GTM Has Info",
+            "value": "gtm"
+        },
+        {
+            "name": "Random Page Load Hash",
+            "value": "_p"
+        },
+        {
+            "name": "Screen Resolution",
+            "value": "sr"
+        },
+        {
+            "name": "User Language",
+            "value": "ul"
+        },
+        {
+            "name": "Document Hostname",
+            "value": "dh"
+        },
+        {
+            "name": "Client ID",
+            "value": "cid"
+        },
+        {
+            "name": "Hit Counter",
+            "value": "_s"
+        },
+        {
+            "name": "richsstsse",
+            "value": "richsstsse"
+        }
+    ],
+    "event_parameters": [
+        {
+            "name": "Event Name",
+            "value": "en"
+        },
+        {
+            "name": "Engagement Time",
+            "value": "_et"
+        },
+        {
+            "name": "Event Parameter (String)",
+            "value": "ep.*"
+        },
+        {
+            "name": "Event Parameter (Number)",
+            "value": "epn.*"
+        },
+        {
+            "name": "is Conversion",
+            "value": "_c"
+        },
+        {
+            "name": "External Event",
+            "value": "_ee"
+        }
+    ],
+    "shared": [
+        {
+            "name": "Document Location",
+            "value": "dl"
+        },
+        {
+            "name": "Document Title",
+            "value": "dt"
+        },
+        {
+            "name": "Document Referrer",
+            "value": "dr"
+        },
+        {
+            "name": "Event Usage",
+            "value": "_eu"
+        },
+        {
+            "name": "Event Debug ID",
+            "value": "_edid"
+        },
+        {
+            "name": "is Debug",
+            "value": "_dbg"
+        },
+        {
+            "name": "Ignore Referrer",
+            "value": "ir"
+        },
+        {
+            "name": "Traffic Type",
+            "value": "tt"
+        },
+        {
+            "name": "Google Consent Status",
+            "value": "gcs"
+        },
+        {
+            "name": "Google Consent Update",
+            "value": "gcu"
+        },
+        {
+            "name": "Google Consent Update Type",
+            "value": "gcut"
+        },
+        {
+            "name": "Google Consent Default",
+            "value": "gcd"
+        },
+        {
+            "name": "is Google Linker Valid",
+            "value": "_glv"
+        }
+    ],
+    "e-commerce": [
+        {
+            "name": "Currency Code",
+            "value": "cu"
+        },
+        {
+            "name": "Affiliation",
+            "value": "ep.affiliation"
+        },
+        {
+            "name": "Transaction Revenue",
+            "value": "epn.value"
+        },
+        {
+            "name": "Transaction Tax",
+            "value": "epn.tax"
+        },
+        {
+            "name": "Transaction Shipping",
+            "value": "epn.shipping"
+        },
+        {
+            "name": "Item",
+            "value": "pr[0-9]{1,200}"
+        },
+        {
+            "name": "Promotion ID",
+            "value": "pi"
+        },
+        {
+            "name": "Promotion Name",
+            "value": "pn"
+        },
+        {
+            "name": "Creative Name",
+            "value": "cn"
+        },
+        {
+            "name": "Creative Slot",
+            "value": "cs"
+        },
+        {
+            "name": "Location ID",
+            "value": "li"
+        }
+    ],
+    "campaign_attribution": [
+        {
+            "name": "Campaign Medium",
+            "value": "cm"
+        },
+        {
+            "name": "Campaign Source",
+            "value": "cs"
+        },
+        {
+            "name": "Campaign Name",
+            "value": "cn"
+        },
+        {
+            "name": "Campaign Content",
+            "value": "cc"
+        },
+        {
+            "name": "Campaign Term",
+            "value": "ct"
+        },
+        {
+            "name": "Campaign Creative Format",
+            "value": "ccf"
+        },
+        {
+            "name": "Campaign Marketing Tactic",
+            "value": "cmt"
+        },
+        {
+            "name": "GCLID Deduper",
+            "value": "_rnd"
+        }
+    ],
+    "session_user_data": [
+        {
+            "name": "User ID",
+            "value": "uid"
+        },
+        {
+            "name": "Firebase ID",
+            "value": "_fid"
+        },
+        {
+            "name": "Session ID",
+            "value": "sid"
+        },
+        {
+            "name": "Session Count",
+            "value": "sct"
+        },
+        {
+            "name": "Session Engagement",
+            "value": "seg"
+        },
+        {
+            "name": "User Property(ies)",
+            "value": "up.*"
+        },
+        {
+            "name": "User Property Value",
+            "value": "upn.*"
+        },
+        {
+            "name": "First Visit",
+            "value": "_fv"
+        },
+        {
+            "name": "Session Start",
+            "value": "_ss"
+        },
+        {
+            "name": "First Party Linker Cookie",
+            "value": "_fplc"
+        },
+        {
+            "name": "New Session ID",
+            "value": "nsi"
+        },
+        {
+            "name": "Google Developer ID",
+            "value": "gdid"
+        },
+        {
+            "name": "User Country",
+            "value": "_uc"
+        }
+    ],
+    "item_parameters": [
+        {
+            "name": "Item ID",
+            "value": "id"
+        },
+        {
+            "name": "Item Brand",
+            "value": "br"
+        },
+        {
+            "name": "Item Category Hierarchy 1",
+            "value": "ca"
+        },
+        {
+            "name": "Item Category Hierarchy 2",
+            "value": "ca2"
+        },
+        {
+            "name": "Item Category Hierarchy 3",
+            "value": "ca3"
+        },
+        {
+            "name": "Item Category Hierarchy 4",
+            "value": "ca4"
+        },
+        {
+            "name": "Item Category Hierarchy 5",
+            "value": "ca5"
+        },
+        {
+            "name": "Item Price",
+            "value": "pr"
+        },
+        {
+            "name": "Item Quantity",
+            "value": "qt"
+        },
+        {
+            "name": "Item Variant",
+            "value": "va"
+        },
+        {
+            "name": "Item Coupon",
+            "value": "cp"
+        },
+        {
+            "name": "Item Discount",
+            "value": "ds"
+        },
+        {
+            "name": "Item List Name",
+            "value": "ln"
+        },
+        {
+            "name": "Item List ID",
+            "value": "li"
+        },
+        {
+            "name": "Item List Position",
+            "value": "lp"
+        },
+        {
+            "name": "Item Affiliation",
+            "value": "af"
+        }
+    ],
+    "client_parameters": [
+        {
+            "name": "User Agent Architecture",
+            "value": "uaa"
+        },
+        {
+            "name": "User Agent Bitness",
+            "value": "uab"
+        },
+        {
+            "name": "User Agent Full Version List",
+            "value": "uafvl"
+        },
+        {
+            "name": "User Agent Mobile",
+            "value": "uamb"
+        },
+        {
+            "name": "User Agent Model",
+            "value": "uam"
+        },
+        {
+            "name": "User Agent Platform",
+            "value": "uap"
+        },
+        {
+            "name": "User Agent Platform User",
+            "value": "uapv"
+        }
+    ]
+}
