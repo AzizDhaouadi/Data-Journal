@@ -4,6 +4,7 @@ import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Footer from "../components/Footer.astro";
+import PostsWithImagination from "../components/PostsWithPagination";
 const posts = await getCollection("posts");
 ---
 
@@ -13,35 +14,7 @@ const posts = await getCollection("posts");
 >
   <Main>
     <H1 text="All Posts" />
-    <section class="flex flex-col gap-9 mb-10">
-      {
-        posts.map((post:any) => {
-          return (
-            <article>
-              <h2 class="text-1xl">
-                <a
-                  class="hover:text-teal-800 underline decoration-dashed underline-offset-4"
-                  href={`/${post.slug}/`}
-                  aria-label={`Read more about ${post.data.title}`}
-                >
-                  {post.data.title}
-                </a>
-              </h2>
-              <i class="text-sm">
-                {new Intl.DateTimeFormat("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }).format(new Date(post.data.date))}
-              </i>
-              <p class="text-zinc-500 text-1xl mb-4 text-sm line-clamp-2 text-wrap">
-                {post.body}
-              </p>
-            </article>
-          );
-        })
-      }
-    </section>
   </Main>
+  <PostsWithImagination client:load pagePosts={posts}></PostsWithImagination>
   <Footer />
 </Layout>
