@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Hubspot"]
 date: 04/30/2024
 featured: false
-image: ./images/track-hubspot-submissions.png
 title: Tracking Hubspot Form Submissions with Hubspot's Global Events and Google Tag Manager
 ---
 

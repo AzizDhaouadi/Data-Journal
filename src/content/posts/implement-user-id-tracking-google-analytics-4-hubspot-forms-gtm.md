@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Google Analytics 4"]
 date: 06/02/2024
 featured: false
-image: ./images/track-hubspot.png
 title: How to Implement User ID Tracking in Google Analytics 4 with HubSpot Forms and Google Tag Manager
 ---
 

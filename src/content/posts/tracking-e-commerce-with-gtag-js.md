@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Shopify"]
 date: 02/06/2023
 featured: true
-image: ./images/track-ecommerce.png
 title: Tracking E-commerce with gtag.js
 ---
 

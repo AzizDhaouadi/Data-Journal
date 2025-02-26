@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Looker Studio", "Looker Studio"]
 date: 02/19/2025
 featured: true
-image: ./images/track-hubspot-submissions.png
 title: Advanced Google Analytics 4 Dashboard Development in Looker Studio Using BigQuery
 ---
 

@@ -246,8 +246,7 @@ To test all of this, we are going to use Postman to send the Post Request to Goo
 }
 ```
 
-And this is the response we get with this payload **Status: 204 No Content**. This status code means that the server successfully processed the request but is returning no content. And, this is what we see in Google Analytics 4's Real Time reports:
-![alt text](./images/ga4-real-time-view-mp.png)
+And this is the response we get with this payload **Status: 204 No Content**. This status code means that the server successfully processed the request but is returning no content.
 
 Notice that both events have been processed and only one user has been detected. This is because only one client_id has been sent. Even if we changed the user_id, Google Analytics 4 will still show one user. However, it is not recommended to change the user_ids at random.
 
