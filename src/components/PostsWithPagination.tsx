@@ -40,6 +40,7 @@ export default function PostsWithPagination({ pagePosts }: any) {
                     })
                 }
             </section>
+
             <section className="my-7 flex flex-row justify-center">
                 <button className="underline decoration-dashed underline-offset-4 text-2xl dark:text-white hover:text-teal-800" onClick={handleUpdatePaginatedPosts}>
                     {endIndex >= pagePosts.length - 1 ? "No more posts" : "Show more"}
