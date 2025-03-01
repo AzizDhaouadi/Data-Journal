@@ -1,0 +1,23 @@
+{
+    "Google Tag Manager": [
+        {
+            "question": "What is the stard dataLayer for ecommerce tracking?",
+            "answer": "The ecommerce object is the strandard object for ecommerce tracking. Its most important key is the items array which describes the items being tracked."
+        }
+    ],
+    "Gtag.js": [
+        {
+            "question": "what is wait_for_update?",
+            "answer": "The wait_for_update parameter is used to halt data collection and wait for consent to update. It accepts any positive integer a value and is expressed in milliseconds."
+        }
+    ],
+    "Google Search Console": [
+        {}
+    ],
+    "Google Analytics 4": [
+        {
+            "question": "What is the user_id in Google Analytics 4?",
+            "answer": "The user_id is a feature in GA4 that allows you to indenify users using an in-house recognized value for a better tracking. The most common values given to user IDs are hashed emails or database IDs."
+        }
+    ]
+}
