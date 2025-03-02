@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["E-commerce", "Shopify"]
 date: 02/11/2023
 featured: true
-image: ./images/track-ecommerce.png
 title: Track E-commerce Events on Shopify
 ---
 

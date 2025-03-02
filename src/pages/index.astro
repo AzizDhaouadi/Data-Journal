@@ -67,21 +67,21 @@ const recentPosts = clonePosts.slice(0, 4);
       </ul>
     </section>
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <h2 class="text-4xl font-bold dark:text-white font-ibmPlex">Featured</h2>
-    <section class="flex flex-row flex-wrap w-100 gap-4 my-10">
-      <PostList posts={featuredPosts} />
+    <section class="flex flex-row flex-wrap w-100 gap-4 my-5">
+      <h2 class="text-4xl font-bold dark:text-white">Recent</h2>
+      <PostList posts={recentPosts} />
     </section>
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <h2 class="text-4xl font-bold dark:text-white">Recent</h2>
-    <section class="flex flex-row flex-wrap w-100 gap-4 my-5">
-      <PostList posts={recentPosts} />
+    <section class="flex flex-row flex-wrap w-100 gap-4 my-10">
+      <h2 class="text-4xl font-bold dark:text-white font-ibmPlex">Featured</h2>
+      <PostList posts={featuredPosts.slice(0,4)} />
     </section>
     <div class="flex flex-row justify-center flex-wrap w-100 gap-4">
       <a
         href="/posts/"
         class="inline-block underline decoration-dashed underline-offset-4 text-2xl dark:text-white hover:text-teal-800"
       >
-        See all
+        Discover all posts
       </a>
     </div>
     <section class="my-20">

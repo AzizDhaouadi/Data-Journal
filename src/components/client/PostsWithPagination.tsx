@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function PostsWithPagination({ pagePosts }) {
+export default function PostsWithPagination({ pagePosts }: any) {
     const startIndex = 0;
     const [endIndex, setEndIndex] = useState(5);
     let paginatedPosts = pagePosts.slice(startIndex, endIndex);
@@ -14,14 +14,13 @@ export default function PostsWithPagination({ pagePosts }) {
         <>
             <section className="flex flex-col gap-9 mb-10 mx-auto" style={{ width: "70rem" }}>
                 {
-                    paginatedPosts.map((post) => {
+                    paginatedPosts.map((post: any) => {
                         return (
                             <article key={post.slug}>
                                 <h2 className="text-1xl">
                                     <a
                                         className="hover:text-teal-800 underline decoration-dashed underline-offset-4"
                                         href={`/${post.slug}/`}
-                                        aria-label={`Read more about ${post.data.title}`}
                                     >
                                         {post.data.title}
                                     </a>
@@ -41,6 +40,7 @@ export default function PostsWithPagination({ pagePosts }) {
                     })
                 }
             </section>
+
             <section className="my-7 flex flex-row justify-center">
                 <button className="underline decoration-dashed underline-offset-4 text-2xl dark:text-white hover:text-teal-800" onClick={handleUpdatePaginatedPosts}>
                     {endIndex >= pagePosts.length - 1 ? "No more posts" : "Show more"}

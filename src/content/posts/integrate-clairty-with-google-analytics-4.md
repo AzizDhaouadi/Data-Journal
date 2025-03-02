@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Clarity", "Google Analytics 4"]
 date: 09/08/2024
 featured: false
-image: ./images/track-hubspot-submissions.png
 title: Integrate Micosoft Clarity with Google Analytics 4
 ---
 

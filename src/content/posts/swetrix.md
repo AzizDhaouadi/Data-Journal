@@ -88,23 +88,13 @@ Lastly, the funnel reporting of Swetrix is a feature truly deserve to be checked
 
 Swetrix's traffic reporting, while not as comprehensive as Google Analytics 4, still offers quite the view about acquisition data.
 
-![alt text](./images/image.png)
-
 As Figure 8 showcases, the traffic reporting capabilities of Swetrix are basic but do offer everything a marketer needs to understand their acquisition. However, through basic, the traffic reports hold some good surprises. For instance, country data can be visualized as follows:
-
-![alt text](./images/image-1.png)
 
 There is more. You can visualize data as pie chart as well:
 
-![alt text](./images/image-2.png)
-
 Custom events can also be visualized and broken down based on event parameters if need be:
 
-![alt text](./images/image-3.png)
-
 While this information is helpful, there are much to improve for this report. But, that's a topic for another time. Last but not least, the user flow report. This is perhaps one of the most important visualizations on Swetrix:
-
-![alt text](./images/image-4.png)
 
 This visualization allows you to understand how users are navigating your website from one page to another. This report is equivalent to Google Analytics 4's Path Exploration report. You can also user the Reverse functionality to start your analysis from an endpoint instead.
 

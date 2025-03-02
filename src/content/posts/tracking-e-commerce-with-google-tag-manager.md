@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Shopify", "Google Tag Manager"]
 date: 02/05/2023
 featured: true
-image: ./images/track-ecommerce.png
 title: Tracking E-commerce with Google Tag Manager
 ---
 
