@@ -1,0 +1,23 @@
+---
+import H1 from "../components/H1.astro";
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro"
+import Footer from "../components/Footer.astro";
+import DataStoriesComponent from "../components/client/DataStories.tsx";
+import data from "../../public/data/stories.json";
+const allQuestions: {}[] = [];
+Object.entries(data).forEach(([key, array]) => {
+    array.forEach((item) => allQuestions.push(item));
+})
+---
+
+<Layout
+    title="Data Stories - Web Analytics Most Frequestly Asked Questions Answered"
+    description="Discover expert answers to the most frequently asked web analytics questions. Learn how to track, analyze, and optimize data effectively."
+>
+    <Main>
+        <H1 text="Data Stories: Your Web Analytics Library"></H1>
+        <DataStoriesComponent client:load questionsList={allQuestions} filters={data}></DataStoriesComponent>
+    </Main>
+    <Footer></Footer>
+</Layout>
