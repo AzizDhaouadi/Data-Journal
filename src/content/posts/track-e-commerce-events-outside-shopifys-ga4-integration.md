@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["E-commerce", "Google Tag Manager", "Shopify"]
 date: 07/26/2023
 featured: false
-image: ./images/track-ecommerce.png
 title: Track E-commerce Events with Shopify's GA4 Integration
 ---
 

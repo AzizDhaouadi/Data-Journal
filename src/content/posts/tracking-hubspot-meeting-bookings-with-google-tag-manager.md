@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Hubspot"]
 date: 05/06/2024
 featured: false
-image: ./images/track-hubspot.png
 title: Tracking Hubspot Meeting Bookings with Google Tag Manager
 ---
 

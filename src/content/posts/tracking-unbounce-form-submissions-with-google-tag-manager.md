@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Unbounce"]
 date: 03/03/2024
 featured: false
-image: ./images/track-unbounce-submissions.png
 title: Tracking Unbounce Form Submissions with Google Tag Manager
 ---
 

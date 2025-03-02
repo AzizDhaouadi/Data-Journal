@@ -65,17 +65,11 @@ If you do not see your CMS or website builder, do not worry. Simply, copy/paste 
 
 Once the cookie banner has been implemented, it is time to continue the action with Google Tag Manager and the Consent Mode. Before we continue with Google Tag Manager, we need to confirm that our banner has been properly set up. To do that, head to you website and check if you are able to see the consent banner. Once you see the consent banner, confirm your choice. It does not matter what you select, so long as you make a choice. Once your choice is made, open the Web Developer Tools and find the cookies section; if you are using Firefox this should be in the Storage section. You should be seeing something as follows:
 
-![alt text](./images/cookieyes-cookies.png)
-
 The cookie name is equal to cookieyes-consent. If you are able to see this cookie, then you are ready to continue. If you cannot see this cookie, please make sure to go over the implementation steps until you are able to see this cookie. Proceeding without this cookie will cause errors.
 
 Time to move to Google Tag Manager (GTM). In GTM, head to the variable section, and create a new **User-Defined** variable. Select 1st Party Cookie as the type of the variable and type **cookieyes-consent** inside the Cookie Name input field. Also, make sure to check URI-decode cookie option. Your window should look something like this:
 
-![alt text](./images/cookies-yes-variable-creation-gtm.png)
-
 Add a name distinctive name to your variable and save it. Essentially, what we just did is create a Google Tag Manager variable that will have the same value as our cookiyes-cookie. This is going to be very useful as it will help us avoid reading the value of the cookie with JS everytime we need it. The next step is to preview the value of said varibale. To do so, we need to preview our workspace. Once your debugging window loads, select any event (window loaded for instance) and look for your variable in the variables tab. You should see something similar to this:
-
-![alt text](./images/cookieyes-variable-in-gtm.png)
 
 If you are not able to see a value attached to your cookie, try another event. If you are still seeing nothing, delete the variable and go over the creation steps one more time. Now that we have a value attached to our cookie, it is time to decode the value to understand how we can translate it into consent. Let's have a look at the value:
 
@@ -170,9 +164,7 @@ This is the option you should probably use if your container has a lot of tags t
 
 ## Testing the consent configuration
 
-Once you have configured the consent for your tags, it is time to test it to make sure that everything is working correctly. Again, delete the cookieyes-consent cookie before starting to make sure the previous settings are not interfering with your tests. Preview your workspace, and begin the test. For the initial test, refuse both advertising and analytics tags and interact with buttons or link being tracked to see if they are firing. You can even check if the Google Analytics 4 Configuration Tag has fired or not. The short answer is no. Since we refused both analytics and advertising, the configuration tag (and all other GA4 related events should not be firing). Here's what you should see on your end:
-
-![alt text](./images/blocked-tag-due-to-consent.png)
+Once you have configured the consent for your tags, it is time to test it to make sure that everything is working correctly. Again, delete the cookieyes-consent cookie before starting to make sure the previous settings are not interfering with your tests. Preview your workspace, and begin the test. For the initial test, refuse both advertising and analytics tags and interact with buttons or link being tracked to see if they are firing. You can even check if the Google Analytics 4 Configuration Tag has fired or not. The short answer is no. Since we refused both analytics and advertising, the configuration tag (and all other GA4 related events should not be firing).
 
 When you test other events related to both the analytics consent type as well as advertising consent type, you should see the tags under the Tags Blocked by Consent Settings tab. The next step is to update your configuration settings to allow all tracking. This time do not reload the page. Try to click on some CTA or links, are the tags firing? Are they still being blocked? Yes, they are. And this should be the last piece of the puzzle to have everything running smoothly.
 

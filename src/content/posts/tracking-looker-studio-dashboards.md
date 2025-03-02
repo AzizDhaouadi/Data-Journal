@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Looker Studio"]
 date: 02/29/2024
 featured: false
-image: ./images/track-looker-studio.png
 title: Tracking Looker Studio Dashboards
 ---
 

@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Typeform", "Google Analytics 4"]
 date: 03/29/2023
 featured: true
-image: ./images/track-hubspot.png
 title: Track Typeform Forms with Google Tag Manager & Google Analytics 4
 ---
 

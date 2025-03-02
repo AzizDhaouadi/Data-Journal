@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Thinkific"]
 date: 02/13/2023
 featured: false
-image: ./images/track-hubspot.png
 title: Tracking Thinkific Events
 ---
 

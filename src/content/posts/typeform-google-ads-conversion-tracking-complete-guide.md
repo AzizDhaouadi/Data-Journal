@@ -3,7 +3,6 @@ author: Aziz Dhaouadi
 categories: ["Google Ads", "Typeform"]
 date: 05/20/2023
 featured: false
-image: ./images/track-hubspot.png
 title: Typeform Google Ads Conversion Tracking Complete Guide
 ---
 
