@@ -4,7 +4,7 @@ import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Footer from "../components/Footer.astro";
-import PostsWithImagination from "../components/PostsWithPagination";
+import PostsWithImagination from "../components/client/PostsWithPagination";
 const posts = await getCollection("posts");
 ---
 
