@@ -1,7 +1,12 @@
 import { liteClient as algoliasearch } from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch';
 
-const searchClient = algoliasearch('NUO1HZDYXK', 'a0d18a8346dbfba3827ff542bda42dbb');
+const projectID = import.meta.env.PUBLIC_ALGOLIA_PROJECT_ID;
+const key = import.meta.env.PUBLIC_ALGOLIA_API_KEY;
+
+console.log(import.meta.env);
+
+const searchClient = algoliasearch(projectID, key);
 
 function Hit({ hit }: any) {
     return (
@@ -34,10 +39,12 @@ export default function SearchComponent() {
                     <p className="text-zinc-500 text-1xl mb-9 text-wrap">Search powered by: <img src="/Algolia logo.png" className="inline" alt="Algolia Logo" width="5%" height="5%" /></p>
                 </div>
             </div>
-            <section className="flex flex-col gap-3 mb-10 mx-auto">
-                <h2 className='text-2xl text-purple-500 text-left font-bold my-2 leading-relaxed'>Results:</h2>
-                <Hits hitComponent={Hit} />
-            </section>
+            <h2 className='text-2xl text-purple-500 text-left font-bold my-2 leading-relaxed'>Results:</h2>
+            <Hits hitComponent={Hit} classNames={{
+                root: "flex flex-col mb-10", // Makes <ol> behave like a grid
+                list: "flex flex-col gap-9 mb-10", // Adjusts <li> behavior
+                item: "", // Styles each <li>
+            }} />
         </InstantSearch>
     );
 }
