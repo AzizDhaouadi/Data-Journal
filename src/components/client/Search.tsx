@@ -35,9 +35,6 @@ export default function SearchComponent() {
                     submitIcon: "hidden",
                     resetIcon: "hidden",
                 }} placeholder="Search articles..." />
-                <div className="flex flex-row justify-end">
-                    <p className="text-zinc-500 text-1xl mb-9 text-wrap">Search powered by: <img src="/Algolia logo.png" className="inline" alt="Algolia Logo" width="5%" height="5%" /></p>
-                </div>
             </div>
             <h2 className='text-2xl text-purple-500 text-left font-bold my-2 leading-relaxed'>Results:</h2>
             <Hits hitComponent={Hit} classNames={{
