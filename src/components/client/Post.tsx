@@ -6,6 +6,12 @@ interface BlogPostProps {
     children: ReactNode;
 }
 
+const current_env = import.meta.env.PUBLIC_CURRENT_ENV;
+
+console.log(current_env);
+
+const endpointPrefix = current_env == "DEV" ? "http://localhost:4321" : "https://datajournal.datakyu.co";
+
 export default function BlogPost({ children }: BlogPostProps) {
     const [translatedText, setTranslatedText] = useState<any>(children);
 
@@ -21,7 +27,7 @@ export default function BlogPost({ children }: BlogPostProps) {
                 \n\n${translatedText?.props?.value || translatedText?.props?.children?.props?.dangerouslySetInnerHTML?.__html} 
             `
 
-            const response = await fetch("http://localhost:4321/api/openai/", {
+            const response = await fetch(`${endpointPrefix}/api/openai/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ prompt: translationPrompt }),
