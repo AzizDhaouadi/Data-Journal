@@ -33,7 +33,10 @@ export default function BlogPost({ children }: BlogPostProps) {
                 body: JSON.stringify({ prompt: translationPrompt }),
             });
 
-            if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+            if (!response.ok) {
+                const errorPayload = await response.json();
+                throw new Error(`HTTP error! Status: ${response.status}. Error: ${errorPayload.error}`);
+            }
 
             const data = await response.json();
             setTranslatedText(

@@ -1,0 +1,123 @@
+# Data Journal by Datakyu
+
+## Overview: Tracking, insights, and tutorials for web analytics.
+
+## Description: In-depth guides and tutorials on Google Analytics 4, GTM, BigQuery, and web tracking. Learn to implement, analyze, and scale data-driven strategies with Data Journal by Datakyu.
+
+## Navigation
+- [Home](/): Landing page showcasing featured and latest tutorials
+- [Posts](/posts/): Index of all published articles and tutorials
+- [Search](/search/): Search interface to find content by keyword
+- [Data Stories](/data-stories/): Expert Q&A on common web analytics questions
+- [GA4 API Parameters](/ga4-api-reference/): Reference guide for Google Analytics 4 Measurement Protocol parameters
+- [About](/about/): Overview of Data Journal’s mission and subscription info
+- [Authors | Aziz Dhaouadi](/authors/aziz/): Profile page for the lead author and analytics expert
+
+## Featured Tutorials
+- [Advanced GA4 Dashboard Development in Looker Studio Using BigQuery](/build-ga4-dashboard-looker-studio-bigquery/): Build a robust acquisition dashboard with GA4 data in BigQuery and Looker Studio
+- [Swetrix, Google Analytics Replacement?](/swetrix/) – Exploring a privacy‑focused, open‑source alternative to GA4
+- [Tracking Thinkific Events](/tracking-thinkific-events/) – How to track course interactions on Thinkific via Google Tag Manager
+- [Implementing Google Analytics 4 with Segment (Client Side)](/implement-ga4-using-segment/) – Deploy GA4 through Segment for centralized tracking
+
+## Full Articles Index
+### [How to Configure Data Redaction in Google Analytics 4](https://datajournal.datakyu.co/google-analytics-4-data-redaction-guide/)
+> Guide on how to configure data redaction in Google Analytics 4.
+
+### [How to Implement Google Ads Enhanced Conversions for Leads using Google Tag Manager](https://datajournal.datakyu.co/enhanced-conversions-for-leads-google-ads/)
+> Step-by-step instructions to implement enhanced conversions with GTM.
+
+### [Advanced Google Analytics 4 Dashboard Development in Looker Studio Using BigQuery](https://datajournal.datakyu.co/build-ga4-dashboard-looker-studio-bigquery/)
+> Build a scalable and insightful dashboard by connecting GA4 to BigQuery.
+
+### [Data Visualization with Open Source Web Analytics](https://datajournal.datakyu.co/data-visualization-with-swetrix-plotly/)
+> Learn to visualize analytics data using Swetrix and Plotly.
+
+### [Set up Enhanced Conversions for Google Ads with Google Tag Manager](https://datajournal.datakyu.co/implement-google-ads-enhanced-conversions-with-google-tag-manager/)
+> Configure enhanced conversions in a privacy-conscious way using GTM.
+
+### [Tracking Hubspot Form Submissions with Hubspot's Global Events and Google Tag Manager](https://datajournal.datakyu.co/hubspot-form-submission-tracking-guide/)
+> Capture form events from Hubspot using GTM’s custom triggers.
+
+### [How to Implement User ID Tracking in Google Analytics 4 with HubSpot Forms and Google Tag Manager](https://datajournal.datakyu.co/implement-user-id-tracking-google-analytics-4-hubspot-forms-gtm/)
+> Link user identities in GA4 using HubSpot and Google Tag Manager.
+
+### [Unlocking Insights with GA4 Measurement Protocol](https://datajournal.datakyu.co/advanced-ga4-measurement-protocol-implementation/)
+> Implement server-side tracking and optimize Measurement Protocol use.
+
+### [Implementing Google Consent Mode using CookieYes](https://datajournal.datakyu.co/implementing-google-consent-mode-using-cookieyes-integration/)
+> A hands-on guide to implementing Google Consent Mode with CookieYes.
+
+### [Implementing Google Consent Mode V2 with CookieYes](https://datajournal.datakyu.co/implementing-google-consent-mode-v2-using-cookieyes-integration/)
+> V2 support for CookieYes integration with Consent Mode.
+
+### [Linking Google Analytics 4 with BigQuery for data export](https://datajournal.datakyu.co/integrate-bigquery-with-google-analytics-4/)
+> How to connect and automate GA4 export into BigQuery.
+
+### [Implementing Google Consent Mode with Google Tag Manager and OneTrust](https://datajournal.datakyu.co/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/)
+> Consent Mode integration using GTM and OneTrust.
+
+### [Integrate 6sense and Google Analytics 4](https://datajournal.datakyu.co/integrate-6sense-google-analytics-4-guide/)
+> Send 6sense audience signals into GA4 for account-based insights.
+
+### [Implement User ID in Google Analytics 4 Property](https://datajournal.datakyu.co/google-analytics-4-implement-user-id-2024/)
+> Best practices for setting up User ID tracking in GA4.
+
+### [Implementing Google Consent Mode using gtag.js and CookieYes](https://datajournal.datakyu.co/implementing-google-consent-mode-using-gtag-js-and-cookieyes/)
+> Manual Consent Mode configuration using gtag.js and CookieYes.
+
+### [Implementing Google Analytics 4 with Segment (Client Side)](https://datajournal.datakyu.co/implement-ga4-using-segment/)
+> Use Segment to push client-side events into GA4.
+
+### [Swetrix - Google Analytics Replacement?](https://datajournal.datakyu.co/swetrix/)
+> Explore Swetrix as a privacy-friendly GA4 alternative.
+
+### [Connecting Measurement Protocol Events to Client-Side Data](https://datajournal.datakyu.co/integrating-measurement-protocol-client-data-ga4/)
+> Combine server-side and client-side events for unified tracking.
+
+### [The Ultimate Google Analytics 4 Migration Guide](https://datajournal.datakyu.co/the-ultimate-google-analytics-4-migration-guide/)
+> Migrate from Universal Analytics to GA4 without missing a beat.
+
+### [Track E-commerce Events with Shopify's GA4 Integration](https://datajournal.datakyu.co/track-e-commerce-events-outside-shopifys-ga4-integration/)
+> Capture custom e-commerce events not covered by Shopify’s GA4 integration.
+
+### [Tracking Calendly Meeting Requests with Google Tag Manager](https://datajournal.datakyu.co/track-calendly-events-google-tag-manager-ga4-guide/)
+> Record Calendly booking events in GA4 via GTM.
+
+### [Track E-commerce Events on Shopify](https://datajournal.datakyu.co/track-e-commerce-events-on-shopify/)
+> Complete guide to event tracking on Shopify with GA4.
+
+### [Track Typeform Forms with Google Tag Manager & Google Analytics 4](https://datajournal.datakyu.co/track-typeforms-using-gtm-and-ga4/)
+> Send Typeform completions to GA4 using GTM listeners.
+
+### [Track Gravity Forms with Google Tag Manager](https://datajournal.datakyu.co/track-gravity-forms-with-google-tag-manager/)
+> Add GA4 tracking to Gravity Forms on WordPress sites.
+
+### [Tracking E-commerce with Google Tag Manager](https://datajournal.datakyu.co/tracking-e-commerce-with-google-tag-manager/)
+> Full setup for tracking revenue and purchases via GTM.
+
+### [Tracking Hubspot Meeting Bookings with Google Tag Manager](https://datajournal.datakyu.co/tracking-hubspot-meeting-bookings-with-google-tag-manager/)
+> Measure meetings booked through HubSpot using GTM events.
+
+### [Tracking Looker Studio Dashboards](https://datajournal.datakyu.co/tracking-looker-studio-dashboards/)
+> Learn how to log user behavior on Looker Studio reports.
+
+### [Integrate Microsoft Clarity with Google Analytics 4](https://datajournal.datakyu.co/integrate-clairty-with-google-analytics-4/)
+> Combine Clarity session insights with GA4 event data.
+
+### [Tracking E-commerce with gtag.js](https://datajournal.datakyu.co/tracking-e-commerce-with-gtag-js/)
+> Manual setup for GA4 e-commerce using gtag.js.
+
+### [Tracking Unbounce Form Submissions with Google Tag Manager](https://datajournal.datakyu.co/tracking-unbounce-form-submissions-with-google-tag-manager/)
+> Track leads from Unbounce landing pages in GA4.
+
+### [Tracking Thinkific Events](https://datajournal.datakyu.co/tracking-thinkific-events/)
+> Set up event tracking for online courses hosted on Thinkific.
+
+### [Typeform Google Ads Conversion Tracking Complete Guide](https://datajournal.datakyu.co/typeform-google-ads-conversion-tracking-complete-guide/)
+> Connect Typeform submissions to Google Ads conversions.
+
+## Optional Resources
+- [Our Agency](https://datakyu.co/): Learn more about Datakyu, the agency behind Data Journal
+- [Privacy Policy](https://datakyu.co/privacy): Datakyu privacy practices
+
+© 2025 Datakyu | All Rights Reserved.  

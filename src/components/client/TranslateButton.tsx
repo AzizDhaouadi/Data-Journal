@@ -4,9 +4,10 @@ interface TranslateButtonProps {
     targetLanguage: string;
     translationFunction: (language: string) => void;
     isTranslating: boolean;
+    className: any;
 }
 
-export default function TranslateButton({ targetLanguage, translationFunction, isTranslating }: TranslateButtonProps) {
+export default function TranslateButton({ targetLanguage, translationFunction, isTranslating, className }: TranslateButtonProps) {
 
     function handleTrackingClick(e: React.MouseEvent<HTMLButtonElement>) {
         const trackedButtonText = e.currentTarget.innerText;
@@ -41,7 +42,7 @@ export default function TranslateButton({ targetLanguage, translationFunction, i
     return (
         <button
             id={targetLanguage}
-            className={`${isTranslating ? "cursor-wait opacity-50" : "cursor-pointer"} underline decoration-dashed underline-offset-4 text-1xl dark:text-white hover:text-teal-800`}
+            className={`${isTranslating ? "cursor-wait opacity-50" : "cursor-pointer"} ${className}`}
             onClick={(e) => {
                 handleTrackingClick(e)
                 handleTranslation();
