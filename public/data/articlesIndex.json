@@ -147,5 +147,10 @@
         "article_title": "Tracking Unbounce Form Submissions with Google Tag Manager",
         "publication_date": "2024-03-03",
         "path": "/tracking-unbounce-form-submissions-with-google-tag-manager/"
+    },
+        {
+        "article_title": "How to flatten Google Analytics 4 Data Schema in BigQuery",
+        "publication_date": "2025-07-26",
+        "path": "/flatten-ga4-bigquery-export-schema/"
     }
 ]
