@@ -152,5 +152,10 @@
         "article_title": "How to flatten Google Analytics 4 Data Schema in BigQuery",
         "publication_date": "2025-07-26",
         "path": "/flatten-ga4-bigquery-export-schema/"
+    },
+    {
+        "article_title": "Vemetric Web Analytics Tool Review - Better Than Google Analytics 4?",
+        "publication_date": "2025-09-28",
+        "path": "/vemetric-review/"
     }
 ]
