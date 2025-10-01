@@ -40,11 +40,25 @@ export default function SummarizeButton({
     }
   }
 
+  function handleTrackingClick() {
+    if (!window.analytics) {
+      console.error("Segment not detected.");
+      return;
+    }
+    window.analytics.track("Used Summarization", {
+      article_title:
+        document.querySelector("h1")?.textContent || "Unknown title",
+    });
+  }
+
   return (
     <div>
       <button
         className={`inline-flex items-center px-5 py-2 rounded-full font-medium text-white shadow-md border-2 border-transparent my-4 bg-[linear-gradient(90deg,#6366f1_0%,#8b5cf6_30%,#06b6d4_100%)] ${isSummarizing ? "opacity-50 cursor-not-allowed" : ""}`}
-        onClick={() => handleSummarization({ text: textToSummarize })}
+        onClick={() => {
+          handleSummarization({ text: textToSummarize });
+          handleTrackingClick();
+        }}
       >
         {isSummarizing ? "Summarizing..." : "Summarize with AI"}
       </button>
