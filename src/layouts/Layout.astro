@@ -80,9 +80,12 @@ const {
         d.head.insertBefore(e, d.head.firstChild);
       })(document, "script");
       console.log("Initializing Axeptio");
-    </script>
 
-    <script is:inline src="/src/scripts/axeptio.js"></script>
+      if (window.showAxeptioButton) {
+        console.log("Window method detected, reloading Axeptio button");
+        window.showAxeptioButton();
+      }
+    </script>
 
     <!-- Sentry -->
     <script
