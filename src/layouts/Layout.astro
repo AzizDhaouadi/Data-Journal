@@ -57,36 +57,6 @@ const {
     </style>
     <!-- Third party tracking scripts - section start -->
 
-    <script>
-      //@ts-nocheck
-      window.axeptioSettings = {
-        clientId: "68e93c54d580fde4b052075b",
-        cookiesVersion: "datajournal-en-CA",
-        googleConsentMode: {
-          default: {
-            analytics_storage: "denied",
-            ad_storage: "denied",
-            ad_user_data: "denied",
-            ad_personalization: "denied",
-            wait_for_update: 500,
-          },
-        },
-      };
-
-      (function (d, s) {
-        var e = d.createElement(s);
-        e.async = true;
-        e.src = "//static.axept.io/sdk.js";
-        d.head.insertBefore(e, d.head.firstChild);
-      })(document, "script");
-      console.log("Initializing Axeptio");
-
-      if (window.showAxeptioButton) {
-        console.log("Window method detected, reloading Axeptio button");
-        window.showAxeptioButton();
-      }
-    </script>
-
     <!-- Sentry -->
     <script
       is:inline
