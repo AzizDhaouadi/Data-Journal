@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 interface TranslateButtonProps {
   targetLanguage: string;
   translationFunction: (language: string) => void;
