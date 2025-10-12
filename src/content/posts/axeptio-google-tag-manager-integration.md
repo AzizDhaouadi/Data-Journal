@@ -1,7 +1,7 @@
 ---
 author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Consent Management", "Axeptio"]
-date: 10/11/2025
+date: 10/12/2025
 featured: true
 title: How to Implement Axeptio with Google Tag Manager
 ---

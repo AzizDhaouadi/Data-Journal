@@ -157,5 +157,15 @@
         "article_title": "Vemetric Web Analytics Tool Review - Better Than Google Analytics 4?",
         "publication_date": "2025-09-28",
         "path": "/vemetric-review/"
+    },
+    {
+        "article_title": "Advanced Google Tag Manager Setup — Rename the dataLayer",
+        "publication_date": "10/03/2025",
+        "path": "/rename-google-tag-manager-datalayer/"
+    },
+    {
+        "article_title": "How to Implement Axeptio with Google Tag Manager",
+        "publication_date": "10/12/2025",
+        "path": "/axeptio-google-tag-manager-integration/"
     }
 ]
