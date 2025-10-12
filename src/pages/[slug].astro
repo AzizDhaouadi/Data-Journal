@@ -5,10 +5,7 @@ import Main from "../components/Main.astro";
 import H1 from "../components/H1.astro";
 import Footer from "../components/Footer.astro";
 import BlogMeta from "../components/BlogMeta.astro";
-
 import BlogPost from "../components/client/Post.tsx";
-import type { render } from "astro:content";
-import { Children } from "react";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -37,12 +34,69 @@ const { Content } = await post.render();
   <Main>
     <H1 text={post.data.title} />
     <BlogMeta post={post} author="aziz" />
-    <div class="prose max-w-7xl mx-auto w-full overflow-visible relative my-10">
+    <div
+      class="prose max-w-7xl mx-auto overflow-visible relative my-10 flex flex-row gap-8"
+    >
       <!-- <Content /> -->
       <BlogPost client:load>
         <Content />
       </BlogPost>
+
+      <div class="flex flex-col gap-4" id="newsletter-section">
+        <h2 class="text-3xl mx-auto text-center font-extrabold text-gray-900 mb-4">Join our Newsletter</h2>
+        <span class="text-xs text-center text-gray-600 mx-auto">Stay updated with our newsletter featuring industry insights, and expert tips.</span>
+        <aside class="overflow-hidden mx-auto my-10 relative">
+          <script>
+            //@ts-check
+            document.addEventListener("DOMContentLoaded", () => {
+              const hbsptScript = document.createElement("script");
+              hbsptScript.src = "//js.hsforms.net/forms/embed/v2.js";
+              document.body.appendChild(hbsptScript);
+            });
+            console.log("HubSpot form script added to the document.");
+          </script>
+          <script>
+            //@ts-nocheck
+            function loadHubSpotForm() {
+              if (window.hbspt) {
+                // Clear any existing form to avoid duplicates
+                const container = document.querySelector(".hs-form-frame");
+                if (container) {
+                  container.innerHTML = "";
+                }
+
+                window.hbspt.forms.create({
+                  region: "na1",
+                  portalId: "44171646",
+                  formId: "20a326d3-6194-4624-85e9-adeddd32ae3e",
+                  target: ".hs-form-frame",
+                });
+              }
+            }
+
+            // Load on initial page load
+            document.addEventListener("DOMContentLoaded", loadHubSpotForm);
+            // Listen for Astro's view transition events (if using View Transitions)
+            document.addEventListener("astro:after-swap", loadHubSpotForm);
+            document.addEventListener("astro:page-load", loadHubSpotForm);
+          </script>
+          <div
+            class="hs-form-frame"
+            data-region="na1"
+            data-form-id="7440c38a-292c-45cc-80e6-41726d84861d"
+            data-portal-id="44171646"
+          >
+          </div>
+        </aside>
+      </div>
     </div>
+    <style>
+      @media (width < 1024px){
+        #newsletter-section {
+          display: none;
+        }
+      }
+    </style>
   </Main>
   <Footer />
 </Layout>

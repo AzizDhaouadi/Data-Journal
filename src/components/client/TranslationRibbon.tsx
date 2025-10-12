@@ -20,19 +20,19 @@ export default function TranslationRibbon({
     <section id="tranlation-section">
       <div className="flex gap-7 overflow-x-auto">
         <TranslateButton
-          className="relative inline-flex items-center px-5 py-2 rounded-full font-medium text-white bg-teal-900 shadow-md border-2 border-transparent before:absolute before:inset-0 before:rounded-full before:p-[2px] my-6"
+          className="text-sm relative inline-flex items-center px-5 py-2 rounded-full text-white bg-teal-900 shadow-md border-2 border-transparent before:absolute before:inset-0 before:rounded-full before:p-[2px] my-6"
           targetLanguage="French"
           translationFunction={handleTranslate}
           isTranslating={isTranslating}
         />
         <TranslateButton
-          className="relative inline-flex items-center px-5 py-2 rounded-full font-medium text-white bg-teal-900 shadow-md border-2 border-transparent before:absolute before:inset-0 before:rounded-full before:p-[2px] my-6"
+          className="text-sm relative inline-flex items-center px-5 py-2 rounded-full text-white bg-teal-900 shadow-md border-2 border-transparent before:absolute before:inset-0 before:rounded-full before:p-[2px] my-6"
           targetLanguage="Spanish"
           translationFunction={handleTranslate}
           isTranslating={isTranslating}
         />
         <TranslateButton
-          className="relative inline-flex items-center px-5 py-2 rounded-full font-medium text-white bg-teal-900 shadow-md border-2 border-transparent before:absolute before:inset-0 before:rounded-full before:p-[2px] my-6"
+          className="text-sm relative inline-flex items-center px-5 py-2 rounded-full text-white bg-teal-900 shadow-md border-2 border-transparent before:absolute before:inset-0 before:rounded-full before:p-[2px] my-6"
           targetLanguage="Japanese"
           translationFunction={handleTranslate}
           isTranslating={isTranslating}
