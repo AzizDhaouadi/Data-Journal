@@ -49,7 +49,6 @@ export default function BlogPost({ children }: BlogPostProps) {
           <div dangerouslySetInnerHTML={{ __html: data.text }} />
         </>,
       );
-      console.log(translatedText);
     } catch (error) {
       console.error("Error fetching translation:", error);
       setTranslatedText("Translation failed. Please try again.");
