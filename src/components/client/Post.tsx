@@ -56,18 +56,34 @@ export default function BlogPost({ children }: BlogPostProps) {
   }
 
   return (
-    <div>
-      <SummarizeButton
-        textToSummarize={
-          translatedText?.props?.value ||
-          translatedText?.props?.children?.props?.dangerouslySetInnerHTML
-            ?.__html
-        }
-      />
-      <TranslationRibbon translateFunction={handleTranslation} />
+    <div className="w-[70%]" id="content-section">
+      <div id="action-buttons">
+        <SummarizeButton
+          textToSummarize={
+            translatedText?.props?.value ||
+            translatedText?.props?.children?.props?.dangerouslySetInnerHTML
+              ?.__html
+          }
+        />
+        <TranslationRibbon translateFunction={handleTranslation} />
+      </div>
       <div id="main-content" className="my-10">
         {translatedText}
       </div>
+      <style>
+        {`
+          @media (width < 1024px) {
+            #content-section {
+              width: 90%;
+            }
+          }
+          @media (width < 768px) {
+            #action-buttons {
+              display: none;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }
