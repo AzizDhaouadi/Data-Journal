@@ -193,7 +193,6 @@ const recentPosts = clonePosts.slice(0, 4);
         this["mainEntityOfPage"] = articleMetaData.slug;
         this["headline"] = articleMetaData.data.title;
         this["name"] = articleMetaData.data.title;
-        this["image"] = [articleMetaData.data.image.src];
         this["datePublished"] = new Date(
           articleMetaData.data.date,
         ).toISOString();
