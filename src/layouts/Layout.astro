@@ -55,8 +55,43 @@ const {
         font-family: var(--font-spectral) !important;
       }
     </style>
-    <!-- Third party tracking scripts - section start -->
 
+    <script>
+      //@ts-nocheck
+      document.addEventListener("DOMContentLoaded", () => {
+        window.axeptioSettings = {
+          clientId: "68e93c54d580fde4b052075b",
+          cookiesVersion: "datajournal-en-CA",
+          googleConsentMode: {
+            default: {
+              analytics_storage: "denied",
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              wait_for_update: 500,
+            },
+          },
+        };
+      });
+      console.log("Main Axeptio configuration set.");
+    </script>
+    <script>
+      //@ts-nocheck
+      function loadAxeptio() {
+        (function (d, s, target) {
+          var t = d.querySelector(target),
+            e = d.createElement(s);
+          e.async = true;
+          e.src = "//static.axept.io/sdk.js";
+          t.appendChild(e, t);
+        })(document, "script", "#axeptio-container");
+      }
+
+      // Load on initial page load
+      document.addEventListener("DOMContentLoaded", loadAxeptio);
+    </script>
+
+    <!-- Third party tracking scripts - section start -->
     <!-- Segment Analytics -->
     <script>
       //@ts-nocheck
@@ -221,9 +256,37 @@ const {
     <!-- Third party tracking scripts - end section -->
   </head>
   <body class="min-h-screen">
+    <div id="axeptio-container" data-astro-ignore></div>
     <Header />
     <slot />
   </body>
+  <script>
+    //@ts-nocheck
+    let axeptioDiv = null;
+
+    // Save the div before transition
+    document.addEventListener("astro:before-preparation", () => {
+      axeptioDiv = document.querySelector("#axeptio_overlay");
+      if (axeptioDiv) {
+        console.log("Saving Axeptio div");
+        axeptioDiv.remove();
+      }
+    });
+
+    // Restore the div after transition
+    document.addEventListener("astro:after-swap", () => {
+      if (axeptioDiv && !axeptioDiv.parentElement) {
+        console.log("Restoring Axeptio div");
+        document.body.appendChild(axeptioDiv);
+      }
+    });
+
+    // Handle the initial Axeptio ready event
+    axeptioSDK.on("ready", function (choices) {
+      const axeptioTargetDiv = document.querySelector("#axeptio_overlay");
+      console.log("Axeptio ready:", axeptioTargetDiv);
+    });
+  </script>
   <ClientRouter />
   <SpeedInsights />
 </html>
