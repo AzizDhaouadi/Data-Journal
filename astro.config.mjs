@@ -6,8 +6,10 @@ import vercel from '@astrojs/vercel';
 
 import react from "@astrojs/react";
 
+import mdx from "@astrojs/mdx";
+
 export default defineConfig({
-  integrations: [tailwind(), react()],
+  integrations: [tailwind(), react(), mdx()],
   base: "/",
   trailingSlash: "always",
   output: "static",
