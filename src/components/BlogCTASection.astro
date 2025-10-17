@@ -4,12 +4,13 @@
     title: string;
     description: string;
     ctaText: string;
+    referrer: string;
 }
 
-const { category, title, description, ctaText } = Astro.props;
+const { category, title, description, ctaText, referrer } = Astro.props;
 ---
 
-<div class="mx-auto max-w-3xl rounded-2xl border border-zinc-200 bg-white/70 p-6 shadow-sm backdrop-blur">
+<div id="cta-container" class="mx-auto max-w-3xl rounded-2xl border border-zinc-200 bg-white/70 p-6 shadow-sm backdrop-blur">
   <div class="flex items-start gap-4">
     <div class="mt-1 h-10 w-10 shrink-0 rounded-xl bg-[#9B7FC8]/10 flex items-center justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.4L19 9l-5.2 1.6L12 16l-1.8-5.4L5 9l5.2-1.6L12 2z"/></svg>
@@ -22,7 +23,8 @@ const { category, title, description, ctaText } = Astro.props;
       </p>
       <div class="mt-4 flex flex-wrap flex-col items-center" style="gap: 2rem;">
         <a
-        href="https://www.datakyu.co/"
+        href=`https://www.datakyu.co/contact?utm_source=datajournal&utm_medium=article&utm_campaign=${referrer.replace(/\s+/g, '_').toLowerCase()}&utm_content=${ctaText.replace(/\s+/g, '_').toLowerCase()}`
+         target="_blank" rel="noopener noreferrer"
         id="cta-link"
         style="
             display: inline-flex;
@@ -44,6 +46,13 @@ const { category, title, description, ctaText } = Astro.props;
   </div>
 </div>
 
+<style>
+    @media(width < 768px){
+        #cta-container {
+            display: none
+        }
+    }
+</style>
 <script>
     const ctaLink = document.getElementById('cta-link');
     ctaLink?.addEventListener("click", () => {
