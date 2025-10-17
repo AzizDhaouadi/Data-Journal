@@ -167,5 +167,10 @@
         "article_title": "How to Implement Axeptio with Google Tag Manager",
         "publication_date": "10/12/2025",
         "path": "/axeptio-google-tag-manager-integration/"
+    },
+    {
+        "article_title": "Server-Side Google Tag Manager : Complete Guide to Meta Conversion Tracking",
+        "publication_date": "10/16/2025",
+        "path": "/server-side-gtm-meta-conversion-tracking/"
     }
 ]

@@ -1,0 +1,72 @@
+---
+ interface Props {
+    category: string;
+    title: string;
+    description: string;
+    ctaText: string;
+    referrer: string;
+}
+
+const { category, title, description, ctaText, referrer } = Astro.props;
+---
+
+<div id="cta-container" class="mx-auto max-w-3xl rounded-2xl border border-zinc-200 bg-white/70 p-6 shadow-sm backdrop-blur">
+  <div class="flex items-start gap-4">
+    <div class="mt-1 h-10 w-10 shrink-0 rounded-xl bg-[#9B7FC8]/10 flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 5.4L19 9l-5.2 1.6L12 16l-1.8-5.4L5 9l5.2-1.6L12 2z"/></svg>
+    </div>
+    <div class="flex-1">
+      <div class="inline-flex items-center gap-2 rounded-full bg-[#0D9488]/10 px-3 py-1 text-xs font-medium text-[#0D9488]">{category}</div>
+      <h3 class="mt-3 text-xl font-semibold tracking-tight text-zinc-900">{title}</h3>
+      <p class="mt-2 text-sm leading-6 text-zinc-600">
+        {description}
+      </p>
+      <div class="mt-4 flex flex-wrap flex-col items-center" style="gap: 2rem;">
+        <a
+        href=`https://www.datakyu.co/contact?utm_source=datajournal&utm_medium=article&utm_campaign=${referrer.replace(/\s+/g, '_').toLowerCase()}&utm_content=${ctaText.replace(/\s+/g, '_').toLowerCase()}`
+         target="_blank" rel="noopener noreferrer"
+        id="cta-link"
+        style="
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem;
+            background: #fff;
+            border-radius: 999px;
+            color: #1a1a1a;
+            border: 2px solid #f15a25;
+            cursor: pointer;
+            box-shadow: 8px 8px #311c3b;
+            transition: transform .2s ease, box-shadow .2s ease;
+        "
+        >{ctaText}</a>
+        <span class="text-xs text-zinc-500">Built by Datakyu, your analytics & measurement partner.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    @media(width < 768px){
+        #cta-container {
+            display: none
+        }
+    }
+</style>
+<script>
+    const ctaLink = document.getElementById('cta-link');
+    ctaLink?.addEventListener("click", () => {
+        // tracking for the dataLayer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: "cta_click",
+            blog: window.location.pathname,
+            cta: ctaLink.textContent
+        });
+        // tracking for Segment
+        window.analytics("track", "Clicked CTA", {
+            blog: window.location.pathname,
+            cta: ctaLink.textContent
+        });
+    });
+</script>
