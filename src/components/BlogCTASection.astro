@@ -64,7 +64,7 @@ const { category, title, description, ctaText, referrer } = Astro.props;
             cta: ctaLink.textContent
         });
         // tracking for Segment
-        window.analytics("track", "Clicked CTA", {
+        window.analytics.track("Clicked CTA", {
             blog: window.location.pathname,
             cta: ctaLink.textContent
         });
