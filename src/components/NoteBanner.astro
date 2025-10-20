@@ -1,0 +1,15 @@
+---
+interface Props {
+  noteMessage: string;
+}
+
+const { noteMessage } = Astro.props;
+---
+
+<aside
+  class="bg-white rounded-xl p-6 shadow-md border border-gray-200 border-l-4 border-l-red-500"
+>
+  <p class="text-gray-700 font-bold text-sm leading-relaxed">
+    {noteMessage}
+  </p>
+</aside>
