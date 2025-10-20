@@ -59,8 +59,8 @@
       {
         "article_title": "Implementing Google Consent Mode with Google Tag Manager and OneTrust",
         "publication_date": "2024-04-02",
-        "path": "/implementing-google-consent-mode-gtm-onetrust/",
-        "itemId": "/implementing-google-consent-mode-gtm-onetrust/"
+        "path": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/",
+        "itemId": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/"
       },
       {
         "article_title": "Integrate 6sense and Google Analytics 4",
@@ -132,7 +132,7 @@
         "article_title": "Integrate Microsoft Clarity with Google Analytics 4",
         "publication_date": "2024-09-08",
         "path": "/integrate-microsoft-clarity-google-analytics-4/",
-        "itemId": "/integrate-microsoft-clarity-google-analytics-4/"
+        "itemId": "/integrate-clairty-with-google-analytics-4/"
       },
       {
         "article_title": "Track Gravity Forms with Google Tag Manager",
