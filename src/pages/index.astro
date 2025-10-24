@@ -3,23 +3,23 @@ import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import PostList from "../components/PostList.astro";
+import CustomizedFeed from "../components/client/wrappers/CustomizedFeed.tsx";
 import Footer from "../components/Footer.astro";
 const posts = await getCollection("posts");
-const featuredPosts: any[] = [];
-posts.map((post: any) => {
-  if (post.data.featured) {
-    featuredPosts.push(post);
-  }
-});
-featuredPosts.sort((a, b) => {
+
+const sortedPosts: any[] = [...posts];
+
+sortedPosts.sort((a, b) => {
   return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
-const clonePosts: any[] = [...posts];
-clonePosts.sort((a, b) => {
-  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
-});
-const recentPosts = clonePosts.slice(0, 4);
+
+const recentPosts = sortedPosts.map((post) => {
+  return {
+      article_title: post.data.title,
+    article_pathname: `/${post.slug}/`,
+  };
+}
+).slice(0, 12);
 ---
 
 <Layout
@@ -70,33 +70,7 @@ const recentPosts = clonePosts.slice(0, 4);
       </ul>
     </section>
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <section class="flex flex-row flex-wrap w-100 gap-4 my-5">
-      <h2
-        class="text-4xl font-bold dark:text-white"
-        style={{ color: "#f15a25" }}
-      >
-        Recent
-      </h2>
-      <PostList posts={recentPosts} />
-    </section>
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <section class="flex flex-row flex-wrap w-100 gap-4 my-10">
-      <h2
-        class="text-4xl font-bold dark:text-white"
-        style={{ color: "#f15a25" }}
-      >
-        Featured
-      </h2>
-      <PostList posts={featuredPosts.slice(0, 4)} />
-    </section>
-    <div class="flex flex-row justify-center flex-wrap w-100 gap-4">
-      <a
-        href="/posts/"
-        class="inline-block underline decoration-dashed underline-offset-4 text-2xl dark:text-white hover:text-teal-800"
-      >
-        Discover all posts
-      </a>
-    </div>
+    <CustomizedFeed defaultFeed={recentPosts} client:only />
     <section class="my-20">
       <h3 id="subscribe" class="text-3xl font-bold dark:text-white mb-10">
         Subscribe to Data Journal
