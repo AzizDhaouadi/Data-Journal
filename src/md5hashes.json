@@ -1,0 +1,147 @@
+{
+  "catalog": {
+    "items": [
+      {
+        "path": "/vemetric-review/",
+        "itemID": "69700cb6adadc17212e9a0c4aef392d2"
+      },
+      {
+        "path": "/advanced-ga4-measurement-protocol-implementation/",
+        "itemID": "a7f16605d5e96b6b9e4e693a975065b9"
+      },
+      {
+        "path": "/track-typeforms-using-gtm-and-ga4/",
+        "itemID": "4d24a2781c78cbfee0c1a8f37f7ce039"
+      },
+      {
+        "path": "/tracking-unbounce-form-submissions-with-google-tag-manager/",
+        "itemID": "cc385c35fecab7c3fa34f36927aa90f4"
+      },
+      {
+        "path": "/tracking-thinkific-events/",
+        "itemID": "567bc7a56b514732e70018955e8bcfe7"
+      },
+      {
+        "path": "/tracking-looker-studio-dashboards/",
+        "itemID": "db150cceb39a07716c4613cc951f1813"
+      },
+      {
+        "path": "/tracking-hubspot-meeting-bookings-with-google-tag-manager/",
+        "itemID": "83533c3b93159680596eede5f6701a4a"
+      },
+      {
+        "path": "/hubspot-form-submission-tracking-guide/",
+        "itemID": "cb716db917d424730d9abc218dd02a59"
+      },
+      {
+        "path": "/tracking-e-commerce-with-gtag-js/",
+        "itemID": "66872eb26db06556ce9444c5cafa21a9"
+      },
+      {
+        "path": "/tracking-e-commerce-with-google-tag-manager/",
+        "itemID": "d961ee9ea44608b74748f743ad2d6c91"
+      },
+      {
+        "path": "/track-calendly-events-google-tag-manager-ga4-guide/",
+        "itemID": "9ef85f2e11a923030ef7cc40435c04c0"
+      },
+      {
+        "path": "/track-gravity-forms-with-google-tag-manager/",
+        "itemID": "91062eb7ab00d6338a75e45e14ad6ed0"
+      },
+      {
+        "path": "/track-e-commerce-events-with-shopify-ga4-integration/",
+        "itemID": "1bb4344b0ab5e2e2282aa58d33300eba"
+      },
+      {
+        "path": "/track-e-commerce-events-outside-shopifys-ga4-integration/",
+        "itemID": "4392a85024e36bf62a7939614c157ae1"
+      },
+      {
+        "path": "/the-ultimate-google-analytics-4-migration-guide/",
+        "itemID": "a3527493412fec47e098de340abccd6a"
+      },
+      { "path": "/swetrix/", "itemID": "a32a0a56bbb0218c9c2cc3168f2bf210" },
+      {
+        "path": "/implement-google-ads-enhanced-conversions-with-google-tag-manager/",
+        "itemID": "82808ee2c4d29e6dd5ac0e26029a50ba"
+      },
+      {
+        "path": "/server-side-gtm-meta-conversion-tracking/",
+        "itemID": "3b1f06b2c926f283271368d6b567ff48"
+      },
+      {
+        "path": "/integrate-bigquery-with-google-analytics-4/",
+        "itemID": "223daae3aa5793896393ea94a686a635"
+      },
+      {
+        "path": "/integrate-microsoft-clarity-google-analytics-4/",
+        "itemID": "971f1f60c453dee60e8b3f14a49b5335"
+      },
+      {
+        "path": "/integrate-6sense-google-analytics-4-guide/",
+        "itemID": "97fb9d2e502fab0c15113544cdfeb233"
+      },
+      {
+        "path": "/google-analytics-4-implement-user-id-2024/",
+        "itemID": "ee726d96be5ccdfc6bcd0e66e8d4f484"
+      },
+      {
+        "path": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/",
+        "itemID": "f68a5fb1a0ed02b334b250d2902a597c"
+      },
+      {
+        "path": "/implementing-google-consent-mode-v2-using-cookieyes-integration/",
+        "itemID": "2f55cf14126205a366f8510953f756fc"
+      },
+      {
+        "path": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/",
+        "itemID": "4cf2e68f121e45f3053b91d1f7ee498f"
+      },
+      {
+        "path": "/implementing-google-consent-mode-using-cookieyes-integration/",
+        "itemID": "c0a59a79a6a6683fe17494918b4a47b4"
+      },
+      {
+        "path": "/implement-ga4-using-segment/",
+        "itemID": "58372564b3a5ac5e91acfdf5d57252aa"
+      },
+      {
+        "path": "/implement-user-id-tracking-google-analytics-4-hubspot-forms-gtm/",
+        "itemID": "c405ab3b5a4f48bf7ff33d972a372684"
+      },
+      {
+        "path": "/axeptio-google-tag-manager-integration/",
+        "itemID": "e7c0f3922ade393ced8ddbb34b2c9544"
+      },
+      {
+        "path": "/flatten-ga4-bigquery-export-schema/",
+        "itemID": "67b22f226cc186b392dae9b4dffd835a"
+      },
+      {
+        "path": "/how-to-connect-ga4-mcp-server/",
+        "itemID": "c7ec57cef07634945380ac7bb6ddf726"
+      },
+      {
+        "path": "/google-analytics-4-data-redaction-guide/",
+        "itemID": "1600534d48416814b7de2e45468e5b8c"
+      },
+      {
+        "path": "/data-visualization-with-swetrix-plotly/",
+        "itemID": "2602ca85c4b123dc5879d7c439cd9549"
+      },
+      {
+        "path": "/integrating-measurement-protocol-client-data-ga4/",
+        "itemID": "b0453c2ad906d1eae3d361f719c5ff48"
+      },
+      {
+        "path": "/rename-google-tag-manager-datalayer/",
+        "itemID": "69a3620f602b272cbad483120a5c3847"
+      },
+      {
+        "path": "/build-ga4-dashboard-looker-studio-bigquery/",
+        "itemID": "43a91a5f628535ec9ae060f042da2067"
+      }
+    ]
+  }
+}
