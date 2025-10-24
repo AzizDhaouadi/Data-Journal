@@ -11,9 +11,9 @@ export default function DataStory({
         <div
           className="max-w-sm rounded-2xl overflow-hidden bg-white p-5"
           style={{
-            border: "2px solid #f15a25",
+            border: "2px solid #9B7FC8",
             cursor: "pointer",
-            boxShadow: "8px 8px #311c3b",
+            boxShadow: "8px 8px #9B7FC8",
             transition: "transform .2s ease, box-shadow .2s ease",
           }}
         >
