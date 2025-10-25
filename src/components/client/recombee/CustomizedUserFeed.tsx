@@ -47,7 +47,7 @@ export default function CustomizedUserFeed({
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <DefaultFeed articles={defaultFeed} />;
   }
 
   if (articles.length === 0) {
