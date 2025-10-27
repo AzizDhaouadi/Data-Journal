@@ -198,6 +198,9 @@ const {
       import { autocapturePlugin } from "@amplitude/plugin-autocapture-browser";
       import { sessionReplayPlugin } from "@amplitude/plugin-session-replay-browser";
       function loadAmplitudeClientSide() {
+        // Create and Install Autocapture Plugin
+        const autocaptureTracking = autocapturePlugin();
+        amplitude.add(autocaptureTracking);
         // Create and Install Session Replay Plugin
         const sessionReplayTracking = sessionReplayPlugin();
         amplitude.add(sessionReplayTracking);
