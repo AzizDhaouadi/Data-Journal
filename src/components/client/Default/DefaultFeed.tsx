@@ -15,7 +15,6 @@ export default function DefaultFeed({ articles }: ArticlesFeedProps) {
           <a
             key={index}
             href={article.article_pathname}
-            target="_blank"
             rel="noopener noreferrer"
             className="block w-80 group"
           >

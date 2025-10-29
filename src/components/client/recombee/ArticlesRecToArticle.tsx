@@ -82,7 +82,6 @@ export default function ArticlesRecToArticle({
             <div className="p-5">
               <a
                 href={article.values.path}
-                target="_blank"
                 className="group-hover:text-blue-600 transition-colors"
                 onClick={() =>
                   handleArticleRecommendationClicks(

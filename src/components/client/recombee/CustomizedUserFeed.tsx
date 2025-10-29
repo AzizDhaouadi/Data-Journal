@@ -80,7 +80,6 @@ export default function CustomizedUserFeed({
             <a
               key={article.id}
               href={article.values.path}
-              target="_blank"
               rel="noopener noreferrer"
               className="block w-80 group"
               onClick={() =>
