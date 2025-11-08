@@ -1,5 +1,7 @@
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch";
+import { useState } from "react";
+import { set } from "astro:schema";
 
 const projectID = import.meta.env.PUBLIC_ALGOLIA_PROJECT_ID;
 const key = import.meta.env.PUBLIC_ALGOLIA_API_KEY;
@@ -26,8 +28,18 @@ function Hit({ hit }: any) {
 }
 
 export default function SearchComponent() {
+  const [userQuery, setUserQuery] = useState("");
+
   return (
-    <InstantSearch searchClient={searchClient} indexName="articlesIndex">
+    <InstantSearch
+      searchClient={searchClient}
+      indexName="articlesIndex"
+      initialUiState={{
+        articlesIndex: {
+          query: "",
+        },
+      }}
+    >
       <div className="relative flex flex-col gap-5 my-5">
         <SearchBox
           classNames={{
@@ -44,10 +56,18 @@ export default function SearchComponent() {
         className="text-2xl text-left font-bold my-2 leading-relaxed"
         style={{ color: "#311c3b" }}
       >
-        Results
+        {userQuery ? `Search Results` : ""}
       </h2>
       <Hits
         hitComponent={Hit}
+        transformItems={(items, { results }) => {
+          if (results?.query === "") {
+            setUserQuery("");
+            return [];
+          }
+          setUserQuery(results?.query || "");
+          return items;
+        }}
         classNames={{
           root: "flex flex-col mb-10", // Makes <ol> behave like a grid
           list: "flex flex-col gap-9 mb-10", // Adjusts <li> behavior
