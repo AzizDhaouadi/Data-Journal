@@ -1,0 +1,211 @@
+---
+author: Aziz Dhaouadi
+categories: ["Google Analytics 4", "Coveo"]
+date: 11/13/2025
+featured: true
+title: "How to track Coveo's generative answering with Google Analytics 4"
+---
+
+import NoteBanner from '../../components/NoteBanner.astro';
+import BlogCTASection from '../../components/BlogCTASection.astro';
+
+Search has always been an interesting topic in performance analytics. With the rise of AI and generative models, search experience, especially in digital commerce, has taken a new turn. Coveo, a leader in search and relevance solutions, has introduced generative answering, a feature that leverages AI to provide more accurate and contextually relevant answers to user queries.
+As an essential point of product discovery, many businesses are keen on ensuring that their customers have the best experience finding the products that fit their needs the best. But commerce is not the only interesting application to this feature. 
+Documentation portals, knowledge bases, internal help desks, and many other use cases can benefit from this new way of interacting with information; this intelligent search that talks back or so to speak. 
+
+Coveo, an enterprise solution in this space, has this feature that can turn search into a chat experience making users feel more engaged and satisfied with the results they get. But here's the question: How can businesses track the effectiveness of this generative answering feature?
+Investing in such technology is not on the cheaper end of this spectrum, and ROI will always be a topic of concern. As such, in today's tutorial, we will dive into how you can track Coveo's generative answering feature using Google Analytics 4 (GA4).
+
+### Why Coveo
+Before we dive deep into the tracking weeds, let's briefly discuss why we are using Coveo. For one, Coveo is a leader in the search and relevance space, and this particular feature is one of the most advanced implementations of generative AI in search. 
+Coveo's generative answering uses large language models to understand user queries better and provide more accurate answers, making it a powerful tool for enhancing user experience. This makes it an excellent candidate for our tracking tutorial.
+If you have any questions regarding other solutions such as Algolia or others, feel free to reach out to us directly!
+
+## Prerequisites
+Know that we know why Coveo is our tracking candidate, let's get coding. For this tutorial, you will need the following prerequisites:
+1. A Google Analytics 4 account
+2. Google Tag Manager or gtag deployed on your website
+3. A working knowledge of the DOM and Shadow DOM concepts
+
+The last part is quite important as the whole tracking infrastructure will rely on our ability to access the Shadow DOM elements where Coveo injects its generative answering component. If you are not familiar with said concepts, you can read more about them here:
+1. DOM: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+2. Shadow DOM: https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM
+3. Shadow ROOT: https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot
+
+Once you are comfortable with these concepts, you can proceed with this article. If you choose to continue reading (without consulting these resources), please do not copy-paste code. Instead share it with your development team. If you are familiar with these concepts
+then please, have fun! 
+
+## Coveo's Components
+The first part in this tutorial is to identify the element that will contain the generated answer from Coveo. We are going to refer to this as the host. This should have a unique CSS selector that developers have set so that the element can be easily identified.
+In our case, this CSS selector is `.resource-search-result-results rs-generated-answer`. This host contains the element that we need to track generative answering. To do that we first need to check if the shadow root in which the element lives is accessible.
+If it is accessible, we can proceed with attaching an observer. This observer will listen to changes that is new elements or classes being added to the shadow root. This is important because the generative answer is not present in the DOM when the page loads. It is only added when a user interacts with the search component and requests an answer.
+Here is the code snippet that demonstrates how to access the shadow root and set up a MutationObserver to listen for changes:
+
+```javascript
+// Find your host element (must already be in the DOM)
+const host = document.querySelector(
+  '.resource-search-result-results rs-generated-answer',
+);
+if (!host || !host.shadowRoot) {
+  console.warn('rs-generated-answer or its shadowRoot not found');
+} else {
+  // (Here we observe the <atomic-generated-answer> if present
+  const rootToObserve = host.shadowRoot.querySelector(
+    'atomic-generated-answer',
+  ).shadowRoot;
+
+  // Create your observer
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList' && mutation.addedNodes.length) {
+        mutation.addedNodes.forEach((node) => {
+          trackViewList(node); // Do not worry about this function, we will explain it later. This is where the tracking happens.
+        });
+      }
+    });
+  });
+
+  // Start observing
+  observer.observe(rootToObserve, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+  });
+}
+```
+In this code snippet, we first select the host element using its CSS selector. We then check if the host and its shadow root are present. If they are, we proceed to select the shadow root of the `atomic-generated-answer` component.
+
+<NoteBanner noteMessage='Please make sure to use the correct CSS selectors. This is just an example. Copy-pasting the CSS selectors will lead to errors.' />
+
+### The tracking function - trackViewList()
+
+As mentioned above, this is where the tracking happens. Essentially, this function expects a node to be passed as an argument and checks if the node contains the required elements we are looking for to log the event
+to the dataLayer. If the elements are present, the event gets logged into the dataLayer with the appropriate parameters. If the elements do not exist, well nothing happens - at least in our version. You can customize
+this behaviour as you see fit maybe to log errors or send alerts to your monitoring systems or log the error in Google Analytics 4. Here is the code snippet for the `trackViewList` function:
+
+```javascript
+function trackViewList(el) {
+  const noMessageGeneratedAnswer = el.querySelector('div aside article div[part="generated-content"] slot[name="no-answer-message"]');
+  const generatedAnswerContainer = el.querySelector(
+    'div aside article div[part="generated-content"]',
+  );
+  if (generatedAnswerContainer) {
+    const searchQuery = document.location.hash;
+    // Strip the leading “#” and parse
+    const params = new URLSearchParams(searchQuery.substring(1));
+    // Get and decode the “q” value
+    const search_term = params.get('q');
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'view_search_results',
+      is_crga: 'true',
+      search_term: search_term,
+      found_reply: noMessageGeneratedAnswer ? 'false' : 'true'
+    });
+  }
+}
+```
+In this function, as you may have noticed, we are targeting two specific items. The first one is the `noMessageGeneratedAnswer` which is an element that Coveo injects when no answer is found for the user query.
+The second one is the `generatedAnswerContainer` which is the main container for the generated answer. When the main container is present, we proceed to extract the search term from the URL hash. This is done
+by parsing the URL string and grabbing the value of the `q` parameter. Finally, we push an event to the dataLayer with the following parameters:
+* event: view_search_results
+* is_crga: true (indicating that this is a Coveo generative answering event) - For regular search, we recommend that you set this to false.
+* search_term: the actual search term extracted from the URL
+* found_reply: true/false depending on whether an answer was found or not. This is determined by the presence of the `noMessageGeneratedAnswer` element; hence why we captured it earlier.
+
+With this set up, you can track the performance of generative answering and ensure that your AI solution is driving the impact you are looking for in your business.
+
+<BlogCTASection category='Google Analytics 4' 
+title='Elevate your Search Experience Analytics' 
+description="Unlock the full potential of your data with Datakyu's expert analytics solutions. From setup to insights, we help you make data-driven decisions that drive growth" 
+ctaText='Talk to an Expert'
+referrer="How to track Coveo's generative answering with Google Analytics 4"
+/>
+
+This is a dataLayer log showing a successful tracking of a generative answer event:
+
+```
+{
+    "event": "view_search_results",
+    "is_crga": "true",
+    "search_term": "What is crga",
+    "found_reply": "true",
+}
+```
+
+### What is next?
+This is where we can get creative with data and reporting attribution. First, let's recap what kind of reporting we can do with the data we are collecting:
+* generative answering Usage: Track how often users are interacting with the generative answering feature.
+* Queries Generating the Most Answers: Identify which search queries are leading to the most generative answers.
+* Content Gap: Analyze queries that do not return answers to identify potential content issues.
+* generative answering vs Regular Search: Compare the performance of generative answering against regular search results.
+
+To take this further we can focus on attribution-based metrics such as conversion rate to create a bridge between search experience and business outcomes. Here are some ideas:
+* Visits with CRGA Conversion Rate: When a search query generates a generative answer, save the search id in Session Storage and pass it as an additional parameter to both the `view_search_results` event and the `purchase` event. 
+This way, you can create a segment in GA4 to analyze conversion rates for visits that had generative answers versus those that did not.
+* Time to Conversion: Measure the time it takes for users to convert after interacting with generative answers compared to regular search results. This will require passing a timestamp parameter with both events.
+* Assisted Conversions: Analyze how generative answers assist in conversions by looking at the number of touchpoints involving generative answers before a conversion event.
+
+By implementing these tracking strategies, you can take your search experience analytics further than surface level metrics and start understanding its impact on your north start metrics.
+
+To wrap up, here is the full code snippet for easy copy-pasting(sidenote: please make sure to adjust the CSS selectors to your implementation):
+
+```javascript
+// Find your host element (must already be in the DOM)
+const host = document.querySelector(
+  '.resource-search-result-results rs-generated-answer',
+);
+if (!host || !host.shadowRoot) {
+  console.warn('rs-generated-answer or its shadowRoot not found');
+} else {
+  const rootToObserve = host.shadowRoot.querySelector(
+    'atomic-generated-answer',
+  ).shadowRoot;
+
+  // Create your observer
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      console.log('Mutation:', mutation);
+      if (mutation.type === 'childList' && mutation.addedNodes.length) {
+        mutation.addedNodes.forEach((node) => {
+          console.log('Added node:', node);
+          trackViewList(node);
+        });
+      }
+    });
+  });
+
+  // Start observing
+  observer.observe(rootToObserve, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['style', 'class'],
+  });
+
+  console.log('MutationObserver attached to', rootToObserve);
+}
+
+function trackViewList(el) {
+  const noMessageGeneratedAnswer = el.querySelector('div aside article div[part="generated-content"] slot[name="no-answer-message"]');
+  const generatedAnswerContainer = el.querySelector(
+    'div aside article div[part="generated-content"]',
+  );
+  if (generatedAnswerContainer) {
+    const searchQuery = document.location.hash;
+    // Strip the leading “#” and parse
+    const params = new URLSearchParams(searchQuery.substring(1));
+    // Get and decode the “q” value
+    const search_term = params.get('q');
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'view_search_results',
+      is_crga: 'true',
+      search_term: search_term,
+      found_reply: noMessageGeneratedAnswer ? 'false' : 'true'
+    });
+  }
+}
+```

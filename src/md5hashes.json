@@ -141,6 +141,10 @@
       {
         "path": "/build-ga4-dashboard-looker-studio-bigquery/",
         "itemID": "43a91a5f628535ec9ae060f042da2067"
+      },
+      {
+        "path": "/track-coveo-generative-answering-with-google-analytics-4/",
+        "itemID": "83bb83e47bf5453b661289658ac73176"
       }
     ]
   }
