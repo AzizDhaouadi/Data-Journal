@@ -178,5 +178,10 @@
         "article_title": "How to Connect to GA4's MCP Server: Step-by-Step Guide",
         "publication_date": "10/19/2025",
         "path": "/how-to-connect-ga4-mcp-server/"
+    },
+    {
+        "article_title": "How to track Coveo's generative answering with Google Analytics 4",
+        "publication_date": "11/13/2025",
+        "path": "/track-coveo-generative-answering-with-google-analytics-4/"
     }
 ]
