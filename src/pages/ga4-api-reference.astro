@@ -12,7 +12,7 @@ import ListWithElements from "../components/ListWithElements.astro";
 >
     <Main>
         <H1 text="Google Analytics 4 Measurement Protocol Parameters"></H1>
-        <section class="flex flex-row flex-wrap justify-evenly gap-5 my-6">
+        <section class="flex flex-col sm:flex-row flex-wrap justify-evenly gap-5 my-6">
             <ListWithElements title="Request Parameters" data_component="request_parameters"></ListWithElements>
             <ListWithElements title="Event Parameters" data_component="event_parameters"></ListWithElements>
             <ListWithElements title="Shared Parameters" data_component="shared"></ListWithElements>
@@ -21,6 +21,7 @@ import ListWithElements from "../components/ListWithElements.astro";
             <ListWithElements title="User & Session Parameters" data_component="session_user_data"></ListWithElements>
             <ListWithElements title="Item Parameters" data_component="item_parameters"></ListWithElements>
             <ListWithElements title="Client Parameters" data_component="client_parameters"></ListWithElements>
+        </section>
     </Main>
     <Footer></Footer>
 </Layout>
