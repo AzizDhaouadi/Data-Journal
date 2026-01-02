@@ -1,7 +1,6 @@
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 import { InstantSearch, SearchBox, Hits } from "react-instantsearch";
 import { useState } from "react";
-import { set } from "astro:schema";
 
 const projectID = import.meta.env.PUBLIC_ALGOLIA_PROJECT_ID;
 const key = import.meta.env.PUBLIC_ALGOLIA_API_KEY;
