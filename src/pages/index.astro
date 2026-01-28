@@ -3,20 +3,23 @@ import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-import PostList from "../components/PostList.astro";
+import CustomizedFeed from "../components/client/wrappers/CustomizedFeed.tsx";
 import Footer from "../components/Footer.astro";
 const posts = await getCollection("posts");
-const featuredPosts: any[] = [];
-posts.map((post:any) => {
-  if (post.data.featured) {
-    featuredPosts.push(post);
-  }
+
+const sortedPosts: any[] = [...posts];
+
+sortedPosts.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
-const clonePosts: any[] = [...posts];
-clonePosts.sort((a, b) => {
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
-});
-const recentPosts = clonePosts.slice(0, 4);
+
+const recentPosts = sortedPosts.map((post) => {
+  return {
+      article_title: post.data.title,
+    article_pathname: `/${post.slug}/`,
+  };
+}
+).slice(0, 12);
 ---
 
 <Layout
@@ -67,54 +70,63 @@ const recentPosts = clonePosts.slice(0, 4);
       </ul>
     </section>
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <section class="flex flex-row flex-wrap w-100 gap-4 my-5">
-      <h2 class="text-4xl font-bold dark:text-white" style={{color: "#9B7FC8"}}>Recent</h2>
-      <PostList posts={recentPosts} />
-    </section>
-    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-    <section class="flex flex-row flex-wrap w-100 gap-4 my-10">
-      <h2 class="text-4xl font-bold dark:text-white font-ibmPlex" style={{color: "#9B7FC8"}}>Featured</h2>
-      <PostList posts={featuredPosts.slice(0,10)} />
-    </section>
-    <div class="flex flex-row justify-center flex-wrap w-100 gap-4">
-      <a
-        href="/posts/"
-        class="inline-block underline decoration-dashed underline-offset-4 text-2xl dark:text-white hover:text-teal-800"
-      >
-        Discover all posts
-      </a>
-    </div>
+    <CustomizedFeed defaultFeed={recentPosts} client:only />
     <section class="my-20">
-      <h3 class="text-3xl font-bold dark:text-white mb-10">
+      <h3 id="subscribe" class="text-3xl font-bold dark:text-white mb-10">
         Subscribe to Data Journal
       </h3>
-    </section>
-    <script
-      charset="utf-8"
-      type="text/javascript"
-      src="//js.hsforms.net/forms/embed/v2.js"></script>
-    <script type="text/javascript">
-      hbspt.forms.create({
-        region: "na1",
-        portalId: "44171646",
-        formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff",
-      });
+      <div id="hubspot-form-target">
+        <script>
+          //@ts-check
+          document.addEventListener("DOMContentLoaded", () => {
+            const hbsptScript = document.createElement("script");
+            hbsptScript.src = "//js.hsforms.net/forms/embed/v2.js";
+            document.body.appendChild(hbsptScript);
+          });
+          console.log("HubSpot form script added to the document.");
+        </script>
+        <script>
+          //@ts-nocheck
+          function loadHubSpotForm() {
+            if (window.hbspt) {
+              // Clear any existing form to avoid duplicates
+              const container = document.querySelector(".hs-form-frame");
+              if (container) {
+                container.innerHTML = "";
+              }
 
-      window.addEventListener("message", function (event) {
-        if (
-          event.data.type === "hsFormCallback" &&
-          event.data.eventName === "onFormSubmitted"
-        ) {
-          const ue = event?.data?.data?.submissionValues?.email;
-          window.analytics.identify(ue, {
-            email: ue,
+              window.hbspt.forms.create({
+                region: "na1",
+                portalId: "44171646",
+                formId: "60b3351a-c880-4939-8971-cd8aef7ac7ff",
+                target: "#hubspot-form-target",
+              });
+            }
+          }
+
+          // Load on initial page load
+          document.addEventListener("DOMContentLoaded", loadHubSpotForm);
+          // Listen for Astro's view transition events (if using View Transitions)
+          document.addEventListener("astro:after-swap", loadHubSpotForm);
+          document.addEventListener("astro:page-load", loadHubSpotForm);
+
+          window.addEventListener("message", function (event) {
+            if (
+              event.data.type === "hsFormCallback" &&
+              event.data.eventName === "onFormSubmitted"
+            ) {
+              const ue = event?.data?.data?.submissionValues?.email;
+              window.analytics.identify(ue, {
+                email: ue,
+              });
+              window.analytics.track("Subscribed Newsletter", {
+                form_id: event.data.id,
+              });
+            }
           });
-          window.analytics.track("Subscribed Newsletter", {
-            form_id: event.data.id,
-          });
-        }
-      });
-    </script>
+        </script>
+      </div>
+    </section>
   </Main>
   <Footer />
 </Layout>
@@ -158,7 +170,6 @@ const recentPosts = clonePosts.slice(0, 4);
         this["mainEntityOfPage"] = articleMetaData.slug;
         this["headline"] = articleMetaData.data.title;
         this["name"] = articleMetaData.data.title;
-        this["image"] = [articleMetaData.data.image.src];
         this["datePublished"] = new Date(
           articleMetaData.data.date,
         ).toISOString();

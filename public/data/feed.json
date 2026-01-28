@@ -1,0 +1,229 @@
+{
+  "language": "EN",
+  "catalog": {
+    "items": [
+      {
+        "article_title": "Advanced Google Analytics 4 Dashboard Development in Looker Studio Using BigQuery",
+        "publication_date": "2025-02-19",
+        "path": "/build-ga4-dashboard-looker-studio-bigquery/",
+        "itemId": "/build-ga4-dashboard-looker-studio-bigquery/"
+      },
+      {
+        "article_title": "How to Configure Data Redaction in Google Analytics 4",
+        "publication_date": "2024-10-03",
+        "path": "/google-analytics-4-data-redaction-guide/",
+        "itemId": "/google-analytics-4-data-redaction-guide/"
+      },
+      {
+        "article_title": "Implementing Google Consent Mode V2 with CookieYes",
+        "publication_date": "2024-03-07",
+        "path": "/implementing-google-consent-mode-v2-using-cookieyes-integration/",
+        "itemId": "/implementing-google-consent-mode-v2-using-cookieyes-integration/"
+      },
+      {
+        "article_title": "Data Visualization with Open Source Web Analytics",
+        "publication_date": "2024-02-24",
+        "path": "/data-visualization-with-swetrix-plotly/",
+        "itemId": "/data-visualization-with-swetrix-plotly/"
+      },
+      {
+        "article_title": "Set up Enhanced Conversions for Google Ads with Google Tag Manager",
+        "publication_date": "2024-09-15",
+        "path": "/implement-google-ads-enhanced-conversions-with-google-tag-manager/",
+        "itemId": "/implement-google-ads-enhanced-conversions-with-google-tag-manager/"
+      },
+      {
+        "article_title": "Implementing Google Consent Mode using CookieYes",
+        "publication_date": "2024-08-17",
+        "path": "/implementing-google-consent-mode-using-cookieyes-integration/",
+        "itemId": "/implementing-google-consent-mode-using-cookieyes-integration/"
+      },
+      {
+        "article_title": "Tracking Hubspot Form Submissions with Hubspot's Global Events and Google Tag Manager",
+        "publication_date": "2024-04-30",
+        "path": "/hubspot-form-submission-tracking-guide/",
+        "itemId": "/hubspot-form-submission-tracking-guide/"
+      },
+      {
+        "article_title": "How to Implement User ID Tracking in Google Analytics 4 with HubSpot Forms and Google Tag Manager",
+        "publication_date": "2024-06-02",
+        "path": "/implement-user-id-tracking-google-analytics-4-hubspot-forms-gtm/",
+        "itemId": "/implement-user-id-tracking-google-analytics-4-hubspot-forms-gtm/"
+      },
+      {
+        "article_title": "Unlocking Insights with GA4 Measurement Protocol",
+        "publication_date": "2024-02-03",
+        "path": "/advanced-ga4-measurement-protocol-implementation/",
+        "itemId": "/advanced-ga4-measurement-protocol-implementation/"
+      },
+      {
+        "article_title": "Implementing Google Consent Mode with Google Tag Manager and OneTrust",
+        "publication_date": "2024-04-02",
+        "path": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/",
+        "itemId": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/"
+      },
+      {
+        "article_title": "Integrate 6sense and Google Analytics 4",
+        "publication_date": "2024-07-06",
+        "path": "/integrate-6sense-google-analytics-4-guide/",
+        "itemId": "/integrate-6sense-google-analytics-4-guide/"
+      },
+      {
+        "article_title": "Linking Google Analytics 4 with BigQuery for data export",
+        "publication_date": "2024-12-24",
+        "path": "/integrate-bigquery-with-google-analytics-4/",
+        "itemId": "/integrate-bigquery-with-google-analytics-4/"
+      },
+      {
+        "article_title": "Connecting Measurement Protocol Events to Client-Side Data",
+        "publication_date": "2024-04-22",
+        "path": "/integrating-measurement-protocol-client-data-ga4/",
+        "itemId": "/integrating-measurement-protocol-client-data-ga4/"
+      },
+      {
+        "article_title": "Swetrix - Google Analytics Replacement?",
+        "publication_date": "2024-02-06",
+        "path": "/swetrix/",
+        "itemId": "/swetrix/"
+      },
+      {
+        "article_title": "The Ultimate Google Analytics 4 Migration Guide",
+        "publication_date": "2023-05-22",
+        "path": "/the-ultimate-google-analytics-4-migration-guide/",
+        "itemId": "/the-ultimate-google-analytics-4-migration-guide/"
+      },
+      {
+        "article_title": "Implement User ID in Google Analytics 4 Property",
+        "publication_date": "2024-12-15",
+        "path": "/google-analytics-4-implement-user-id-2024/",
+        "itemId": "/google-analytics-4-implement-user-id-2024/"
+      },
+      {
+        "article_title": "Implementing Google Consent Mode using gtag.js and CookieYes",
+        "publication_date": "2024-04-04",
+        "path": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/",
+        "itemId": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/"
+      },
+      {
+        "article_title": "Implementing Google Analytics 4 with Segment (Client Side)",
+        "publication_date": "2025-03-02",
+        "path": "/implement-ga4-using-segment/",
+        "itemId": "/implement-ga4-using-segment/"
+      },
+      {
+        "article_title": "Tracking Calendly Meeting Requests with Google Tag Manager",
+        "publication_date": "2024-05-14",
+        "path": "/track-calendly-events-google-tag-manager-ga4-guide/",
+        "itemId": "/track-calendly-events-google-tag-manager-ga4-guide/"
+      },
+      {
+        "article_title": "Track E-commerce Events on Shopify",
+        "publication_date": "2023-02-11",
+        "path": "/track-e-commerce-events-outside-shopifys-ga4-integration/",
+        "itemId": "/track-e-commerce-events-outside-shopifys-ga4-integration/"
+      },
+      {
+        "article_title": "Track E-commerce Events with Shopify's GA4 Integration",
+        "publication_date": "2023-07-26",
+        "path": "/track-e-commerce-events-with-shopify-ga4-integration/",
+        "itemId": "/track-e-commerce-events-with-shopify-ga4-integration/"
+      },
+      {
+        "article_title": "Integrate Microsoft Clarity with Google Analytics 4",
+        "publication_date": "2024-09-08",
+        "path": "/integrate-microsoft-clarity-google-analytics-4/",
+        "itemId": "/integrate-clairty-with-google-analytics-4/"
+      },
+      {
+        "article_title": "Track Gravity Forms with Google Tag Manager",
+        "publication_date": "2024-07-30",
+        "path": "/track-gravity-forms-with-google-tag-manager/",
+        "itemId": "/track-gravity-forms-with-google-tag-manager/"
+      },
+      {
+        "article_title": "Track Typeform Forms with Google Tag Manager & Google Analytics 4",
+        "publication_date": "2023-03-29",
+        "path": "/track-typeforms-using-gtm-and-ga4/",
+        "itemId": "/track-typeforms-using-gtm-and-ga4/"
+      },
+      {
+        "article_title": "Tracking E-commerce with Google Tag Manager",
+        "publication_date": "2023-02-05",
+        "path": "/tracking-e-commerce-with-google-tag-manager/",
+        "itemId": "/tracking-e-commerce-with-google-tag-manager/"
+      },
+      {
+        "article_title": "Tracking E-commerce with gtag.js",
+        "publication_date": "2023-02-06",
+        "path": "/tracking-e-commerce-with-gtag-js/",
+        "itemId": "/tracking-e-commerce-with-gtag-js/"
+      },
+      {
+        "article_title": "Tracking Hubspot Meeting Bookings with Google Tag Manager",
+        "publication_date": "2024-05-06",
+        "path": "/tracking-hubspot-meeting-bookings-with-google-tag-manager/",
+        "itemId": "/tracking-hubspot-meeting-bookings-with-google-tag-manager/"
+      },
+      {
+        "article_title": "Tracking Looker Studio Dashboards",
+        "publication_date": "2024-02-29",
+        "path": "/tracking-looker-studio-dashboards/",
+        "itemId": "/tracking-looker-studio-dashboards/"
+      },
+      {
+        "article_title": "Tracking Thinkific Events",
+        "publication_date": "2023-02-13",
+        "path": "/tracking-thinkific-events/",
+        "itemId": "/tracking-thinkific-events/"
+      },
+      {
+        "article_title": "Tracking Unbounce Form Submissions with Google Tag Manager",
+        "publication_date": "2024-03-03",
+        "path": "/tracking-unbounce-form-submissions-with-google-tag-manager/",
+        "itemId": "/tracking-unbounce-form-submissions-with-google-tag-manager/"
+      },
+      {
+        "article_title": "How to flatten Google Analytics 4 Data Schema in BigQuery",
+        "publication_date": "2025-07-26",
+        "path": "/flatten-ga4-bigquery-export-schema/",
+        "itemId": "/flatten-ga4-bigquery-export-schema/"
+      },
+      {
+        "article_title": "Vemetric Web Analytics Tool Review - Better Than Google Analytics 4?",
+        "publication_date": "2025-09-28",
+        "path": "/vemetric-review/",
+        "itemId": "/vemetric-review/"
+      },
+      {
+        "article_title": "Advanced Google Tag Manager Setup — Rename the dataLayer",
+        "publication_date": "2025-10-03",
+        "path": "/rename-google-tag-manager-datalayer/",
+        "itemId": "/rename-google-tag-manager-datalayer/"
+      },
+      {
+        "article_title": "How to Implement Axeptio with Google Tag Manager",
+        "publication_date": "2025-10-12",
+        "path": "/axeptio-google-tag-manager-integration/",
+        "itemId": "/axeptio-google-tag-manager-integration/"
+      },
+      {
+        "article_title": "Server-Side Google Tag Manager : Complete Guide to Meta Conversion Tracking",
+        "publication_date": "2025-10-16",
+        "path": "/server-side-gtm-meta-conversion-tracking/",
+        "itemId": "/server-side-gtm-meta-conversion-tracking/"
+      },
+      {
+        "article_title": "How to Connect to GA4's MCP Server: Step-by-Step Guide",
+        "publication_date": "2025-10-19",
+        "path": "/how-to-connect-ga4-mcp-server/",
+        "itemId": "/how-to-connect-ga4-mcp-server/"
+      },
+      {
+        "article_title": "How to track Coveo's generative answering with Google Analytics 4",
+        "publication_date": "11/13/2025",
+        "path": "/track-coveo-generative-answering-with-google-analytics-4/",
+        "itemId": "/track-coveo-generative-answering-with-google-analytics-4/"
+      }
+    ]
+  }
+}

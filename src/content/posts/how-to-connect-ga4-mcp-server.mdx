@@ -1,0 +1,344 @@
+---
+author: Aziz Dhaouadi
+categories: ["Google Analytics 4", "MCP"]
+date: 10/19/2025
+featured: true
+title: "How to Connect to GA4's MCP Server: Step-by-Step Guide"
+---
+
+import NoteBanner from '../../components/NoteBanner.astro';
+import BlogCTASection from '../../components/BlogCTASection.astro';
+
+Large Language Models have been taking the world of marketing by storm. From faster execution times to copy optimizations to ad creation, everything has changed for the better. Smaller teams are now able to compete better and faster. The competition for attention has never been more fierce.
+While this is all good and great, there were still some challenges that the AI platforms did not solve. Tasks such as data analysis, and recommendations based on past behavior remained a challenge. The workaround was downloading CSVs containing the data to be analyzed, adding context and then letting LLMs do
+what they do best - generate insights, and hope that no hallucinations ruin everyone's day. Granted, the workaround gave a solution, but it is not scalable and a bit tedious. These are not any marketer's favorite words to hear. Luckily, Anthropic came to the rescue with the introduction of a new protocol
+known as the Modal Context Protocol (MCP). In this article, it's our main topic, particularly how you can run, locally, the Google Analytics 4 MCP with Gemini and get an AI agent to read and interpret your data as an analyst or SEO specialist would.
+
+A word to the wise, before we begin, this tutorial will include some advanced topics and a certain knowledge of shell and terminal commands is preferred.
+Now that is out of the way, if you did not bounce off this page, let's get you set up and AI optimized.
+
+## What is an MCP?
+
+An MCP as highlighted above is a Model Context Protocol. It is a server that normalizes how Large Language Models, hence the Model, can interact with applications. This methodology has been set by Anthropic and backed by OpenAI. The essence of this protocol is to allow clients such as the Gemini CLI or
+Anthropic Desktop app to communicate with tools extending the functionality of AI agents. In this tutorial, we are not going to create an MCP server that clients can interact with; rather, connect our local client to the Google Analytics 4 official MCP server. You can read more about it [here](https://github.com/googleanalytics/google-analytics-mcp).
+
+### Why do we need an MCP?
+
+Well, the best way to explain this is by doing a small experiment yourself. Open your favorite LLM, in our case that's Claude, and ask it the following question `Using my Google Analytics 4 data, can you let me know which days had the most new users from Canada?`. Here's the answer we've got:
+
+```txt
+I'd be happy to help you analyze your Google Analytics 4 data to find which days had the most new users from Canada! However, I don't have access to your GA4 data yet.
+To analyze this, you would need to:
+
+Export the data from GA4 - You can do this by:
+
+Going to your GA4 property
+Navigate to Reports → Engagement or Acquisition
+Use the "Export" button to download as CSV, or
+Use the GA4 Data API to extract the data programmatically
+
+
+Share the data with me - You can upload a CSV or Excel file containing:
+
+Date
+Country (with Canada included)
+New Users count
+
+
+
+Once you upload your GA4 data file, I can analyze it to identify the days with the highest number of new users from Canada and create visualizations to help you understand the trends.
+Would you like to upload your GA4 export file, or would you like guidance on how to export the specific data you need?
+```
+
+You can ask any LLM of your choosing and the answer is very unlikely to change. The reason for that is you are asking the LLM to interact with an external system (GA4) and LLMs are not designed to do that; at least not yet. This is where MCPs come into play. By connecting an LLM to an MCP server, you are allowing it to interact with 
+external systems and tools in a structured way. The MCP server acts as a bridge between the LLM and the external system, allowing the LLM to send requests and receive responses in a format it can understand. By default, most LLMs work within their own context and knowledge base, which is limited and does not have any access or context about your
+specific data or systems.
+
+## Prerequisites
+Before we start, here are the prerequisites you need to have in place in order to follow this tutorial:
+1. A Google Analytics 4 Property actively collecting data or at least has data
+2. A Google Cloud Project
+
+Also, this tutorial will show the terminal commands for macOS and Linux. If you are using Windows, you can use WSL or adapt the commands accordingly
+
+### Verify Python
+You can check which Python version is running on your machine by typing `python3 --version` on your terminal. If you do not have the right version of Python installed, you can download it from [here](https://www.python.org/downloads/). The project expects Python 3.10 or higher.
+In the pyproject.toml file, line 7, you can see `requires-python = ">=3.10"`. Once you are done installing your chosen version, run the command `python3 --version` again to verify the installation and that you are running the correct version.
+
+### Verify & Install pipx
+This is where the fun begins. If you are not familiar with pipx, it is a way for us to run Python applications without having to pull them down and install them locally. It does all of that for us. We are going to use pipx to run the MCP server allowing our client to interact with Google Analytics 4. So, how do we know if pipx is installed?
+On your terminal window, simply type `pipx --version`. If you get a version number back, you are good to go. If not, you can check the installation steps from [here](https://pipx.pypa.io/stable/#install-pipx). We will highlight them here for macOS users.
+
+#### Installing pipx
+
+On a new terminal window, run the following commands:
+```bash
+brew install pipx
+pipx ensurepath
+sudo pipx ensurepath --global # optional to allow pipx actions with --global argument
+```
+To update, pipx, you can run the following command:
+```bash
+brew update && brew upgrade pipx
+```
+<NoteBanner noteMessage="Please note that the last command is optional and you don't need to run it. It will have no effect on the rest of this tutorial." />
+
+#### Verifying pipx installation
+To verify that pipx is installed we will run a small program to make sure everything is set up correctly. As a precaution, close your current terminal window and open a new one to make sure that all the paths are set up correctly. On the new terminal window, run the following command:
+```bash
+pipx run cowsay -t "pipx is installed correctly!"
+```
+If everything was set up correctly, you should see something like this:
+```txt
+  _________________________________________________
+ /                                                 \
+| pipx is installed correctly! Aren't Datakyu's     |
+| tutorials the best?                               |
+ \                                                 /
+  =================================================
+                                                 \
+                                                  \
+                                                    ^__^
+                                                    (oo)\_______
+                                                    (__)\       )\/\
+                                                        ||----w |
+                                                        ||     ||
+
+```
+If you saw this, you are good to go. If not, please revisit the installation steps and make sure to read the error messages carefully.
+
+### Enabling the Google Analytics Data API & Admin API
+In this step, we will enable the Google Analytics Data API and the Google Analytics Admin API to allow Gemini to interact with the GA4 property (or properties) you have access to. To do that, we need to head to the 
+Google Cloud Console. You can access it [here](https://console.cloud.google.com/).
+
+Once you are in the console's homepage, it is time to create a new project. Click on your current project name, located on the top left of the screen, next to the Google Cloud logo. A new window will pop up.
+ Click on the `New Project` button located on the top right of the window. Name your project, we named it `Google Analytics 4 MCP`. Save your project and when it is ready to go, expand the menu on the top left of the screen and navigate to
+`APIs & Services` > `Library`. In the search bar, type `Google Analytics`. In the search results, you should see **Google Analytics Admin API** and **Google Analytics Data API**.
+
+Choose one and once the window loads, click on Enable. For instance, if you selected Google Analytics Admin API, once its respective page loads, click on the `Enable` button. Repeat the same steps for the Google Analytics Data API.
+
+### Google OAuth client
+In this step, we are going to create a Google OAuth client that will allow Gemini to authenticate and interact with your Google Analytics 4 properties. We are still going to work within the Google Cloud Console.
+From the menu on the top left of the screen, navigate to `APIs & Services` > `Credentials`. Once the Credentials page loads, click on the `Create Credentials` button located on the top center of the screen and select `OAuth client ID`.
+Next, you will be prompted to choose the type of application you want to create. Since we are going to run the application locally, choose `Desktop app`. Name your OAuth client, we named ours `GA4 MCP Client` and click on `Create`.
+Once you do that, a new window will pop up with your Client ID and Client Secret. At the bottom of the window, click on `Download JSON` to download your credentials file. Save it somewhere safe since we will need it in the next step. You can also rename
+it for ease of access and identification. We renamed ours to `ga4-mcp-credentials.json`.
+
+Once this is done, we are going to use the Google Cloud CLI (gcloud) to set up the default credentials for our application which the MCP server is going to use to communicate with the Data and Admin API.
+
+<BlogCTASection 
+category="Google Analytics 4" 
+title="Elevate your analytics with Datakyu's expertise" 
+description="Unlock the full potential of your data with Datakyu's expert analytics solutions. From setup to insights, we help you make data-driven decisions that drive growth."
+ctaText="Work with Datakyu to enhance your analytics" 
+referrer="How to Connect to GA4's MCP Server"
+ />
+
+### Installing & Configuring the Google Cloud CLI (gcloud)
+As mentioned above, we are going to review the installation process for macOS users. If you are using a different Operating System, a quick search will lead you to the right installation steps. Before we start the installation for the CLI, we need to
+check on the following requirements:
+* Python 3.9 or higher. You can check this by running `python3 --version` on your terminal
+* Xcode Command Line Tools. You can run `xcode-select -p` on your terminal. If you get a path back like `/Library/Developer/CommandLineTools`, you are good to go. If not, run `xcode-select --install` to install them.
+
+#### Download the Right Installer
+
+Choose the version that matches your Mac's processor:
+
+**For Apple Silicon Macs (M1, M2, M3, M4)**
+- Download: [google-cloud-cli-darwin-arm.tar.gz](https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-arm.tar.gz)
+- File size: ~56 MB
+
+**For Intel Macs**
+- Download: [google-cloud-cli-darwin-x86.tar.gz](https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-darwin-x86.tar.gz)
+- File size: ~56 MB
+
+#### Extract the Files
+
+You have two options:
+
+##### Using Finder
+1. Navigate to your Downloads folder
+2. Double-click the `.tar.gz` file to extract it
+3. Move the extracted `google-cloud-sdk` folder to your home directory
+
+##### Using Terminal
+```bash
+cd ~
+tar -xf ~/Downloads/google-cloud-cli-darwin-arm.tar.gz
+```
+
+<NoteBanner noteMessage='Replace `darwin-arm` with `darwin-x86` if you have an Intel Mac.'></NoteBanner>
+
+#### Run the Installation Script
+
+Open Terminal and navigate to the extracted folder:
+
+```bash
+cd ~/google-cloud-sdk
+./install.sh
+```
+
+The installer will ask you a few questions:
+
+**"Do you want to help improve the Google Cloud CLI?"**
+- Answer `Y` to send anonymous usage statistics (this helps Google improve the tool)
+- Answer `N` if you prefer not to
+
+**"Modify profile to update your $PATH and enable shell command completion?"**
+- Answer `Y` (recommended) - This lets you run `gcloud` from anywhere in your terminal
+- Answer `N` if you want to configure this manually later
+
+**Python Installation**
+If you don't have Python 3.9-3.13, the installer will offer to install Python 3.12 for you. It's recommended to accept this.
+
+Restart your terminal after installation to apply changes.
+
+#### Initialize and Configure
+Now that the Google Cloud CLI (gcloud) is installed, we need to initialize it and set up the default application credentials using the OAuth client we created earlier. To do that, run the following command on your terminal:
+```bash
+gcloud auth application-default login \
+  --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform \
+  --client-id-file= PATH/TO/ga4-mcp-credentials.json
+```
+
+<NoteBanner noteMessage='Make sure to replace your Client JSON file with the path to the JSON file we downloaded in the earlier step.'></NoteBanner>
+
+When the command is done running, copy the PATH_TO_CREDENTIALS_JSON file location printed to the console in the following message. You'll need this for the next step!
+```txt
+Credentials saved to file: [PATH_TO_CREDENTIALS_JSON]
+```
+### Installing & Configuring Gemini CLI
+As mentioned above, we chose to work with Gemini for this tutorial. You can choose any other client that supports MCPs. 
+
+To install Gemini CLI, run the following command on your terminal:
+```bash
+brew install gemini-cli
+```
+If you do not have Homebrew installed, you can install it globally using npm with `npm install -g @google/gemini-cli`. Once you are done with the installation, it is time to configure the settings to connect to the GA4 MCP server.
+
+We do this by creating or editing the settings.json file.
+
+```json
+{
+  "mcpServers": {
+    "analytics-mcp": {
+      "command": "pipx",
+      "args": [
+        "run",
+        "analytics-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "PATH_TO_CREDENTIALS_JSON",
+        "GOOGLE_PROJECT_ID": "YOUR_PROJECT_ID"
+      }
+    }
+  }
+}
+```
+To modify the settings file, run the following command on your terminal:
+```bash
+vim ~/.gemini/settings.json
+```
+Press I to enter insert mode, paste the above JSON code and make sure to replace the placeholders with your actual values. Once you are done, press ESC and then :wq to save and exit vim. If Vim returns an error about the file not existing,
+simply run the following commands:
+```bash
+mkdir -p ~/.gemini
+nano ~/.gemini/settings.json
+```
+You can also run Vim again instead of nano if you prefer that editor. Once the file was saved, close and reopen your terminal to make sure the settings were set. Next, we are going to test the MCP server connection. 
+
+### Testing the MCP Server Connection
+To test that everything is set up correctly, run the following command on your terminal:
+```bash
+cd ~/.gemini
+gemini
+```
+This will open the Gemini CLI interface. The interface should look like this:
+```txt
+
+ ███            █████████  ██████████ ██████   ██████ █████ ██████   █████ █████
+░░░███         ███░░░░░███░░███░░░░░█░░██████ ██████ ░░███ ░░██████ ░░███ ░░███
+  ░░░███      ███     ░░░  ░███  █ ░  ░███░█████░███  ░███  ░███░███ ░███  ░███
+    ░░░███   ░███          ░██████    ░███░░███ ░███  ░███  ░███░░███░███  ░███
+     ███░    ░███    █████ ░███░░█    ░███ ░░░  ░███  ░███  ░███ ░░██████  ░███
+   ███░      ░░███  ░░███  ░███ ░   █ ░███      ░███  ░███  ░███  ░░█████  ░███
+ ███░         ░░█████████  ██████████ █████     █████ █████ █████  ░░█████ █████
+░░░            ░░░░░░░░░  ░░░░░░░░░░ ░░░░░     ░░░░░ ░░░░░ ░░░░░    ░░░░░ ░░░░░
+
+Tips for getting started:
+1. Ask questions, edit files, or run commands.
+2. Be specific for the best results.
+3. Create GEMINI.md files to customize your interactions with Gemini.
+4. /help for more information.
+
+Using: 1 MCP server (ctrl+t to view)
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ >   Type your message or @path/to/file                                                                                                                                                                                                                              │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+ ```
+
+As you can see, if everything was set up as expected, it will indicate that 1 MCP server is connected. Now, it is time to check if Gemini can fetch our data so we can chat and ask it questions about it. In the input area, type the following message and hit enter:
+
+```txt
+Give me details about my Google Analytics property with 'xyz' in the name
+```
+Gemini should ask you for permission to access your Google Analytics data. Grant it permission and wait for it to fetch the data. Here's a question we asked Gemini and its answer:
+
+```txt 
+Using the property with the ID XXXXXXXXX, can you list the top 10 blog posts excluding the blog's home page?
+```
+Here's Gemini's answer:
+```txt
+   - /vemetric-review/
+   - /implementing-google-consent-mode-using-gtag-js-and-cookieyes/
+   - /build-ga4-dashboard-looker-studio-bigquery/
+   - /google-analytics-4-implement-user-id-2024/
+   - /implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/
+   - /flatten-ga4-bigquery-export-schema/
+   - /rename-google-tag-manager-datalayer/
+   - /implementing-google-consent-mode-using-cookieyes-integration/
+   - /track-gravity-forms-with-google-tag-manager/
+   - /implement-google-ads-enhanced-conversions-with-google-tag-manager/
+```
+
+You can even ask it for recommendations regarding SEO or content optimization based on the data it has access to. It is like having your own SEO specialist or data analyst at your disposal 24/7. The possibilities are endless.
+
+### Common Issues & Pitfalls
+If you run the Gemini command and ask it to access your Google Analytics data but it returns an error related to permissions accessing your Admin API or Data API, do the following steps:
+1. Access https://myaccount.google.com/permissions
+2. Remove access to the Google MCP Server, and Google Gemini CLI and Gemini Code Assist
+3. Run the following command on your terminal:
+```bash
+gcloud auth application-default login \
+  --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform \
+  --client-id-file "Your Client JSON File"
+```
+Replace the placeholder with the path to your OAuth client JSON file. This is the first JSON file we downloaded.
+4. Login and grant the necessary permissions. Once the authentication is done, copy the path of the credentials file printed to the console.
+5. Close your terminal window and open a new one to make sure all the paths are refreshed. In the new window, run the following command to edit your Gemini settings file:
+```bash
+nano ~/.gemini/settings.json
+```
+Delete the content of the file and paste the following JSON code:
+```json
+{
+  "mcpServers": {
+    "analytics-mcp": {
+      "command": "pipx",
+      "args": [
+        "run",
+        "analytics-mcp"
+      ],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "PATH_TO_CREDENTIALS_JSON",
+        "GOOGLE_PROJECT_ID": "YOUR_PROJECT_ID"
+      }
+    }
+  }
+}
+```
+Save the file, kill all terminal processes and open a new terminal window. Access the Gemini folder, and run Gemini again. Ask it to access your Google Analytics data and it should work as expected.
+
+## Conclusion
+With this tutorial, you can now chat directly with your GA4 data and extract insights faster than ever. Use it to optimize SEO, track adoption, or generate content ideas grounded in your actual analytics.
+We're just scratching the surface of what's possible with MCPs + LLMs, but it already feels like the future.

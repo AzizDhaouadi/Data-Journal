@@ -47,7 +47,7 @@
     {
         "article_title": "Implementing Google Consent Mode with Google Tag Manager and OneTrust",
         "publication_date": "2024-04-02",
-        "path": "/advanced-ga4-measurement-protocol-implementation/"
+        "path": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/"
     },
     {
         "article_title": "Integrate 6sense and Google Analytics 4",
@@ -101,12 +101,13 @@
     },
     {
         "article_title": "Track E-commerce Events with Shopify's GA4 Integration",
-        "publication_date": "2023-07-26"
+        "publication_date": "2023-07-26",
+        "path": "/track-e-commerce-events-outside-shopifys-ga4-integration/"
     },
     {
         "article_title": "Integrate Micosoft Clarity with Google Analytics 4",
         "publication_date": "2024-09-08",
-        "path": "/track-e-commerce-events-outside-shopifys-ga4-integration/"
+        "path": "/integrate-clairty-with-google-analytics-4/"
     },
     {
         "article_title": "Track Gravity Forms with Google Tag Manager",
@@ -147,5 +148,40 @@
         "article_title": "Tracking Unbounce Form Submissions with Google Tag Manager",
         "publication_date": "2024-03-03",
         "path": "/tracking-unbounce-form-submissions-with-google-tag-manager/"
+    },
+        {
+        "article_title": "How to flatten Google Analytics 4 Data Schema in BigQuery",
+        "publication_date": "2025-07-26",
+        "path": "/flatten-ga4-bigquery-export-schema/"
+    },
+    {
+        "article_title": "Vemetric Web Analytics Tool Review - Better Than Google Analytics 4?",
+        "publication_date": "2025-09-28",
+        "path": "/vemetric-review/"
+    },
+    {
+        "article_title": "Advanced Google Tag Manager Setup — Rename the dataLayer",
+        "publication_date": "10/03/2025",
+        "path": "/rename-google-tag-manager-datalayer/"
+    },
+    {
+        "article_title": "How to Implement Axeptio with Google Tag Manager",
+        "publication_date": "10/12/2025",
+        "path": "/axeptio-google-tag-manager-integration/"
+    },
+    {
+        "article_title": "Server-Side Google Tag Manager : Complete Guide to Meta Conversion Tracking",
+        "publication_date": "10/16/2025",
+        "path": "/server-side-gtm-meta-conversion-tracking/"
+    },
+    {
+        "article_title": "How to Connect to GA4's MCP Server: Step-by-Step Guide",
+        "publication_date": "10/19/2025",
+        "path": "/how-to-connect-ga4-mcp-server/"
+    },
+    {
+        "article_title": "How to track Coveo's generative answering with Google Analytics 4",
+        "publication_date": "11/13/2025",
+        "path": "/track-coveo-generative-answering-with-google-analytics-4/"
     }
 ]

@@ -2,7 +2,6 @@
 import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
-
 interface Props {
   title: string;
   description?: string;
@@ -22,11 +21,11 @@ const {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
@@ -36,18 +35,64 @@ const {
       rel="canonical"
       href={new URL(Astro.url.pathname, `https://datajournal.datakyu.co`)}
     />
+    <style>
+      :root {
+        --font-space-grotesk: "Space Grotesk", sans-serif;
+        --font-spectral: "Spectral", monospace;
+      }
+
+      html,
+      body {
+        font-family: var(--font-space-grotesk);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-spectral) !important;
+      }
+    </style>
+
+    <script>
+      //@ts-nocheck
+      document.addEventListener("DOMContentLoaded", () => {
+        window.axeptioSettings = {
+          clientId: "68e93c54d580fde4b052075b",
+          cookiesVersion: "datajournal-en-CA",
+          googleConsentMode: {
+            default: {
+              analytics_storage: "denied",
+              ad_storage: "denied",
+              ad_user_data: "denied",
+              ad_personalization: "denied",
+              wait_for_update: 500,
+            },
+          },
+        };
+      });
+      console.log("Main Axeptio configuration set.");
+    </script>
+    <script>
+      //@ts-nocheck
+      function loadAxeptio() {
+        (function (d, s, target) {
+          var t = d.querySelector(target),
+            e = d.createElement(s);
+          e.async = true;
+          e.src = "//static.axept.io/sdk.js";
+          t.appendChild(e, t);
+        })(document, "script", "#axeptio-container");
+      }
+
+      // Load on initial page load
+      document.addEventListener("DOMContentLoaded", loadAxeptio);
+    </script>
 
     <!-- Third party tracking scripts - section start -->
-
-    <!-- Sentry -->
-    <script
-      is:inline
-      src="https://js.sentry-cdn.com/17dc7fee29c01933e3c3df799f1c804b.min.js"
-      crossorigin="anonymous">
-    </script>
-    <!-- End of Sentry code -->
-
-    <!-- Segment Analytics --> 
+    <!-- Segment Analytics -->
     <script>
       //@ts-nocheck
       function loadSegmentClientSide() {
@@ -148,30 +193,49 @@ const {
       });
     </script>
 
-    <!-- Warmly -->
-      <script is:inline id="warmly-script-loader" src="https://opps-widget.getwarmly.com/warmly.js?clientId=7374340b33a24ebb7b77d77548c97d83" defer></script>
-    <!-- Warmly -->
-
     <script>
-      //@ts-nocheck
-      function loadClarity() {
-        (function (c, l, a, r, i, t, y) {
-          c[a] =
-            c[a] ||
-            function () {
-              (c[a].q = c[a].q || []).push(arguments);
-            };
-          t = l.createElement(r);
-          t.async = 1;
-          t.src = "https://www.clarity.ms/tag/" + i;
-          y = l.getElementsByTagName(r)[0];
-          y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "lr33g5gf7l");
+      import * as amplitude from "@amplitude/analytics-browser";
+      import { autocapturePlugin } from "@amplitude/plugin-autocapture-browser";
+      import { sessionReplayPlugin } from "@amplitude/plugin-session-replay-browser";
+      function loadAmplitudeClientSide() {
+        // Create and Install Autocapture Plugin
+        const autocaptureTracking = autocapturePlugin();
+        amplitude.add(autocaptureTracking);
+        // Create and Install Session Replay Plugin
+        const sessionReplayTracking = sessionReplayPlugin();
+        amplitude.add(sessionReplayTracking);
+        amplitude.init("85afb94b73b944816d698760e6089033", {
+          autocapture: {
+            elementInteractions: true,
+            webVitals: true, // Enable Core Web Vitals tracking
+          },
+        });
       }
-
-      document.addEventListener("astro:page-load", () => {
-        loadClarity();
+      document.addEventListener("DOMContentLoaded", () => {
+        loadAmplitudeClientSide();
       });
+    </script>
+
+    <!-- RB2B -->
+    <script is:inline>
+      !(function (key) {
+        if (window.reb2b) return;
+        window.reb2b = { loaded: true };
+        var s = document.createElement("script");
+        s.async = true;
+        s.src =
+          "https://ddwl4m2hdecbv.cloudfront.net/b/" +
+          key +
+          "/" +
+          key +
+          ".js.gz";
+        document
+          .getElementsByTagName("script")[0]
+          .parentNode.insertBefore(
+            s,
+            document.getElementsByTagName("script")[0],
+          );
+      })("XOE9GHRRWJOM");
     </script>
 
     <!-- Google Tag Manager -->
@@ -207,9 +271,37 @@ const {
     <!-- Third party tracking scripts - end section -->
   </head>
   <body class="min-h-screen">
+    <div id="axeptio-container" data-astro-ignore></div>
     <Header />
     <slot />
   </body>
+  <script>
+    //@ts-nocheck
+    let axeptioDiv = null;
+
+    // Save the div before transition
+    document.addEventListener("astro:before-preparation", () => {
+      axeptioDiv = document.querySelector("#axeptio_overlay");
+      if (axeptioDiv) {
+        console.log("Saving Axeptio div");
+        axeptioDiv.remove();
+      }
+    });
+
+    // Restore the div after transition
+    document.addEventListener("astro:after-swap", () => {
+      if (axeptioDiv && !axeptioDiv.parentElement) {
+        console.log("Restoring Axeptio div");
+        document.body.appendChild(axeptioDiv);
+      }
+    });
+
+    // Handle the initial Axeptio ready event
+    axeptioSDK.on("ready", function (choices) {
+      const axeptioTargetDiv = document.querySelector("#axeptio_overlay");
+      console.log("Axeptio ready:", axeptioTargetDiv);
+    });
+  </script>
   <ClientRouter />
   <SpeedInsights />
 </html>

@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["IBM Plex Mono", "monospace"],
+        "spectral": ["Spectral", "monospace"],
+        "space-grotesk": ["Space Grotesk", "sans-serif"],
       },
     },
   },
