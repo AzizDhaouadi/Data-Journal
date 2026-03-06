@@ -31,7 +31,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title=`Data Journal - ${post.data.title}`>
+<Layout title=`Data Journal - ${post.data.title}` description={post.data.description}>
   <Main>
     <H1 text={post.data.title} />
     <BlogMeta post={post} author="aziz" />
