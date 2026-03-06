@@ -4,7 +4,8 @@ categories: ["Swetrix", "Plotly"]
 date: 02/24/2024
 featured: false
 image: ./images/data-viz.png
-title: Data Visualization with Open Source Web Analytics
+title: "Data Visualization with Swetrix and Plotly: Open Source Analytics Guide"
+description: Build custom data visualizations using Swetrix analytics data and Plotly. Covers API integration, chart types, real-time data rendering, and open source analytics stack setup.
 ---
 
 In our [previous discussion](/swetrix), we explored Swetrix, an innovative, open-source web analytics tool beneficial for businesses seeking to evaluate their online performance. This chapter` will guide you on leveraging Swetrix data to create a personalized dashboard, providing essential insights for website optimization. For those interested, the complete code is accessible on [Github](https://github.com/AzizDhaouadi/swetrix-plotly), allowing you to clone the project and tailor your dashboard.

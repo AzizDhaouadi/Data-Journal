@@ -3,8 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Ads", "Google Tag Manager"]
 date: 09/15/2024
 featured: true
-image: ./images/data-viz.png
-title: Set up Enhanced Conversions for Google Ads with Google Tag Manager
+title: "Google Ads Enhanced Conversions with GTM: Complete Implementation Guide"
+description: Implement Google Ads enhanced conversions using Google Tag Manager. Covers automatic collection, user-provided data event tag, CSS selectors, SHA-256 hashing, and dataLayer variables.
 ---
 
 As tracking restrictions become tighter and tighter, enabling ad platforms with First-Party data has never been more important. In this tutorial, we will discuss how you can implement Google Ads' Enhanced Conversions with Google Tag Manager to provide Google Ads with the right data for your campaign optimizations.

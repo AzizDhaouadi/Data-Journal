@@ -4,7 +4,8 @@ categories: ["Google Analytics 4", "BigQuery"]
 date: 12/24/2024
 featured: true
 image: ./images/ga-consent.png
-title: Linking Google Analytics 4 with BigQuery for data export
+title: "Link Google Analytics 4 to BigQuery: Data Export Setup Guide"
+description: Set up the GA4 BigQuery data export link for raw event data access. Covers project setup, dataset configuration, export frequency, table schema, and cost management for daily and streaming exports.
 ---
 
 In this tutorial, we will walk through the steps to integrate Google BigQuery with Google Analytics 4. In an upcoming article, we will show you how to visualize the data stored in BigQuery in Looker Studio. Before we get started, please make sure to have the following ready:

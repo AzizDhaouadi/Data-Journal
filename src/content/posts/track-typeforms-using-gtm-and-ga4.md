@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Typeform", "Google Analytics 4"]
 date: 03/29/2023
 featured: true
-title: Track Typeform Forms with Google Tag Manager & Google Analytics 4
+title: Track Typeform Submissions with Google Tag Manager and GA4
+description: Track Typeform form submissions and completions using GTM and GA4. Covers Typeform embed postMessage listener, typeform-embed:submit event, dataLayer push, GTM trigger setup, and Google Ads conversion tracking.
 ---
 
 Tracking user interactions with online forms is essential to optimize for your forms' submission as well as conversion rate. If you're using Typeform to create forms for your website or application, you may know that it is not that straighforward to track form submissions and dropoffs outsite of the integration Typeform has with Google Analytics 4.

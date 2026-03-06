@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Thinkific"]
 date: 02/13/2023
 featured: false
-title: Tracking Thinkific Events
+title: Track Thinkific Events with Google Tag Manager and GA4
+description: Track course enrollments, lesson completions, and purchases on Thinkific using GTM and GA4. Covers Thinkific GTM integration, dataLayer events, course_started, lesson_completed, and ecommerce purchase tracking.
 ---
 
 Thinkific is one of the most commonly used platforms by creators to create their courses, monetize memberships and grow their online audience. As a creator, understanding your growth trends is crucial for your business and that's why today, we will talking about how you can track Thginkific events in order for you to have visibility over your students' interactions with your courses. That being said, the tracking we are going to implement will be through Google Tag Manager. Let's dive right in.

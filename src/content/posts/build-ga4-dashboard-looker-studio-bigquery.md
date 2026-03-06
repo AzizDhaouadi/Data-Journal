@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Looker Studio", "Looker Studio"]
 date: 02/19/2025
 featured: true
-title: Advanced Google Analytics 4 Dashboard Development in Looker Studio Using BigQuery
+title: "Build a GA4 Dashboard in Looker Studio with BigQuery: Advanced Guide"
+description: Connect GA4 BigQuery export data to Looker Studio for advanced dashboards. Covers flattened schema queries, custom metrics, blended data sources, and performance optimization.
 ---
 
 ## Introduction

@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Google Analytics 4"]
 date: 06/02/2024
 featured: false
-title: How to Implement User ID Tracking in Google Analytics 4 with HubSpot Forms and Google Tag Manager
+title: GA4 User ID Tracking with HubSpot Forms and Google Tag Manager
+description: Implement GA4 User ID tracking using HubSpot form submission data and GTM. Covers hsformcallback, dataLayer push, GA4 config tag user_id parameter, and cross-device tracking setup.
 ---
 
 When working with Google Analytics 4, cross-platform and cross-device measurements are key to gain a good understanding of your users' journeys. and have more precise measurement over new / returning users. Google Analytics 4 allows for such measurements to happen through the user_id. However, the challenge with the user_id is that it was designed to be used with websites where users are able to login and logout. One of the main reasons why this feature is recommended to be used with such systems is because it allows analysts to set a unique identifier from a system they can trust such as a database ID. While it is understandable, this restricts multiple marketing websites from using this feature since users, usually, can neither log in nor log out on such websites. But, what these websites have is forms used for lead generation.
