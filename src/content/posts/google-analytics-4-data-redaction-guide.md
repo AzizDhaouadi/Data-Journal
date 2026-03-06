@@ -4,7 +4,8 @@ categories: ["Google Analytics 4"]
 date: 10/03/2024
 featured: false
 image: ./images/data-viz.png
-title: How to Configure Data Redaction in Google Analytics 4
+title: "GA4 Data Redaction: How to Redact PII from Google Analytics 4"
+description: Configure GA4 data redaction to automatically remove PII from URLs, query parameters, and form fields. Includes regex patterns, redaction rules, and GDPR compliance considerations.
 ---
 
 Data redaction is a feature in Google Analytics 4 that helps you protect your property ensuring, to an extent, that no Personally Identifiable Information (PII) is collected.

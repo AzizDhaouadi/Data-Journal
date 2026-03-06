@@ -4,7 +4,8 @@ categories: ["studio tips"]
 date: 04/22/2024
 featured: false
 image: ./images/ga4-6sense.png
-title: Connecting Measurement Protocol Events to Client-Side Data
+title: Stitching GA4 Measurement Protocol Events to Client-Side Sessions
+description: Fix unassigned attribution and session inflation in GA4 by stitching Measurement Protocol events to client-side data using client_id, session_id, and user_id.
 ---
 
 In this tutorial, we are going to be exploring how we can connect Measurement Protocol events to client-side data in order to build a better attribution for our conversions and have a better understanding of how everything connects together. Before we dive deeper into this tutorial, please familiarize yourself with the Measurement Protocol as it is quite crucial to understanding the whole process we are going to be describing here. We have covered the [Measurement Protocol](https://datajournal.datakyu.co/advanced-ga4-measurement-protocol-implementation/) in a previous post, so you can always start there.

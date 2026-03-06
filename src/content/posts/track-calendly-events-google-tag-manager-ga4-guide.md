@@ -4,7 +4,8 @@ categories: ["Google Tag Manager", "Google Analytics 4", "Calendly"]
 date: 05/14/2024
 featured: false
 image: ./images/calendly.png
-title: Tracking Calendly Meeting Requests with Google Tag Manager
+title: Track Calendly Events with Google Tag Manager and GA4
+description: Track Calendly scheduling events using GTM and GA4. Covers Calendly event listener setup, calendly.event_scheduled postMessage, dataLayer push, GTM trigger configuration, and GA4 event parameters.
 ---
 
 For multiple SaaS businesses especially in the B2B industry lead acquisition is an important pillar for marketing since it is used in the measurement of the success of the campaigns. Inbound leads, in particular, is the focus of the majority of efforts since the lead's intent is quite high. Calendly is one of the most commonly used tools for booking meetings. And, in today's tutorial we are going to see how you can track Calendly embedded calendars on your website;

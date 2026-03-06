@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Shopify"]
 date: 02/06/2023
 featured: true
-title: Tracking E-commerce with gtag.js
+title: "GA4 E-commerce Tracking with gtag.js: Events and Parameters Guide"
+description: Implement GA4 ecommerce event tracking directly with gtag.js. Covers product impression, add to cart, checkout, and purchase events with full item array parameter reference and code examples.
 ---
 
 In our last issue, we discussed how to use Google Tag Manager to track E-commerce events and send them to Google Analytics 4. While many brands prefer to go this route for their tracking, there another route to take. We are, of course, talking about gtag.js.

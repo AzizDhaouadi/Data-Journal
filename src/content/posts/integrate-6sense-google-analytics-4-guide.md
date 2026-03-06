@@ -4,7 +4,8 @@ categories: ["6sense", "Google Analytics 4", "Google Tag Manager"]
 date: 07/06/2024
 featured: false
 image: ./images/ga4-6sense.png
-title: Integrate 6sense and Google Analytics 4
+title: "Integrate 6sense with Google Analytics 4: Account-Level Data Guide"
+description: Send 6sense account intelligence data to Google Analytics 4 as custom dimensions. Covers 6sense JavaScript API, GTM dataLayer integration, GA4 custom dimensions, and ABM attribution.
 ---
 
 When working with anonymous website traffic, categorizing the data to establish patterns, especially to determine intent, can be quite confusing and fruitless. Another challenge with website data is its incompatibility with account-based marketing. Website data tends to be anonymized, and at best, user-focused which is far from o the groupings required for account-based marketing. One of the most common tools used for ABM is 6sense. In this tutorial, we will walkthrough how to integrate 6sense with Google Analytics 4 using Google Tag Manager and gtag.js

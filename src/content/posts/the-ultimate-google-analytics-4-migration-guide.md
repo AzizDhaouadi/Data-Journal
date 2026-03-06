@@ -4,7 +4,8 @@ categories: ["Google Analytics 4"]
 date: 05/22/2023
 featured: false
 image: ./images/ga4-migration.png
-title: The Ultimate Google Analytics 4 Migration Guide
+title: "Google Analytics 4 Migration Guide: UA to GA4 Complete Walkthrough"
+description: Migrate from Universal Analytics to Google Analytics 4 with this complete guide. Covers event mapping, custom dimensions, ecommerce migration, GTM updates, and UA vs GA4 data model differences.
 ---
 
 It's 2023 and that means Google Universal Analytics is sun-setting soon; actually as soon as July 1st. So, if you are still relying on it, it is time to migrate to Google Analytics 4. Unfortunately, relying on UA is not option anymore. As of the indicated date, the tool will stop processing any hit. But what does this mean?

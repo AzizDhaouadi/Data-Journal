@@ -4,7 +4,8 @@ categories: ["Googele Analytics 4"]
 date: 12/15/2024
 featured: true
 image: ./images/ga-replacement-swetrix.png
-title: Implement User ID in Google Analytics 4 Property
+title: "Implement User ID in Google Analytics 4: Setup and Reporting Guide"
+description: Set up GA4 User ID tracking to measure cross-device journeys and identify logged-in users. Covers user_id parameter, GTM implementation, identity space configuration, and User Explorer reporting.
 ---
 
 Cross-platform and cross-device tracking is one of the most crucial features you need to take advantage of if your users are accessing your website from multiple devices. If you do not have this tracking activated then you run into multiple issues including an inaccurate count of total users, non-unififed user journey, and others.

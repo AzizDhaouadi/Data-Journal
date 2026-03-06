@@ -4,7 +4,8 @@ categories: ["Swetrix"]
 date: 02/06/2024
 featured: false
 image: ./images/ga-replacement-swetrix.png
-title: Swetrix - Google Analytics Replacement?
+title: "Swetrix Review: Open Source Google Analytics Alternative in 2025"
+description: An in-depth review of Swetrix as a privacy-first, open source alternative to Google Analytics. Covers features, self-hosting, event tracking API, pricing, and comparison with GA4 and Plausible.
 ---
 
 When asked about tools for web analytics, the most common response is likely Google Analytics. Whether referring to Universal Analytics or Google Analytics 4 depends on the timing of the question. This highlights that Google Analytics has been, and perhaps remains, the primary tool people think of for web analytics. While some argue that Adobe Analytics has been a market contender for a long time and offers great functionality, it's important to note its pricing. Adobe Analytics is indeed powerful, but its cost may not be feasible for everyone. Other tools like Mixpanel and Amplitude offer excellent alternatives, primarily focusing on product analytics. This is not to diminish their capability in marketing analytics; however, using them solely for this purpose might not fully leverage their potential.

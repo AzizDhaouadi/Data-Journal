@@ -4,7 +4,8 @@ categories: ["Cosent Mode", "Googel Tag Manager", "CookieYes"]
 date: 03/07/2024
 featured: false
 image: ./images/ga-consent.png
-title: Implementing Google Consent Mode V2 with CookieYes
+title: "Google Consent Mode V2 with CookieYes: No GTM Implementation Guide"
+description: Implement Google Consent Mode V2 directly with CookieYes without Google Tag Manager. Covers consent default, update commands, cookieyes-consent cookie parsing, and consent verification.
 ---
 
 The deadline for implementing Google Consent mode V2 has passed and if you are advertising in the EU/EAA/UK, you will need this setting configured in order to continue ad personalization and remarketing capabilities for visitors from the mentioned reasons. If you fail to comply, you will lose access to these capabilities. If you are unsure where to start, in this article, we will walk through 2 ways you can implement Google Consent Mode V2 with CookieYes.

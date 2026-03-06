@@ -4,7 +4,8 @@ categories: ["Google Tag Manager", "Gravity Forms"]
 date: 07/30/2024
 featured: false
 image: ./images/gravity-forms.png
-title: Track Gravity Forms with Google Tag Manager
+title: "Track Gravity Forms with Google Tag Manager: Confirmation & Redirect"
+description: Track Gravity Forms submissions using Google Tag Manager for both confirmation message and page redirect forms. Covers gform_confirmation_loaded, recursive submission loop, dataLayer push, and GA4 event setup.
 ---
 
 ## Introduction

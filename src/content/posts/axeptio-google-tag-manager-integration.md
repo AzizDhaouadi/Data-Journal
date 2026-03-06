@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Consent Management", "Axeptio"]
 date: 10/12/2025
 featured: true
-title: How to Implement Axeptio with Google Tag Manager
+title: "Axeptio with Google Tag Manager: Consent Mode V2 Integration Guide"
+description: Implement Axeptio consent management with Google Tag Manager and Google Consent Mode V2. Covers axeptio_activate callback, GTM consent commands, tag firing rules, and GDPR compliance setup.
 ---
 
 With more and more regulations being introduced to safeguard users' data online, it has never been more important to ensure compliance and protect your visitors. From GDPR and CCPA to Google's consent enforcement, business owners must navigate complex regulations to ensure their data collection complies with privacy rules. Tools like Cookiebot, CookieYes, and OneTrust help you implement and manage consent to ensure your tracking works according to local regulations. We've previously covered implementing OneTrust and CookieYes with Google Tag Manager and gtag.js. In this tutorial, we'll explore how to implement Axeptio, an innovative consent management platform.

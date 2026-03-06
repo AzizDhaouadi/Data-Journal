@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Looker Studio"]
 date: 02/29/2024
 featured: false
-title: Tracking Looker Studio Dashboards
+title: Track Looker Studio Dashboard Views with Google Analytics 4
+description: Track user interactions and page views on embedded Looker Studio dashboards using GA4. Covers GTM container in Looker Studio, page_view events, custom dimensions, and dashboard engagement metrics.
 ---
 
 We will explore how to track pageviews across your Looker Studio reports. This insight will help you understand how your data creations are utilized and how you can support stakeholders by making dashboards more accessible.

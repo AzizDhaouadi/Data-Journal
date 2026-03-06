@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Analytics 4", "Segment"]
 date: 03/02/2025
 featured: true
-title: Implementing Google Analytics 4 with Segment (Client Side)
+title: "Implement Google Analytics 4 with Segment: Client-Side Integration Guide"
+description: "Send GA4 events using Segment client-side analytics.js library. Covers Segment GA4 destination setup, event mapping, custom dimensions, ecommerce spec, and full payload structure."
 ---
 
 In this tutorial, we will explore how we can deploy Google Analytics 4 using Segment. While not the most common method, using Segment for GA4 implementation is highly recommended for its flexibility and centralized tracking capabilities. If you are unfamiliar with Segment, we will cover basic concepts but you are highly encouraged to [explore](https://segment.com/) the tool.

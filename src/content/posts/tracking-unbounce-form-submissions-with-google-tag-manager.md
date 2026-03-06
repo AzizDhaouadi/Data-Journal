@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Unbounce"]
 date: 03/03/2024
 featured: false
-title: Tracking Unbounce Form Submissions with Google Tag Manager
+title: Track Unbounce Form Submissions with Google Tag Manager
+description: Track Unbounce landing page form submissions using Google Tag Manager and GA4. Covers Unbounce GTM script placement, form confirmation dialog event, dataLayer push, and lead conversion setup.
 ---
 
 Unbounce is one of the most commonly used landing page builders for teams across the globe, and for good reason. If you are working with Unbounce, in this tutorial will walk through how you can track successful form submissions using Google Tag Manager and send that data to Google Analytics 4, Google Ads or any other destination.

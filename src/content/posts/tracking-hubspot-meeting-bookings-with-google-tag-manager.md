@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Hubspot"]
 date: 05/06/2024
 featured: false
-title: Tracking Hubspot Meeting Bookings with Google Tag Manager
+title: Track HubSpot Meeting Bookings with Google Tag Manager and GA4
+description: Track HubSpot Meetings scheduling completions using Google Tag Manager. Covers HubSpot meetings postMessage event, GTM custom event trigger, dataLayer push, and GA4 lead conversion tracking.
 ---
 
 In a previous post, we have covered how you can track different Hubspot form interactions, from loading to submission. In this post, we will cover one of the most used features of Hubpost being. their free meeting scheduler. Whether it’s your marketing or sales team using this for leads acquisition, it is important that these forms are properly tracked to measure the success of your marketing campaigns.

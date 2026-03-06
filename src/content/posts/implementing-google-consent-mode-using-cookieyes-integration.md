@@ -4,7 +4,8 @@ categories: ["Consent Mode", "Google Tag Manager", "CookieYes"]
 date: 08/17/2024
 featured: false
 image: ./images/ga-consent.png
-title: Implementing Google Consent Mode using CookieYes
+title: "Google Consent Mode V2 with CookieYes and GTM: Implementation Guide"
+description: Implement Google Consent Mode V2 using CookieYes and Google Tag Manager. Covers GTM variables, consent defaults, cookieyes-consent cookie, and tag firing logic.
 ---
 
 Data collection on the web has changed over the years, and while it is easier now with many tools at our disposal, it is also harder; in a sense. With data privacy laws becoming stricter and stricter, data collection and measurements have to keep up in order to stay compliant and offer the users the best experience; an honest experience that lets them know what data will be collected and what data will be tied back to them. In today's post, we will look at how you can make sure your data collection and web measurement comply with the users' consent choices. The tools we are going to be using are CookiYes as the Cookie Consent Solution, Google Consent Mode, Google Tag Manager, and Google Analytics 4. Before we begin though, let's define some terms so that everything is clear.

@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Hubspot"]
 date: 04/30/2024
 featured: false
-title: Tracking Hubspot Form Submissions with Hubspot's Global Events and Google Tag Manager
+title: "HubSpot Form Submission Tracking with GTM: Global Events Guide"
+description: Track HubSpot form submissions using GTM and HubSpot global form events. Covers hsformcallback, onFormSubmit, form ID targeting, GA4 event push, and multi-form tracking.
 ---
 
 HubSpot is an indispensable tool for marketing teams, renowned for its versatility in executing diverse marketing initiatives ranging from campaign management to the creation of landing pages. One of the platform's pivotal features is its form-building capability that enables the capture of essential lead data on marketing websites. Mastery of tracking form submissions is crucial, as it plays a significant role in understanding and enhancing user interactions and behavior analytics. This guide delves into how to effectively use HubSpot's global form events to monitor these submissions and integrate them with Google Analytics. By doing so, you can refine your strategies and achieve a deeper insight into customer engagement, thereby driving improved outcomes for campaigns.

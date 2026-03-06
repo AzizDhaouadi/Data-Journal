@@ -4,7 +4,8 @@ categories: ["CookieYes", "Consent Mode"]
 date: 04/04/204
 featured: false
 image: ./images/ga-consent.png
-title: Implementing Google Consent Mode using gtag.js and CookieYes
+title: "Google Consent Mode V2 with gtag.js and CookieYes: Implementation Guide"
+description: Implement Google Consent Mode V2 using gtag.js and CookieYes without Google Tag Manager. Covers gtag consent default, cookieyes-consent event listener, consent update commands, and verification in GA4.
 ---
 
 In this new article covering the Consent Mode (and, Consent Mode V2) we will be covering how you can implement Consent Mode using gtag.js and CookieYes. However, whatever we will discuss in this article can be used to implement Consent Mode with any other Consent Management Platform.

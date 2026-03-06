@@ -4,7 +4,8 @@ categories: ["Google BigQuery", "Google Analytics 4"]
 date: 07/26/2025
 featured: true
 image: ./images/data-viz.png
-title: How to flatten Google Analytics 4 Data Schema in BigQuery
+title: "Flatten GA4 BigQuery Export Schema: UNNEST and Pivot SQL Guide"
+description: Flatten the nested GA4 BigQuery export schema using SQL. Covers UNNEST for event_params and user_properties, MAX with PIVOT aggregation, repeated fields, and ready-to-use query templates.
 ---
 
 If you have your Google Analytics 4 data exported to BigQuery, you would have noticed that the schema is quite complicated to work with. Many of the available dimensions are nested in structure and building reports based on said composition can lead to multiple subqueries and ctes being used which increases the difficulty quite a bit.

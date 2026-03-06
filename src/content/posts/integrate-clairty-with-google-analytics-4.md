@@ -3,7 +3,8 @@ author: Aziz Dhaouadi
 categories: ["Google Tag Manager", "Clarity", "Google Analytics 4"]
 date: 09/08/2024
 featured: false
-title: Integrate Micosoft Clarity with Google Analytics 4
+title: "Integrate Microsoft Clarity with Google Analytics 4: Setup Guide"
+description: Connect Microsoft Clarity session recordings with Google Analytics 4 for combined behavioral analytics. Covers Clarity GTM tag, GA4 custom dimensions, Clarity project ID, and cross-tool session linking.
 ---
 
 If you are a web analyst working on optimizing your digital assets' User Experience (UX), using behavioral analytics tools offering session recordings and heatmaps can come in handy, especially when working with UI/UX designers.
