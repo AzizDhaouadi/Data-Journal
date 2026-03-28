@@ -14,20 +14,30 @@ import data from "../../public/data/parameters.json";
 const typedData = data as Record<string, { name: string; value: string }[]>;
 
 ---
-<div class="p-8 border w-45 sm:w-xl ">
-    <h2 class="text-2xl font-bold tracking-tight font-spectral" style="color: #311c3b">{title}</h2>
-    <ul class="list-none my-6 flex flex-col gap-5">
-        {
-            typedData[data_component]?.map((element: parameterObject) => {
-                return (
-                    <li class="flex flex-row gap-5">
-                        <p>{element.name}</p>
-                        <span class="inline-block font-mono font-bold text-white bg-teal-900 px-2 py-1 rounded-md text-sm">
-                            {element.value}
-                        </span>
-                    </li>
-                )
-            }) ?? <li>No data available</li>
-        }
-    </ul>
+
+<div class="w-full sm:w-80 bg-white border border-zinc-200 rounded-xl overflow-hidden">
+
+  <div class="px-5 py-4 border-b border-zinc-100">
+    <h2 class="text-sm font-semibold font-manrope text-zinc-800 tracking-wide uppercase">
+      {title}
+    </h2>
+  </div>
+  <ul class="list-none divide-y divide-zinc-100">
+    {
+      typedData[data_component]?.map((element: parameterObject) => (
+        <li class="flex flex-row items-center justify-between gap-4 px-5 py-3">
+          <p class="text-sm text-zinc-500 font-manrope">
+            {element.name}
+          </p>
+          <span class="font-dm-mono text-xs text-zinc-700 bg-zinc-100 px-2.5 py-1 rounded-md whitespace-nowrap">
+            {element.value}
+          </span>
+        </li>
+      )) ?? (
+        <li class="px-5 py-3 text-sm text-zinc-400 font-manrope italic">
+          No data available
+        </li>
+      )
+    }
+  </ul>
 </div>
