@@ -65,9 +65,9 @@ export default function BlogPost({ children }: BlogPostProps) {
               ?.__html
           }
         />
-        <TranslationRibbon translateFunction={handleTranslation} />
+        {/* <TranslationRibbon translateFunction={handleTranslation} /> */}
       </div>
-      <div id="main-content" className="my-10">
+      <div id="main-content" className="my-5">
         {translatedText}
       </div>
       <style>
