@@ -72,7 +72,7 @@ export default function CustomizedUserFeed({
         className="text-4xl font-bold dark:text-white my-8"
         style={{ color: "#f15a25" }}
       >
-        Your Feed
+        Your Personalized Feed
       </h2>
       <div className="w-full flex flex-row gap-6 flex-wrap justify-center">
         {articles.map((article) => {
