@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "spectral": ["Spectral", "monospace"],
-        "space-grotesk": ["Space Grotesk", "sans-serif"],
+        "manrope": ["Manrope", "sans-serif"],
+        "dm-mono": ["DM Mono", "monospace"],
       },
     },
   },
