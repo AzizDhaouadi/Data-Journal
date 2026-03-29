@@ -96,7 +96,7 @@ export default function CustomizedUserFeed({
           flex flex-col justify-between
           transition-all duration-200
           hover:border-zinc-900 hover:bg-zinc-50
-          group
+          group rounded-xl
         "
               >
                 {/* Index number */}
