@@ -67,7 +67,7 @@ export default function CustomizedUserFeed({
   }
 
   return (
-    <div className="flex flex-row flex-wrap w-100 gap-4 my-5">
+    <div className="flex flex-row flex-wrap gap-4 my-5">
       <h2
         className="text-4xl font-bold dark:text-white my-8"
         style={{ color: "#f15a25" }}

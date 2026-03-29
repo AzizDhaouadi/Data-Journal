@@ -29,7 +29,6 @@ export default function ArticlesRecToArticle({
         if (recommendations && recommendations.recomms.length > 0) {
           setArticles(recommendations.recomms);
           setRecommendationId(recommendations.recommId);
-          console.log("Fetched recommendations:", recommendations);
         }
       } catch (err: any) {
         console.error("Error fetching recommendations:", err);

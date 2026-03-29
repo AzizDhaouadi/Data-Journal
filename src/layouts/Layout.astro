@@ -2,6 +2,8 @@
 import Header from "../components/Header.astro";
 import { ClientRouter } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import "../styles/global.css";
+
 interface Props {
   title: string;
   description?: string;
@@ -75,7 +77,6 @@ const {
           },
         };
       });
-      console.log("Main Axeptio configuration set.");
     </script>
     <script>
       //@ts-nocheck
@@ -285,7 +286,6 @@ const {
     document.addEventListener("astro:before-preparation", () => {
       axeptioDiv = document.querySelector("#axeptio_overlay");
       if (axeptioDiv) {
-        console.log("Saving Axeptio div");
         axeptioDiv.remove();
       }
     });
@@ -293,7 +293,6 @@ const {
     // Restore the div after transition
     document.addEventListener("astro:after-swap", () => {
       if (axeptioDiv && !axeptioDiv.parentElement) {
-        console.log("Restoring Axeptio div");
         document.body.appendChild(axeptioDiv);
       }
     });
@@ -301,7 +300,6 @@ const {
     // Handle the initial Axeptio ready event
     axeptioSDK.on("ready", function (choices) {
       const axeptioTargetDiv = document.querySelector("#axeptio_overlay");
-      console.log("Axeptio ready:", axeptioTargetDiv);
     });
   </script>
   <ClientRouter />

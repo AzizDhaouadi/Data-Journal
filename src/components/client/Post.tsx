@@ -9,8 +9,6 @@ interface BlogPostProps {
 
 const current_env = import.meta.env.PUBLIC_CURRENT_ENV;
 
-console.log(current_env);
-
 const endpointPrefix =
   current_env == "DEV"
     ? "http://localhost:4321"

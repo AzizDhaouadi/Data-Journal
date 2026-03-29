@@ -77,7 +77,7 @@ export default function SummarizeButton({
       </button>
       {summarizedText && (
         <div
-          className="p-6 bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 rounded-2xl shadow-lg border border-purple-100/50 
+          className="p-6 bg-linear-to-br`(suggestCanonicalClasses) from-purple-50 via-blue-50 to-cyan-50 rounded-2xl shadow-lg border border-purple-100/50 
      text-lg leading-relaxed text-gray-800"
         >
           <div className="flex items-center gap-2 mb-3 text-sm text-purple-600 font-medium">

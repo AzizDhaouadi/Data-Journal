@@ -30,7 +30,6 @@ export default function customizedHomePage(userId, count = 12) {
             }),
         )
         .then((res) => {
-            console.log(res);
             return res; // This return passes the data through the promise chain
         })
         .catch((error) => {

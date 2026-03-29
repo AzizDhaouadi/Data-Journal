@@ -7,13 +7,14 @@ import Footer from "../components/Footer.astro";
 import BlogMeta from "../components/BlogMeta.astro";
 import BlogPost from "../components/client/Post.tsx";
 import ArticlesToArticleRecommandations from "../components/client/wrappers/ArticlesToArticleRecommendations.tsx";
+import { render } from "astro:content";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
   const paths = posts.map((post: any) => {
     return {
       params: {
-        slug: post.slug,
+        slug: post.id,
       },
       props: {
         post,
@@ -28,7 +29,7 @@ type Props = {
 };
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout title=`Data Journal - ${post.data.title}` description={post.data.description}>
@@ -70,7 +71,6 @@ const { Content } = await post.render();
                 hbsptScript.src = "//js.hsforms.net/forms/embed/v2.js";
                 document.body.appendChild(hbsptScript);
               });
-              console.log("HubSpot form script added to the document.");
             </script>
             <script>
               //@ts-nocheck
@@ -124,12 +124,12 @@ const { Content } = await post.render();
     const blogpostSchema = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "@id": `https://datajournal.datakyu.co/${post.slug}/#BlogPosting`,
-      mainEntityOfPage: `https://datajournal.datakyu.co/${post.slug}/`,
+      "@id": `https://datajournal.datakyu.co/${post.id}/#BlogPosting`,
+      mainEntityOfPage: `https://datajournal.datakyu.co/${post.id}/`,
       name: post.data.title,
       datePublished: new Date(post.data.date).toISOString(),
       dateModified: new Date(post.data.date).toISOString(),
-      url: `https://datajournal.datakyu.co/${post.slug}/`,
+      url: `https://datajournal.datakyu.co/${post.id}/`,
       isPartOf: {
         "@type": "Blog",
         "@id": "https://datajournal.datakyu.co/",

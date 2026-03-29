@@ -9,33 +9,50 @@ type ArticlesFeedProps = {
 
 export default function DefaultFeed({ articles }: ArticlesFeedProps) {
   return (
-    <div className="w-full flex flex-row gap-6 flex-wrap justify-center">
+    <div className="w-full flex flex-row gap-4 justify-center flex-wrap">
       {articles.map((article, index) => {
         return article.article_title && article.article_pathname ? (
           <a
-            key={index}
+            key={article.article_title}
             href={article.article_pathname}
             rel="noopener noreferrer"
             className="block w-80 group"
           >
             <article
-              className="rounded-2xl bg-white p-8 h-48 flex flex-col justify-between 
-                hover:border-blue-500 hover:shadow-xl 
-                transition-all duration-300 transform hover:-translate-y-1"
-              style={{
-                border: "2px solid #9B7FC8",
-                boxShadow: "8px 8px #9B7FC8",
-                cursor: "pointer",
-              }}
+              className="
+          relative h-52 p-6 bg-white border border-zinc-200
+          flex flex-col justify-between
+          transition-all duration-200
+          hover:border-zinc-900 hover:bg-zinc-50
+          group rounded-xl
+        "
             >
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-3 line-clamp-3 leading-tight">
+              {/* Index number */}
+              <span className="font-dm-mono text-xs text-zinc-300 tabular-nums group-hover:text-[#E8522A]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <div className="flex flex-col gap-4">
+                <h2
+                  className="
+              font-manrope font-bold text-base text-zinc-900 leading-snug line-clamp-3
+              group-hover:text-zinc-900 transition-colors
+            "
+                >
                   {article.article_title}
                 </h2>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-500 group-hover:text-blue-500 transition-colors">
-                  Read article →
+
+                <span
+                  className="
+              font-dm-mono text-xs font-medium text-zinc-400
+              flex items-center gap-1.5
+              group-hover:text-[#E8522A] transition-colors duration-200
+            "
+                >
+                  Read article
+                  <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
                 </span>
               </div>
             </article>

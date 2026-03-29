@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-manrope: "Manrope", sans-serif;
+  --font-dm-mono: "DM Mono", monospace;
+}

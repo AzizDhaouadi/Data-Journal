@@ -16,7 +16,7 @@ sortedPosts.sort((a, b) => {
 const recentPosts = sortedPosts.map((post) => {
   return {
       article_title: post.data.title,
-    article_pathname: `/${post.slug}/`,
+      article_pathname: `/${post.id}/`,
   };
 }
 ).slice(0, 12);
@@ -83,7 +83,6 @@ const recentPosts = sortedPosts.map((post) => {
             hbsptScript.src = "//js.hsforms.net/forms/embed/v2.js";
             document.body.appendChild(hbsptScript);
           });
-          console.log("HubSpot form script added to the document.");
         </script>
         <script>
           //@ts-nocheck

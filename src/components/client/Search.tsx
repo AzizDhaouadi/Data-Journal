@@ -5,8 +5,6 @@ import { useState } from "react";
 const projectID = import.meta.env.PUBLIC_ALGOLIA_PROJECT_ID;
 const key = import.meta.env.PUBLIC_ALGOLIA_API_KEY;
 
-console.log(import.meta.env);
-
 const searchClient = algoliasearch(projectID, key);
 
 function Hit({ hit }: any) {
