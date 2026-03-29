@@ -18,7 +18,7 @@
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
-    "@astrojs/vercel": "^9.0.4",
+    "@astrojs/vercel": "^10.0.2",
     "@fontsource/dm-mono": "^5.2.7",
     "@fontsource/manrope": "^5.2.8",
     "@types/react": "^19.0.10",
