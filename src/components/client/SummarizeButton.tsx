@@ -54,12 +54,25 @@ export default function SummarizeButton({
   return (
     <div>
       <button
-        className={`inline-flex items-center px-5 py-2 rounded-full font-medium text-white shadow-md border-2 border-transparent my-4 bg-[linear-gradient(90deg,#6366f1_0%,#8b5cf6_30%,#06b6d4_100%)] ${isSummarizing ? "opacity-50 cursor-not-allowed" : ""}`}
+        className={`inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-900 text-white text-sm font-manrope font-semibold rounded-full transition-all duration-200 hover:bg-[#E8522A] ${isSummarizing ? "opacity-40 cursor-not-allowed" : "hover:scale-[1.02]"}`}
+        disabled={isSummarizing}
         onClick={() => {
           handleSummarization({ text: textToSummarize });
           handleTrackingClick();
         }}
       >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z" />
+        </svg>
         {isSummarizing ? "Summarizing..." : "Summarize with AI"}
       </button>
       {summarizedText && (

@@ -8,19 +8,16 @@ export default function DataStory({
   if (question) {
     return (
       <>
-        <div
-          className="max-w-sm rounded-2xl overflow-hidden bg-white p-5"
-          style={{
-            border: "2px solid #9B7FC8",
-            cursor: "pointer",
-            boxShadow: "8px 8px #9B7FC8",
-            transition: "transform .2s ease, box-shadow .2s ease",
-          }}
-        >
-          <div className="py-4">
-            <h2 className="text-xl font-semibold font-spectral">{question}</h2>
-            <p className="text-gray-600 mt-2">{answer}</p>
+        <div className="max-w-sm rounded-xl bg-white border border-zinc-900 p-5">
+          <div className="py-4 flex flex-col gap-3">
+            <h2 className="font-manrope font-bold text-xl text-zinc-900 leading-snug">
+              {question}
+            </h2>
+            <p className="font-manrope text-sm text-zinc-500 leading-relaxed">
+              {answer}
+            </p>
           </div>
+          <div className="w-8 h-1 bg-[#E8522A]" />
         </div>
       </>
     );

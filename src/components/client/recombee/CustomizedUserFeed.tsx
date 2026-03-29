@@ -100,7 +100,7 @@ export default function CustomizedUserFeed({
         "
               >
                 {/* Index number */}
-                <span className="font-dm-mono text-xs text-zinc-300 tabular-nums">
+                <span className="font-dm-mono text-xs text-zinc-300 tabular-nums group-hover:text-[#E8522A]">
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
@@ -127,15 +127,6 @@ export default function CustomizedUserFeed({
                     </span>
                   </span>
                 </div>
-
-                {/* Bottom orange accent line on hover */}
-                <div
-                  className="
-            absolute bottom-0 left-0 right-0 h-0.5 bg-[#E8522A]
-            scale-x-0 group-hover:scale-x-100
-            transition-transform duration-300 origin-left
-          "
-                />
               </article>
             </a>
           ) : null;
