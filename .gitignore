@@ -29,6 +29,3 @@ pnpm-debug.log*
 
 # vscode
 .vscode
-
-# github workflows
-.github
