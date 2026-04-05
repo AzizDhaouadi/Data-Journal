@@ -1,0 +1,33 @@
+name: Review Markdown & MDX
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**.md'
+      - '**.mdx'
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Claude Code Prose Review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are a professional technical writer. Review only the Markdown and MDX files changed in this pull request.
+            For each file, evaluate:
+            - Clarity and readability for the target audience
+            - Grammar, spelling, and punctuation
+            - Logical structure and flow of content
+            - Technical accuracy and depth where applicable
+            - Consistent tone and voice
+            Post your findings as inline review comments on the specific lines where issues occur. Be concise and actionable. Skip files with no meaningful issues.
