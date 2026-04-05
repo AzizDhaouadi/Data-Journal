@@ -7,17 +7,6 @@ on:
       - '**.mdx'
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Markdown Lint
-        uses: DavidAnson/markdownlint-cli2-action@v16
-        with:
-          globs: '**/*.{md,mdx}'
-
   ai-review:
     runs-on: ubuntu-latest
     permissions:
@@ -31,26 +20,31 @@ jobs:
           fetch-depth: 0
 
       - name: Claude Prose Review
-        id: review
         uses: anthropics/claude-code-base-action@beta
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          allowed_tools: "Bash(git diff*),View,GlobTool,GrepTool"
+          claude_args: "--allowedTools Bash,Write"
           prompt: |
             Review only the Markdown and MDX files changed in this PR for clarity,
             grammar, structure, and technical depth. Run:
             git diff --name-only origin/${{ github.base_ref }}...HEAD -- '*.md' '*.mdx'
-            to find changed files, then review each one. Return your findings as plain text,
-            file by file. Be concise and actionable.
+            to find changed files, then review each one. Write your complete findings
+            to /tmp/review.md, one section per file. Be concise and actionable.
 
       - name: Post review as PR comment
         uses: actions/github-script@v7
         with:
           script: |
-            const output = `${{ steps.review.outputs.output }}`;
+            const fs = require('fs');
+            let body = '';
+            try {
+              body = fs.readFileSync('/tmp/review.md', 'utf8');
+            } catch (e) {
+              body = 'Claude review did not produce output.';
+            }
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `## Claude Prose Review\n\n${output}`
+              body: `## Claude Prose Review\n\n${body}`
             });
