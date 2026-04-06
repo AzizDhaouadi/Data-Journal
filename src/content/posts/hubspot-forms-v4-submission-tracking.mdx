@@ -4,7 +4,7 @@ categories: ["Google Tag Manager", "HubSpot"]
 date: 04/05/2026
 featured: true
 title: "HubSpot Forms V4: Track Form Submissions with Custom Events"
-description: "Hubspot Forms V4 has dropped hsFormCallback entirely. Learn how to track form submissions using native DOM custom events, event.detail, and the HubspotFormsV4 instance API in both vanilla JS and GTM."
+description: "HubSpot Forms V4 has dropped hsFormCallback entirely. Learn how to track form submissions using native DOM custom events, event.detail, and the HubSpotFormsV4 instance API in both vanilla JS and GTM."
 ---
 
 import BlogCTASection from "../../components/BlogCTASection.astro";
@@ -22,23 +22,23 @@ HubSpotFormsV4.getForms()[0].getFieldValue("email").then(value => value);
 await HubSpotFormsV4.getFormFromEvent(event).getFormFieldValue("email");
 `
 
-Hubspot is one, if not, the most widely used CRM and marketing automation plaforms in the world. And Hubspot forms are currently powering **~224,000+** live websites according to [BuiltWith](https://trends.builtwith.com/widgets/usage-over-time/HubSpot-Forms).
-This makes it crucial to able to track lead generation and form submissions for any marketer using this tool. And that's what we will be covering in this article.
+HubSpot is one of, if not the most, widely used CRM and marketing automation platforms in the world. And HubSpot forms are currently powering **~224,000+** live websites according to [BuiltWith](https://trends.builtwith.com/widgets/usage-over-time/HubSpot-Forms).
+This makes it crucial to be able to track lead generation and form submissions for any marketer using this tool. And that's what we will be covering in this article.
 
-## Hubspot Forms - History & Changes
-Hubspot froms have evolved over the years as any good product would. But, with the realeses came errors in tracking, broken funnel tracking and most importantly unopitmized ad spend for lead acquisition campaigns which leads in most cases to
+## HubSpot Forms - History & Changes
+HubSpot forms have evolved over the years as any good product would. But, with the releases came errors in tracking, broken funnel tracking and most importantly unoptimized ad spend for lead acquisition campaigns which leads in most cases to
 an unfathomable customer acquisition cost and a very low return on ad spend.
 
-In the past, Hubspot forms were tracked using their famous `Global Events` which used messages to inform you of the different stages of the form. We will no delve in depth of this functionality but these global events were emitted by Hubspot and they were the following:
+In the past, HubSpot forms were tracked using their famous `Global Events` which used messages to inform you of the different stages of the form. We will not delve into this in depth but these global events were emitted by HubSpot and they were the following:
 1. OnFormReady
 2. OnBeforeFormSubmit
 3. onFormSubmit
-These events helped you understand when form was loaded and when it was successfully submitted. If you want to go deeper, we have a whole [article](https://datajournal.datakyu.co/hubspot-form-submission-tracking-guide/) covering these events. 
+These events helped you understand when the form was loaded and when it was successfully submitted. If you want to go deeper, we have a whole [article](https://datajournal.datakyu.co/hubspot-form-submission-tracking-guide/) covering these events. 
 
 <NoteBanner noteMessage='Please note that Global Events can still be used to track legacy forms. Please do not migrate your tracking code unless you know you are using Forms V4.' />
 
-If you are unsude which version you are using, there ways to find out. The first is typing `HubSpot` in your console. If you see `HubSpotForms` then you are using legacy forms. If you see `HubspotFormsV4` then you are using the new version.
-The second way, and the preferred one for nerdy reasons, is to log the messages emmited by Hubpost. If you are using the old version, you will see a multitude of messages in your console. If you see nothing coming from Hubspot then you are using Forms V4.
+If you are unsure which version you are using, there are ways to find out. The first is typing `HubSpot` in your console. If you see `HubSpotForms` then you are using legacy forms. If you see `HubSpotFormsV4` then you are using the new version.
+The second way, and the preferred one for nerdy reasons, is to log the messages emitted by HubSpot. If you are using the old version, you will see a multitude of messages in your console. If you see nothing coming from HubSpot then you are using Forms V4.
 Here's an example of one of the emitted messages:
 
 ```json
@@ -62,31 +62,30 @@ Here's an example of one of the emitted messages:
 ```
 This event can be used for instance to track an event confirming that the form was loaded and ready for input. 
 
-However, things have changed a bit with the newest version of Hubspot forms. If you did try to run `window.addEventListener("message", console.log)` you would have noticed that there are no more messages coming from Hubspot.
+However, things have changed a bit with the newest version of HubSpot forms. If you did try to run `window.addEventListener("message", console.log)` you would have noticed that there are no more messages coming from HubSpot.
 This is because they have dropped the `hsFormCallback` event entirely and replaced it with native DOM custom events. This means that you are listening to something that does not exist anymore and thus your tracking completely breaks.
 And the worst part is that this will break **silently** without any error or warning. You will just see that your form submission tracking is not working anymore and you won't know why.
 
 ### What is the difference between Global Events and Custom Events?
-Simply put, Global Events are messages sent from Hubspot to the window object to let you know that something is happening with the form. It's like having a radio broadcast from Hubspot transmitting everything to you.
-On the other hand, Custom Events are events that are emitted by the form itself. Custom Events, on the other hand, are emitted by the frm itself and need to be specified upfront. Think of it like tuning to a specific frequency.  
-You need to specifiy what you want to listen to and how to react to it ortherwise all you will hear is static.
+Global Events are messages sent from HubSpot to the window object to let you know that something is happening with the form. It's like having a radio broadcast from HubSpot transmitting everything to you.
+Custom Events, on the other hand, are emitted by the form itself and need to be specified upfront. Think of it like tuning to a specific frequency.  
+You need to specify what you want to listen to and how to react to it otherwise all you will hear is static.
 
 ## HubSpot Forms V4 - Custom Events
-With the new forms version, the events exposed to the user have changed. The good news is that you are now have more, for the lack of a better term, opinioned or granular events you can listen to for your forms.
-events are still available. Here is the new list of events you can listen to:
+With the new forms version, the events exposed to the user have changed. You now have more granular events to listen to. Here are the available events:
 
 
 | Event name                              | Description                                                  | Legacy equivalent     |
 |-----------------------------------------|--------------------------------------------------------------|-----------------------|
-| `hs-form-event:on-ready`                | The from has finished loading and is fully rendered          | `onFormReady`         |
+| `hs-form-event:on-ready`                | The form has finished loading and is fully rendered          | `onFormReady`         |
 | `hs-form-event:on-submission:success`   | The form has been submitted and the submission is successful | `onFormSubmit`        |
 | `hs-form-event:on-submission:failed`    | The form submission failed                                   |                       |
 | `hs-form-event:on-interaction:navigate` | For multi-step forms, the user has navigated between steps   |                       |
 
-<NoteBanner noteMessage='In additiona to the navigate event, you can listen for hs-form-event:on-interaction:navigate:next or hs-form-event:on-interaction:navigate:previous for easier tracking' />
+<NoteBanner noteMessage='In addition to the navigate event, you can listen for hs-form-event:on-interaction:navigate:next or hs-form-event:on-interaction:navigate:previous for easier tracking' />
 
-There are two details that should be noted here. The first one is that the `OnBeforeFormSubmit` event is gone. The second and the most important is the event taxonomy. Let's breakd it down:
-1. All events have the prefix `hs-form-event:` which is the namespace for all events related to Hubspot forms.
+There are two details that should be noted here. The first one is that the `OnBeforeFormSubmit` event is gone. The second and the most important is the event taxonomy. Let's break it down:
+1. All events have the prefix `hs-form-event:` which is the namespace for all events related to HubSpot forms.
 2. Form action which is either `on-ready`, `on-submission` or `on-interaction`. This is the main action that is happening with the form.
 3. Status or type of the action. This is only applicable for some actions. For instance, for `on-submission` you have `success` and `failed` status. For `on-interaction:navigate` you have `next` and `previous` status.
 
@@ -94,13 +93,13 @@ The interaction action has an additional level of precision which is navigate an
 
 ## Code Migration - From Global Events to Custom Events
 For the migration, we will cover the form submission first and then we will cover the other events. The form submission event is the most critical for lead generation tracking and so we will cover it in more depth and introduce some
-advanced concepts such as identity resolutiin, indentity stitiching and enhanced conversion tracking. Let's get to it.
+advanced concepts such as identity resolution, identity stitching and enhanced conversion tracking. Let's get to it.
 
 ### Available data from Global Events vs Custom Events
 The first thing we will look at is the difference in available data when the event enters our radar. That is to say, once we know the form was successfully submitted what data is available to work with. 
 
 #### Global Events
-The `onFormSubmitted` event offers a lot of data you can worth. Here's a full payload of the event:
+The `onFormSubmitted` event offers a lot of data you can work with. Here's a full payload of the event:
 
 ```json
 {
@@ -151,26 +150,26 @@ You can access said values as such:
 const {eventName, id, data: {conversionId, submissionValues: {email}}} = event.data;
 ```
 
-If you are doing some Account-based Markerting you can add the company name, first and last name to your tracking. With this payload, you can implement user_id tracking with MD5 hashes on the submitted email,
-you can also implemet identity resolution with tools such as Amplitude, Mixpanel or Sement by calling their `identify()` method. You can also implement enhanced conversion tracking with Google Ads 
+If you are doing some Account-based Marketing you can add the company name, first and last name to your tracking. With this payload, you can implement user_id tracking with MD5 hashes on the submitted email,
+you can also implement identity resolution with tools such as Amplitude, Mixpanel or Segment by calling their `identify()` method. You can also implement enhanced conversion tracking with Google Ads 
 by sending the hashed email and other data to Google Ads API. The possibilities are endless. From a single payload you can turn the data into a complete flywheel. 
 
 #### Custom Events
-Now that we have seen what is doable with the old payload, it's time to see what the new custom event are offering. Let's check what we can acces with the new tracking implementation.
+Now that we have seen what is doable with the old payload, it's time to see what the new custom events are offering. Let's check what we can access with the new tracking implementation.
 
-<Code code={trackingCode} lang='js' title='HubspotFormsV4 Tracking Code' />
+<Code code={trackingCode} lang='js' title='HubSpotFormsV4 Tracking Code' />
 
-There is a fundamental change in this tracking call that you need to pay close attention to. In the old implmentation the data was accessible instantly in the payload, in the new tracking through there is the
-`await` in front of the `form.getFormFieldValues()`. There is also `async` in front of the callback function being executed when the event is detected. This is extremely importnant as you need to familiarize yourself with
+There is a fundamental change in this tracking call that you need to pay close attention to. In the old implementation the data was accessible instantly in the payload, in the new tracking though there is the
+`await` in front of the `form.getFormFieldValues()`. There is also `async` in front of the callback function being executed when the event is detected. This is extremely important as you need to familiarize yourself with
 asynchronous JavaScript and the concept of Promises to be able to work with the new tracking implementation. Accessing fields before resolution or at the wrong timing may lead to unexpected results and data loss.
-The **getFormFields() **method is a promise that resolves to an object containing all the form fields and their values. That means that you can access the same data as before but you need to wait for the promise to resolve before you can access it.
+The **getFormFieldValues()** method is a promise that resolves to an array containing all the form fields and their values. That means that you can access the same data as before but you need to wait for the promise to resolve before you can access it.
 The resolved promise looks something like this:
 
 ```json
 [
   {
     "name": "0-1/firstname",
-    "value": "Hubspot"
+    "value": "HubSpot"
   },
   {
     "name": "0-1/multicheckbox",
@@ -184,22 +183,24 @@ an individual field value:
 <Code code={hubSpotFormsV4GetIndividualValue} lang='js' />
 
 Once you have access to field values, you can use them in the same way as before to implement user_id tracking, identity resolution and enhanced conversion tracking. The only difference is that you need to wait 
-for the promise to resolve before you can access the data. This is a fundamental change in the way you need to think about tracking and data collection with Hubspot forms. Another important note is going to be how to
+for the promise to resolve before you can access the data. This is a fundamental change in the way you need to think about tracking and data collection with HubSpot forms. Another important note is going to be how to
 handle this operation in Google Tag Manager.
 
-### Google Tag Manager & Asynchronous Operations
-Google Tag Manager is not the best place to handle asynchronous code, however, because this is something that is getting executed on an event listener provided from Hubspot, you will not neeed to worry about handling
-the cleanup and the intrecacies of running promises in GTM using the custom HTML tag - which what you are going to be using if you need to add this listener to your form pages. 
+At this point, we are going to take a slight detour and explain how to handle asynchronous operations in Google Tag Manager. This is not a requirement for tracking HubSpot forms submissions with the new implementation but it's good to know how to handle this in case you need to do any data fetching or processing before logging events in the dataLayer.
+
+#### Google Tag Manager & Asynchronous Operations
+Google Tag Manager is not the best place to handle asynchronous code, however, because this is something that is getting executed on an event listener provided from HubSpot, you will not need to worry about handling
+the cleanup and the intricacies of running promises in GTM using the custom HTML tag - which is what you are going to be using if you need to add this listener to your form pages. 
 
 #### Running asynchronous code in Google Tag Manager
-For the sake of clarity, we will show you how and what it takes to run asynchornous operations or code in Google Tag Manager. A word to the wise, this is about to get into some delicate and complex territory 
-so if you are not comfortable with JavaScript, skip this part. This more of an FYI than a requirement.
+For the sake of clarity, we will show you how and what it takes to run asynchronous operations or code in Google Tag Manager. A word to the wise, this is about to get into some delicate and complex territory 
+so if you are not comfortable with JavaScript, skip this part. This is more of an FYI than a requirement.
 
 In Google Tag Manager, Custom HTML tags do not wait for Promises to be resolved. That means Google Tag Manager is not going to wait before moving to the next tag or event. In order to handle this properly,
-you will need to use Google Tag Manager's built-in callback functions to signal that an asynchronous operations is complete. To do so, you will need to enable two built-in variables first:
+you will need to use Google Tag Manager's built-in callback functions to signal that an asynchronous operation is complete. To do so, you will need to enable two built-in variables first:
 * Container ID
 * HTML ID
-Then you in your custom HTML tag, you will need to work as follows:
+Then, in your custom HTML tag, you will need to work as follows:
 
 ```html
 <script>
@@ -225,12 +226,12 @@ Then you in your custom HTML tag, you will need to work as follows:
 </script>
 ```
 This is very important if you want to avoid your tag being stuck in **Still Running** indefinitely. If you are fetching data from an external API like 6sense's API for data augmentation, once you have the data
-accessigle, you can still log events in the dataLayer and GTM will be able to pick them up and use them for firing tags.Again, this is not a requirement for tracking Hubspot forms submissions, 
+accessible, you can still log events in the dataLayer and GTM will be able to pick them up and use them for firing tags. Again, this is not a requirement for tracking HubSpot forms submissions, 
 but it's good to know how to handle asynchronous code in GTM if you need to do any data fetching or processing before logging events in the dataLayer. And to reiterate, you will not have to worry about handling this
-with Hubspot's new tracking implementation as the event listener is provided by Hubspot and it will handle the asynchronous operations for you. You just need to make sure to wait for the promise to resolve before accessing the data.
+with HubSpot's new tracking implementation as the event listener is provided by HubSpot and it will handle the asynchronous operations for you. You just need to make sure to wait for the promise to resolve before accessing the data.
 
 ### Other Custom Events
-As mentioned earlier, the other events available with the new tracking implementation will work exactly in the same way as the form submmission event. The only thing you have to do is to change the event you are listing
+As mentioned earlier, the other events available with the new tracking implementation will work exactly in the same way as the form submission event. The only thing you have to do is to change the event you are listening
 for and the tracking will work. For instance, if you want to track when someone moves to the next step of a multi-step form, you can do as such:
     
 ```javascript
@@ -247,14 +248,13 @@ window.addEventListener("hs-form-event:on-interaction:navigate:next", async func
 })
 ``` 
 Please do not pass the fields dataLayer variable as a value to a Google Analytics 4 event parameter as GA4 is not built to process objects or arrays (with the exception of the ecommerce object and items array).
-You can tranverse the fields object as you would a regular objectt and pass specific values as event parameters.
+You can traverse the fields object as you would a regular object and pass specific values as event parameters.
 
 ## Conclusion
-With this new tracking implementation, you have more control and precision over your form, its data and how you handle the different states or stages of the form. From, identitfy resolution through
-user_id tracking or identify calls, ABM friendly tracking by passing company name and user details to enhanced conversion tracking for advertising platforms, you can use the new payload to implement a 
+With this new tracking implementation, you have more control and precision over your form, its data and how you handle the different states or stages of the form. From identity resolution through user_id tracking and identify calls, ABM-friendly tracking by passing company name and user details to enhanced conversion tracking for advertising platforms, you can use the new payload to implement a 
 host of basic to advanced tracking implementations. The only thing you need to be careful about is handling the asynchronous nature of the new tracking implementation and making sure to wait for the promises to resolve before accessing the data.
 
-### Post Scriptum
+### MD5 Hashing for Identity Resolution and User_id Tracking
 If you need to implement identity resolution or user_id tracking and you do not want to pass personally identifiable information to your analytics or advertising platforms, you can use the MD5 hash of the email as the user_id or identity.
 And since most work with Google Tag Manager, here's a full code snippet that will help you implement user_id tracking with MD5 hashes in GTM:
 
