@@ -6,10 +6,14 @@ interface Props {
 const { noteMessage } = Astro.props;
 ---
 
-<aside
-  class="bg-white rounded-xl p-6 shadow-md border border-gray-200 border-l-4"
->
-  <p class="text-gray-700 font-bold text-sm leading-relaxed mt-4">
-    {noteMessage}
-  </p>
-</aside>
+<div class="flex gap-4 border border-[#E8512A]/20 bg-[#E8512A]/5 px-6 py-4 rounded-sm">
+  <div class="w-px shrink-0 bg-[#E8512A] self-stretch" />
+  <div>
+    <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-[#E8512A] mb-1">
+      Important
+    </p>
+    <p class="font-mono text-[13px] text-[#A09A94] leading-relaxed">
+      {noteMessage}
+    </p>
+  </div>
+</div>
