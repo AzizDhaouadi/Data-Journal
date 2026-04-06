@@ -260,6 +260,13 @@
         "path": "/track-coveo-generative-answering-with-google-analytics-4/",
         "itemId": "/track-coveo-generative-answering-with-google-analytics-4/",
         "meta_description": "Track Coveo AI generative answering interactions using Google Analytics 4. Covers Coveo headless controller events, GA4 custom event implementation, search query tracking, and answer engagement measurement."
+      },
+      {
+        "article_title": "HubSpot Forms V4: Track Form Submissions with Custom Events",
+        "publication_date": "04/05/2026",
+        "path": "/hubspot-form-submission-tracking-guide/",
+        "itemId": "/hubspot-form-submission-tracking-guide/",
+        "meta_description": "HubSpot Forms V4 has dropped hsFormCallback entirely. Learn how to track form submissions using native DOM custom events, event.detail, and the HubSpotFormsV4 instance API in both vanilla JS and GTM."
       }
     ]
   }
