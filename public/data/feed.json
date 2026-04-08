@@ -267,6 +267,13 @@
         "path": "/hubspot-form-submission-tracking-guide/",
         "itemId": "/hubspot-form-submission-tracking-guide/",
         "meta_description": "HubSpot Forms V4 has dropped hsFormCallback entirely. Learn how to track form submissions using native DOM custom events, event.detail, and the HubSpotFormsV4 instance API in both vanilla JS and GTM."
+      },
+      {
+        "article_title": "How to Track Purchase Revenue from Circle.so Using Google Tag Manager and Google Analytics 4",
+        "publication_date": "04/07/2026",
+        "path": "/circle-purchase-tracking-ga4-gtm/",
+        "itemId": "/circle-purchase-tracking-ga4-gtm/",
+        "meta_description": "Learn how to track Circle.so purchase revenue in Google Analytics 4 using Google Tag Manager, including a deduplication layer to prevent double-counted conversions."
       }
     ]
   }
