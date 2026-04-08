@@ -1,0 +1,290 @@
+---
+author: Aziz Dhaouadi
+categories : [Google Analytics 4, Google Tag Manager, Circle]
+date: 04/06/2026
+featured: true
+title: How to Track Purchase Revenue from Circle.so Using Google Tag Manager and Google Analytics 4
+description: Learn how to track Circle.so purchase revenue in Google Analytics 4 using Google Tag Manager, including a deduplication layer to prevent double-counted conversions.
+---
+
+import BlogCTASection from "../../components/BlogCTASection.astro";
+import NoteBanner from '../../components/NoteBanner.astro';
+import InlineCode from "../../components/InlineCode.astro";
+import { Code } from "astro:components";
+export const gtmInitScript = `
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXXX');
+`;
+export const gtmInitScriptTag = `
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5D55NVLW');</script>
+<!-- End Google Tag Manager -->
+`;
+export const purchaseTrackingCode = `
+<script>
+var currentPurchasedProduct = "{paywall_display_name}";
+var currency = 'USD';
+var itemPrice = {paywall_price_amount};
+var itemName = "{paywall_display_name}";
+var itemBrand = 'your brand name';
+var itemCategory = currentPurchasedProduct.includes('Membership')
+  ? 'membership'
+  : 'course';
+var transactionAmount = {amount_paid};
+var couponCode = "{coupon_code}";
+var transactionId = \`t_\${Date.now()}_\${Math.random().toString(36).slice(2, 7)}\`;
+
+window.dataLayer = window.dataLayer || [];
+
+var customerPurchaseHistory = JSON.parse(
+  localStorage.getItem('purchaseHistory'),
+) || {
+  history: {
+    courses: [],
+    membership: false,
+  },
+};
+
+var previouslyPurchasedCourses = customerPurchaseHistory.history.courses;
+var isCustomerAMember = customerPurchaseHistory.history.membership;
+
+if (currentPurchasedProduct.includes('Membership')) {
+  if (isCustomerAMember) {
+  } else {
+    customerPurchaseHistory.history.membership = true;
+    window.dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+    window.dataLayer.push({
+      event: 'purchase',
+      ecommerce: {
+        transaction_id: transactionId,
+        coupon: couponCode,
+        currency: currency,
+        value: transactionAmount,
+        items: [
+          {
+            item_name: itemName,
+            index: 0,
+            item_brand: itemBrand,
+            item_category: itemCategory,
+            price: itemPrice,
+            quantity: 1,
+          },
+        ],
+      },
+    });
+    window.dataLayer.push({
+      event: 'membership_joined',
+    });
+  }
+} else {
+  if (previouslyPurchasedCourses.includes(currentPurchasedProduct)) {
+  } else {
+    previouslyPurchasedCourses.push(currentPurchasedProduct);
+    window.dataLayer.push({ ecommerce: null }); // Clear the previous ecommerce object.
+    window.dataLayer.push({
+      event: 'purchase',
+      ecommerce: {
+        transaction_id: transactionId,
+        coupon: couponCode,
+        currency: currency,
+        value: transactionAmount,
+        items: [
+          {
+            item_name: itemName,
+            index: 0,
+            item_brand: itemBrand,
+            item_category: itemCategory,
+            price: itemPrice,
+            quantity: 1,
+          },
+        ],
+      },
+    });
+  }
+}
+
+localStorage.setItem(
+  'purchaseHistory',
+  JSON.stringify(customerPurchaseHistory),
+);
+
+</script>
+`;
+
+export const beginCheckoutTrackingCode = `
+<script>
+  var currency = 'USD';
+  var itemPrice = document.querySelector('span[data-testid="current-price"]').textContent.split('$')[1].replace(',','');
+  var itemName = document.querySelector('span[data-testid="paywall-title"]').textContent;
+  var itemBrand = 'your brand name';
+  var itemCategory = '';
+
+
+  if({{Page Path}}.includes('membership')){
+    itemCategory = 'membership';
+  } else {
+    itemCategory = 'course';
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+  window.dataLayer.push({
+    event: "begin_checkout",
+    ecommerce: {
+        currency: currency,
+        value: Number(itemPrice),
+        items: [{
+            item_name: itemName,
+            index: 0,
+            item_brand: itemBrand,
+            item_category: itemCategory,
+            price: Number(itemPrice),
+            quantity: 1
+        }]
+    }
+});
+</script>
+`;
+
+If you run a membership community or sell online courses on Circle, you already know that revenue tracking is not included out of the box. There is no native Google Analytics 4 integration, which means every purchase that goes through your paywalls is invisible to your analytics stack by default. No revenue data, no conversion tracking, no funnel visibility.
+In this article, we are going to fix that. You will learn how to capture purchase events from Circle and send them to GA4 using Google Tag Manager, including a deduplication layer to make sure page refreshes do not inflate your numbers.
+
+## Required Configurations
+Before getting into the tracking code, you need to install Google Tag Manager in two separate places inside Circle. The first is Circle's general pages. This is what enables the <InlineCode code="begin_checkout" /> event tracking on your paywall landing pages. The second is Circle's paywalls themselves. This is what enables purchase tracking on the thank you page.
+Circle does not inherit configurations between these two contexts, so both installs are required and neither one covers the other.
+
+## Adding Google Tag Manager to Circle's pages
+This is the first step to getting everything ready. In your community home page, click on the dropdown arrow on the left hand side (located next to your logo). Then, click on Site. The click on Code Snippets. Under the JavaScript code snippets, add Google Tag Manager's init script.
+<NoteBanner noteMessage="This JavaScript snippet will be executed inside a safe <script> block. Ideal for custom analytics tracking snippets. Please ensure you exclude the <script> wrapper." />
+As such, the code you should be adding needs to look something like this:
+<Code lang="js" code={gtmInitScript} />
+Please do not add a script tag as instructed. Adding it may lead to unexpected results that may affect your website's functionality. But, now that GTM was added to all pages, it is time to run a quick test. Back on your community's web page, open the Developer Tools, and within the console type `dataLayer`. If everything was loaded correctly, you should see something like this:
+
+```js
+[
+    {
+        "gtm.start": 1775445173994,
+        "event": "gtm.js",
+        "gtm.uniqueEventId": 3
+    },
+    {
+        "0": "js",
+        "1": "2026-04-06T03:12:53.995Z"
+    },
+    {
+        "0": "config",
+        "1": "G-XXXXXXXXXX"
+    },
+    {
+        "event": "gtm.dom",
+        "gtm.uniqueEventId": 10
+    },
+    {
+        "gtm.start": 1775445174672,
+        "event": "gtm.js",
+        "gtm.uniqueEventId": 11
+    },
+    {
+        "event": "gtm.scrollDepth",
+        "gtm.scrollThreshold": 90,
+        "gtm.scrollUnits": "percent",
+        "gtm.scrollDirection": "vertical",
+        "gtm.triggers": "6",
+        "gtm.uniqueEventId": 12
+    },
+    {
+        "event": "gtm.load",
+        "gtm.uniqueEventId": 24
+    }
+]
+```
+This is indicative that Google Tag Manager was added correctly.
+
+### Adding Google Tagg Manager to Circle's Paywalls
+Now, it is time to add Google Tag Manger to the paywalls. If you have multiple paywalls configured you will have to repeat this step for each one. It is important to do so as the configuration is not inherited. To add GTM, click on the dropdown menu from your community's home page and select Paywalls. Once you are on the Paywalls page, select a paywall and then select the Tracking tab. A code section should be available to paste your code there. And that's where we are adding our Google Tag Manger code.
+
+<NoteBanner noteMessage="Unlike the Code Snippets section, this one requires the addition of the script tag" />
+
+As such the tracking code you should be adding is the familiar script for Google Tag Manager.
+
+<Code lang="html" code={gtmInitScriptTag} />
+
+### Circle's Variables
+Circle, like Shopify, provides certain variables that you can access on the thank you page which will allow us to get details on the transaction that just happened. We will use these variables to pass dynamic values in our tracking code and avoid traversing the DOM in order to get the right details for the transaction. The full list is the following:
+- \{member_email}
+- \{amount_paid}
+- \{coupon_code}
+- \{paywall_internal_name}
+- \{paywall_display_name}
+- \{paywall_trial_days}
+- \{paywall_price_amount}
+- \{paywall_price_interval}
+- \{paywall_price_type}
+In addition to the variables, you can access another set of variables in all of Circle's pages using their circleUser global variable. Typing circleUser in your console will return an object such as this one:
+
+```json
+{
+    "firstName": "Jon",
+    "lastName": "Doe",
+    "name": "Jon Doe",
+    "email": "jondeo@unknown.com",
+    "isAdmin": "false",
+    "isModerator": "false",
+    "publicUid": "e781b19c",
+    "profileUrl": "<Profile URL>",
+    "location": "",
+    "websiteUrl": "",
+    "linkedinUrl": "",
+    "twitterUrl": "",
+    "facebookUrl": "",
+    "signedIn": true
+}
+```
+You can use this data to create user_id tracking and ensure user identity resolution and offer a more granular tracking as well as count for your community website. Also, please bear in mind that it is required to use the paywall variables within the {} otherwise you wil get errors. The variables are interpretable by Circle and can only be properly handled if they are passed within the curly brackets.
+
+## Tacking Purchases
+Now that everything is in place, it is time to track the actual purchase. Before breaking down the code, it is important to note that this code is running on the thank you page the user lands on after a successful purchase. And so simply logging a purchase event into the dataLayer will cause your tracking to be widely inaccurate as the purchase event will fire every time a user refreshes the page or comes back to it. 
+
+Let's break down the tracking code:
+
+<Code lang="html" code={purchaseTrackingCode} />
+
+This script is here to solve a very specific problem: <InlineCode code="double-counted purchases" />.
+The first block is just setting up the purchase context. It grabs the purchased product name, the paid amount, coupon, price, currency and builds a <InlineCode code="transactionId" />. The category is inferred from the product name itself. If the name contains <InlineCode code="Membership" />, it is treated as a membership, otherwise it is treated as a course. So already, the script is splitting the logic into two product families without needing some giant lookup table.
+
+Then we initialize the <InlineCode code="dataLayer" /> and pull <InlineCode code="purchaseHistory" /> from <InlineCode code="localStorage" />. If nothing exists yet, we create a default object with two things: an array for purchased courses and a boolean for whether the customer already has a membership. This object is the memory of the script. It is what allows the browser to remember what has already been tracked and what should not be tracked again. After that, the script branches based on the current product. If the purchased product is a membership, it checks <InlineCode code="isCustomerAMember"/>. If that is already true, the script exits immediately. If the person is not already marked as a member, then the script flips the membership flag to **true**, clears the previous ecommerce object in the <InlineCode code="dataLayer" />, and pushes a new <InlineCode code="purchase"/> event with the ecommerce payload. It also pushes a second event called <InlineCode code="membership_joined" />, which is useful because purchase is generic but membership_joined is business-specific and much easier to use downstream. If the product is not a membership, then we go into the course logic. Instead of checking one boolean, the script checks whether the current product already exists in <InlineCode code="previouslyPurchasedCourses" />. If it does, we stop right there because this purchase was already tracked on this browser. If it does not, then the course name gets added to the array, the old ecommerce object is cleared, and the purchase event is pushed into the dataLayer.The clearing step matters by the way. <InlineCode code="window.dataLayer.push({ ecommerce: null })" /> is there to wipe the previous ecommerce payload before sending the new one. Without that, ecommerce data can bleed between events depending on how GTM is set up, which is exactly the kind of behaviour we want to avoid. At the very end, the updated <InlineCode code="purchaseHistory" /> object is written back into <InlineCode code="localStorage" />. That is what makes the deduplication persist after the script finishes running. The next time the page loads, the browser still knows which courses were already tracked and whether the user was already marked as a member. There are two important caveats though. First, this is <InlineCode code="client-side" /> deduplication, not true source-of-truth deduplication. If the user changes browser, clears localStorage, switches device, or purchases while not carrying over that browser state, this logic knows nothing. Second, the generated <InlineCode code="transactionId" /> is random, so it is not a real order ID from the backend. That means this script is preventing duplicate fires locally, but it is not giving you a canonical purchase identifier across systems. So overall, the code is using localStorage as a lightweight guardrail to prevent polluted purchase tracking. Not perfect, but for frontend analytics protection against reloads and repeat fires, it is a solid pattern.
+
+## Testing the implementation
+Once you have saved the code, create a $0 product and do a test purchase. You should see the <InlineCode code="purchase" /> event logged in the <InlineCode code="dataLayer" />. Then open DevTools, navigate to Application > Local Storage, and confirm that a <InlineCode code="purchaseHistory" /> key exists with a structure like this:
+
+```json
+{
+  "history": {
+    "courses": [],
+    "membership": true
+  }
+}
+```
+
+This confirms the deduplication layer is working. Finally, refresh the page and verify that no second purchase event appears in the dataLayer.
+
+## Next steps
+Once you have finished testing the implementation, head to Google Tag Manager and create a Google Analytics 4 tag for the purchase event. Once published you will see revenue data and ecommerce in general populating in Google Analytics 4.
+
+### Bonus: Tracking the begin checkout event
+Now that GTM is installed on Circle's general pages, here is how to put it to use. The <InlineCode code="begin_checkout" /> event fires when a user lands on a paywall, giving you the first touchpoint in your purchase funnel before they ever hit the thank you page.
+
+Here's the full code snippet:
+
+<Code lang="html" code={beginCheckoutTrackingCode} />
+
+This script fires every time a user starts their checkout journey, which in this case is landing on the payment page (your paywall). The first part is just setting up context variables like price, name and category. This is all pulled from Circle's UI, so it's fragile by nature. If the DOM changes, this breaks. There's no clean alternative unless Circle exposes this data properly. Next, the script determines whether the product is a membership or a course using the page path. This does not change the behavior of the script, it only sets the <InlineCode code="itemCategory" />. The final step is pushing the <InlineCode code="begin_checkout" /> event into the <InlineCode code="dataLayer" /> with a standard GA4 ecommerce payload. The previous ecommerce object is cleared beforehand to avoid any data leakage between events. If you want a more complete funnel, you can add an <InlineCode code="add_to_cart" /> event before this using the same payload. That gives you a clean flow: <InlineCode code="add_to_cart → begin_checkout → purchase" />. You can also add <InlineCode code="add_payment_info" /> before purchase if you want more granularity, but that depends entirely on how deep you want your tracking to go.
+
+<NoteBanner noteMessage="This code is meant to be used inside a Custom HTML tag in Google Tag Manager." />
