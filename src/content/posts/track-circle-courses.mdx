@@ -40,7 +40,7 @@ function returnCompletedLessonNumber() {
 export const TotalLessons = `
 function returnLessonsTotalNumber() {
 
-    var lessonSectionText = google_tag_manager['GTM-5D55NVLW'].dataLayer.get('gtm.element').parentElement.parentElement.parentElement.querySelector('div[data-testid="view-lesson-content"] span').innerText;
+    var lessonSectionText = google_tag_manager['GTM-XXXXXXXX'].dataLayer.get('gtm.element').parentElement.parentElement.parentElement.querySelector('div[data-testid="view-lesson-content"] span').innerText;
 
     var totalLessons = lessonSectionText.split('of')[1] || {{Undefined Value}};
 
@@ -63,15 +63,15 @@ function isCourseCompleted(){
 }
 `;
 
-If you run a community on Circle and recently added courses, you've probably noticed that Circle doesn't give you much out of the box when it comes to tracking lesson completions or knowing when a member finishes a course. This article covers exactly that. How to track lesson completions and course completions in Circle using Google Tag Manager and GA4, including the custom JavaScript variables you need to pull lesson numbers, titles, and totals directly from the DOM.
+If you run a community on Circle and have recently added courses, you've probably noticed that Circle doesn't give you much out of the box when it comes to tracking lesson completions or knowing when a member finishes a course. This article covers exactly that: how to track lesson completions and course completions in Circle using Google Tag Manager and GA4, including the custom JavaScript variables you need to pull lesson numbers, titles, and totals directly from the DOM.
 
 ## Tracking Context & Limitations
-The tracking methodology covered in this articles relies on the DOM. If this tracking will be feeding important systems dowstream, we recommend that you track such interactions from your community members using [Circle’s Data API](https://api.circle.so/apis/data-api). You can the Fetch community events data endpoint as well as the Fetch analytics tracker events data (for additional data) endpoint for comprehensive tracking. If you are only interested in course tracking, you can use the former endpoint. Alternatively, you can use Zapier with Circle as a source to send data to your required destination. The main limitation with this methodology is cost. If you have quite a large community with many courses/lessions, the cost can ramp up fast. 
+The tracking methodology covered in this article relies on the DOM. If this tracking will be feeding important systems downstream, we recommend that you track such interactions from your community members using [Circle's Data API](https://api.circle.so/apis/data-api). You can use the Fetch community events data endpoint as well as the Fetch analytics tracker events data (for additional data) endpoint for comprehensive tracking. If you are only interested in course tracking, you can use the former endpoint. Alternatively, you can use Zapier with Circle as a source to send data to your required destination. The main limitation with this methodology is cost. If you have quite a large community with many courses/lessons, the cost can ramp up fast. 
 
-In our case, DOM-based tracking, the limit exists with event listeners. That is no to say that we cannot listen to event or it is challenging, no. The challenge if data fidelity. If a user were to spam clicks or CSS selectors were to change, tracking inaccuracies are inevitable. You will discourse on this further as we are introducing the tracking codes and tags. For now, please keep in mind said limitations and consider how this tracking fits into your organization’s overall data requirements for answering business questions. If accuracy is a critical requirement, our recommendation is to use the Data API along with user-level hashed IDs as well as timestamps (down to millisecond preferably) in order to establish an accuracy grain that is hard to bypass.
+In our case, DOM-based tracking, the limit exists with event listeners. That is not to say that we cannot listen to events or it is challenging, no. The challenge is data fidelity. If a user were to spam clicks or CSS selectors were to change, tracking inaccuracies are inevitable. We will elaborate on this further as we are introducing the tracking codes and tags. For now, please keep in mind said limitations and consider how this tracking fits into your organization's overall data requirements for answering business questions. If accuracy is a critical requirement, our recommendation is to use the Data API along with user-level hashed IDs as well as timestamps (down to millisecond preferably) in order to establish an accuracy threshold that is hard to bypass.
 
 ## Lesson Complete Trigger
-Now that limitations and context are out of the way, let’s get to Google Tag Manager. First, open your Circle course in preview mode to see your course lessons. Courses in Circle usually have 3 levels:
+Now that limitations and context are out of the way, let's get to Google Tag Manager. First, open your Circle course in preview mode to see your course lessons. Courses in Circle usually have 3 levels:
 
 ```text
 Course
@@ -89,16 +89,16 @@ Now that we have the foundation of the tracking set up, it is time to introduce 
 
 - Lesson title
 - Lesson number
-- Total number of lesson in the course
+- Total number of lessons in the course
 
-For each of these variables, the requirement is getting the data relative to them. And, so each of these variables we are going to introduce the concept of relative clicks in Google Tag Manager which allows us to get data relative to the element that the user interacted with on the page.
+For each of these variables, the requirement is getting the data relative to them. For each of these, we will introduce the concept of relative clicks in Google Tag Manager which allows us to get data relative to the element that the user interacted with on the page.
 
 ## Getting Data from Relative Clicks in Google Tag Manager
 
 Relative data to the element clicked or interacted with in Google Tag Manager begins with this piece of code:
 
 ```javascript
-google_tag_manager['GTM-XXXXXXXX'].dataLayer.get('gtm.element')`
+google_tag_manager['GTM-XXXXXXXX'].dataLayer.get('gtm.element')
 ```
 
 This code is allowing us to access the element the user interacted with on the page in the context of Google Tag Manager. 
@@ -113,17 +113,17 @@ This code is allowing us to access the element the user interacted with on the p
 }
 ```
 
-So when we are accessing the dataLayer, we are getting access to get method allowing us to grab the **gtm.element** and use it for own tracking. This method is like running **document.querySelector**. One thing to notice is that whenever you interact with an element on the page, the output of that command changes. Unless you interact with the same element, the result will change.
+So when we are accessing the dataLayer, we are getting access to get method allowing us to grab the **gtm.element** and use it for our own tracking. This method is like running **document.querySelector**. One thing to notice is that whenever you interact with an element on the page, the output of that command changes. Unless you interact with the same element, the result will change.
 
 ### Getting the lesson name
-This variable as well as all the upcoming ones will be defined as the Custom JavaScript variables in Google Tag Manager. This function allow us to get the title of the completed lesson.
+This variable as well as all the upcoming ones will be defined as the Custom JavaScript variables in Google Tag Manager. This function allows us to get the title of the completed lesson.
 
 <Code code={LessonName} lang="javascript" />
 
 #### parentElement & `{{Undefined Value}}`
-parementElemet is a JavaScript property that enables us to access the current element's parent in the DOM. In our case, we are looking at the grand grand father of the current element. Please note that we are traversing the DOM in reverse and we are doing this in order because we have a precise reading on the DOM. Please test before publishing to make sure that you are indeed getting the right element. A `console.log` is a good place to start. 
+**parentElement** is a JavaScript property that enables us to access the current element's parent in the DOM. In our case, we are looking at the great-grandparent of the current element. Please note that we are traversing the DOM in reverse and we are doing this in order because we have a precise reading on the DOM. Please test before publishing to make sure that you are indeed getting the right element. A `console.log` is a good place to start. 
 
-The `{{Undefined Value}}` is a Google Tag Manager variable that returns the value undefined in JavaScript. We use this in our code to ensure that if truthy tests fail using the variable if we cannot find what we are looking for. That part of the function is completely optional. You can remove it and function will still work the same.
+The `{{Undefined Value}}` is a Google Tag Manager variable that returns the value undefined in JavaScript. We use this as a fallback in case the element is not found. That part of the function is completely optional. You can remove it and function will still work the same.
 
 ### Getting the Lesson number
 <Code code={LessonNumber} lang="javascript" />
@@ -134,11 +134,11 @@ This function returns the number of the lesson completed by the user.
 This function returns the total number of lessons in the course. So, the function above would return 2. This one would return the total which could be 10, 20 or 30 lessons.
 
 ## Tracking Course Completion
-Since Circle, at the time of posting this tutorial, offer a UI element indicating that a course is completed, we will be using a custom JavaScript variable to figure it out. The whole gist of the function is checking the number of the completed lesson and comparing it to the total number of lessons in the course. If both variables are equal then the course is completed. Here's the function:
+Since Circle, at the time of posting this tutorial, offers a UI element indicating that a course is completed, we will be using a custom JavaScript variable to figure it out. The whole gist of the function is checking the number of the completed lesson and comparing it to the total number of lessons in the course. If both variables are equal then the course is completed. Here's the function:
 
 <Code code={CourseCompletionLogic} lang="javascript" />
 
-Please note that the right hand side of the assignment needs to be the name of the variables you created. Unless you named both variables **Circle Lesson Number** and **Circle Lesson Total Number**. Pasting this function as is will raise errors in Google Tag Manager.
+Please note that the right hand side of the assignment needs to be the name of the variables you created. Unless you named both variables **Circle Lesson Number** and **Circle Lessons Total Number**. Pasting this function as is will raise errors in Google Tag Manager.
 
 ## Creating the Google Analytics 4 tags
 
@@ -156,11 +156,13 @@ For the second, third and fourth variable you can use the variables we created a
   return currentUserMemberId;
 }
 ```
-This will return Circle’s public profile id and you can use it as a user id for your GA4 property. Once the tag is configured add the tag we created in the first step.
+This will return Circle's public profile id and you can use it as a user id for your GA4 property. Once the tag is configured add the trigger we created in the first step.
 
 ### Course complete
 For this tag, we will create the trigger first. Copy the trigger we created in the first step and add the following condition to it  
-<InlineCode code={'{{Is Course Completed}} = true'} />. This essentially saying if the completed number is equal to the total number of courses when the user clicks on the Complete Lesson button, this course is complete.
+<InlineCode code={'{{Is Course Completed}} = true'} />. This is essentially saying if the completed number is equal to the total number of lessons when the user clicks on the Complete Lesson button, this course is complete.
 
 ## Conclusion
-With these custom variables as well as tags, you should be able to track the engagement in your community with your courses and from there the sky is the limit.
+With these custom variables and GA4 tags in place, you now have a solid foundation for tracking course engagement in Circle. Keep in mind that DOM-based tracking is a pragmatic starting point. It works well for most communities, but if your data needs to feed critical systems or you require high-fidelity data, consider using Circle's Data API for server-side tracking.
+
+From here, you can extend this setup further: segment learners by completion rate, trigger re-engagement emails when a course is abandoned, or build a GA4 funnel to visualize drop-off across lessons.
