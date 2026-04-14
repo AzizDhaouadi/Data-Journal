@@ -274,6 +274,13 @@
         "path": "/circle-purchase-tracking-ga4-gtm/",
         "itemId": "/circle-purchase-tracking-ga4-gtm/",
         "meta_description": "Learn how to track Circle.so purchase revenue in Google Analytics 4 using Google Tag Manager, including a deduplication layer to prevent double-counted conversions."
+      },
+      {
+        "article_title": "How to Track Circle.so Course Completions with Google Tag Manager",
+        "publication_date": "04/12/2026",
+        "path": "/track-circle-courses/",
+        "itemId": "/track-circle-courses/",
+        "meta_description": "Learn how to track lesson completions and course completions in Circle.so using Google Tag Manager and GA4. Includes custom JavaScript variables for lesson number, title, total lessons, and course completion logic."
       }
     ]
   }
