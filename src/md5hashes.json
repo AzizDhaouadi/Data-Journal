@@ -153,6 +153,10 @@
       {
         "path": "/circle-purchase-tracking-ga4-gtm/",
         "itemID": "0f6cb658257d970cba6ac581977fa797"
+      },
+      {
+        "path": "/track-circle-courses/",
+        "itemID": "0fe142ae171d6d206ea7afcd622c9029"
       }
     ]
   }
