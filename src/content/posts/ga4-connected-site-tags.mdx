@@ -1,0 +1,311 @@
+---
+author: Aziz Dhaouadi
+categories: [Google Analytics 4]
+date: 04/20/2026
+title: How to Connect Multiple Google Analytics 4 Properties to One Google Tag
+featured: true
+description: Send data to multiple GA4 properties from a single gtag.js install using connected site tags. Step-by-step setup, how destinations work, and what to watch for.
+---
+
+import BlogCTASection from "../../components/BlogCTASection.astro";
+import NoteBanner from "../../components/NoteBanner.astro";
+import InlineCode from "../../components/InlineCode.astro";
+import { Code } from "astro:components";
+
+export const installationCode = `
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+`;
+
+
+There are multiple ways you can install Google Analytics 4 on your website. Whether you go about it using Google Tag Manager, gtag.js,
+or through a direct integration, Google Analytics is very flexible and allows you to send data to your property and start your analysis.
+However, what if you want to manage multiple properties? What if you want to send data from multiple properties into a single property? Or what if you want to send data from a single property into multiple properties? This is where connected site tags come in.
+
+## What are destinations in Google Analytics 4?
+A destination in Google Analytics 4 is simply equivalent to a property. It is a place where data you send is processed and stored, and can later be accessed for analysis and reporting. A property has multiple settings that define how data is processed, stored, and also enhanced. In order for a property to receive data, hence becoming a destination, a Google tag needs to be initialized with the property ID. This can be done using gtag.js. And, it is very important to remember that you should do this with gtag.js.
+
+With destinations now cleared up, connecting destinations in Google Analytics 4 is nothing more than connecting multiple properties to a single data stream. That is to say, we connect 2 or more properties by allowing the main Google Tag to load not only the main property but also the other properties we want to connect. And the beauty of this is that it requires no additional code, no additional tags, and no additional maintenance. Once you set up connected site tags, you can send data to multiple properties without any extra work.
+
+## Gtag.js and installation code
+Gtag.js is the main library behind the global Google tag. Using this library, you can send data not just to Google Analytics 4, but also to other Google products such as Google Ads. When you install Google Analytics 4 manually, you are using gtag.js. Note that gtag.js is not loaded when you install Google Analytics 4 through Google Tag Manager. But why does this matter?
+
+It matters because when you connect a destination, you are effectively removing that destination, or the property connected to a Measurement ID, from any other Google tag that has it as a destination. For instance, if you connect a property that is already actively collecting data from another Google tag on a site, connecting that destination to your Google tag removes it from that tag. This is not to say the tag will fail, it won't, but the property controlling the config in the UI will change.
+
+To put it in Google's own terms, a destination is a Google measurement product account that shares configuration with, and receives data from, a Google tag. Destinations can be added to a Google tag to reuse that tag's configuration and footprint on the site, and adding a destination removes it from any other Google tag that previously had it.
+
+As such, we highly advise you to check which properties can be connected, because whatever property ID you use for the installation of the Google tag, the Measurement IDs of the connected properties will be initialized and will all receive the data you are sending. The destinations become intertwined and data will be received in all three destinations. However, if you need to control the data flow between the different properties, it is entirely possible and we will show you how to do that in the next section.
+
+## Connecting Google Analytics 
+Now that everything has been clarified, it is time to get to work and connect the different properties. For this tutorial, we will be connecting not one but two properties for a total of 3 Measurement IDs managed from the same code base. 
+
+The first step in connecting your properties is choosing which one will be the main property. That is which one will have its Measurement ID used in the installation code. Once you have decided on that, you can go ahead and get the other Measurement IDs of the properties you want to connect. Once you have them ready, it is time to log into Google Analytics 4. In the main property's Admin section, under Property settings in the Data collection and modification section, click on Data stream, and then click on **Configure tag settings**. In the Your Google tag section, click on your Google tag and a modal will open. Inside the modal, click on **+ Destination**, then **Choose destination**, and then choose one of the properties you want to connect. Once you click on the property, it will be added as a destination and you will see it in the list of connected destinations. You can repeat the same process to connect as many properties as you want.
+
+<NoteBanner noteMessage="Please note that you can only connect properties or destinations which you own. You cannot connect an external property to which your account has no connection." />
+
+In our case, this is what the output of this exercise looks like:
+
+<figure className="my-8">
+  <svg width="100%" viewBox="0 0 680 230" xmlns="http://www.w3.org/2000/svg" role="img" style={{ fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" }}>
+    <title>Google tag connected to three GA4 destinations</title>
+    <desc>A Google tag named Main Stream carrying three measurement IDs distributes events to three GA4 destinations.</desc>
+
+    <text x="30" y="28" fontSize="13" fontWeight="500" fill="#5F6368">Google tag</text>
+    <text x="460" y="28" fontSize="13" fontWeight="500" fill="#5F6368">Destinations</text>
+
+    <rect x="20" y="45" width="400" height="140" rx="10" fill="#F8F9FA" stroke="#DADCE0" strokeWidth="1" />
+    <rect x="40" y="75" width="360" height="80" rx="8" fill="#FFFFFF" stroke="#DADCE0" strokeWidth="1" />
+
+    <rect x="56" y="95" width="40" height="40" rx="8" fill="#4285F4" />
+    <text x="76" y="123" textAnchor="middle" fontSize="22" fontWeight="500" fill="#FFFFFF">G</text>
+
+    <text x="110" y="112" fontSize="14" fontWeight="500" fill="#202124">Main Stream</text>
+    <text x="110" y="134" fontSize="12" fill="#5F6368">IDs: G-XXXXXXXXXX, G-XXXXXXXXXX</text>
+
+    <path d="M 400 115 C 430 115, 430 67, 460 67" fill="none" stroke="#DADCE0" strokeWidth="1" />
+    <path d="M 400 115 C 430 115, 430 125, 460 125" fill="none" stroke="#DADCE0" strokeWidth="1" />
+    <path d="M 400 115 C 430 115, 430 183, 460 183" fill="none" stroke="#DADCE0" strokeWidth="1" />
+
+    <rect x="460" y="45" width="200" height="44" rx="22" fill="#FFFFFF" stroke="#DADCE0" strokeWidth="1" />
+    <g transform="translate(478, 57)">
+      <rect x="0" y="12" width="4" height="8" rx="1" fill="#F9AB00" />
+      <rect x="6" y="6" width="4" height="14" rx="1" fill="#F9AB00" />
+      <rect x="12" y="0" width="4" height="20" rx="1" fill="#F9AB00" />
+    </g>
+    <text x="508" y="72" fontSize="13" fill="#202124">Main Stream</text>
+
+    <rect x="460" y="103" width="200" height="44" rx="22" fill="#FFFFFF" stroke="#DADCE0" strokeWidth="1" />
+    <g transform="translate(478, 115)">
+      <rect x="0" y="12" width="4" height="8" rx="1" fill="#F9AB00" />
+      <rect x="6" y="6" width="4" height="14" rx="1" fill="#F9AB00" />
+      <rect x="12" y="0" width="4" height="20" rx="1" fill="#F9AB00" />
+    </g>
+    <text x="508" y="130" fontSize="13" fill="#202124">Trial Account - GA4</text>
+
+    <rect x="460" y="161" width="200" height="44" rx="22" fill="#FFFFFF" stroke="#DADCE0" strokeWidth="1" />
+    <g transform="translate(478, 173)">
+      <rect x="0" y="12" width="4" height="8" rx="1" fill="#F9AB00" />
+      <rect x="6" y="6" width="4" height="14" rx="1" fill="#F9AB00" />
+      <rect x="12" y="0" width="4" height="20" rx="1" fill="#F9AB00" />
+    </g>
+    <text x="508" y="188" fontSize="13" fill="#202124">Gamer Republic One</text>
+  </svg>
+  <figcaption className="mt-2 text-sm text-gray-500">The Main Stream Google tag distributes events to three GA4 destinations.</figcaption>
+</figure>
+
+Once you have connected the properties, it is time to add the main installation script into your website and test the connection. The installation script is rather easy to find. In the same section where you can see all of your connected destinations, you can click on the **Installation instructions** link and switch to the Install manually tab. In this section, you will find the installation code you will need to copy and paste into your code base. Here's the installation code for our example:
+
+<Code lang="html" code={installationCode} />
+
+Please note that that you need to change `G-XXXXXXXXXX` with your actual Measurement ID. Now, once this is done, you can go ahead and test the implementation using the Devtools or the Realtime report in Google Analytics 4. In our case, because we will be testing 3 properties, we will check the data in 3 properties. Open your connected properties in different tabs and then navigate to the Realtime report view. In another separate tab, open your website and that should trigger the page_view event. You should have the Network tab of the Devtools open and recording Networking requests. If everything was done correctly, you should see 2 or 3 requests recording the **page_view** event. In our case, we have 3 requests recording the page_view event, one for each property. You can also check the Realtime report in each property and you should see the events incoming for each property. The Realtime report will show events such as:
+* page_view
+* session_start
+* user_engagement
+* scroll
+
+Here are the network calls for the page_view event in our case:
+
+### page_view payload for first property (main stream)
+```json
+{
+  "v": "2",
+  "tid": "G-9EGLEMTCSB",
+  "gtm": "45je64h1v894672159za200zd894672159",
+  "_p": "1776745506106",
+  "gcd": "13l3l3l3l1l1",
+  "npa": "0",
+  "dma": "0",
+  "_eu": "AAAAAAQ",
+  "are": "1",
+  "cid": "901092150.1771906762",
+  "frm": "0",
+  "pscdl": "noapi",
+  "rcb": "6",
+  "sr": "1920x1080",
+  "uaa": "arm",
+  "uab": "64",
+  "uafvl": "Google Chrome;147.0.7727.55|Not.A/Brand;8.0.0.0|Chromium;147.0.7727.55",
+  "uam": "",
+  "uamb": "0",
+  "uap": "macOS",
+  "uapv": "26.4.1",
+  "uaw": "0",
+  "ul": "en-us",
+  "_s": "1",
+  "tag_exp": "0~115938466~115938468~117266400",
+  "sid": "1776745506",
+  "sct": "6",
+  "seg": "1",
+  "dl": "http://localhost/second-index.html",
+  "dt": "HTML Template with Buttons, Forms, and Links",
+  "en": "page_view",
+  "_ee": "1",
+  "tfd": "243"
+}
+```
+
+### page_view payload for second property (Trial Account - GA4)
+```json
+{
+  "v": "2",
+  "tid": "G-N24VWWX1EY",
+  "gtm": "45je64h1v894672159za200zd894672159",
+  "_p": "1776745506106",
+  "gcd": "13l3l3l3l1l1",
+  "npa": "0",
+  "dma": "0",
+  "_eu": "AAAAAAQ",
+  "are": "1",
+  "cid": "901092150.1771906762",
+  "frm": "0",
+  "pscdl": "noapi",
+  "rcb": "6",
+  "sr": "1920x1080",
+  "uaa": "arm",
+  "uab": "64",
+  "uafvl": "Google Chrome;147.0.7727.55|Not.A/Brand;8.0.0.0|Chromium;147.0.7727.55",
+  "uam": "",
+  "uamb": "0",
+  "uap": "macOS",
+  "uapv": "26.4.1",
+  "uaw": "0",
+  "ul": "en-us",
+  "_s": "1",
+  "tag_exp": "0~115938466~115938468~117266400",
+  "sid": "1776745506",
+  "sct": "6",
+  "seg": "1",
+  "dl": "http://localhost/second-index.html",
+  "dt": "HTML Template with Buttons, Forms, and Links",
+  "en": "page_view",
+  "_ee": "1",
+  "tfd": "246"
+}
+```
+
+### page_view payload for third property (Gamer Republic One)
+```json
+{
+  "v": "2",
+  "tid": "G-LJL8GRECST",
+  "gtm": "45je64h1v894672159za200zd894672159",
+  "_p": "1776745506106",
+  "gcd": "13l3l3l3l1l1",
+  "npa": "0",
+  "dma": "0",
+  "_eu": "AAAAAAQ",
+  "are": "1",
+  "cid": "901092150.1771906762",
+  "frm": "0",
+  "pscdl": "noapi",
+  "rcb": "6",
+  "sr": "1920x1080",
+  "uaa": "arm",
+  "uab": "64",
+  "uafvl": "Google Chrome;147.0.7727.55|Not.A/Brand;8.0.0.0|Chromium;147.0.7727.55",
+  "uam": "",
+  "uamb": "0",
+  "uap": "macOS",
+  "uapv": "26.4.1",
+  "uaw": "0",
+  "ul": "en-us",
+  "_s": "1",
+  "tag_exp": "0~115938466~115938468~117266400",
+  "sid": "1776745506",
+  "sct": "4",
+  "seg": "1",
+  "dl": "http://localhost/second-index.html",
+  "dt": "HTML Template with Buttons, Forms, and Links",
+  "en": "page_view",
+  "_ee": "1",
+  "tfd": "248"
+}
+```
+
+As you can see from the payloads, the only major difference between the three is the Measurement ID (tid). Outside of this parameter, the payloads are almost identical.
+
+Now that we know everything is working as expected, it is time to control the data flows and learn how to control which property gets which data.
+
+## Conditional Data Routing & Diverging data streams
+While sending the same data to multiple destinations or properties is definitely fun, conditional data routing is even more fun. In essence, since we know that each property gets sent the same event, we will now control which property gets exclusive events others will not collect. Think of it this way, if you are connecting multiple properties where each property is collecting data from a separate website, you can have a property that collects and stores the events of all properties and then each property will receive their respective data points. For a concrete example, imagine having 2 e-commerce websites. You can create 3 properties, one will be the main container and then one property for each website. 
+
+With this kind of implementation when sending a purchase event, all three properties will receive the same event. That's not what we want. We want to keep the data separate except for the main container. As such, each e-commerce event for instance will be sent to its respective property and the main container. To do this, we will use the `send_to` event parameter of gtag.js. Here's what the code looks like:
+
+```js
+gtag("event", "button_clicked", {
+    send_to: "G-XXXXXXXXXX",
+});
+
+```
+
+When the send_to parameter is present in the payload, it tells gtag.js to which destination this event should be routed. If we need this event to be sent to more than one destination, we need to specify an array instead of a string as such:
+
+```js
+gtag("event", "button_clicked", {
+    send_to: ["G-XXXXXXXXXX", "G-XXXXXXXXXX"],
+});
+```
+
+If you need the data to be sent to more than 2 destinations, all you have to do is to add the Measurement ID in the array. That's it. This set up creates a divergence in the data collection and ensures data is collected and processed within the right properties. 
+
+As for the conditional data collecting, you can use if statement or switch case statements to ensure that the separation or conditional routing is automatic. For instance, you can use such a statement:
+
+```js
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+        switch (index) {
+        case 0:
+            gtag("event", "button_clicked", {
+            send_to: ["G-XXXXXXXXXX", "G-XXXXXXXXXX"],
+        });
+        break;
+    case 1:
+        gtag("event", "button_clicked", {
+        send_to: "G-XXXXXXXXXX",
+        });
+        break;
+    case 2:
+        gtag("event", "button_clicked", {
+        send_to: "G-XXXXXXXXXX",
+        });
+        break;
+    }
+ });
+});
+```
+This code example demonstrates conditional tracking and routes data to the correct destinations based on the conditions we define. In a practical example, this method can be used to send data from two different e-commerce stores
+into a third main property while keeping each store's stream separate, ensuring data cleanliness. Though such a use case is quite advanced, it is not uncommon especially for agencies. While it is a good idea to have a main container properties that collects
+data from separate websites, it is important to keep in mind Google Analytics 4 limitations for free accounts. 
+
+### Transferring context properly
+If data from multiple websites is making its way into one master container, please ensure that you are sending the proper context with it in order for some reports to remain useful. One easy way to ensure context is carried is by sending the property
+name as an event parameter in the payload. While the current property name is not exposed in any methods, you can use an array or an object for lookups. You can also hard code the value which is another viable option. While this is optional, we do recommend that you consider passing such metadata in order for reports such as Traffic Acquisition, Landing Pages to remain faithful to the source.
+Here is an example of how you can send context:
+
+```js
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button, index) => {
+  button.addEventListener("click", function() {
+    gtag("event", "button_clicked", {
+      // main property — include context so cross-site reports stay meaningful
+      send_to: "G-XXXXXXXXXX",
+      sender_property: "Trial Account"
+    });
+    gtag("event", "button_clicked", {
+      // child property — no context parameter needed
+      send_to: "G-XXXXXXXXXX",
+    });
+  });
+});
+```
+<NoteBanner noteMessage="Note that `sender_property` is a custom event parameter. You can name it anything that makes sense for your setup." />
+
+## Conclusion
+Connected site tags are one of the least talked about ways to scale your Google Analytics 4 setup, but they are incredibly effective when used correctly. With a single gtag.js install, and some configurations in the Admin panel, you have data flowing into multiple properties without additional code to maintain. That said, they are not without nuance. Connecting destinations removes it from any other Google tag that controlled it and without the **send_to** parameter, every property receives all the collected events which may be an unwanted behaviour. If you are running multi-site or multi-brand setup, taking the time to map out your data flows before connecting anything will save you a lot of headaches down the line.
