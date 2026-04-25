@@ -157,6 +157,10 @@
       {
         "path": "/track-circle-courses/",
         "itemID": "0fe142ae171d6d206ea7afcd622c9029"
+      },
+      {
+        "path": "/ga4-connected-site-tags/",
+        "itemID": "ed2a00ce651fa152ffdf53d82c894f31"
       }
     ]
   }
