@@ -281,6 +281,13 @@
         "path": "/track-circle-courses/",
         "itemId": "/track-circle-courses/",
         "meta_description": "Learn how to track lesson completions and course completions in Circle.so using Google Tag Manager and GA4. Includes custom JavaScript variables for lesson number, title, total lessons, and course completion logic."
+      },
+      {
+        "article_title": "How to Connect Multiple Google Analytics 4 Properties to One Google Tag",
+        "publication_date": "04/20/2026",
+        "path": "/ga4-connected-site-tags/",
+        "itemId": "/ga4-connected-site-tags/",
+        "meta_description": "Send data to multiple GA4 properties from a single gtag.js install using connected site tags. Step-by-step setup, how destinations work, and what to watch for."
       }
     ]
   }
