@@ -40,7 +40,7 @@ const categoriesDescriptions = {
     <div class="my-6 flex flex-row gap-3">
       {
         categories.map(([category, count]) => (
-          <DataStory question={category} answer={count} link={`/data-stories/${category}/`} description={categoriesDescriptions[category as keyof typeof categoriesDescriptions]} />
+          <DataStory question={category} answer={count} link={`/data-stories/${slugify(category)}/`} description={categoriesDescriptions[category as keyof typeof categoriesDescriptions]} />
         ))
       }
     </div>
