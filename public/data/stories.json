@@ -12,6 +12,78 @@
     ]
   },
   {
+    "id": "consent-default",
+    "question": "What is the consent default command?",
+    "answer": "The consent default command sets the initial consent state for Google's tags before any user interaction, scoped per region if needed. It accepts the six Consent Mode parameters (ad_storage, analytics_storage, ad_user_data, ad_personalization, functionality_storage, security_storage) and should run as early as possible, before any tag fires that sends data.",
+    "category": "Gtag",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with gtag.js and CookieYes",
+        "href": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/"
+      }
+    ]
+  },
+  {
+    "id": "consent-update",
+    "question": "What is the consent update command?",
+    "answer": "The consent update command tells Google's tags that a user's consent state has changed, typically after a visitor interacts with a cookie banner. It overwrites the values set by consent default for the rest of the session, but unlike default, it cannot be scoped by region.",
+    "category": "Gtag",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with gtag.js and CookieYes",
+        "href": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/"
+      }
+    ]
+  },
+  {
+    "id": "consent-mode-v2",
+    "question": "What is Google Consent Mode v2?",
+    "answer": "Consent Mode v2 is the updated framework Google requires for sites serving users in the EEA, adding two new parameters (ad_user_data and ad_personalization) on top of the original four. When consent is denied, tags still fire but send cookieless pings that Google uses for conversion modeling rather than user-level measurement.",
+    "category": "Consent",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with gtag.js and CookieYes",
+        "href": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/"
+      }
+    ]
+  },
+  {
+    "id": "cookieyes",
+    "question": "What is CookieYes?",
+    "answer": "CookieYes is a consent management platform that handles cookie banners, consent capture, and Google Consent Mode integration. It exposes a global cookieyes object and fires a cookieyes_consent_update event on the dataLayer when a visitor saves their preferences, which you use to trigger a consent update command.",
+    "category": "Consent",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with CookieYes",
+        "href": "/implementing-google-consent-mode-using-cookieyes-integration/"
+      }
+    ]
+  },
+  {
+    "id": "onetrust",
+    "question": "What is OneTrust?",
+    "answer": "OneTrust is an enterprise consent management platform widely used in regulated industries to handle cookie consent, data subject requests, and global privacy compliance. For Google Consent Mode integration, OneTrust exposes an OnetrustActiveGroups string and an OptanonWrapper callback that you map to the Consent Mode parameters.",
+    "category": "Consent",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with GTM and OneTrust",
+        "href": "/implementing-google-consent-mode-with-google-tag-manager-and-onetrust-integration/"
+      }
+    ]
+  },
+  {
+    "id": "ga4-data-redaction",
+    "question": "What is GA4 data redaction?",
+    "answer": "Data redaction is a Consent Mode feature that strips user-identifying parameters (client_id, ad_click_id, full URL parameters) from network requests when ad_storage is denied. You enable it by setting ads_data_redaction to true via gtag, and it only affects what gets sent over the wire, not what your tags collect locally.",
+    "category": "Consent",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with gtag.js and CookieYes",
+        "href": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/"
+      }
+    ]
+  },
+  {
     "id": "ga4-user-id",
     "question": "What is the user_id in Google Analytics 4?",
     "answer": "user_id is a Google Analytics 4 parameter that ties events to a stable identifier you control, like a hashed email or database ID. Setting it lets GA4 stitch sessions and devices for the same person into a single user, which improves cross-device attribution and audience accuracy.",
@@ -24,10 +96,160 @@
     ]
   },
   {
+    "id": "ga4-measurement-id",
+    "question": "What is the GA4 measurement ID?",
+    "answer": "The measurement ID is the unique identifier for a GA4 data stream, formatted as G-XXXXXXXXXX. You find it in the GA4 admin under Data Streams, and it's the value you pass to the gtag config command or to the GA4 Configuration tag in GTM.",
+    "category": "Google Analytics 4"
+  },
+  {
+    "id": "ga4-segment",
+    "question": "What is a segment in GA4?",
+    "answer": "A segment in GA4 is a filtered subset of your data scoped to users, sessions, or events, used inside Explorations to compare cohorts side by side. Unlike Universal Analytics, GA4 segments only exist within the Exploration where they were created and cannot be applied to standard reports.",
+    "category": "Google Analytics 4"
+  },
+  {
+    "id": "ga4-measurement-protocol",
+    "question": "What is the GA4 Measurement Protocol?",
+    "answer": "The Measurement Protocol is an HTTP API that lets you send events to GA4 directly from a server, without going through gtag.js or GTM. You authenticate with an api_secret created in the GA4 admin, then POST event payloads as JSON to the collection endpoint with your measurement_id and client_id.",
+    "category": "Google Analytics 4",
+    "links": [
+      {
+        "label": "Advanced GA4 Measurement Protocol implementation",
+        "href": "/advanced-ga4-measurement-protocol-implementation/"
+      }
+    ]
+  },
+  {
+    "id": "ua-to-ga4-migration",
+    "question": "How do you migrate from Universal Analytics to GA4?",
+    "answer": "Migrating from Universal Analytics to GA4 means recreating your tracking from scratch in a new property, since GA4's event-based data model has no direct mapping to UA's category, action, and label structure. The standard path is to set up a parallel GA4 stream, replay your existing events as GA4 custom events, and rebuild reports as Explorations or BigQuery models.",
+    "category": "Google Analytics 4",
+    "links": [
+      {
+        "label": "Ultimate GA4 migration guide",
+        "href": "/the-ultimate-google-analytics-4-migration-guide/"
+      }
+    ]
+  },
+  {
+    "id": "ga4-event-parameters",
+    "question": "What are GA4 event parameters?",
+    "answer": "Event parameters are the key-value pairs you attach to GA4 events to capture context, like page_title on a page_view or item_id on a purchase. GA4 supports up to 25 event-scoped parameters per event, and you must register them as custom dimensions in the admin to use them in reports beyond the Realtime view.",
+    "category": "Google Analytics 4",
+    "links": [
+      {
+        "label": "GA4 API reference",
+        "href": "/ga4-api-reference/"
+      }
+    ]
+  },
+  {
+    "id": "ga4-mcp",
+    "question": "What is the GA4 MCP server?",
+    "answer": "The GA4 MCP server is an implementation of the Model Context Protocol that exposes Google Analytics 4 data to LLM clients like Claude Desktop. It lets you query your GA4 property in natural language, with the LLM translating prompts into Data API calls and returning the results as structured context.",
+    "category": "Google Analytics 4"
+  },
+  {
     "id": "ecommerce-datalayer",
     "question": "What is the standard dataLayer for ecommerce tracking?",
     "answer": "The standard ecommerce dataLayer in GTM uses an ecommerce object containing an items array, where each item describes a product with fields like item_id, item_name, price, and quantity. The full object also includes a currency field and event-specific fields like value for purchases or transaction_id for orders.",
     "category": "Google Tag Manager"
+  },
+  {
+    "id": "datalayer",
+    "question": "What is the dataLayer?",
+    "answer": "The dataLayer is a JavaScript array on window that GTM and gtag.js use to receive structured data from the page. Pages push events and variables onto it via dataLayer.push({...}), and GTM listens for those pushes to fire matching tags and triggers.",
+    "category": "Google Tag Manager"
+  },
+  {
+    "id": "gtm-container",
+    "question": "What is a Google Tag Manager container?",
+    "answer": "A container is the top-level workspace in GTM that holds all your tags, triggers, and variables for a single property. It compiles to a snippet you place on your site, and every published version is versioned so you can roll back changes without redeploying code.",
+    "category": "Google Tag Manager"
+  },
+  {
+    "id": "publish-gtm-container",
+    "question": "How do you publish a GTM container?",
+    "answer": "Publishing a container takes the current workspace, creates a versioned snapshot, and pushes it live to every page running the GTM snippet. From the workspace overview, click Submit, name the version, click Publish, and the new version reaches end users within seconds.",
+    "category": "Google Tag Manager"
+  },
+  {
+    "id": "server-side-gtm",
+    "question": "What is server-side Google Tag Manager?",
+    "answer": "Server-side GTM is a second container that runs on a server you control, receiving events from your client-side container and forwarding them to vendors like GA4, Meta, or Google Ads. It moves network requests off the user's browser, which improves page performance, hides third-party endpoints from ad blockers, and lets you enrich or filter data before it leaves your infrastructure.",
+    "category": "Google Tag Manager",
+    "links": [
+      {
+        "label": "Server-side GTM and Meta Conversions API",
+        "href": "/server-side-gtm-meta-conversion-tracking/"
+      }
+    ]
+  },
+  {
+    "id": "gtm-template",
+    "question": "What is a GTM template?",
+    "answer": "A GTM template is a reusable definition of a custom tag or variable, packaged with its UI, permissions, and sandboxed JavaScript. Built-in templates cover most major vendors, and you can import community templates from the Template Gallery or build your own for proprietary integrations.",
+    "category": "Google Tag Manager"
+  },
+  {
+    "id": "meta-server-side-tracking",
+    "question": "What is Meta server-side tracking?",
+    "answer": "Meta server-side tracking sends conversion events directly from your server to Meta's Conversions API, bypassing the browser-side Pixel entirely. The standard implementation uses server-side GTM as the relay: the client container forwards events to your sGTM endpoint, which transforms and forwards them to Meta with hashed user data.",
+    "category": "Google Tag Manager",
+    "links": [
+      {
+        "label": "Server-side GTM and Meta Conversions API",
+        "href": "/server-side-gtm-meta-conversion-tracking/"
+      }
+    ]
+  },
+  {
+    "id": "track-typeform",
+    "question": "How do you track Typeform submissions in GTM?",
+    "answer": "Typeform doesn't push to the dataLayer natively, so you embed the form via the Typeform Embed SDK and listen for its form-submit event in JavaScript. From there you push a custom event to the dataLayer, which a GTM custom event trigger picks up and forwards to GA4 or Google Ads.",
+    "category": "Google Tag Manager",
+    "links": [
+      {
+        "label": "Track Typeforms with GTM and GA4",
+        "href": "/track-typeforms-using-gtm-and-ga4/"
+      }
+    ]
+  },
+  {
+    "id": "track-gravity-forms",
+    "question": "How do you track Gravity Forms submissions?",
+    "answer": "Gravity Forms fires a jQuery gform_confirmation_loaded event after a successful submission, which you hook into with a small JavaScript snippet that pushes a form_submit event to the dataLayer. A GTM custom event trigger then routes the conversion to GA4, Google Ads, or any other destination.",
+    "category": "Google Tag Manager",
+    "links": [
+      {
+        "label": "Track Gravity Forms with Google Tag Manager",
+        "href": "/track-gravity-forms-with-google-tag-manager/"
+      }
+    ]
+  },
+  {
+    "id": "track-hubspot-forms",
+    "question": "How do you track HubSpot form submissions?",
+    "answer": "HubSpot Forms V4 emits an hs-form-event:on-submission:success custom event on the document, exposing the form ID and submission data through the HubSpotFormsV4 instance API. You listen for the event in GTM via a custom HTML tag, push a form_submit event to the dataLayer, and forward it to GA4 with the form ID as a parameter.",
+    "category": "Google Tag Manager",
+    "links": [
+      {
+        "label": "HubSpot form submission tracking guide",
+        "href": "/hubspot-form-submission-tracking-guide/"
+      }
+    ]
+  },
+  {
+    "id": "track-calendly",
+    "question": "How do you track Calendly bookings?",
+    "answer": "Calendly broadcasts a postMessage event when a visitor completes a booking, which you listen for using window.addEventListener and filter by the calendly.event_scheduled type. From there you push the event to the dataLayer and trigger a GA4 or Google Ads conversion in GTM.",
+    "category": "Google Tag Manager",
+    "links": [
+      {
+        "label": "Track Calendly events with GTM and GA4",
+        "href": "/track-calendly-events-google-tag-manager-ga4-guide/"
+      }
+    ]
   },
   {
     "id": "enhanced-conversions",
@@ -38,6 +260,54 @@
       {
         "label": "Implement Google Ads enhanced conversions with GTM",
         "href": "/implement-google-ads-enhanced-conversions-with-google-tag-manager/"
+      }
+    ]
+  },
+  {
+    "id": "user-provided-data",
+    "question": "What is user-provided data in Google Ads?",
+    "answer": "User-provided data is first-party customer information (email, phone, name, address) that you send to Google Ads in hashed form alongside conversion events. It's the underlying mechanism that powers enhanced conversions, letting Google match conversions to signed-in users when third-party cookies aren't available.",
+    "category": "Google Ads",
+    "links": [
+      {
+        "label": "Implement Google Ads enhanced conversions with GTM",
+        "href": "/implement-google-ads-enhanced-conversions-with-google-tag-manager/"
+      }
+    ]
+  },
+  {
+    "id": "ga4-bigquery-export",
+    "question": "What is the GA4 BigQuery export?",
+    "answer": "The GA4 BigQuery export is a native integration that streams or batches your raw event data into a BigQuery dataset, with one daily table named events_YYYYMMDD. Each row is a single event with nested user_properties and event_params arrays, giving you full SQL access to data that the GA4 UI aggregates and samples.",
+    "category": "BigQuery",
+    "links": [
+      {
+        "label": "Integrate BigQuery with Google Analytics 4",
+        "href": "/integrate-bigquery-with-google-analytics-4/"
+      }
+    ]
+  },
+  {
+    "id": "ga4-bigquery-schema",
+    "question": "What is the GA4 BigQuery export schema?",
+    "answer": "The GA4 BigQuery export schema stores each event as a row with nested REPEATED RECORD fields for event_params, user_properties, and items. To read a parameter value, you UNNEST the array and filter by key, which is verbose but gives you full access to every dimension GA4 captures.",
+    "category": "BigQuery",
+    "links": [
+      {
+        "label": "Flatten the GA4 BigQuery export schema",
+        "href": "/flatten-ga4-bigquery-export-schema/"
+      }
+    ]
+  },
+  {
+    "id": "flatten-bigquery-export",
+    "question": "How do you flatten the GA4 BigQuery export?",
+    "answer": "Flattening the export means converting the nested event_params and user_properties arrays into top-level columns, so analysts can query events like a standard star schema. The common pattern is a dbt model that pivots known parameter keys with conditional aggregation, producing one column per parameter.",
+    "category": "BigQuery",
+    "links": [
+      {
+        "label": "Flatten the GA4 BigQuery export schema",
+        "href": "/flatten-ga4-bigquery-export-schema/"
       }
     ]
   }
