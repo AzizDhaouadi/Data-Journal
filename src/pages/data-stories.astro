@@ -1,23 +1,50 @@
 ---
+import { getCollection } from "astro:content";
+import { slugify } from "../utils/slug";
+
 import H1 from "../components/H1.astro";
 import Main from "../components/Main.astro";
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+import DataStory from "../components/client/DataStory";
 import Footer from "../components/Footer.astro";
-import DataStoriesComponent from "../components/client/DataStories.tsx";
-import data from "../../public/data/stories.json";
-const allQuestions: {}[] = [];
-Object.entries(data).forEach(([key, array]) => {
-    array.forEach((item) => allQuestions.push(item));
-})
+
+const dataStories = await getCollection("stories");
+
+const counts = dataStories.reduce<Record<string, number>>((acc, entry) => {
+  const cat = entry.data.category;
+  acc[cat] = (acc[cat] || 0) + 1;
+  return acc;
+}, {});
+const categories = Object.entries(counts).sort(([a], [b]) =>
+  a.localeCompare(b),
+);
+const categoriesDescriptions = {
+  "Google Tag Manager": "Common questions about GTM containers, dataLayer structure, triggers, and tag configuration — answered for analysts and developers shipping production tracking.",
+  "Gtag": "How gtag.js actually works in the browser: consent commands, configuration parameters, event syntax, and the gotchas that show up between the docs and real implementations.",
+  "Consent": "Consent Mode v2, CMP integrations, and the parameters that decide whether your tags collect data, model it, or stay silent — the layer most implementations get subtly wrong.",
+  "Google Analytics 4": "Practical answers about GA4 — events, parameters, user identity, attribution, and the schema differences that trip up teams migrating from Universal Analytics.",
+  "Google Ads": "Conversion tracking, enhanced conversions, audience signals, and the measurement infrastructure behind Google Ads campaigns — explained without the marketing gloss.",
+  "BigQuery": "The GA4 export schema, flattening patterns, and the SQL fundamentals you need to model raw event data into something your warehouse can actually report on."
+}
 ---
 
 <Layout
-    title="Data Stories - Web Analytics Most Frequestly Asked Questions Answered"
-    description="Discover expert answers to the most frequently asked web analytics questions. Learn how to track, analyze, and optimize data effectively."
+  title="Data Stories - Web Analytics Most Frequestly Asked Questions Answered"
+  description="Discover expert answers to the most frequently asked web analytics questions. Learn how to track, analyze, and optimize data effectively."
 >
-    <Main>
-        <H1 text="Data Stories: Your Web Analytics Library"></H1>
-        <DataStoriesComponent client:load questionsList={allQuestions} filters={data}></DataStoriesComponent>
-    </Main>
-    <Footer></Footer>
+  <Main>
+    <H1 text="Data Stories: Your Web Analytics Library" />
+    <p>
+      Short answers to common questions in web analytics. Pick a topic to browse
+      the questions in that area.
+    </p>
+    <div class="my-6 flex flex-row flex-wrap justify-center items-stretch gap-3">
+      {
+        categories.map(([category, count]) => (
+          <DataStory question={category} answer={count} link={`/data-stories/${slugify(category)}/`} description={categoriesDescriptions[category as keyof typeof categoriesDescriptions]} />
+        ))
+      }
+    </div>
+  </Main>
+  <Footer />
 </Layout>
