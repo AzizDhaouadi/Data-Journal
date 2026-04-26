@@ -1,33 +1,44 @@
-{
-    "Google Tag Manager": [
-        {
-            "question": "What is the standard dataLayer for ecommerce tracking?",
-            "answer": "The ecommerce object is the strandard object for ecommerce tracking. Its most important key is the items array which describes the items being tracked.",
-            "category": "Google Tag Manager"
-        }
-    ],
-    "Gtag.js": [
-        {
-            "question": "What is wait_for_update?",
-            "answer": "The wait_for_update parameter is used to halt data collection and wait for consent to update. It accepts any positive integer a value and is expressed in milliseconds.",
-            "category": "Gtag.js"
-        }
-    ],
-    "Google Search Console": [
-        {}
-    ],
-    "Google Analytics 4": [
-        {
-            "question": "What is the user_id in Google Analytics 4?",
-            "answer": "The user_id is a feature in GA4 that allows you to indenify users using an in-house recognized value for a better tracking. The most common values given to user IDs are hashed emails or database IDs.",
-            "category": "Google Analytics 4"
-        }
-    ],
-    "Google Ads": [
-        {
-            "question": "What are enhanced conversions in Google Ads",
-            "answer": "Enhanced conversions allow you to send additional first-party customer data (like email, phone number, zip code, etc.)—typically in a hashed format—to Google Ads along with your conversion events. This extra data helps Google match conversions more accurately to ad interactions, leading to improved conversion measurement and attribution",
-            "category": "Google Ads"
-        }
+[
+  {
+    "id": "wait-for-update",
+    "question": "What is wait_for_update?",
+    "answer": "wait_for_update is a gtag.js parameter that delays data collection until consent state has been resolved. It accepts a positive integer in milliseconds, typically between 500 and 2000, and is set inside the consent default command.",
+    "category": "Gtag",
+    "links": [
+      {
+        "label": "Implementing Google Consent Mode with gtag.js and CookieYes",
+        "href": "/implementing-google-consent-mode-using-gtag-js-and-cookieyes/"
+      }
     ]
-}
+  },
+  {
+    "id": "ga4-user-id",
+    "question": "What is the user_id in Google Analytics 4?",
+    "answer": "user_id is a Google Analytics 4 parameter that ties events to a stable identifier you control, like a hashed email or database ID. Setting it lets GA4 stitch sessions and devices for the same person into a single user, which improves cross-device attribution and audience accuracy.",
+    "category": "Google Analytics 4",
+    "links": [
+      {
+        "label": "Implement user_id in GA4",
+        "href": "/google-analytics-4-implement-user-id-2024/"
+      }
+    ]
+  },
+  {
+    "id": "ecommerce-datalayer",
+    "question": "What is the standard dataLayer for ecommerce tracking?",
+    "answer": "The standard ecommerce dataLayer in GTM uses an ecommerce object containing an items array, where each item describes a product with fields like item_id, item_name, price, and quantity. The full object also includes a currency field and event-specific fields like value for purchases or transaction_id for orders.",
+    "category": "Google Tag Manager"
+  },
+  {
+    "id": "enhanced-conversions",
+    "question": "What are enhanced conversions in Google Ads?",
+    "answer": "Enhanced conversions send hashed first-party data, such as email, phone number, and address, to Google Ads alongside conversion events. Google matches the hashed values against signed-in users to recover conversions that would otherwise be lost to cookie restrictions, improving measurement accuracy and bidding signals.",
+    "category": "Google Ads",
+    "links": [
+      {
+        "label": "Implement Google Ads enhanced conversions with GTM",
+        "href": "/implement-google-ads-enhanced-conversions-with-google-tag-manager/"
+      }
+    ]
+  }
+]
