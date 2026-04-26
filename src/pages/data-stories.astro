@@ -21,9 +21,10 @@ const categories = Object.entries(counts).sort(([a], [b]) =>
 const categoriesDescriptions = {
   "Google Tag Manager": "Common questions about GTM containers, dataLayer structure, triggers, and tag configuration — answered for analysts and developers shipping production tracking.",
   "Gtag": "How gtag.js actually works in the browser: consent commands, configuration parameters, event syntax, and the gotchas that show up between the docs and real implementations.",
+  "Consent": "Consent Mode v2, CMP integrations, and the parameters that decide whether your tags collect data, model it, or stay silent — the layer most implementations get subtly wrong.",
   "Google Analytics 4": "Practical answers about GA4 — events, parameters, user identity, attribution, and the schema differences that trip up teams migrating from Universal Analytics.",
   "Google Ads": "Conversion tracking, enhanced conversions, audience signals, and the measurement infrastructure behind Google Ads campaigns — explained without the marketing gloss.",
-  "Google Search Console": "What Search Console actually measures, how to read its reports, and how to use its data alongside GA4 and your own analytics warehouse."
+  "BigQuery": "The GA4 export schema, flattening patterns, and the SQL fundamentals you need to model raw event data into something your warehouse can actually report on."
 }
 ---
 
@@ -37,7 +38,7 @@ const categoriesDescriptions = {
       Short answers to common questions in web analytics. Pick a topic to browse
       the questions in that area.
     </p>
-    <div class="my-6 flex flex-row gap-3">
+    <div class="my-6 flex flex-row flex-wrap justify-center items-stretch gap-3">
       {
         categories.map(([category, count]) => (
           <DataStory question={category} answer={count} link={`/data-stories/${slugify(category)}/`} description={categoriesDescriptions[category as keyof typeof categoriesDescriptions]} />
