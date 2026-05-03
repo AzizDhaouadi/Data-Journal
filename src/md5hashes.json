@@ -161,6 +161,10 @@
       {
         "path": "/ga4-connected-site-tags/",
         "itemID": "ed2a00ce651fa152ffdf53d82c894f31"
+      },
+      {
+        "path": "/aeo-measurement-framework/",
+        "itemID": "b2301f60643b552dc8d9ae428fc8c76e"
       }
     ]
   }
