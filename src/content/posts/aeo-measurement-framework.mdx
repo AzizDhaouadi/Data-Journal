@@ -4,13 +4,154 @@ categories: [Google Search Console, AEO]
 date: 05/01/2026
 title: "Answer Engine Optimization: a free measurement framework using Search Console and logs"
 featured: true
-description: A free framework for measuring AI retrieval performance using Google Search Console fan-out queries and firewall logs from ChatGPT-User and Claude-User agents. 
+description: "A free framework for measuring AI retrieval performance using Google Search Console fan-out queries and firewall logs from ChatGPT-User and Claude-User agents."
 ---
 
+import BlogCTASection from "../../components/BlogCTASection.astro";
 import NoteBanner from "../../components/NoteBanner.astro";
 import InlineCode from "../../components/InlineCode.astro";
 
-With personal AI assistants like chatGPT, Claude, Gemini and more becoming indispensable tools for users and actively shaping the way 
-we retrieve and interact with information, it became crucial for businesses to understand how their brand and content are performing in these new AI-driven search environments. Whether the brand's content is retrieved by the AI assistant to answer a user's query, or whether the brand's website is visited to retrieve information, or the brand's content is index when an AI assistant is actively looking for information on Seach Engines like Google, it is crucial for businesses to understand their positioning and how they can ajdust their strategies to meet their users where they are searching.
+<header>
+With personal AI assistants like ChatGPT, Claude, Gemini and more becoming indispensable tools for users and actively shaping the way we retrieve and interact with information, it has become crucial for businesses to understand how their brand and content are performing in these new AI-driven search environments.
+
+Whether the brand's content is retrieved by the AI assistant to answer a user's query, or whether the brand's website is visited to retrieve information, or the brand's content is indexed when an AI assistant is actively looking for information on Search Engines like Google, it is crucial for businesses to understand their positioning and how they can adjust their strategies to meet their users where they are searching.
 
 In this article, we are going to explore a measurement framework that can be used to understand all the points above. And the best part? Not a single paid tool is required, as we will be leveraging Google Search Console and firewall logs to gather the necessary data.
+</header>
+
+## Search Console Fan-out Queries
+The first tool we are going to start with is Google Search Console - everyone's favorite free SEO tool. We will be using Search Console to check for fan-out queries. These are queries that return impressions on your indexed content but usually do not have any clicks. Another signal we will be looking for is the presence of the active exclusion of certain domains from returning in the search results page. These queries also carry a particular structure that can be easily identified which <InlineCode code='"Topic" -site:domain.com -site:domain.com' />
+or <InlineCode code='"Topic"' />.
+
+<NoteBanner noteMessage="Your own data may not contain matches for these fan-out patterns. Absence isn't a signal of missing search traffic or underperformance. It just means your content's retrieval surface looks different from this example." />
+
+Well now that we know what we are going to be looking for, let's find it in Search Console. Head into the platform and navigate to the **
+Performance** report, select the date range you want to analyze, in our case we picked 28 days, and then add a new **Query** filter.
+For the configuration, leave it by keyword with queries containing and input `"`. 
+
+<section>
+### What does "" mean in Search Queries?
+If you are a search power user, you probably know that there are certain characters or `parameters` we add in search to force search engines to return specific results. Double quotes is one of the those parameters. When you wrap a search query in double quotes, you are telling the search engine to return and **exact match** for what was inputted. In other words, they instruct the search engine to return results that contain the precise phrase or sequence of words inside the quotes, in that exact order. While humans do add those parameters in their search queries, it is quite uncommon to see them in regular search queries such as google analytics for example. 
+
+Another filter you can add is the negative site operator or parameter which is `-site:domain.com`. This operator is used to exclude specific websites from search results. When you include `-site:domain.com` in your search query, you are instructing the search engine to omit any results from that particular domain. This can be useful when you want to focus on content from other sources or when you want to avoid results from a specific website that may not be relevant to your search. Since you cannot use AND/OR operators in Search Console, you can use **Custom (regex)** and use this expression: <InlineCode code='"(.*)|\-site' /> to filter for those types of queries.
+
+### What do the results look like for Datajournal?
+Well, now that methodology was described, let's see its results in practice with non other than Datajournal's data. Please note that the impressions shown in the table below are not the real impressions for those queries. We modified (reduced) the real numbers. The queries themselves are real though.
+
+| # | Top query | Impressions |
+|---|---|---|
+| 1 | "_fplc" google analytics | 82 |
+| 2 | "session_traffic_source_last_click.cross_channel_campaign.default_channel_group" | 76 |
+| 3 | "cookieyes.reinit()" javascript | 35 |
+| 4 | "_fplc" google analytics parameter | 33 |
+| 5 | "cross_channel_campaign.default_channel_group" ga4 bigquery | 27 |
+| 6 | "_fplc" gtm | 24 |
+| 7 | "google analytics" with multiple -site: exclusions (reddit, twitter, x, wykop.pl, tripadvisor, youtube, yelp, booking, facebook, instagram, tiktok) | 18 |
+| 8 | "cookieyes_consent_update" | 18 |
+| 9 | "cookieyes_consent_update" datalayer | 15 |
+| 10 | "cookie_consent_update" datalayer cookieyes | 15 |
+
+<p style={"color: gray; font-size:smaller; text-align: center"}>Figure 1: Datajournal's fan-out queries</p>
+
+This data set reveals some interesting insights about the type of queries that surface Datajournal's content in search results. We can see that most of the queries are related to technical topics such as Google Analytics, JavaScript, and consent management. This indicates that users are searching for specific technical information and solutions with the help of AI assistants, and Datajournal's content is being retrieved to provide answers to those queries. Also notice that some queries are *very* similar to each other such as:
+
+* "_fplc" google analytics and `"_fplc" google analytics parameter`
+* "cookieyes_consent_update" and "cookieyes_consent_update" datalayer and "cookie_consent_update" datalayer cookieyes
+
+With this data, we now have a great educated guess on which queries are being used by AI assistants to retrieve content from your domain. And we will discourse on this in the next section with more details. For now, you now have a mechanism to identify and measure visibility that is otherwise hidden. We, at Datajournal, call it `Retrieval Visibility`.
+
+
+<NoteBanner noteMessage="Please note that the impressions from fan-out queries does not necessarily equate to clicks. It simply means that your content was surfaced as a result of a search. Whether the content was visited by the AI assistant is an entirely different story." />
+
+</section>
+
+<section>
+## Firewall Logs from AI Assistants User Agents
+Now that we have a good understanding of the first layer of visibility for AEO retrieval thanks to fan-out queries, it is time to move to the second layer of studying visibility which reflects and measures actual visits for AI assistants and active retrieval of content from your domain's content. For this, we will be using firewall logs and looking for visits from user agents of popular AI assistants such as ChatGPT and Claude.
+
+For this step, you will need access to whatever tool stores your server logs on your production environment. Otherwise, you can get help from your development team. Another thing that would make this easier is if traffic, or hits, from AI Bots is tagged and logged for easier filtering. In our case, that's the case - things are properly logged and tagged and ready to be filtered. If that's not the case for you, your development team can help you sort through the logs and get the data you need.
+
+### AI Assistants User Agents
+It is important to know that AI assistants use different bots to interact with the web and retrieve information. The ones we are looking for are user agents that contain `-User` such as `ChatGPT-User` and `Claude-User`. These user agents are used by the AI assistants to access and retrieve information from websites. More specifically, these user agents reflect the AI assistant actively fetching/retrieving information from your domain to answer a user query in an active chat window. These are not user agents used for training or indexing purposes. So if you see hits from those user agents, it means that the AI assistant is actively retrieving information from your domain to answer a user query.
+
+### Understanding the Data
+
+To make things more concrete and easier to understand, we'll have a look at firewall logs data from Datajournal's production environment. The data is collected over the last 24 hours and it shows the number of hits from different AI assistants user agents.
+
+| User agent | Count |
+|---|---|
+| `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot` | 378 |
+| `Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Perplexity-User/1.0; +https://perplexity.ai/perplexity-user)` | 3 |
+| `Claude-User (claude-code/2.1.126; +https://support.anthropic.com/)` | 1 |
+
+<p style={"color: gray; font-size:smaller; text-align: center"}>Figure 2: Hits from AI assistants user agents in Datajournal's firewall logs</p>
+
+You may be wondering what does this data means and how can we interpret it? If you are, you are asking the right questions. If you are not, well, you learned something new today and that's great! In our case, Datajournal's firewall logs, the data is actually telling a quite compelling story. Firstly, there is a major difference between traffic received from ChatGPT-User and the other user agents. This indicates that ChatGPT is the most popular AI assistant among our users and it is actively retrieving information from our domain to answer user queries. Secondly, the presence of hits from Perplexity-User and Claude-User indicates that there are also users who are using other AI assistants to retrieve information from our domain. This shows that there is a diversity of AI assistants being used by our users to access our content. To verify, or vet the signal, we will check the data for the top requested paths to ensure that there is no false signal from the bots requesting pages related to assets or the robots.txt file for example. In our example, this top requested paths are:
+
+| Path | Hits |
+|---|---|
+| /advanced-ga4-measurement-protocol… | 60 |
+| /flatten-ga4-bigquery-export-schem… | 38 |
+| /google-analytics-4-implement-user… | 28 |
+| /implementing-google-consent-mode-… | 26 |
+| /integrating-measurement-protocol-… | 26 |
+| / | 22 |
+| /server-side-gtm-meta-conversion-t… | 22 |
+| /implement-google-ads-enhanced-con… | 18 |
+| /build-ga4-dashboard-looker-studio… | 17 |
+| /implementing-google-consent-mode-… | 17 |
+| /integrate-bigquery-with-google-an… | 14 |
+| /ga4-api-reference/ | 13 |
+| /ga4-connected-site-tags/ | 11 |
+| /rename-google-tag-manager-datalay… | 10 |
+
+<p style={"color: gray; font-size:smaller; text-align: center"}>Figure 3: Top requested paths from AI assistants user agents in Datajournal's firewall logs</p>
+
+<NoteBanner noteMessage="Please note that the data shown for this example is for the last 24 hours. Your data may look different based on the date range you choose and the traffic patterns of your domain." />
+
+Once you have your hands on traffic/hits data from AI assistants user agents, you can filter by user agent to get an understanding of the requested pages, IP addresses and more. Of course this depends on what data is available in your logs. If you are unsure, you can always check with your development team to understand what data is available and how you can filter it to get the insights you need.
+</section>
+
+## Next Steps: Data Studio Dashboard for AEO Measurement
+<section>
+Now that you understand two layers of visibility for AEO retrieval where one helps you understand your visibility when it comes to search presence and the other helps you understand your visibility when it comes to actual retrieval of content, it is time to take it to the next level and visualize this data in a way that makes it easy to understand and share insights with your team. For this, we will be using the data from Search Console and visualizing it in Data Studio (formerly known as Looker Studio). We're excluding firewall log data from the dashboard because it varies significantly from one environment to another — unlike Search Console, which has a universal native connector with Data Studio. Let's dig in.
+
+<iframe width="100%" height="500" src="https://datastudio.google.com/embed/reporting/590454af-71a9-4a4e-ad32-efe499594561/page/ohowF" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+<p style={"color: gray; font-size:smaller; text-align: center"}>Figure 4: Data Studio dashboard for AEO measurement</p>
+
+<BlogCTASection 
+    category="Looker Studio"
+    title="Build your own AEO measurement dashboard"
+    description="This is a live interactive dashboard that you can clone add your visualize your own data"
+    ctaText="Clone this dashboard"
+    destination="https://datastudio.google.com/reporting/590454af-71a9-4a4e-ad32-efe499594561"
+    referrer=""
+/>
+
+This dashboard is composed of 3 different sections. Each section is focused on a specific aspect of AEO measurement and lets you extract the right level of insights. 
+
+<NoteBanner noteMessage="Please note that some charts are interactive and will act as cross-filters." />
+
+The first section of the dashboard is focused on fan-out queries, their topics, landing pages and their respective impressions and average position. The first table will reveal queries, topics and the landing page. Now the topic is a dimension that does not exist in the default connector. It's a custom dimension that we create using a regular expression which extracts the query inside the "" in the search query. Here's the regular expression <InlineCode code={'REPLACE(REGEXP_EXTRACT(Query, \'"(.*)"\'),\'"\',\'\')'} />. Essentially, this expression is looking for the pattern of a query that contains a phrase wrapped in double quotes and it extracts that phrase to create the topic dimension. This allows us to group fan-out queries by their underlying topic and get a better understanding of the themes that are driving retrieval of our content in AI assistants. Along with the landing page dimension, this helps you create cluster landing pages per topic and optimize for retrieval since you know what kind of content (informational, navigational, tutorials...) is being retrieved for each topic. The second table in this section will show you the top topic (by impressions) that your content is being retrieved for. Another indicator you can add to this table is the number of **unique landing pages** showing in search results for each topic.
+
+The next table in this section will focus on the landing pages their respective impressions, average position and unique topics where the pages was retrieved for. The latter is a great indicator of the diversity of the content on the page or put differently whether or not the page is a "magnet". The more topics the page can cover, the higher the impressions the better is the signal for high quality content that is relevant for a wide range of queries and their respective topics.
+
+The next section of the dashboard is a quadrant chart that helps you understand the relationship between the retrieval breadth of your landing pages vs their respective retrieval volume. These two metrics helps you identify potential gaps in your content strategy, especially the part where you are optimizing for AEO. Please note that these are concepts we use here at Datakyu and is not a done deal methodology. We have tested this methodology through continuous interation and experimentation and it has yielded great results for us. 
+Please use it carefully and adapt it to your specific context and needs.
+The way to read the quadrant chart is the following:
+
+* The x-axis is retrieval breadth. Breadth tells you whether a page is a single-purpose answer or a topical magnet that catches a wide net of related questions.
+* The y-axis is retrieval volume. Volume tells you what is the total impression count  i.e. how many times the page was actually pulled, regardless of how many distinct queries triggered it. A page can have low breadth and high volume (one question, asked a lot) or high breadth and low volume (many questions, none of them frequent). Volume tells you reach. Breadth tells you range.
+* Bubble size is the average position. A large bubble means the page was retrieved further down - closer to source #10 than source #1. A smaller bubble means it consistently appears near the top.
+* The dashed lines split the plot into four quadrants at the medians. What lives in each quadrant is the actual insight.
+    * Top-right (high breadth, high volume) is the topical magnet zone. Pages here get pulled across many distinct queries and at meaningful volume. This is the quadrant you want pages in.
+    * Top-left (low breadth, high volume) is the single-question champion. The page answers one specific question very well and gets pulled repeatedly for it, but is not versatile beyond that.
+    * Bottom-right (high breadth, low volume) is the latent magnet. The page is showing up across multiple queries but none of them are popular enough to drive real volume yet. These are the pages worth watching. Breadth tends to lead volume, and a page that is already topical at low volume often graduates to the top right quadrant when one of its queries breaks out.
+    * Bottom-left (low breadth, low volume) is the underperforming corner. Pages here are getting retrieved for a narrow set of questions at low frequency. Not necessarily a problem - some pages are deliberately niche - but if a page you expected to be a magnet is sitting here, it is a signal that content is not structured in a way the retrieval layer recognizes as a clean answer.
+
+The last section of the dashboard handles the geographical aspect of the data. It helps you understand the breadth and volume of retrieval for topics based on location. In other terms, it helps you understand how your content is showing in different locations based on their respective search patterns. The first chart is a heatmap that shows the number of impressions per country. This is a cross-filtering chart, so if you click on a specific country, the rest of the charts will update to reflect data for that selection. As it is a heatmap, the darker the color, the higher the number of impressions. The next chart is a bar chart that shows the retrieval breadth by country. It shows you the number of topics per country. This is a great indicator of the diversity of content that is being retrieved in different locations. The last chart is a table that shows the location (country), the topic, the impressions and the retrieval breadth. This is a great way to understand the specific topics that are being retrieved in different locations and their respective impressions and breadth.
+</section>
+
+## Conclusion
+As AI assistants become more and more prevalent, it is crucial for businesses to understand how their content is being retrieved and performing in these new search environments. By leveraging free tools like Google Search Console and firewall logs, businesses can gain valuable insights into their retrieval visibility and optimize their content strategy for AEO. The measurement framework outlined in this article provides a comprehensive approach to understanding and improving your brand's performance in AI-driven search environments.
