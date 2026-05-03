@@ -285,5 +285,12 @@
         "path": "/ga4-connected-site-tags/",
         "itemId": "/ga4-connected-site-tags/",
         "meta_description": "Send data to multiple GA4 properties from a single gtag.js install using connected site tags. Step-by-step setup, how destinations work, and what to watch for."
+      },
+      {
+        "article_title": "Answer Engine Optimization: a free measurment framework using Search Console and logs",
+        "publication_date": "05/01/2026",
+        "path": "/aeo-measurement-framework/",
+        "itemId": "/aeo-measurement-framework/",
+        "meta_description": "A free framework for measuring AI retrieval performance using Google Search Console fan-out queries and firewall logs from ChatGPT-User and Claude-User agents."
       }
   ]
