@@ -8,6 +8,7 @@ import BlogMeta from "../components/BlogMeta.astro";
 import BlogPost from "../components/client/Post.tsx";
 import ArticlesToArticleRecommandations from "../components/client/wrappers/ArticlesToArticleRecommendations.tsx";
 import { render } from "astro:content";
+import TableOfContents from "../components/TableOfContents.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -29,7 +30,8 @@ type Props = {
 };
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const transformedHeadings = headings.map(h => ({ ...h, title: h.text }));
 ---
 
 <Layout title=`Data Journal - ${post.data.title}` description={post.data.description}>
@@ -41,6 +43,7 @@ const { Content } = await render(post);
     >
       <!-- <Content /> -->
       <BlogPost client:load>
+        <TableOfContents articleHeadings={transformedHeadings} />
         <Content />
       </BlogPost>
 

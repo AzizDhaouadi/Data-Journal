@@ -5,9 +5,10 @@
     description: string;
     ctaText: string;
     referrer: string;
+    destination?: string;
 }
 
-const { category, title, description, ctaText, referrer } = Astro.props;
+const { category, title, description, ctaText, referrer, destination } = Astro.props;
 ---
 
 <div id="cta-container" class="mx-auto max-w-3xl rounded-2xl border border-zinc-200 bg-white/70 p-6 shadow-sm backdrop-blur">
@@ -23,7 +24,7 @@ const { category, title, description, ctaText, referrer } = Astro.props;
       </p>
       <div class="mt-4 flex flex-wrap flex-col items-center" style="gap: 2rem;">
         <a
-        href=`https://www.datakyu.co/contact?utm_source=datajournal&utm_medium=article&utm_campaign=${referrer.replace(/\s+/g, '_').toLowerCase()}&utm_content=${ctaText.replace(/\s+/g, '_').toLowerCase()}`
+        href={destination ? destination : `https://www.datakyu.co/contact?utm_source=datajournal&utm_medium=article&utm_campaign=${referrer.replace(/\s+/g, '_').toLowerCase()}&utm_content=${ctaText.replace(/\s+/g, '_').toLowerCase()}`}
          target="_blank" rel="noopener noreferrer"
         id="cta-link"
         style="

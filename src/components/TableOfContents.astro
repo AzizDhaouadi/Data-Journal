@@ -1,0 +1,26 @@
+---
+interface MarkdownHeading {
+    title: string;
+    slug: string;
+    depth: number;
+}
+interface Props {
+    articleHeadings: MarkdownHeading[];
+}
+const { articleHeadings } = Astro.props;
+const tableOfContents = articleHeadings.filter(articleHeading => articleHeading.depth >= 2)
+---
+
+<div class="hidden lg:block">
+  <h2 class="text-sm font-semibold tracking-tight text-zinc-900 mb-4">Table of Content</h2>
+  <nav class="text-sm leading-6 text-zinc-600" aria-label="Table of contents">
+    <ul role="list" class="space-y-3">
+      {tableOfContents.map((articleHeading) => (
+        <li>
+          <a href={`#${articleHeading.slug}`} class={`block rounded-md px-3 py-2 ${articleHeading.depth === 2 ? 'font-medium text-zinc-900' : 'text-zinc-600'}`}>
+            {articleHeading.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
