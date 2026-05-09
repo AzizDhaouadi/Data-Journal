@@ -1,0 +1,1866 @@
+{
+  "metrics": [
+    {
+      "metric": "1-day active users",
+      "description": "The number of distinct active users on your site or app within a 1 day period. The 1 day period includes the last day in the report's date range. Note: this is the same as Active Users."
+    },
+    {
+      "metric": "28-day active users",
+      "description": "The number of distinct active users on your site or app within a 28 day period. The 28 day period includes the last day in the report's date range."
+    },
+    {
+      "metric": "30-day active users",
+      "description": "The number of unique users on your site or app within a 30 day period. The 30 day period includes the last day in the report's date range."
+    },
+    {
+      "metric": "7-day active users",
+      "description": "The number of distinct active users on your site or app within a 7 day period. The 7 day period includes the last day in the report's date range."
+    },
+    {
+      "metric": "Active users",
+      "description": "The number of distinct users who visited your site or app."
+    },
+    {
+      "metric": "Ad unit exposure",
+      "description": "The time that an ad unit was exposed to a user, in milliseconds."
+    },
+    {
+      "metric": "Add to carts",
+      "description": "The number of times users added items to their shopping carts."
+    },
+    {
+      "metric": "Ads clicks",
+      "description": "Total number of times users have clicked on an ad to reach the property. Includes clicks from linked integrations like linked Search Ads 360 advertisers. Also includes uploaded clicks from data import."
+    },
+    {
+      "metric": "Ads cost",
+      "description": "The total amount you paid for your ads. Includes costs from linked integrations like linked Google Ads accounts. Also includes uploaded cost from data import."
+    },
+    {
+      "metric": "Ads cost per click",
+      "description": "Ads cost per click is ad cost divided by ad clicks and is often abbreviated CPC."
+    },
+    {
+      "metric": "Ads impressions",
+      "description": "The total number of impressions. Includes impressions from linked integrations like linked Display & Video 360 advertisers. Also includes uploaded impressions from data import."
+    },
+    {
+      "metric": "ARPPU",
+      "description": "Average revenue per paying user (ARPPU) is the total purchase revenue per active user that logged a purchase event. The summary metric is for the time period selected."
+    },
+    {
+      "metric": "ARPU",
+      "description": "Average revenue per active user (ARPU). The summary metric is for the time period selected. ARPU uses Total Revenue and includes AdMob estimated earnings."
+    },
+    {
+      "metric": "Average Entrances",
+      "description": "The average of an event scoped custom metric for your Analytics property."
+    },
+    {
+      "metric": "Average purchase revenue",
+      "description": "The average purchase revenue in the transaction group of events."
+    },
+    {
+      "metric": "Average purchase revenue per user",
+      "description": "The average purchase revenue per active user is the total purchase revenue per active user that logged any event. The summary metric is for the time period selected."
+    },
+    {
+      "metric": "Average session duration",
+      "description": "The average duration (in seconds) of users' sessions."
+    },
+    {
+      "metric": "Bounce rate",
+      "description": "The percentage of sessions that were not engaged ((Sessions Minus Engaged sessions) divided by Sessions). This metric is returned as a fraction; for example, 0.2761 means 27.61% of sessions were bounces."
+    },
+    {
+      "metric": "Cart-to-view rate",
+      "description": "The number of users who added a product(s) to their cart divided by the number of users who viewed the same product(s). This metric is returned as a fraction; for example, 0.1132 means 11.32% of users who viewed a product also added the same product to their cart."
+    },
+    {
+      "metric": "Checkouts",
+      "description": "The number of times users started the checkout process. This metric counts the occurrence of the `begin_checkout` event."
+    },
+    {
+      "metric": "Cost per key event",
+      "description": "Cost per key event is ad cost divided by key events."
+    },
+    {
+      "metric": "Count Entrances",
+      "description": "The number of occurrences of an event scoped custom metric for your Analytics property."
+    },
+    {
+      "metric": "Crash-affected users",
+      "description": "The number of users that logged a crash in this row of the report. For example if the report is time series by date, this metrics reports total users with at least one crash on this date. Crashes are events with the name \"app_exception\"."
+    },
+    {
+      "metric": "Crash-free users rate",
+      "description": "The number of users without crash events (in this row of the report) divided by the total number of users. This metric is returned as a fraction; for example, 0.9243 means 92.43% of users were crash-free."
+    },
+    {
+      "metric": "DAU / MAU",
+      "description": "The rolling percent of 30-day active users who are also 1-day active users. This metric is returned as a fraction; for example, 0.113 means 11.3% of 30-day active users were also 1-day active users."
+    },
+    {
+      "metric": "DAU / WAU",
+      "description": "The rolling percent of 7-day active users who are also 1-day active users. This metric is returned as a fraction; for example, 0.082 means 8.2% of 7-day active users were also 1-day active users."
+    },
+    {
+      "metric": "Ecommerce purchases",
+      "description": "The number of times users completed a purchase. This metric counts `purchase` events; this metric does not count `in_app_purchase` and subscription events."
+    },
+    {
+      "metric": "Engaged sessions",
+      "description": "The number of sessions that lasted longer than 10 seconds, or had a key event, or had 2 or more screen views."
+    },
+    {
+      "metric": "Engagement rate",
+      "description": "The percentage of engaged sessions (Engaged sessions divided by Sessions). This metric is returned as a fraction; for example, 0.7239 means 72.39% of sessions were engaged sessions."
+    },
+    {
+      "metric": "Entrances",
+      "description": "An event scoped custom metric for your Analytics property."
+    },
+    {
+      "metric": "Event count",
+      "description": "The count of events."
+    },
+    {
+      "metric": "Event count per user",
+      "description": "The average number of events per user (Event count divided by Active users)."
+    },
+    {
+      "metric": "Event revenue",
+      "description": "The sum of Purchase Revenue for purchase events, refund value for refund events, and value for virtual currency events."
+    },
+    {
+      "metric": "Event value",
+      "description": "The sum of the event parameter named `value`."
+    },
+    {
+      "metric": "Events per session",
+      "description": "The average number of events per session (Event count divided by Sessions)."
+    },
+    {
+      "metric": "First time purchasers",
+      "description": "The number of users that completed their first purchase event."
+    },
+    {
+      "metric": "First-time purchaser rate",
+      "description": "The percentage of active users who made their first purchase. This metric is returned as a fraction; for example, 0.092 means 9.2% of active users were first time purchasers."
+    },
+    {
+      "metric": "First-time purchasers per new user",
+      "description": "The average number of first time purchasers per new user."
+    },
+    {
+      "metric": "Gross item revenue",
+      "description": "The total revenue from items only. Gross item revenue is the product of its price and quantity. Item revenue excludes tax and shipping values; tax & shipping values are specified at the event and not item level. Gross item revenue does not include refunds."
+    },
+    {
+      "metric": "Gross purchase revenue",
+      "description": "The sum of revenue from purchases made in your app or site. Gross purchase revenue sums the revenue for these events: `purchase`, `ecommerce_purchase`, `in_app_purchase`, `app_store_subscription_convert`, and `app_store_subscription_renew`. Purchase revenue is specified by the `value` parameter in tagging."
+    },
+    {
+      "metric": "Item discount amount",
+      "description": "The monetary value of item discounts in eCommerce events. This metric is populated in tagging by the `discount` item parameter."
+    },
+    {
+      "metric": "Item list click through rate",
+      "description": "The number of users who selected a list(s) divided by the number of users who viewed the same list(s). This metric is returned as a fraction; for example, 0.2145 means 21.45% of users who viewed a list also selected the same list."
+    },
+    {
+      "metric": "Item promotion click through rate",
+      "description": "The number of users who selected a promotion(s) divided by the number of users who viewed the same promotion(s). This metric is returned as a fraction; for example, 0.1382 means 13.82% of users who viewed a promotion also selected the promotion."
+    },
+    {
+      "metric": "Item refund amount",
+      "description": "Item refund amount is the total refunded transaction revenue from items only. Item refund amount is the product of price and quantity for the `refund` event."
+    },
+    {
+      "metric": "Item revenue",
+      "description": "The total revenue from purchases minus refunded transaction revenue from items only. Item revenue is the product of its price and quantity. Item revenue excludes tax and shipping values; tax & shipping values are specified at the event and not item level."
+    },
+    {
+      "metric": "Item view events",
+      "description": "The number of times the item details were viewed. The metric counts the occurrence of the `view_item` event."
+    },
+    {
+      "metric": "Item-list click events",
+      "description": "The number of times users clicked an item when it appeared in a list. This metric counts the occurrence of the `select_item` event."
+    },
+    {
+      "metric": "Item-list view events",
+      "description": "The number of times the item list was viewed. This metric counts the occurrence of the `view_item_list` event."
+    },
+    {
+      "metric": "Items added to cart",
+      "description": "The number of units added to cart for a single item. This metric counts the quantity of items in `add_to_cart` events."
+    },
+    {
+      "metric": "Items checked out",
+      "description": "The number of units checked out for a single item. This metric counts the quantity of items in `begin_checkout` events."
+    },
+    {
+      "metric": "Items clicked in list",
+      "description": "The number of units clicked in list for a single item. This metric counts the quantity of items in `select_item` events."
+    },
+    {
+      "metric": "Items clicked in promotion",
+      "description": "The number of units clicked in promotion for a single item. This metric counts the quantity of items in `select_promotion` events."
+    },
+    {
+      "metric": "Items purchased",
+      "description": "The number of units for a single item included in purchase events. This metric counts the quantity of items in purchase events."
+    },
+    {
+      "metric": "Items viewed",
+      "description": "The number of units viewed for a single item. This metric counts the quantity of items in `view_item` events."
+    },
+    {
+      "metric": "Items viewed in list",
+      "description": "The number of units viewed in list for a single item. This metric counts the quantity of items in `view_item_list` events."
+    },
+    {
+      "metric": "Items viewed in promotion",
+      "description": "The number of units viewed in promotion for a single item. This metric counts the quantity of items in `view_promotion` events."
+    },
+    {
+      "metric": "Key events",
+      "description": "The count of key events. Marking an event as a key event affects reports from time of creation. It doesn't change historic data. You can mark any event as key in Google Analytics, and some events (such as `first_open` or `purchase`) are marked as key events by default."
+    },
+    {
+      "metric": "keyEvents:generate_code_sample",
+      "description": "The count of a specific key event."
+    },
+    {
+      "metric": "keyEvents:purchase",
+      "description": "The count of a specific key event."
+    },
+    {
+      "metric": "New users",
+      "description": "The number of users who interacted with your site or launched your app for the first time (event triggered: first_open or first_visit)."
+    },
+    {
+      "metric": "Organic Google Search average position",
+      "description": "The average ranking of your website URLs for the query reported from Search Console. For example, if your site's URL appears at position 3 for one query and position 7 for another query, the average position would be (3+7)/2, or 5. This metric requires an active Search Console link."
+    },
+    {
+      "metric": "Organic Google Search click through rate",
+      "description": "The organic Google Search click through rate reported from Search Console. Click through rate is clicks per impression. This metric is returned as a fraction; for example, 0.0588 means about 5.88% of impressions resulted in a click. This metric requires an active Search Console link."
+    },
+    {
+      "metric": "Organic Google Search clicks",
+      "description": "The number of organic Google Search clicks reported from Search Console. This metric requires an active Search Console link."
+    },
+    {
+      "metric": "Organic Google Search impressions",
+      "description": "The number of organic Google Search impressions reported from Search Console. This metric requires an active Search Console link."
+    },
+    {
+      "metric": "Promotion clicks",
+      "description": "The number of times an item promotion was clicked. This metric counts the occurrence of the `select_promotion` event."
+    },
+    {
+      "metric": "Promotion views",
+      "description": "The number of times an item promotion was viewed. This metric counts the occurrence of the `view_promotion` event."
+    },
+    {
+      "metric": "Publisher ad clicks",
+      "description": "The number of ad_click events."
+    },
+    {
+      "metric": "Publisher ad impressions",
+      "description": "The number of ad_impression events."
+    },
+    {
+      "metric": "Purchase revenue",
+      "description": "The sum of revenue from purchases minus refunded transaction revenue made in your app or site. Purchase revenue sums the revenue for these events: `purchase`, `ecommerce_purchase`, `in_app_purchase`, `app_store_subscription_convert`, and `app_store_subscription_renew`. Purchase revenue is specified by the `value` parameter in tagging."
+    },
+    {
+      "metric": "Purchase-to-view rate",
+      "description": "The number of users who purchased a product(s) divided by the number of users who viewed the same product(s). This metric is returned as a fraction; for example, 0.128 means 12.8% of users that viewed a product(s) also purchased the same product(s)."
+    },
+    {
+      "metric": "Purchaser rate",
+      "description": "The percentage of active users who made 1 or more purchase transactions. This metric is returned as a fraction; for example, 0.412 means 41.2% of users were purchasers."
+    },
+    {
+      "metric": "Refund amount",
+      "description": "The total refunded transaction revenues. Refund amount sums refunded revenue for the `refund` and `app_store_refund` events."
+    },
+    {
+      "metric": "Return on ad spend",
+      "description": "Return On Ad Spend (ROAS) is total revenue divided by advertiser ad cost."
+    },
+    {
+      "metric": "Scrolled users",
+      "description": "The number of unique users who scrolled down at least 90% of the page."
+    },
+    {
+      "metric": "Session key event rate",
+      "description": "The percentage of sessions in which any key event was triggered."
+    },
+    {
+      "metric": "sessionKeyEventRate:generate_code_sample",
+      "description": "The percentage of sessions in which a specific key event was triggered."
+    },
+    {
+      "metric": "sessionKeyEventRate:purchase",
+      "description": "The percentage of sessions in which a specific key event was triggered."
+    },
+    {
+      "metric": "Sessions",
+      "description": "The number of sessions that began on your site or app (event triggered: session_start)."
+    },
+    {
+      "metric": "Sessions per user",
+      "description": "The average number of sessions per user (Sessions divided by Active Users)."
+    },
+    {
+      "metric": "Shipping amount",
+      "description": "Shipping amount associated with a transaction. Populated by the `shipping` event parameter."
+    },
+    {
+      "metric": "Tax amount",
+      "description": "Tax amount associated with a transaction. Populated by the `tax` event parameter."
+    },
+    {
+      "metric": "Total ad revenue",
+      "description": "The total advertising revenue from both Admob and third-party sources."
+    },
+    {
+      "metric": "Total purchasers",
+      "description": "The number of users that logged purchase events for the time period selected."
+    },
+    {
+      "metric": "Total revenue",
+      "description": "The sum of revenue from purchases, subscriptions, and advertising (Purchase revenue plus Subscription revenue plus Ad revenue) minus refunded transaction revenue."
+    },
+    {
+      "metric": "Total users",
+      "description": "The number of distinct users who have logged at least one event, regardless of whether the site or app was in use when that event was logged."
+    },
+    {
+      "metric": "Transactions",
+      "description": "The count of transaction events with purchase revenue. Transaction events are in_app_purchase, ecommerce_purchase, purchase, app_store_subscription_renew, app_store_subscription_convert, and refund."
+    },
+    {
+      "metric": "Transactions per purchaser",
+      "description": "The average number of transactions per purchaser."
+    },
+    {
+      "metric": "User engagement",
+      "description": "The total amount of time (in seconds) your website or app was in the foreground of users' devices."
+    },
+    {
+      "metric": "User key event rate",
+      "description": "The percentage of users who triggered any key event."
+    },
+    {
+      "metric": "userKeyEventRate:generate_code_sample",
+      "description": "The percentage of users who triggered a specific key event."
+    },
+    {
+      "metric": "userKeyEventRate:purchase",
+      "description": "The percentage of users who triggered a specific key event."
+    },
+    {
+      "metric": "Views",
+      "description": "The number of app screens or web pages your users viewed. Repeated views of a single page or screen are counted. (screen_view + page_view events)."
+    },
+    {
+      "metric": "Views per session",
+      "description": "The number of app screens or web pages your users viewed per session. Repeated views of a single page or screen are counted. (screen_view + page_view events) / sessions."
+    },
+    {
+      "metric": "Views per user",
+      "description": "The number of app screens or web pages your users viewed per active user. Repeated views of a single page or screen are counted. (screen_view + page_view events) / active users."
+    },
+    {
+      "metric": "WAU / MAU",
+      "description": "The rolling percent of 30-day active users who are also 7-day active users. This metric is returned as a fraction; for example, 0.234 means 23.4% of 30-day active users were also 7-day active users."
+    }
+  ],
+  "dimensions": [
+    {
+      "dimension": "Achievement ID",
+      "description": "The achievement ID in a game for an event. Populated by the event parameter `achievement_id`."
+    },
+    {
+      "dimension": "Ad format",
+      "description": "Describes the way ads looked and where they were located. Typical formats include `Interstitial`, `Banner`, `Rewarded`, and `Native advanced`."
+    },
+    {
+      "dimension": "Ad source",
+      "description": "The source network that served the ad. Typical sources include `AdMob Network`, `Liftoff`, `Facebook Audience Network`, and `Mediated house ads`."
+    },
+    {
+      "dimension": "Ad unit",
+      "description": "The name you chose to describe this Ad unit. Ad units are containers you place in your apps to show ads to users."
+    },
+    {
+      "dimension": "Age",
+      "description": "User age brackets."
+    },
+    {
+      "dimension": "App version",
+      "description": "The app's versionName (Android) or short bundle version (iOS)."
+    },
+    {
+      "dimension": "Audience ID",
+      "description": "The numeric identifier of an Audience. Users are reported in the audiences to which they belonged during the report's date range. Current user behavior does not affect historical audience membership in reports."
+    },
+    {
+      "dimension": "Audience name",
+      "description": "The given name of an Audience. Users are reported in the audiences to which they belonged during the report's date range. Current user behavior does not affect historical audience membership in reports."
+    },
+    {
+      "dimension": "Audience resource name",
+      "description": "The resource name of this audience. Resource names contain both collection & resource identifiers to uniquely identify a resource."
+    },
+    {
+      "dimension": "Browser",
+      "description": "The browsers used to view your website."
+    },
+    {
+      "dimension": "Browser version",
+      "description": "The version of the browser from which the user activity originated. For example, a version might appear as `146.0.7680.178`. To understand which browser this version belongs to, use this version alongside the Browser dimension."
+    },
+    {
+      "dimension": "Campaign",
+      "description": "The name of the marketing campaign. Present only for key events. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns."
+    },
+    {
+      "dimension": "Campaign ID",
+      "description": "The identifier of the marketing campaign. Present only for key events. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns."
+    },
+    {
+      "dimension": "Character",
+      "description": "The player character in a game for an event. Populated by the event parameter `character`."
+    },
+    {
+      "dimension": "City",
+      "description": "The city from which the user activity originated."
+    },
+    {
+      "dimension": "City ID",
+      "description": "The geographic ID of the city from which the user activity originated, derived from their IP address."
+    },
+    {
+      "dimension": "CM360 account ID",
+      "description": "The CM360 Account ID that led to the key event. Identifies the CM360 Account."
+    },
+    {
+      "dimension": "CM360 account name",
+      "description": "The CM360 Account Name that led to the key event. A CM360 account consists of advertisers, sites, campaigns, and user profiles."
+    },
+    {
+      "dimension": "CM360 advertiser ID",
+      "description": "The CM360 Advertiser ID that led to the key event. A CM360 Advertiser contains a group of campaigns, creative assets, and other settings."
+    },
+    {
+      "dimension": "CM360 advertiser name",
+      "description": "The CM360 Advertiser Name that led to the key event. A CM360 Advertiser contains a group of campaigns, creative assets, and other settings."
+    },
+    {
+      "dimension": "CM360 campaign ID",
+      "description": "The CM360 Campaign ID that led to the key event. A CM360 campaign can be configured to specify when your ads run, what landing pages are used, and other properties."
+    },
+    {
+      "dimension": "CM360 campaign name",
+      "description": "The CM360 Campaign Name that led to the key event. A CM360 campaign can be configured to specify when your ads run, what landing pages are used, and other properties."
+    },
+    {
+      "dimension": "CM360 creative format",
+      "description": "The CM360 Creative Format that led to the key event. CM360 creative formats are also referred to as creative types."
+    },
+    {
+      "dimension": "CM360 creative ID",
+      "description": "The CM360 Creative ID that led to the key event. Identifies a CM360 creative."
+    },
+    {
+      "dimension": "CM360 creative name",
+      "description": "The CM360 Creative Name that led to the key event. The name given to a CM360 creative."
+    },
+    {
+      "dimension": "CM360 creative type",
+      "description": "The CM360 Creative Type that led to the key event. A category of CM360 creatives like 'Display' or 'Tracking'."
+    },
+    {
+      "dimension": "CM360 creative type ID",
+      "description": "The CM360 Creative Type ID that led to the key event. Identifies a CM360 creative type."
+    },
+    {
+      "dimension": "CM360 creative version",
+      "description": "The CM360 Creative Version that led to the key event. The version number helps you keep track of multiple versions of your creative in your reports. If you upload a new asset to an existing creative, the version number is increased by one."
+    },
+    {
+      "dimension": "CM360 medium",
+      "description": "The CM360 Medium that led to the key event. The CM360 medium is also referred to as the placement cost structure."
+    },
+    {
+      "dimension": "CM360 placement cost structure",
+      "description": "The CM360 Placement Cost Structure that led to the key event. Placement cost structures regulate how media cost will be calculated. For example 'CPM'."
+    },
+    {
+      "dimension": "CM360 placement ID",
+      "description": "The CM360 Placement ID that led to the key event. Identifies a CM360 placement. A placement is the part of a website where your ad appears."
+    },
+    {
+      "dimension": "CM360 placement name",
+      "description": "The CM360 Placement Name that led to the key event. The given name for a CM360 placement. A placement is the part of a website where your ad appears."
+    },
+    {
+      "dimension": "CM360 rendering ID",
+      "description": "The CM360 Rendering ID that led to the key event. Identifies a CM360 creative."
+    },
+    {
+      "dimension": "CM360 site ID",
+      "description": "The CM360 Site ID that led to the key event. Identifies a CM360 site."
+    },
+    {
+      "dimension": "CM360 site name",
+      "description": "The CM360 Site Name that led to the key event. The CM360 Site name from which the ad space was purchased."
+    },
+    {
+      "dimension": "CM360 source",
+      "description": "The CM360 Source that led to the key event. The CM360 source is also referred to as the site name."
+    },
+    {
+      "dimension": "CM360 source / medium",
+      "description": "The CM360 Source Medium that led to the key event. A combination of the source and medium."
+    },
+    {
+      "dimension": "Content group",
+      "description": "A category that applies to items of published content. Populated by the event parameter `content_group`."
+    },
+    {
+      "dimension": "Content ID",
+      "description": "The identifier of the selected content. Populated by the event parameter `content_id`."
+    },
+    {
+      "dimension": "Content type",
+      "description": "The category of the selected content. Populated by the event parameter `content_type`."
+    },
+    {
+      "dimension": "Continent",
+      "description": "The continent from which the user activity originated. For example, `Americas` or `Asia`."
+    },
+    {
+      "dimension": "Continent ID",
+      "description": "The geographic ID of the continent from which the user activity originated, derived from their IP address."
+    },
+    {
+      "dimension": "Country",
+      "description": "The country from which the user activity originated."
+    },
+    {
+      "dimension": "Country ID",
+      "description": "The geographic ID of the country from which the user activity originated, derived from their IP address. Formatted according to ISO 3166-1 alpha-2 standard."
+    },
+    {
+      "dimension": "Currency",
+      "description": "The local currency code (based on ISO 4217 standard) of the eCommerce event. For example, `USD` or `GBP`. Currency is specified in tagging by the `currency` parameter."
+    },
+    {
+      "dimension": "Date",
+      "description": "The date of the event, formatted as YYYYMMDD."
+    },
+    {
+      "dimension": "Date + hour (YYYYMMDDHH)",
+      "description": "The combined values of date and hour formatted as YYYYMMDDHH."
+    },
+    {
+      "dimension": "Date hour and minute",
+      "description": "The combined values of date, hour, and minute formatted as YYYYMMDDHHMM."
+    },
+    {
+      "dimension": "Day",
+      "description": "The day of the month, a two-digit number from 01 to 31."
+    },
+    {
+      "dimension": "Day of week",
+      "description": "The integer day of the week. It returns values in the range 0 to 6 with Sunday as the first day of the week."
+    },
+    {
+      "dimension": "Day of week name",
+      "description": "The day of the week in English. This dimension has values such as Sunday or Monday."
+    },
+    {
+      "dimension": "Default channel group",
+      "description": "The key event's default channel group is based primarily on source and medium. An enumeration which includes `Direct`, `Organic Search`, `Paid Social`, `Organic Social`, `Email`, `Affiliates`, `Referral`, `Paid Search`, `Video`, and `Display`."
+    },
+    {
+      "dimension": "Device",
+      "description": "The branded device name (examples: Galaxy S10 or P30 Pro)."
+    },
+    {
+      "dimension": "Device brand",
+      "description": "Manufacturer or branded name (examples: Samsung, HTC, Verizon, T-Mobile)."
+    },
+    {
+      "dimension": "Device category",
+      "description": "The type of device: Desktop, Tablet, or Mobile."
+    },
+    {
+      "dimension": "Device model",
+      "description": "The mobile device model (example: iPhone 10,6)."
+    },
+    {
+      "dimension": "DV360 advertiser ID",
+      "description": "The DV360 Advertiser ID that led to the key event. Identifies the DV360 advertiser."
+    },
+    {
+      "dimension": "DV360 advertiser name",
+      "description": "The DV360 Advertiser Name that led to the key event. DV360 advertisers represent real-life businesses that run advertising campaigns."
+    },
+    {
+      "dimension": "DV360 campaign ID",
+      "description": "The DV360 Campaign ID that led to the key event. Identifies the DV360 campaign."
+    },
+    {
+      "dimension": "DV360 campaign name",
+      "description": "The DV360 Campaign Name that led to the key event. DV360 campaigns group together related insertion orders with a common business goal."
+    },
+    {
+      "dimension": "DV360 creative format",
+      "description": "The DV360 Creative Format that led to the key event. Also referred to as the creative type. For example, expandable, video, or native."
+    },
+    {
+      "dimension": "DV360 creative ID",
+      "description": "The DV360 Creative ID that led to the key event. Identifies the DV360 creative."
+    },
+    {
+      "dimension": "DV360 creative name",
+      "description": "The DV360 Creative Name that led to the key event. The name given to a DV360 creative."
+    },
+    {
+      "dimension": "DV360 exchange ID",
+      "description": "The DV360 Exchange ID that led to the key event. Identifies the DV360 exchange."
+    },
+    {
+      "dimension": "DV360 exchange name",
+      "description": "The DV360 Exchange Name that led to the key event. The DV360 ad exchange involved in the ad click."
+    },
+    {
+      "dimension": "DV360 insertion order ID",
+      "description": "The DV360 Insertion Order ID that led to the key event. Identifies the DV360 insertion order."
+    },
+    {
+      "dimension": "DV360 insertion order name",
+      "description": "The DV360 Insertion Order Name that led to the key event. A DV360 insertion order contains a set of line items that are related to the same advertising campaign."
+    },
+    {
+      "dimension": "DV360 line item ID",
+      "description": "The DV360 Line Item ID that led to the key event. Identifies the DV360 line item."
+    },
+    {
+      "dimension": "DV360 line item name",
+      "description": "The DV360 Line Item Name that led to the key event. A DV360 line item bids on impressions and serves creatives to inventory sources."
+    },
+    {
+      "dimension": "DV360 medium",
+      "description": "The DV360 Medium that led to the key event. The billable outcome of the insertion order. For example, `cpm`."
+    },
+    {
+      "dimension": "DV360 partner ID",
+      "description": "The DV360 Partner ID that led to the key event. Identifies the DV360 partner."
+    },
+    {
+      "dimension": "DV360 partner name",
+      "description": "The DV360 Partner Name that led to the key event. DV360 partners represent agencies, trading desks, or large individual advertisers."
+    },
+    {
+      "dimension": "DV360 source",
+      "description": "The DV360 Source that led to the key event. The DV360 site name where your ad was displayed."
+    },
+    {
+      "dimension": "DV360 source / medium",
+      "description": "The DV360 Source Medium that led to the key event. A combination of the source and medium."
+    },
+    {
+      "dimension": "Event name",
+      "description": "The name of the event."
+    },
+    {
+      "dimension": "File extension",
+      "description": "The extension of the downloaded file (for example, `pdf` or `txt`). Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `file_extension`."
+    },
+    {
+      "dimension": "File name",
+      "description": "The page path of the downloaded file (for example, `/menus/dinner-menu.pdf`). Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `file_name`."
+    },
+    {
+      "dimension": "First session date",
+      "description": "The date the user's first session occurred, formatted as YYYYMMDD."
+    },
+    {
+      "dimension": "First user campaign",
+      "description": "Name of the marketing campaign that first acquired the user. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns."
+    },
+    {
+      "dimension": "First user campaign ID",
+      "description": "Identifier of the marketing campaign that first acquired the user. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns."
+    },
+    {
+      "dimension": "First user CM360 account ID",
+      "description": "The CM360 Account ID that originally acquired the user. Identifies the CM360 account."
+    },
+    {
+      "dimension": "First user CM360 account name",
+      "description": "The CM360 Account Name that originally acquired the user. A CM360 account consists of advertisers, sites, campaigns, and user profiles."
+    },
+    {
+      "dimension": "First user CM360 advertiser ID",
+      "description": "The CM360 Advertiser ID that originally acquired the user. Identifies the CM360 advertiser."
+    },
+    {
+      "dimension": "First user CM360 advertiser name",
+      "description": "The CM360 Advertiser Name that originally acquired the user. A CM360 Advertiser contains a group of campaigns, creative assets, and other settings."
+    },
+    {
+      "dimension": "First user CM360 campaign ID",
+      "description": "The CM360 Campaign ID that originally acquired the user. Identifies the CM360 campaign."
+    },
+    {
+      "dimension": "First user CM360 campaign name",
+      "description": "The CM360 Campaign Name that originally acquired the user. A CM360 campaign can be configured to specify when your ads run, what landing pages are used, and other properties."
+    },
+    {
+      "dimension": "First user CM360 creative format",
+      "description": "The CM360 Creative Format that originally acquired the user. CM360 creative formats are also referred to as creative types."
+    },
+    {
+      "dimension": "First user CM360 creative ID",
+      "description": "The CM360 Creative ID that originally acquired the user. Identifies a CM360 creative."
+    },
+    {
+      "dimension": "First user CM360 creative name",
+      "description": "The CM360 Creative Name that originally acquired the user. The name given to a CM360 creative."
+    },
+    {
+      "dimension": "First user CM360 creative type",
+      "description": "The CM360 Creative Type that originally acquired the user. A category of CM360 creatives like 'Display' or 'Tracking'."
+    },
+    {
+      "dimension": "First user CM360 creative type ID",
+      "description": "The CM360 Creative Type ID that originally acquired the user. Identifies a CM360 creative type."
+    },
+    {
+      "dimension": "First user CM360 creative version",
+      "description": "The CM360 Creative Version that originally acquired the user. The version number helps you keep track of multiple versions of your creative in your reports. If you upload a new asset to an existing creative, the version number is increased by one."
+    },
+    {
+      "dimension": "First user CM360 medium",
+      "description": "The CM360 Medium that originally acquired the user. The CM360 medium is also referred to as the placement cost structure."
+    },
+    {
+      "dimension": "First user CM360 placement cost structure",
+      "description": "The CM360 Placement Cost Structure that originally acquired the user. Placement cost structures regulate how media cost will be calculated. For example 'CPM'."
+    },
+    {
+      "dimension": "First user CM360 placement ID",
+      "description": "The CM360 Placement ID that originally acquired the user. Identifies a CM360 placement. A placement is the part of a website where your ad appears."
+    },
+    {
+      "dimension": "First user CM360 placement name",
+      "description": "The CM360 Placement Name that originally acquired the user. The given name for a CM360 placement. A placement is the part of a website where your ad appears."
+    },
+    {
+      "dimension": "First user CM360 rendering ID",
+      "description": "The CM360 Rendering ID that originally acquired the user. Identifies a CM360 creative."
+    },
+    {
+      "dimension": "First user CM360 site ID",
+      "description": "The CM360 Site ID that originally acquired the user. Identifies a CM360 site."
+    },
+    {
+      "dimension": "First user CM360 site name",
+      "description": "The CM360 Site Name that originally acquired the user. The CM360 Site name from which the ad space was purchased."
+    },
+    {
+      "dimension": "First user CM360 source",
+      "description": "The CM360 Source that originally acquired the user. The CM360 source is also referred to as the site name."
+    },
+    {
+      "dimension": "First user CM360 source / medium",
+      "description": "The CM360 Source Medium that originally acquired the user. A combination of the source and medium."
+    },
+    {
+      "dimension": "First user default channel group",
+      "description": "The default channel group that first acquired the user. Default channel group is based primarily on source and medium. An enumeration which includes `Direct`, `Organic Search`, `Paid Social`, `Organic Social`, `Email`, `Affiliates`, `Referral`, `Paid Search`, `Video`, and `Display`."
+    },
+    {
+      "dimension": "First user DV360 advertiser ID",
+      "description": "The DV360 Advertiser ID that originally acquired the user. Identifies the DV360 advertiser."
+    },
+    {
+      "dimension": "First user DV360 advertiser name",
+      "description": "The DV360 Advertiser Name that originally acquired the user. DV360 advertisers represent real-life businesses that run advertising campaigns."
+    },
+    {
+      "dimension": "First user DV360 campaign ID",
+      "description": "The DV360 Campaign ID that originally acquired the user. Identifies the DV360 campaign."
+    },
+    {
+      "dimension": "First user DV360 campaign name",
+      "description": "The DV360 Campaign Name that originally acquired the user. DV360 campaigns group together related insertion orders with a common business goal."
+    },
+    {
+      "dimension": "First user DV360 creative format",
+      "description": "The DV360 Creative Format that originally acquired the user. Also referred to as the creative type. For example, expandable, video, or native."
+    },
+    {
+      "dimension": "First user DV360 creative ID",
+      "description": "The DV360 Creative ID that originally acquired the user. Identifies the DV360 creative."
+    },
+    {
+      "dimension": "First user DV360 creative name",
+      "description": "The DV360 Creative Name that originally acquired the user. The name given to a DV360 creative."
+    },
+    {
+      "dimension": "First user DV360 exchange ID",
+      "description": "The DV360 Exchange ID that originally acquired the user. Identifies the DV360 exchange."
+    },
+    {
+      "dimension": "First user DV360 exchange name",
+      "description": "The DV360 Exchange Name that originally acquired the user. The DV360 ad exchange involved in the ad click."
+    },
+    {
+      "dimension": "First user DV360 insertion order ID",
+      "description": "The DV360 Insertion Order ID that originally acquired the user. Identifies the DV360 insertion order."
+    },
+    {
+      "dimension": "First user DV360 insertion order name",
+      "description": "The DV360 Insertion Order Name that originally acquired the user. A DV360 insertion order contains a set of line items that are related to the same advertising campaign."
+    },
+    {
+      "dimension": "First user DV360 line item ID",
+      "description": "The DV360 Line Item ID that originally acquired the user. Identifies the DV360 line item."
+    },
+    {
+      "dimension": "First user DV360 line item name",
+      "description": "The DV360 Line Item Name that originally acquired the user. A DV360 line item bids on impressions and serves creatives to inventory sources."
+    },
+    {
+      "dimension": "First user DV360 medium",
+      "description": "The DV360 Medium that originally acquired the user. The billable outcome of the insertion order. For example, `cpm`."
+    },
+    {
+      "dimension": "First user DV360 partner ID",
+      "description": "The DV360 Partner ID that originally acquired the user. Identifies the DV360 partner."
+    },
+    {
+      "dimension": "First user DV360 partner name",
+      "description": "The DV360 Partner Name that originally acquired the user. DV360 partners represent agencies, trading desks, or large individual advertisers."
+    },
+    {
+      "dimension": "First user DV360 source",
+      "description": "The DV360 Source that originally acquired the user. The DV360 site name where your ad was displayed."
+    },
+    {
+      "dimension": "First user DV360 source / medium",
+      "description": "The DV360 Source Medium that originally acquired the user. A combination of the source and medium."
+    },
+    {
+      "dimension": "First user Google Ads account name",
+      "description": "The Account name from Google Ads that first acquired the user."
+    },
+    {
+      "dimension": "First user Google Ads ad group ID",
+      "description": "The Ad Group Id in Google Ads that first acquired the user."
+    },
+    {
+      "dimension": "First user Google Ads ad group name",
+      "description": "The Ad Group Name in Google Ads that first acquired the user."
+    },
+    {
+      "dimension": "First user Google Ads ad network type",
+      "description": "The advertising network that first acquired the user. An enumeration which includes `Google search`, `Search partners`, `Google Display Network`, `Youtube Search`, `Youtube Videos`, `Cross-network`, `Social`, and `(universal campaign)`."
+    },
+    {
+      "dimension": "First user Google Ads campaign",
+      "description": "Name of the Google Ads marketing campaign that first acquired the user."
+    },
+    {
+      "dimension": "First user Google Ads campaign ID",
+      "description": "Identifier of the Google Ads marketing campaign that first acquired the user."
+    },
+    {
+      "dimension": "First user Google Ads campaign type",
+      "description": "The campaign type of the Google Ads campaign that first acquired the user. Campaign types determine where customers see your ads and the settings and options available to you in Google Ads. Campaign type is an enumeration that includes: Search, Display, Shopping, Video, Demand Gen, App, Smart, Hotel, Local, and Performance Max."
+    },
+    {
+      "dimension": "First user Google Ads creative ID",
+      "description": "The ID of the Google Ads creative that first acquired the user. Creative IDs identify individual ads."
+    },
+    {
+      "dimension": "First user Google Ads customer ID",
+      "description": "The Customer ID from Google Ads that first acquired the user. Customer IDs in Google Ads uniquely identify Google Ads accounts."
+    },
+    {
+      "dimension": "First user Google Ads keyword text",
+      "description": "The matched keyword that first acquired the user. Keywords are words or phrases describing your product or service that you choose to get your ad in front of the right customers."
+    },
+    {
+      "dimension": "First user Google Ads query",
+      "description": "The search query that first acquired the user."
+    },
+    {
+      "dimension": "First user manual ad content",
+      "description": "The ad content that first acquired the user. Populated by the utm_content parameter."
+    },
+    {
+      "dimension": "First user manual campaign ID",
+      "description": "The manual Campaign ID that originally acquired the user. Identifies the manual campaign. Populated by `utm_id` URL parameter."
+    },
+    {
+      "dimension": "First user manual campaign name",
+      "description": "The manual Campaign Name that originally acquired the user. The name of the manual campaign. Populated by `utm_campaign` URL parameter."
+    },
+    {
+      "dimension": "First user manual creative format",
+      "description": "The manual Creative Format that originally acquired the user. Identifies the creative format used in the ad. Populated by `utm_creative_format` URL parameter."
+    },
+    {
+      "dimension": "First user manual marketing tactic",
+      "description": "The manual Marketing Tactic that originally acquired the user. The targeting criteria applied to a campaign. For example, remarketing or prospecting. Populated by `utm_marketing_tactic` URL parameter."
+    },
+    {
+      "dimension": "First user manual medium",
+      "description": "The manual Medium that originally acquired the user. The marketing medium used in the referral. For example, `cpc`. Populated by `utm_medium` URL parameter."
+    },
+    {
+      "dimension": "First user manual source",
+      "description": "The manual Source that originally acquired the user. The referrer. Populated by `utm_source` URL parameter."
+    },
+    {
+      "dimension": "First user manual source / medium",
+      "description": "The manual Source Medium that originally acquired the user. A combination of the source and medium."
+    },
+    {
+      "dimension": "First user manual source platform",
+      "description": "The manual Source Platform that originally acquired the user. The platform responsible for directing traffic to a given Analytics property. Populated by `utm_source_platform` URL parameter."
+    },
+    {
+      "dimension": "First user manual term",
+      "description": "The term that first acquired the user. Populated by the utm_term parameter."
+    },
+    {
+      "dimension": "First user medium",
+      "description": "The medium that first acquired the user to your website or app."
+    },
+    {
+      "dimension": "First user primary channel group",
+      "description": "The primary channel group that originally acquired a user. Primary channel groups are the channel groups used in standard reports in Google Analytics and serve as an active record of your property's data in alignment with channel grouping over time."
+    },
+    {
+      "dimension": "First user SA360 ad group ID",
+      "description": "The SA360 Ad Group ID that originally acquired the user. Identifies the SA360 ad group."
+    },
+    {
+      "dimension": "First user SA360 ad group name",
+      "description": "The SA360 Ad Group Name that originally acquired the user. SA360 Ad groups contain ads and keywords that relate to each other."
+    },
+    {
+      "dimension": "First user SA360 campaign",
+      "description": "The SA360 Campaign Name that originally acquired the user. A SA360 campaign lets you organize your ads and define a goal for your advertising."
+    },
+    {
+      "dimension": "First user SA360 campaign ID",
+      "description": "The SA360 Campaign ID that originally acquired the user. Identifies the SA360 campaign."
+    },
+    {
+      "dimension": "First user SA360 creative format",
+      "description": "The SA360 Creative Format that originally acquired the user. The creative format is the specific layout or design of the advertisement used in a campaign."
+    },
+    {
+      "dimension": "First user SA360 engine account ID",
+      "description": "The SA360 Engine Account ID that originally acquired the user. Identifies the SA360 engine account."
+    },
+    {
+      "dimension": "First user SA360 engine account name",
+      "description": "The SA360 Engine Account Name that originally acquired the user. A SA360 engine account contains campaigns, ad groups, and other items from an advertising account."
+    },
+    {
+      "dimension": "First user SA360 engine account type",
+      "description": "The SA360 Engine Account Type that originally acquired the user. The type of engine used by the search engine account."
+    },
+    {
+      "dimension": "First user SA360 keyword text",
+      "description": "The SA360 Keyword Text that originally acquired the user. The keywords that matched the search query."
+    },
+    {
+      "dimension": "First user SA360 manager account ID",
+      "description": "The SA360 Manager Account ID that originally acquired the user. Identifies the SA360 manager account."
+    },
+    {
+      "dimension": "First user SA360 manager account name",
+      "description": "The SA360 Manager Account Name that originally acquired the user. The top level of the Search Ads 360 account hierarchy and is used for administration and reporting across the lower-level sub-manager and client accounts."
+    },
+    {
+      "dimension": "First user SA360 medium",
+      "description": "The SA360 Medium that originally acquired the user. The payment mode used in ad buying. For example, `cpc`."
+    },
+    {
+      "dimension": "First user SA360 query",
+      "description": "The SA360 Query that originally acquired the user. The search query typed by the user."
+    },
+    {
+      "dimension": "First user SA360 source",
+      "description": "The SA360 Source that originally acquired the user. The search query happened on this site."
+    },
+    {
+      "dimension": "First user SA360 source / medium",
+      "description": "The SA360 Source Medium that originally acquired the user. A combination of the source and medium."
+    },
+    {
+      "dimension": "First user source",
+      "description": "The source that first acquired the user to your website or app."
+    },
+    {
+      "dimension": "First user source / medium",
+      "description": "The combined values of the dimensions `firstUserSource` and `firstUserMedium`."
+    },
+    {
+      "dimension": "First user source platform",
+      "description": "The source platform that first acquired the user."
+    },
+    {
+      "dimension": "Full page URL",
+      "description": "The hostname, page path, and query string for web pages visited; for example, the `fullPageUrl` portion of `https://www.example.com/store/contact-us?query_string=true` is `www.example.com/store/contact-us?query_string=true`."
+    },
+    {
+      "dimension": "Gender",
+      "description": "User gender."
+    },
+    {
+      "dimension": "Google Ads account name",
+      "description": "The Account name from Google Ads for the campaign that led to the key event. Corresponds to `customer.descriptive_name` in the Google Ads API."
+    },
+    {
+      "dimension": "Google Ads ad group ID",
+      "description": "The Google Ads ad group ID attributed to the key event."
+    },
+    {
+      "dimension": "Google Ads ad group name",
+      "description": "The ad group name attributed to the key event."
+    },
+    {
+      "dimension": "Google Ads ad network type",
+      "description": "The advertising network type of the key event. An enumeration which includes `Google search`, `Search partners`, `Google Display Network`, `Youtube Search`, `Youtube Videos`, `Cross-network`, `Social`, and `(universal campaign)`."
+    },
+    {
+      "dimension": "Google Ads campaign",
+      "description": "The campaign name for the Google Ads campaign attributed to the key event."
+    },
+    {
+      "dimension": "Google Ads campaign ID",
+      "description": "The campaign ID for the Google Ads campaign attributed to the key event."
+    },
+    {
+      "dimension": "Google Ads campaign type",
+      "description": "The campaign type for the Google Ads campaign attributed to the key event. Campaign types determine where customers see your ads and the settings and options available to you in Google Ads. Campaign type is an enumeration that includes: Search, Display, Shopping, Video, Demand Gen, App, Smart, Hotel, Local, and Performance Max."
+    },
+    {
+      "dimension": "Google Ads creative ID",
+      "description": "The ID of the Google Ads creative attributed to the key event. Creative IDs identify individual ads."
+    },
+    {
+      "dimension": "Google Ads customer ID",
+      "description": "The Customer ID from Google Ads for the campaign that led to key event. Customer IDs in Google Ads uniquely identify Google Ads accounts."
+    },
+    {
+      "dimension": "Google Ads keyword text",
+      "description": "The matched keyword that led to the key event. Keywords are words or phrases describing your product or service that you choose to get your ad in front of the right customers."
+    },
+    {
+      "dimension": "Google Ads query",
+      "description": "The search query that led to the key event."
+    },
+    {
+      "dimension": "Group ID",
+      "description": "The player group ID in a game for an event. Populated by the event parameter `group_id`."
+    },
+    {
+      "dimension": "Hostname",
+      "description": "Includes the subdomain and domain names of a URL; for example, the Host Name of www.example.com/contact.html is www.example.com."
+    },
+    {
+      "dimension": "Hour",
+      "description": "The two-digit hour of the day that the event was logged. This dimension ranges from 0-23 and is reported in your property's timezone."
+    },
+    {
+      "dimension": "Interests",
+      "description": "Interests demonstrated by users who are higher in the shopping funnel. Users can be counted in multiple interest categories. For example, `Shoppers`, `Lifestyles & Hobbies/Pet Lovers`, or `Travel/Travel Buffs/Beachbound Travelers`."
+    },
+    {
+      "dimension": "Is key event",
+      "description": "The string `true` if the event is a key event. Marking an event as a key event affects reports from time of creation. It doesn't change historic data. You can mark any event as key in Google Analytics, and some events (such as `first_open` or `purchase`) are marked as key events by default."
+    },
+    {
+      "dimension": "ISO week of ISO year",
+      "description": "The combined values of isoWeek and isoYear. Example values include 201652 & 201701."
+    },
+    {
+      "dimension": "ISO week of the year",
+      "description": "ISO week number, where each week starts on Monday. Example values include 01, 02, & 53."
+    },
+    {
+      "dimension": "ISO year",
+      "description": "The ISO year of the event. Example values include 2022 & 2023."
+    },
+    {
+      "dimension": "Item affiliation",
+      "description": "The name or code of the affiliate (partner/vendor; if any) associated with an individual item. Populated by the `affiliation` item parameter."
+    },
+    {
+      "dimension": "Item brand",
+      "description": "Brand name of the item."
+    },
+    {
+      "dimension": "Item category",
+      "description": "The hierarchical category in which the item is classified. For example, in Apparel/Mens/Summer/Shirts/T-shirts, Apparel is the item category."
+    },
+    {
+      "dimension": "Item category 2",
+      "description": "The hierarchical category in which the item is classified. For example, in Apparel/Mens/Summer/Shirts/T-shirts, Mens is the item category 2."
+    },
+    {
+      "dimension": "Item category 3",
+      "description": "The hierarchical category in which the item is classified. For example, in Apparel/Mens/Summer/Shirts/T-shirts, Summer is the item category 3."
+    },
+    {
+      "dimension": "Item category 4",
+      "description": "The hierarchical category in which the item is classified. For example, in Apparel/Mens/Summer/Shirts/T-shirts, Shirts is the item category 4."
+    },
+    {
+      "dimension": "Item category 5",
+      "description": "The hierarchical category in which the item is classified. For example, in Apparel/Mens/Summer/Shirts/T-shirts, T-shirts is the item category 5."
+    },
+    {
+      "dimension": "Item ID",
+      "description": "The ID of the item."
+    },
+    {
+      "dimension": "Item list ID",
+      "description": "The ID of the item list."
+    },
+    {
+      "dimension": "Item list name",
+      "description": "The name of the item list."
+    },
+    {
+      "dimension": "Item list position",
+      "description": "The position of an item in a list. For example, a product you sell in a list. This dimension is populated in tagging by the `index` parameter in the items array."
+    },
+    {
+      "dimension": "Item location ID",
+      "description": "The physical location associated with the item. For example, the physical store location. It's recommended to use the Google Place ID that corresponds to the associated item. A custom location ID can also be used. This field is populated in tagging by the `location_id` parameter in the items array."
+    },
+    {
+      "dimension": "Item name",
+      "description": "The name of the item."
+    },
+    {
+      "dimension": "Item promotion creative name",
+      "description": "The name of the item-promotion creative."
+    },
+    {
+      "dimension": "Item promotion creative slot",
+      "description": "The name of the promotional creative slot associated with the item. This dimension can be specified in tagging by the `creative_slot` parameter at the event or item level. If the parameter is specified at both the event & item level, the item-level parameter is used."
+    },
+    {
+      "dimension": "Item promotion ID",
+      "description": "The ID of the item promotion."
+    },
+    {
+      "dimension": "Item promotion name",
+      "description": "The name of the promotion for the item."
+    },
+    {
+      "dimension": "Item variant",
+      "description": "The specific variation of a product. For example, XS, S, M, or L for size; or Red, Blue, Green, or Black for color. Populated by the `item_variant` parameter."
+    },
+    {
+      "dimension": "Landing page",
+      "description": "The page path associated with the first pageview in a session."
+    },
+    {
+      "dimension": "Landing page + query string",
+      "description": "The page path + query string associated with the first pageview in a session."
+    },
+    {
+      "dimension": "Language",
+      "description": "The language setting of the user's browser or device. For example, `English`."
+    },
+    {
+      "dimension": "Language code",
+      "description": "The language setting (ISO 639) of the user's browser or device. For example, `en-us`."
+    },
+    {
+      "dimension": "Level",
+      "description": "The player's level in a game. Populated by the event parameter `level`."
+    },
+    {
+      "dimension": "Link classes",
+      "description": "The HTML class attribute for an outbound link. For example if a user clicks a link `<a class=\"center\" href=\"www.youtube.com\">`, this dimension will return `center`. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `link_classes`."
+    },
+    {
+      "dimension": "Link domain",
+      "description": "The destination domain of the outbound link. For example if a user clicks a link `<a href=\"www.youtube.com\">`, this dimension will return `youtube.com`. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `link_domain`."
+    },
+    {
+      "dimension": "Link ID",
+      "description": "The HTML ID attribute for an outbound link or file download. For example if a user clicks a link `<a id=\"socialLinks\" href=\"www.youtube.com\">`, this dimension will return `socialLinks`. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `link_id`."
+    },
+    {
+      "dimension": "Link text",
+      "description": "The link text of the file download. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `link_text`."
+    },
+    {
+      "dimension": "Link URL",
+      "description": "The full URL for an outbound link or file download. For example if a user clicks a link `<a href=\"https://www.youtube.com/results?search_query=analytics\">`, this dimension will return `https://www.youtube.com/results?search_query=analytics`. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `link_url`."
+    },
+    {
+      "dimension": "Manual ad content",
+      "description": "The ad content attributed to the key event. Populated by the utm_content parameter."
+    },
+    {
+      "dimension": "Manual campaign ID",
+      "description": "The manual Campaign ID that led to the key event. Identifies the manual campaign. Populated by `utm_id` URL parameter."
+    },
+    {
+      "dimension": "Manual campaign name",
+      "description": "The manual Campaign Name that led to the key event. The name of the manual campaign. Populated by `utm_campaign` URL parameter."
+    },
+    {
+      "dimension": "Manual creative format",
+      "description": "The manual Creative Format that led to the key event. Identifies the creative format used in the ad. Populated by `utm_creative_format` URL parameter."
+    },
+    {
+      "dimension": "Manual marketing tactic",
+      "description": "The manual Marketing Tactic that led to the key event. The targeting criteria applied to a campaign. For example, remarketing or prospecting. Populated by `utm_marketing_tactic` URL parameter."
+    },
+    {
+      "dimension": "Manual medium",
+      "description": "The manual Medium that led to the key event. The marketing medium used in the referral. For example, `cpc`. Populated by `utm_medium` URL parameter."
+    },
+    {
+      "dimension": "Manual source",
+      "description": "The manual Source that led to the key event. The referrer. Populated by `utm_source` URL parameter."
+    },
+    {
+      "dimension": "Manual source / medium",
+      "description": "The manual Source Medium that led to the key event. A combination of the source and medium."
+    },
+    {
+      "dimension": "Manual source platform",
+      "description": "The manual Source Platform that led to the key event. The platform responsible for directing traffic to a given Analytics property. Populated by `utm_source_platform` URL parameter."
+    },
+    {
+      "dimension": "Manual term",
+      "description": "The term attributed to the key event. Populated by the utm_term parameter."
+    },
+    {
+      "dimension": "Medium",
+      "description": "The medium attributed to the key event."
+    },
+    {
+      "dimension": "Method",
+      "description": "The method by which an event was triggered. Populated by the event parameter `method`."
+    },
+    {
+      "dimension": "Minute",
+      "description": "The two-digit minute of the hour that the event was logged. This dimension ranges from 0-59 and is reported in your property's timezone."
+    },
+    {
+      "dimension": "Mobile model",
+      "description": "The mobile device model name (examples: iPhone X or SM-G950F)."
+    },
+    {
+      "dimension": "Month",
+      "description": "The month of the event, a two digit integer from 01 to 12."
+    },
+    {
+      "dimension": "New / returning",
+      "description": "New users have 0 previous sessions, and returning users have 1 or more previous sessions. This dimension returns two values: `new` or `returning`."
+    },
+    {
+      "dimension": "Nth day",
+      "description": "The number of days since the start of the date range."
+    },
+    {
+      "dimension": "Nth hour",
+      "description": "The number of hours since the start of the date range. The starting hour is 0000."
+    },
+    {
+      "dimension": "Nth minute",
+      "description": "The number of minutes since the start of the date range. The starting minute is 0000."
+    },
+    {
+      "dimension": "Nth month",
+      "description": "The number of months since the start of a date range. The starting month is 0000."
+    },
+    {
+      "dimension": "Nth week",
+      "description": "A number representing the number of weeks since the start of a date range."
+    },
+    {
+      "dimension": "Nth year",
+      "description": "The number of years since the start of the date range. The starting year is 0000."
+    },
+    {
+      "dimension": "Operating system",
+      "description": "The operating systems used by visitors to your app or website. Includes desktop and mobile operating systems such as Windows and Android."
+    },
+    {
+      "dimension": "Operating system with version",
+      "description": "The operating system and version. For example, Android 10 or Windows 7."
+    },
+    {
+      "dimension": "Order coupon",
+      "description": "Code for the order-level coupon."
+    },
+    {
+      "dimension": "OS version",
+      "description": "The operating system versions used by visitors to your website or app. For example, Android 10's version is 10, and iOS 13.5.1's version is 13.5.1."
+    },
+    {
+      "dimension": "Outbound",
+      "description": "Returns `true` if the link led to a site that is not a part of the property's domain. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `outbound`."
+    },
+    {
+      "dimension": "Page location",
+      "description": "The protocol, hostname, page path, and query string for web pages visited; for example, the `pageLocation` portion of `https://www.example.com/store/contact-us?query_string=true` is `https://www.example.com/store/contact-us?query_string=true`. Populated by the event parameter `page_location`."
+    },
+    {
+      "dimension": "Page path",
+      "description": "The portion of the URL between the hostname and query string for web pages visited; for example, the pagePath portion of `https://www.example.com/store/contact-us?query_string=true` is `/store/contact-us`."
+    },
+    {
+      "dimension": "Page path + query string",
+      "description": "The portion of the URL following the hostname for web pages visited; for example, the `pagePathPlusQueryString` portion of `https://www.example.com/store/contact-us?query_string=true` is `/store/contact-us?query_string=true`."
+    },
+    {
+      "dimension": "Page path + query string and screen class",
+      "description": "The page path and query string (web) or screen class (app) on which the event was logged."
+    },
+    {
+      "dimension": "Page path and screen class",
+      "description": "The page path (web) or screen class (app) on which the event was logged."
+    },
+    {
+      "dimension": "Page referrer",
+      "description": "The full referring URL including the hostname and path. This referring URL is the user's previous URL and can be this website's domain or other domains. Populated by the event parameter `page_referrer`."
+    },
+    {
+      "dimension": "Page title",
+      "description": "The web page titles used on your site."
+    },
+    {
+      "dimension": "Page title and screen class",
+      "description": "The page title (web) or screen class (app) on which the event was logged."
+    },
+    {
+      "dimension": "Page title and screen name",
+      "description": "The page title (web) or screen name (app) on which the event was logged."
+    },
+    {
+      "dimension": "Percent scrolled",
+      "description": "The percentage down the page that the user has scrolled (for example, `90`). Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `percent_scrolled`."
+    },
+    {
+      "dimension": "Platform",
+      "description": "The platform on which your app or website ran; for example, web, iOS, or Android. To determine a stream's type in a report, use both platform and streamId."
+    },
+    {
+      "dimension": "Platform / device category",
+      "description": "The platform and type of device on which your website or mobile app ran. (example: Android / mobile)"
+    },
+    {
+      "dimension": "Primary channel group",
+      "description": "The primary channel group attributed to the key event. Primary channel groups are the channel groups used in standard reports in Google Analytics and serve as an active record of your property's data in alignment with channel grouping over time."
+    },
+    {
+      "dimension": "Region",
+      "description": "The geographic region from which the user activity originated, derived from their IP address."
+    },
+    {
+      "dimension": "SA360 ad group ID",
+      "description": "The SA360 Ad Group ID that led to the key event. Identifies the SA360 ad group."
+    },
+    {
+      "dimension": "SA360 ad group name",
+      "description": "The SA360 Ad Group Name that led to the key event. SA360 Ad groups contain ads and keywords that relate to each other."
+    },
+    {
+      "dimension": "SA360 campaign",
+      "description": "The SA360 Campaign Name that led to the key event. A SA360 campaign lets you organize your ads and define a goal for your advertising."
+    },
+    {
+      "dimension": "SA360 campaign ID",
+      "description": "The SA360 Campaign ID that led to the key event. Identifies the SA360 campaign."
+    },
+    {
+      "dimension": "SA360 creative format",
+      "description": "The SA360 Creative Format that led to the key event. The creative format is the specific layout or design of the advertisement used in a campaign."
+    },
+    {
+      "dimension": "SA360 engine account ID",
+      "description": "The SA360 Engine Account ID that led to the key event. Identifies the SA360 engine account."
+    },
+    {
+      "dimension": "SA360 engine account name",
+      "description": "The SA360 Engine Account Name that led to the key event. A SA360 engine account contains campaigns, ad groups, and other items from an advertising account."
+    },
+    {
+      "dimension": "SA360 engine account type",
+      "description": "The SA360 Engine Account Type that led to the key event. The type of engine used by the search engine account."
+    },
+    {
+      "dimension": "SA360 keyword text",
+      "description": "The SA360 Keyword Text that led to the key event. The keywords that matched the search query."
+    },
+    {
+      "dimension": "SA360 manager account ID",
+      "description": "The SA360 Manager Account ID that led to the key event. Identifies the SA360 manager account."
+    },
+    {
+      "dimension": "SA360 manager account name",
+      "description": "The SA360 Manager Account Name that led to the key event. The top level of the Search Ads 360 account hierarchy and is used for administration and reporting across the lower-level sub-manager and client accounts."
+    },
+    {
+      "dimension": "SA360 medium",
+      "description": "The SA360 Medium that led to the key event. The payment mode used in ad buying. For example, `cpc`."
+    },
+    {
+      "dimension": "SA360 query",
+      "description": "The SA360 Query that led to the key event. The search query typed by the user."
+    },
+    {
+      "dimension": "SA360 source",
+      "description": "The SA360 Source that led to the key event. The search query happened on this site."
+    },
+    {
+      "dimension": "SA360 source / medium",
+      "description": "The SA360 Source Medium that led to the key event. A combination of the source and medium."
+    },
+    {
+      "dimension": "Screen resolution",
+      "description": "The screen resolution of the user's monitor. For example, 1920x1080."
+    },
+    {
+      "dimension": "Search term",
+      "description": "The term searched by the user. For example if the user visits `/some-page.html?q=some-term`, this dimension returns `some-term`. Automatically populated if Enhanced Measurement is enabled. Populated by the event parameter `search_term`."
+    },
+    {
+      "dimension": "Session campaign",
+      "description": "The marketing campaign name for a session. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns."
+    },
+    {
+      "dimension": "Session campaign ID",
+      "description": "The marketing campaign ID for a session. Includes Google Ads Campaigns, Manual Campaigns, & other Campaigns."
+    },
+    {
+      "dimension": "Session CM360 account ID",
+      "description": "The CM360 Account ID that led to the session. Identifies the CM360 account."
+    },
+    {
+      "dimension": "Session CM360 account name",
+      "description": "The CM360 Account Name that led to the session. A CM360 account consists of advertisers, sites, campaigns, and user profiles."
+    },
+    {
+      "dimension": "Session CM360 advertiser ID",
+      "description": "The CM360 Advertiser ID that led to the session. Identifies the CM360 advertiser."
+    },
+    {
+      "dimension": "Session CM360 advertiser name",
+      "description": "The CM360 Advertiser Name that led to the session. A CM360 Advertiser contains a group of campaigns, creative assets, and other settings."
+    },
+    {
+      "dimension": "Session CM360 campaign ID",
+      "description": "The CM360 Campaign ID that led to the session. Identifies the CM360 campaign."
+    },
+    {
+      "dimension": "Session CM360 campaign name",
+      "description": "The CM360 Campaign Name that led to the session. A CM360 campaign can be configured to specify when your ads run, what landing pages are used, and other properties."
+    },
+    {
+      "dimension": "Session CM360 creative format",
+      "description": "The CM360 Creative Format that led to the session. CM360 creative formats are also referred to as creative types."
+    },
+    {
+      "dimension": "Session CM360 creative ID",
+      "description": "The CM360 Creative ID that led to the session. Identifies a CM360 creative."
+    },
+    {
+      "dimension": "Session CM360 creative name",
+      "description": "The CM360 Creative Name that led to the session. The name given to a CM360 creative."
+    },
+    {
+      "dimension": "Session CM360 creative type",
+      "description": "The CM360 Creative Type that led to the session. A category of CM360 creatives like 'Display' or 'Tracking'."
+    },
+    {
+      "dimension": "Session CM360 creative type ID",
+      "description": "The CM360 Creative Type ID that led to the session. Identifies a CM360 creative type."
+    },
+    {
+      "dimension": "Session CM360 creative version",
+      "description": "The CM360 Creative Version that led to the session. The version number helps you keep track of multiple versions of your creative in your reports. If you upload a new asset to an existing creative, the version number is increased by one."
+    },
+    {
+      "dimension": "Session CM360 medium",
+      "description": "The CM360 Medium that led to the session. The CM360 medium is also referred to as the placement cost structure."
+    },
+    {
+      "dimension": "Session CM360 placement cost structure",
+      "description": "The CM360 Placement Cost Structure that led to the session. Placement cost structures regulate how media cost will be calculated. For example 'CPM'."
+    },
+    {
+      "dimension": "Session CM360 placement ID",
+      "description": "The CM360 Placement ID that led to the session. Identifies a CM360 placement. A placement is the part of a website where your ad appears."
+    },
+    {
+      "dimension": "Session CM360 placement name",
+      "description": "The CM360 Placement Name that led to the session. The given name for a CM360 placement. A placement is the part of a website where your ad appears."
+    },
+    {
+      "dimension": "Session CM360 rendering ID",
+      "description": "The CM360 Rendering ID that led to the session. Identifies a CM360 creative."
+    },
+    {
+      "dimension": "Session CM360 site ID",
+      "description": "The CM360 Site ID that led to the session. Identifies a CM360 site."
+    },
+    {
+      "dimension": "Session CM360 site name",
+      "description": "The CM360 Site Name that led to the session. The CM360 Site name from which the ad space was purchased."
+    },
+    {
+      "dimension": "Session CM360 source",
+      "description": "The CM360 Source that led to the session. The CM360 source is also referred to as the site name."
+    },
+    {
+      "dimension": "Session CM360 source / medium",
+      "description": "The CM360 Source Medium that led to the session. A combination of the source and medium."
+    },
+    {
+      "dimension": "Session default channel group",
+      "description": "The session's default channel group is based primarily on source and medium. An enumeration which includes `Direct`, `Organic Search`, `Paid Social`, `Organic Social`, `Email`, `Affiliates`, `Referral`, `Paid Search`, `Video`, and `Display`."
+    },
+    {
+      "dimension": "Session DV360 advertiser ID",
+      "description": "The DV360 Advertiser ID that led to the session. Identifies the DV360 advertiser."
+    },
+    {
+      "dimension": "Session DV360 advertiser name",
+      "description": "The DV360 Advertiser Name that led to the session. DV360 advertisers represent real-life businesses that run advertising campaigns."
+    },
+    {
+      "dimension": "Session DV360 campaign ID",
+      "description": "The DV360 Campaign ID that led to the session. Identifies the DV360 campaign."
+    },
+    {
+      "dimension": "Session DV360 campaign name",
+      "description": "The DV360 Campaign Name that led to the session. DV360 campaigns group together related insertion orders with a common business goal."
+    },
+    {
+      "dimension": "Session DV360 creative format",
+      "description": "The DV360 Creative Format that led to the session. Also referred to as the creative type. For example, expandable, video, or native."
+    },
+    {
+      "dimension": "Session DV360 creative ID",
+      "description": "The DV360 Creative ID that led to the session. Identifies the DV360 creative."
+    },
+    {
+      "dimension": "Session DV360 creative name",
+      "description": "The DV360 Creative Name that led to the session. The name given to a DV360 creative."
+    },
+    {
+      "dimension": "Session DV360 exchange ID",
+      "description": "The DV360 Exchange ID that led to the session. Identifies the DV360 exchange."
+    },
+    {
+      "dimension": "Session DV360 exchange name",
+      "description": "The DV360 Exchange Name that led to the session. The DV360 ad exchange involved in the ad click."
+    },
+    {
+      "dimension": "Session DV360 insertion order ID",
+      "description": "The DV360 Insertion Order ID that led to the session. Identifies the DV360 insertion order."
+    },
+    {
+      "dimension": "Session DV360 insertion order name",
+      "description": "The DV360 Insertion Order Name that led to the session. A DV360 insertion order contains a set of line items that are related to the same advertising campaign."
+    },
+    {
+      "dimension": "Session DV360 line item ID",
+      "description": "The DV360 Line Item ID that led to the session. Identifies the DV360 line item."
+    },
+    {
+      "dimension": "Session DV360 line item name",
+      "description": "The DV360 Line Item Name that led to the session. A DV360 line item bids on impressions and serves creatives to inventory sources."
+    },
+    {
+      "dimension": "Session DV360 medium",
+      "description": "The DV360 Medium that led to the session. The billable outcome of the insertion order. For example, `cpm`."
+    },
+    {
+      "dimension": "Session DV360 partner ID",
+      "description": "The DV360 Partner ID that led to the session. Identifies the DV360 partner."
+    },
+    {
+      "dimension": "Session DV360 partner name",
+      "description": "The DV360 Partner Name that led to the session. DV360 partners represent agencies, trading desks, or large individual advertisers."
+    },
+    {
+      "dimension": "Session DV360 source",
+      "description": "The DV360 Source that led to the session. The DV360 site name where your ad was displayed."
+    },
+    {
+      "dimension": "Session DV360 source / medium",
+      "description": "The DV360 Source Medium that led to the session. A combination of the source and medium."
+    },
+    {
+      "dimension": "Session Google Ads account name",
+      "description": "The Account name from Google Ads that led to the session. Corresponds to customer.descriptive_name in the Google Ads API."
+    },
+    {
+      "dimension": "Session Google Ads ad group ID",
+      "description": "The Ad Group Id in Google Ads for a session."
+    },
+    {
+      "dimension": "Session Google Ads ad group name",
+      "description": "The Ad Group Name in Google Ads for a session."
+    },
+    {
+      "dimension": "Session Google Ads ad network type",
+      "description": "The advertising network that led to the session. An enumeration which includes `Google search`, `Search partners`, `Google Display Network`, `Youtube Search`, `Youtube Videos`, `Cross-network`, `Social`, and `(universal campaign)`."
+    },
+    {
+      "dimension": "Session Google Ads campaign",
+      "description": "The Campaign name for the Google Ads Campaign that led to this session."
+    },
+    {
+      "dimension": "Session Google Ads campaign ID",
+      "description": "The Campaign ID for the Google Ads Campaign that led to this session."
+    },
+    {
+      "dimension": "Session Google Ads campaign type",
+      "description": "The campaign type for the Google Ads campaign that led to this session. Campaign types determine where customers see your ads and the settings and options available to you in Google Ads."
+    },
+    {
+      "dimension": "Session Google Ads creative ID",
+      "description": "The ID of the Google Ads creative that led to a session on your website or app. Creative IDs identify individual ads."
+    },
+    {
+      "dimension": "Session Google Ads customer ID",
+      "description": "The Customer ID from Google Ads that led to the session. Customer IDs in Google Ads uniquely identify Google Ads accounts."
+    },
+    {
+      "dimension": "Session Google Ads keyword text",
+      "description": "The matched keyword that led to the session. Keywords are words or phrases describing your product or service that you choose to get your ad in front of the right customers."
+    },
+    {
+      "dimension": "Session Google Ads query",
+      "description": "The search query that led to the session."
+    },
+    {
+      "dimension": "Session manual ad content",
+      "description": "The ad content that led to a session. Populated by the utm_content parameter."
+    },
+    {
+      "dimension": "Session manual campaign ID",
+      "description": "The manual Campaign ID that led to the session. Identifies the manual campaign. Populated by `utm_id` URL parameter."
+    },
+    {
+      "dimension": "Session manual campaign name",
+      "description": "The manual Campaign Name that led to the session. The name of the manual campaign. Populated by `utm_campaign` URL parameter."
+    },
+    {
+      "dimension": "Session manual creative format",
+      "description": "The manual Creative Format that led to the session. Identifies the creative format used in the ad. Populated by `utm_creative_format` URL parameter."
+    },
+    {
+      "dimension": "Session manual marketing tactic",
+      "description": "The manual Marketing Tactic that led to the session. The targeting criteria applied to a campaign. For example, remarketing or prospecting. Populated by `utm_marketing_tactic` URL parameter."
+    },
+    {
+      "dimension": "Session manual medium",
+      "description": "The manual Medium that led to the session. The marketing medium used in the referral. For example, `cpc`. Populated by `utm_medium` URL parameter."
+    },
+    {
+      "dimension": "Session manual source",
+      "description": "The manual Source that led to the session. The referrer. Populated by `utm_source` URL parameter."
+    },
+    {
+      "dimension": "Session manual source / medium",
+      "description": "The manual Source Medium that led to the session. A combination of the source and medium."
+    },
+    {
+      "dimension": "Session manual source platform",
+      "description": "The manual Source Platform that led to the session. The platform responsible for directing traffic to a given Analytics property. Populated by `utm_source_platform` URL parameter."
+    },
+    {
+      "dimension": "Session manual term",
+      "description": "The term that led to a session. Populated by the utm_term parameter."
+    },
+    {
+      "dimension": "Session medium",
+      "description": "The medium that initiated a session on your website or app."
+    },
+    {
+      "dimension": "Session primary channel group",
+      "description": "The primary channel group that led to the session. Primary channel groups are the channel groups used in standard reports in Google Analytics and serve as an active record of your property's data in alignment with channel grouping over time."
+    },
+    {
+      "dimension": "Session SA360 ad group ID",
+      "description": "The SA360 Ad Group ID that led to the session. Identifies the SA360 ad group."
+    },
+    {
+      "dimension": "Session SA360 ad group name",
+      "description": "The SA360 Ad Group Name that led to the session. SA360 Ad groups contain ads and keywords that relate to each other."
+    },
+    {
+      "dimension": "Session SA360 campaign",
+      "description": "The SA360 Campaign Name that led to the session. A SA360 campaign lets you organize your ads and define a goal for your advertising."
+    },
+    {
+      "dimension": "Session SA360 campaign ID",
+      "description": "The SA360 Campaign ID that led to the session. Identifies the SA360 campaign."
+    },
+    {
+      "dimension": "Session SA360 creative format",
+      "description": "The SA360 Creative Format that led to the session. The creative format is the specific layout or design of the advertisement used in a campaign."
+    },
+    {
+      "dimension": "Session SA360 engine account ID",
+      "description": "The SA360 Engine Account ID that led to the session. Identifies the SA360 engine account."
+    },
+    {
+      "dimension": "Session SA360 engine account name",
+      "description": "The SA360 Engine Account Name that led to the session. A SA360 engine account contains campaigns, ad groups, and other items from an advertising account."
+    },
+    {
+      "dimension": "Session SA360 engine account type",
+      "description": "The SA360 Engine Account Type that led to the session. The type of engine used by the search engine account. For example, `google ads`, `bing`, or `baidu`."
+    },
+    {
+      "dimension": "Session SA360 keyword text",
+      "description": "The SA360 Keyword Text that led to the session. The keywords that matched the search query."
+    },
+    {
+      "dimension": "Session SA360 manager account ID",
+      "description": "The SA360 Manager Account ID that led to the session. Identifies the SA360 manager account."
+    },
+    {
+      "dimension": "Session SA360 manager account name",
+      "description": "The SA360 Manager Account Name that led to the session. The top level of the Search Ads 360 account hierarchy and is used for administration and reporting across the lower-level sub-manager and client accounts."
+    },
+    {
+      "dimension": "Session SA360 medium",
+      "description": "The SA360 Medium that led to the session. The payment mode used in ad buying. For example, `cpc`."
+    },
+    {
+      "dimension": "Session SA360 query",
+      "description": "The SA360 Query that led to the session. The search query typed by the user."
+    },
+    {
+      "dimension": "Session SA360 source",
+      "description": "The SA360 Source that led to the session. The search query happened on this site."
+    },
+    {
+      "dimension": "Session SA360 source / medium",
+      "description": "The SA360 Source Medium that led to the session. A combination of the source and medium."
+    },
+    {
+      "dimension": "Session source",
+      "description": "The source that initiated a session on your website or app."
+    },
+    {
+      "dimension": "Session source / medium",
+      "description": "The combined values of the dimensions `sessionSource` and `sessionMedium`."
+    },
+    {
+      "dimension": "Session source platform",
+      "description": "The source platform of the session's campaign."
+    },
+    {
+      "dimension": "Shipping tier",
+      "description": "The shipping tier selected for delivery of the purchased item. For example, `Ground`, `Air`, or `Next-day`. Populated by the `shipping_tier` event parameter."
+    },
+    {
+      "dimension": "Signed in with user ID",
+      "description": "The string `yes` if the user signed in with the User-ID feature."
+    },
+    {
+      "dimension": "Source",
+      "description": "The source attributed to the key event."
+    },
+    {
+      "dimension": "Source / medium",
+      "description": "The combined values of the dimensions `source` and `medium`."
+    },
+    {
+      "dimension": "Source platform",
+      "description": "The source platform of the key event's campaign."
+    },
+    {
+      "dimension": "Stream ID",
+      "description": "The numeric data stream identifier for your app or website."
+    },
+    {
+      "dimension": "Stream name",
+      "description": "The data stream name for your app or website."
+    },
+    {
+      "dimension": "Test data filter ID",
+      "description": "The numeric identifier of a data filter in testing state. You use data filters to include or exclude event data from your reports based on event-parameter values."
+    },
+    {
+      "dimension": "Test data filter name",
+      "description": "The name of data filters in testing state. You use data filters to include or exclude event data from your reports based on event-parameter values."
+    },
+    {
+      "dimension": "Transaction ID",
+      "description": "The ID of the ecommerce transaction."
+    },
+    {
+      "dimension": "Video provider",
+      "description": "The source of the video (for example, `youtube`). Automatically populated for embedded videos if Enhanced Measurement is enabled. Populated by the event parameter `video_provider`."
+    },
+    {
+      "dimension": "Video title",
+      "description": "The title of the video. Automatically populated for embedded videos if Enhanced Measurement is enabled. Populated by the event parameter `video_title`."
+    },
+    {
+      "dimension": "Video URL",
+      "description": "The URL of the video. Automatically populated for embedded videos if Enhanced Measurement is enabled. Populated by the event parameter `video_url`."
+    },
+    {
+      "dimension": "Virtual currency name",
+      "description": "The name of a virtual currency with which the user is interacting. Such as spending or purchasing gems in a game. Populated by the `virtual_currency_name` event parameter."
+    },
+    {
+      "dimension": "Visible",
+      "description": "Returns `true` if the content is visible. Automatically populated for embedded videos if Enhanced Measurement is enabled. Populated by the event parameter `visible`."
+    },
+    {
+      "dimension": "Week",
+      "description": "The week of the event, a two-digit number from 01 to 53. Each week starts on Sunday. January 1st is always in week 01."
+    },
+    {
+      "dimension": "Year",
+      "description": "The four-digit year of the event. For example, 2020 or 2024."
+    },
+    {
+      "dimension": "Year month",
+      "description": "The combined values of year and month. Example values include 202212 or 202301."
+    },
+    {
+      "dimension": "Year week",
+      "description": "The combined values of year and week. Example values include 202253 or 202301."
+    }
+  ]
+}
