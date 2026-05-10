@@ -229,10 +229,6 @@
       "description": "The count of key events. Marking an event as a key event affects reports from time of creation. It doesn't change historic data. You can mark any event as key in Google Analytics, and some events (such as `first_open` or `purchase`) are marked as key events by default."
     },
     {
-      "metric": "keyEvents:generate_code_sample",
-      "description": "The count of a specific key event."
-    },
-    {
       "metric": "keyEvents:purchase",
       "description": "The count of a specific key event."
     },
@@ -301,10 +297,6 @@
       "description": "The percentage of sessions in which any key event was triggered."
     },
     {
-      "metric": "sessionKeyEventRate:generate_code_sample",
-      "description": "The percentage of sessions in which a specific key event was triggered."
-    },
-    {
       "metric": "sessionKeyEventRate:purchase",
       "description": "The percentage of sessions in which a specific key event was triggered."
     },
@@ -355,10 +347,6 @@
     {
       "metric": "User key event rate",
       "description": "The percentage of users who triggered any key event."
-    },
-    {
-      "metric": "userKeyEventRate:generate_code_sample",
-      "description": "The percentage of users who triggered a specific key event."
     },
     {
       "metric": "userKeyEventRate:purchase",
