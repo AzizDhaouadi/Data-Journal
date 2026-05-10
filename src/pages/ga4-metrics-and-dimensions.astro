@@ -1,0 +1,120 @@
+---
+import H1 from "../components/H1.astro";
+import Main from "../components/Main.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import data from "../../public/data/ga4MeticsAndDimensions.json"
+
+const slug = (s:string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+const metricsList = data["metrics"];
+const dimensionsList = data["dimensions"];
+console.log(metricsList.length);
+---
+
+<style>
+
+    html, body {
+        scroll-behavior: smooth;
+    }
+
+    table td {
+        padding-right: 1.5rem;
+    }
+
+    nav {
+        gap: 2rem;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    nav a:hover, td a:hover {
+        color: #E8522A !important;
+    }
+
+    section[data-section-title="dimensions"] {
+        margin-top: 4rem;
+    }
+
+    section[data-section-title="metrics"] {
+        margin-top: 6rem !important;
+    }
+
+    section[data-section-title] h2 {
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+    }
+</style>
+<Layout
+    title="Learn and explore the complete list of metrics and dimensions from Google Analytics 4"
+    description="A complete, searchable reference of every Google Analytics 4 metric and dimension, with clear definitions."    
+>
+    <Main>
+        <H1 text="Complete Reference to Google Analytics 4 Metrics and Dimensions" />
+        <p>Explore every Google Analytics 4 metric and dimensions with clear definitions.</p>
+        <div class="my-6 flex flex-row flex-wrap justify-center items-stretch gap-10">
+            <nav class="w-full flex gap-6 py-6 font-mono text-sm">
+                <a class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200" href="#dimensions">Dimensions ({dimensionsList.length})</a>
+                <a class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-colors bg-slate-100 text-slate-700 hover:bg-slate-200" href="#metrics">Metrics ({metricsList.length})</a>
+            </nav>
+        </div>
+        <section data-section-title="dimensions">
+            <h2 id="dimensions" class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-black mt-16 mb-6 scroll-mt-24">
+                Google Analytics 4 Dimensions
+            </h2>
+            <table class="w-full border-collapse font-mono text-sm mt-0">
+                <thead>
+                    <tr class="border-b border-zinc-200">
+                        <th class="text-left font-bold py-3 pr-6 align-top w-64 bg-white">Name</th>
+                        <th class="text-left font-bold py-3 align-top bg-white">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {dimensionsList.map(dimensionData => (
+                        <tr id={`d-${slug(dimensionData.dimension)}`} class="border-b border-zinc-100 hover:bg-zinc-50 scroll-mt-24">
+                            <td class="font-bold py-2 align-top">
+                                <a href={`#d-${slug(dimensionData.dimension)}`} class="hover:text-[#E8522A]">
+                                    {dimensionData.dimension}
+                                </a>
+                            </td>
+                            <td class="py-3 align-top text-zinc-700 leading-relaxed">
+                                {dimensionData.description}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </section>
+        <section data-section-title="metrics">
+            <h2 id="metrics" class="font-sans font-bold text-3xl md:text-4xl tracking-tight text-black mt-16 mb-6 scroll-mt-24">
+                Google Analytics 4 Metrics
+                <a href="#dimensions" class="font-mono text-sm font-normal text-zinc-500 hover:text-[#E8522A]">
+                    ↑ Back to dimensions 
+                </a>
+            </h2>
+            <table class="w-full border-collapse font-mono text-sm mt-0">
+                <thead>
+                    <tr class="border-b border-zinc-200">
+                        <th class="text-left font-bold py-3 pr-6 align-top w-64 bg-white">Name</th>
+                        <th class="text-left font-bold py-3 align-top bg-white">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {metricsList.map(metricsData => (
+                        <tr id={`d-${slug(metricsData.metric)}`} class="border-b border-zinc-100 hover:bg-zinc-50 scroll-mt-24">
+                            <td class="font-bold py-2 align-top">
+                                <a href={`#d-${slug(metricsData.metric)}`} class="hover:text-[#E8522A]">
+                                    {metricsData.metric}
+                                </a>
+                            </td>
+                            <td class="py-3 align-top text-zinc-700 leading-relaxed">
+                                {metricsData.description}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </section>
+    </Main>
+    <Footer />
+</Layout>
