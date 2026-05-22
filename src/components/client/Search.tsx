@@ -63,7 +63,14 @@ export default function SearchComponent() {
             return [];
           }
           setUserQuery(results?.query || "");
-          return items;
+          const uniqueItems = [
+            ...new Map(
+              items.map((item) => [item.article_title, item]),
+            ).values(),
+          ];
+          console.log(items);
+          console.log(uniqueItems);
+          return uniqueItems;
         }}
         classNames={{
           root: "flex flex-col mb-10", // Makes <ol> behave like a grid
