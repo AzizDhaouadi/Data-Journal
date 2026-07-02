@@ -16,7 +16,7 @@ const tableOfContents = articleHeadings.filter(articleHeading => articleHeading.
   <nav class="text-sm leading-6 text-zinc-600" aria-label="Table of contents">
     <ul role="list" class="space-y-3">
       {tableOfContents.map((articleHeading) => (
-        <li>
+        <li> 
           <a href={`#${articleHeading.slug}`} class={`block rounded-md px-3 py-2 ${articleHeading.depth === 2 ? 'font-medium text-zinc-900' : 'text-zinc-600'}`}>
             {articleHeading.title}
           </a>
@@ -24,3 +24,4 @@ const tableOfContents = articleHeadings.filter(articleHeading => articleHeading.
       ))}
     </ul>
   </nav>
+</div>
