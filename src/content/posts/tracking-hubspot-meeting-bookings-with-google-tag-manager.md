@@ -56,7 +56,7 @@ To create a custom HTML tag in Google Tag Manager, follow these steps:
 - **Step 3: Configure the Tag**
   - Click on Tag Configuration.
   - Select Custom HTML as the tag type.
-  - Enter the code above. Ensure it is enclosed in <script> tags.
+  - Enter the code above. Ensure it is enclosed in `<script>` tags.
 - **Step 4: Set up Triggering**
   - Click on Triggering to decide when this tag should fire.
   - Choose from the existing triggers or create a new one by clicking on New.
